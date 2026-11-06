@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "Kostenloses Anime-MMORPG. Kämpfe an Land, segle über die Meere und baue deine Gilde auf.",
-    "underConstruction": "Neue Website im Aufbau."
+    "hero": {
+      "eyebrow": "Kostenloses Anime-MMORPG",
+      "artAlt": "Eine Magic-Knight-Heldin in einem orange-schwarzen Kleid"
+    },
+    "features": {
+      "title": "Abenteuer zu Land und zu Wasser",
+      "land": {
+        "title": "Kämpfe an Land",
+        "body": "Erkunde Inseln voller Monster, Dungeons und Quests, allein oder mit Freunden."
+      },
+      "sea": {
+        "title": "Segle über die Meere",
+        "body": "Steuere dein eigenes Schiff, liefere dir Seeschlachten und entdecke neue Küsten."
+      },
+      "guild": {
+        "title": "Tritt einer Gilde bei",
+        "body": "Schließ dich anderen Spielern an, erobere Gebiete und steig gemeinsam in den Ranglisten auf."
+      }
+    },
+    "classes": {
+      "title": "Wähle deine Klasse",
+      "intro": "Vier Klassen, acht Wege. Ab Level {level} wählt jede Klasse eine von zwei Spezialisierungen.",
+      "specializations": "Spezialisierungen ab Level {level}",
+      "artAlt": "Illustration der Klasse {name}"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Nahkampf",
+      "description": "Ein Frontkämpfer in schwerer Rüstung, der Treffer einsteckt und die Gruppe mit Schwert und Schild schützt."
+    },
+    "explorer": {
+      "role": "Fernkampf",
+      "description": "Flink und einfallsreich: kämpft aus der Distanz mit Feuerwaffen und Apparaten und gräbt auf den Inseln nach Schätzen."
+    },
+    "noble": {
+      "role": "Magie",
+      "description": "Beherrscht die arkanen Künste: mächtige Zauber aus der Ferne oder eine magische Klinge im Nahkampf."
+    },
+    "saint": {
+      "role": "Heilung und Unterstützung",
+      "description": "Heilt Wunden, stärkt Verbündete und wendet mit heiliger und Naturmagie das Blatt im Kampf."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",

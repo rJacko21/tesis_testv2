@@ -23,14 +23,21 @@ import "../globals.css";
 
 const display = Alegreya({
   variable: "--font-alegreya",
-  // latin-ext cubre los caracteres del turco (ğ, ş, ı, İ) y del resto de idiomas.
-  subsets: ["latin", "latin-ext"],
+  // `subsets` solo decide qué se precarga. latin-ext (ğ, ş, ı, İ del turco)
+  // sigue declarado con su `unicode-range` y el navegador lo descarga solo
+  // si la página usa esos caracteres. Precargar los dos subconjuntos de las
+  // dos fuentes eran 4 × 40 KB compitiendo con la imagen LCP.
+  subsets: ["latin"],
   display: "swap",
+  // Solo se usa en títulos: no se precarga para no competir con la imagen
+  // LCP; mientras llega se ve Georgia (`swap`) y next/font ajusta sus
+  // métricas para que el cambio no mueva el diseño (CLS 0).
+  preload: false,
 });
 
 const body = Nunito({
   variable: "--font-nunito",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   display: "swap",
 });
 

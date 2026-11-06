@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "MMORPG anime gratuit. Combattez sur terre, naviguez sur les mers et bâtissez votre guilde.",
-    "underConstruction": "Nouveau site en construction."
+    "hero": {
+      "eyebrow": "MMORPG anime gratuit",
+      "artAlt": "Une héroïne Magic Knight en robe orange et noire"
+    },
+    "features": {
+      "title": "L’aventure sur terre et sur mer",
+      "land": {
+        "title": "Combattez sur terre",
+        "body": "Explorez des îles pleines de monstres, de donjons et de quêtes, seul ou entre amis."
+      },
+      "sea": {
+        "title": "Naviguez sur les mers",
+        "body": "Commandez votre propre navire, livrez des batailles navales et découvrez de nouveaux rivages."
+      },
+      "guild": {
+        "title": "Rejoignez une guilde",
+        "body": "Alliez-vous à d’autres joueurs, conquérez des territoires et grimpez ensemble dans les classements."
+      }
+    },
+    "classes": {
+      "title": "Choisissez votre classe",
+      "intro": "Quatre classes, huit voies. Au niveau {level}, chaque classe choisit l’une de deux spécialisations.",
+      "specializations": "Spécialisations dès le niveau {level}",
+      "artAlt": "Illustration de la classe {name}"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Corps à corps",
+      "description": "Un combattant de première ligne en armure lourde qui encaisse les coups et protège le groupe avec épée et bouclier."
+    },
+    "explorer": {
+      "role": "Attaques à distance",
+      "description": "Vif et ingénieux, il combat à distance avec armes à feu et gadgets et déterre des trésors sur les îles."
+    },
+    "noble": {
+      "role": "Magie",
+      "description": "Maîtrise les arts arcaniques : sorts puissants à distance ou lame enchantée au corps à corps."
+    },
+    "saint": {
+      "role": "Soins et soutien",
+      "description": "Soigne les blessures, renforce les alliés et renverse le cours de la bataille grâce à la magie sacrée et naturelle."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",

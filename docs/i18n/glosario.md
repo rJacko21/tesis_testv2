@@ -21,7 +21,9 @@ Términos que **no se traducen libremente** (ADR-13). Antes de traducir un texto
 | Guild    | Guild    | Guilda             | Lonca       | Gilda       | Gilde      | Guilde           | Gremio      |
 | Imprint  | Imprint  | Informações legais | Künye       | Note legali | Impressum  | Mentions légales | Aviso legal |
 
-Los nombres de clases (Mercenary, Explorer, Noble, Saint y sus especializaciones) se fijarán en T-12 a partir de los nombres oficiales del cliente del juego en cada idioma.
+Los nombres de clases y especializaciones **no se traducen** (decidido en T-12). Son nombres propios del juego y la web original los muestra en inglés en todos los idiomas: Mercenary (Gladiator, Guardian Swordsman), Explorer (Excavator, Sniper), Noble (Court Magician, Magic Knight) y Saint (Priest, Shaman). Lo que sí se traduce es el rol y la descripción (`classes.<id>.*`).
+
+Los números que se interpolan en un mensaje ICU, como el nivel 40 o el año, se pasan como texto. Si no, ICU los formatea con separador de miles ("2,026").
 
 ## Tono
 

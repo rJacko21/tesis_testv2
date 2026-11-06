@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "Free-to-play anime MMORPG. Fight on land, sail the seas and build your guild.",
-    "underConstruction": "New website under construction."
+    "hero": {
+      "eyebrow": "Free-to-play anime MMORPG",
+      "artAlt": "A Magic Knight heroine in an orange and black dress"
+    },
+    "features": {
+      "title": "Adventure on land and sea",
+      "land": {
+        "title": "Fight on land",
+        "body": "Explore islands full of monsters, dungeons and quests, solo or with friends."
+      },
+      "sea": {
+        "title": "Sail the seas",
+        "body": "Captain your own ship, fight naval battles and discover new shores."
+      },
+      "guild": {
+        "title": "Join a guild",
+        "body": "Team up with other players, conquer territory and climb the rankings together."
+      }
+    },
+    "classes": {
+      "title": "Choose your class",
+      "intro": "Four classes, eight paths. At level {level}, each class picks one of two specializations.",
+      "specializations": "Specializations from level {level}",
+      "artAlt": "{name} class illustration"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Close combat",
+      "description": "A frontline warrior in heavy armour who takes the hits and protects the party with sword and shield."
+    },
+    "explorer": {
+      "role": "Ranged attacks",
+      "description": "Quick and resourceful, fights from a distance with firearms and gadgets and digs up treasure across the islands."
+    },
+    "noble": {
+      "role": "Magic",
+      "description": "Masters the arcane arts: mighty spells from afar or an enchanted blade up close."
+    },
+    "saint": {
+      "role": "Healing and support",
+      "description": "Heals wounds, strengthens allies and turns the tide of battle with sacred and nature magic."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",
