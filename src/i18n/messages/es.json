@@ -128,13 +128,7 @@
     "englishOnlyBody": "Esta noticia aún no está traducida a tu idioma.",
     "empty": "Todavía no hay noticias en esta categoría.",
     "unavailable": "No se pudieron cargar las noticias. Inténtalo de nuevo en unos minutos.",
-    "back": "Volver a las noticias",
-    "pagination": {
-      "label": "Páginas",
-      "previous": "Anterior",
-      "next": "Siguiente",
-      "page": "Página {page} de {count}"
-    }
+    "back": "Volver a las noticias"
   },
   "download": {
     "title": "Descargar Florensia",
@@ -219,5 +213,64 @@
     "englishOnly": "Disponible solo en inglés",
     "englishOnlyBody": "Este texto aún no está traducido a tu idioma.",
     "unavailable": "No se pudo cargar esta página. Inténtalo de nuevo en unos minutos."
+  },
+  "pagination": {
+    "label": "Páginas",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "page": "Página {page} de {count}"
+  },
+  "rankings": {
+    "title": "Rankings",
+    "description": "Ranking de personajes de Florensia: total, tierra y mar, por clase y especialización, con búsqueda por personaje o gremio.",
+    "intro": "Los personajes más fuertes en tierra y en mar. Filtra por clase o busca un personaje o un gremio.",
+    "updated": "Actualizado el {date} a las {time} UTC",
+    "noData": "Todavía no hay ranking.",
+    "unavailable": "No se pudo cargar el ranking. Inténtalo de nuevo en unos minutos.",
+    "filters": {
+      "label": "Filtrar el ranking",
+      "area": "Área",
+      "class": "Clase",
+      "allClasses": "Todas las clases",
+      "classAll": "{name} (todas)",
+      "server": "Servidor",
+      "allServers": "Todos los servidores",
+      "search": "Personaje o gremio",
+      "searchHint": "Escribe el principio del nombre.",
+      "apply": "Aplicar",
+      "reset": "Quitar filtros"
+    },
+    "areas": {
+      "all": "Total",
+      "land": "Tierra",
+      "sea": "Mar"
+    },
+    "table": {
+      "caption": "Ranking de {area}, {class}. Página {page} de {count}.",
+      "rank": "Puesto",
+      "trend": "Cambio",
+      "name": "Personaje",
+      "class": "Clase",
+      "land": "Nivel de tierra",
+      "sea": "Nivel de mar",
+      "guild": "Gremio",
+      "server": "Servidor",
+      "noGuild": "Sin gremio",
+      "scroll": "Desliza para ver todas las columnas"
+    },
+    "trend": {
+      "up": "Sube {places, plural, one {# puesto} other {# puestos}}",
+      "down": "Baja {places, plural, one {# puesto} other {# puestos}}",
+      "same": "Sin cambios",
+      "new": "Nuevo"
+    },
+    "results": "{total, plural, one {# personaje} other {# personajes}}",
+    "searchNote": "Resultados de «{query}». El puesto es el del ranking completo.",
+    "empty": "Ningún personaje ni gremio empieza por «{query}».",
+    "emptyFilter": "No hay personajes con este filtro.",
+    "jump": {
+      "label": "Ir a la página",
+      "go": "Ir"
+    }
   }
 }

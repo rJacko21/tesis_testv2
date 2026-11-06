@@ -128,13 +128,7 @@
     "englishOnlyBody": "Questa notizia non è ancora stata tradotta nella tua lingua.",
     "empty": "Non ci sono ancora notizie in questa categoria.",
     "unavailable": "Impossibile caricare le notizie. Riprova tra qualche minuto.",
-    "back": "Torna alle notizie",
-    "pagination": {
-      "label": "Pagine",
-      "previous": "Precedente",
-      "next": "Successiva",
-      "page": "Pagina {page} di {count}"
-    }
+    "back": "Torna alle notizie"
   },
   "download": {
     "title": "Scarica Florensia",
@@ -219,5 +213,64 @@
     "englishOnly": "Disponibile solo in inglese",
     "englishOnlyBody": "Questo testo non è ancora stato tradotto nella tua lingua.",
     "unavailable": "Impossibile caricare la pagina. Riprova tra qualche minuto."
+  },
+  "pagination": {
+    "label": "Pagine",
+    "previous": "Precedente",
+    "next": "Successiva",
+    "page": "Pagina {page} di {count}"
+  },
+  "rankings": {
+    "title": "Classifiche",
+    "description": "Classifiche dei personaggi di Florensia: generale, terra e mare, per classe e specializzazione, con ricerca per personaggio o gilda.",
+    "intro": "I personaggi più forti in terra e in mare. Filtra per classe o cerca un personaggio o una gilda.",
+    "updated": "Aggiornato il {date} alle {time} UTC",
+    "noData": "Non c’è ancora una classifica.",
+    "unavailable": "Impossibile caricare la classifica. Riprova tra qualche minuto.",
+    "filters": {
+      "label": "Filtra la classifica",
+      "area": "Area",
+      "class": "Classe",
+      "allClasses": "Tutte le classi",
+      "classAll": "{name} (tutte)",
+      "server": "Server",
+      "allServers": "Tutti i server",
+      "search": "Personaggio o gilda",
+      "searchHint": "Scrivi l’inizio del nome.",
+      "apply": "Applica",
+      "reset": "Rimuovi filtri"
+    },
+    "areas": {
+      "all": "Generale",
+      "land": "Terra",
+      "sea": "Mare"
+    },
+    "table": {
+      "caption": "Classifica {area}, {class}. Pagina {page} di {count}.",
+      "rank": "Posizione",
+      "trend": "Variazione",
+      "name": "Personaggio",
+      "class": "Classe",
+      "land": "Livello terra",
+      "sea": "Livello mare",
+      "guild": "Gilda",
+      "server": "Server",
+      "noGuild": "Nessuna gilda",
+      "scroll": "Scorri di lato per vedere tutte le colonne"
+    },
+    "trend": {
+      "up": "Sale di {places, plural, one {# posizione} other {# posizioni}}",
+      "down": "Scende di {places, plural, one {# posizione} other {# posizioni}}",
+      "same": "Invariato",
+      "new": "Nuovo"
+    },
+    "results": "{total, plural, one {# personaggio} other {# personaggi}}",
+    "searchNote": "Risultati per «{query}». La posizione è quella della classifica completa.",
+    "empty": "Nessun personaggio o gilda inizia con «{query}».",
+    "emptyFilter": "Nessun personaggio corrisponde a questo filtro.",
+    "jump": {
+      "label": "Vai alla pagina",
+      "go": "Vai"
+    }
   }
 }

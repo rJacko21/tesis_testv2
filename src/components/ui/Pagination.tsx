@@ -1,5 +1,5 @@
 /**
- * Paginación del listado: Anterior, "Página 2 de 5" y Siguiente.
+ * Paginación de listados (noticias y rankings): Anterior, "Página 2 de 5" y Siguiente.
  *
  * Con enlaces reales (`?page=2`): la web original no tenía listado
  * paginado ni indexable (F-14). Los enlaces que no aplican (Anterior en la
@@ -24,23 +24,23 @@ export interface PaginationProps {
 export function Pagination({ page, pageCount, hrefFor, t }: PaginationProps) {
   if (pageCount <= 1) return null;
   return (
-    <nav aria-label={t("news.pagination.label")} className="mt-8">
+    <nav aria-label={t("pagination.label")} className="mt-8">
       <ul className="flex items-center justify-between gap-4">
         <li className="min-w-0 flex-1">
           {page > 1 ? (
             <Link href={hrefFor(page - 1)} rel="prev" className={LINK}>
               <span aria-hidden="true">←&nbsp;</span>
-              {t("news.pagination.previous")}
+              {t("pagination.previous")}
             </Link>
           ) : null}
         </li>
         <li className="text-ink-600 text-center text-sm">
-          {t("news.pagination.page", { page, count: pageCount })}
+          {t("pagination.page", { page, count: pageCount })}
         </li>
         <li className="flex min-w-0 flex-1 justify-end">
           {page < pageCount ? (
             <Link href={hrefFor(page + 1)} rel="next" className={LINK}>
-              {t("news.pagination.next")}
+              {t("pagination.next")}
               <span aria-hidden="true">&nbsp;→</span>
             </Link>
           ) : null}

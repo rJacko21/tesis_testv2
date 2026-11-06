@@ -18,7 +18,7 @@ import { isPostCategory } from "@/components/news/categories";
 import { CategoryFilter } from "@/components/news/CategoryFilter";
 import { NewsCard } from "@/components/news/NewsCard";
 import { NewsGridSkeleton } from "@/components/news/NewsGridSkeleton";
-import { Pagination } from "@/components/news/Pagination";
+import { Pagination } from "@/components/ui/Pagination";
 import { Container } from "@/components/ui";
 import type { Locale } from "@/config/locales";
 import { languageAlternates } from "@/config/site";
