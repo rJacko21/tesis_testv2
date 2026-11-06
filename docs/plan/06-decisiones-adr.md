@@ -50,7 +50,7 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 **Decisión.** Tabla `ranking_snapshots` regenerada por un job; consultas por índice compuesto; paginación por cursor; caché de 5 min.
 **Origen de los datos.** Sin acceso a la BD del juego, se usan datos sintéticos realistas; se documenta el contrato del importador.
 
-## ADR-11 Consentimiento de cookies propio — Propuesta
+## ADR-11 Consentimiento de cookies propio — Aceptada 2026-11-06
 **Por qué.** F-31. Un banner propio ligero (sin script de terceros) con aceptar/rechazar/configurar, y Google Consent Mode v2 si se usa analítica de Google. Alternativa: analítica sin cookies (Plausible/Umami) que evita el banner para analítica.
 
 ## ADR-12 Hosting gratuito — Revisada 2026-11-06 (sin tarjeta)

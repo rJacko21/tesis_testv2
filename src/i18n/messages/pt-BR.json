@@ -78,11 +78,27 @@
     "terms": "Termos de Serviço",
     "conduct": "Código de Conduta",
     "privacy": "Política de Privacidade",
-    "social": "Siga o Florensia"
+    "social": "Siga o Florensia",
+    "cookieSettings": "Configurar cookies"
   },
   "notFound": {
     "title": "Página não encontrada",
     "body": "A página que você procura não existe ou foi movida.",
     "back": "Voltar para a página inicial"
+  },
+  "consent": {
+    "title": "Respeitamos sua privacidade",
+    "body": "Usamos os cookies necessários para o site funcionar (idioma, sessão). Com sua permissão, também usaríamos cookies de análise para melhorar o site. Nada opcional é carregado até você escolher.",
+    "policyLink": "Política de cookies",
+    "accept": "Aceitar todos",
+    "reject": "Rejeitar todos",
+    "configure": "Personalizar",
+    "settingsTitle": "Configurações de cookies",
+    "save": "Salvar escolhas",
+    "close": "Fechar",
+    "necessaryTitle": "Necessários",
+    "necessaryBody": "Lembram seu idioma e mantêm sua sessão. Sempre ativos.",
+    "analyticsTitle": "Análise",
+    "analyticsBody": "Estatísticas anônimas sobre o uso do site. Desativados, a menos que você os ative."
   }
 }

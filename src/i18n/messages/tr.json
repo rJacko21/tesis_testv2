@@ -78,11 +78,27 @@
     "terms": "Hizmet Şartları",
     "conduct": "Davranış Kuralları",
     "privacy": "Gizlilik Politikası",
-    "social": "Florensia’yı takip et"
+    "social": "Florensia’yı takip et",
+    "cookieSettings": "Çerez ayarları"
   },
   "notFound": {
     "title": "Sayfa bulunamadı",
     "body": "Aradığın sayfa mevcut değil ya da taşındı.",
     "back": "Ana sayfaya dön"
+  },
+  "consent": {
+    "title": "Gizliliğine saygı duyuyoruz",
+    "body": "Sitenin çalışması için gereken çerezleri (dil, oturum) kullanıyoruz. İzin verirsen siteyi geliştirmek için analiz çerezleri de kullanırız. Sen seçene kadar isteğe bağlı hiçbir şey yüklenmez.",
+    "policyLink": "Çerez politikası",
+    "accept": "Tümünü kabul et",
+    "reject": "Tümünü reddet",
+    "configure": "Özelleştir",
+    "settingsTitle": "Çerez ayarları",
+    "save": "Seçimleri kaydet",
+    "close": "Kapat",
+    "necessaryTitle": "Gerekli",
+    "necessaryBody": "Dilini hatırlar ve oturumunu açık tutar. Her zaman açık.",
+    "analyticsTitle": "Analiz",
+    "analyticsBody": "Sitenin nasıl kullanıldığına dair anonim istatistikler. Sen açmadıkça kapalı."
   }
 }
