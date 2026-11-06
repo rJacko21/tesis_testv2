@@ -89,3 +89,10 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 | Carga simulada: k6 con 50 → 500 usuarios virtuales recorriendo portada, tienda, rankings, noticias y compra con AP | No (prohibido) | Sí |
 | CWV bajo carga: mientras k6 genera tráfico, Playwright abre la web en un móvil emulado y recoge LCP, INP y CLS con la librería `web-vitals` | No | Sí |
 **Resultado.** Tabla comparativa de laboratorio entre ambas webs y curvas de la web nueva (TTFB, LCP, errores) según aumentan los usuarios. Todo con scripts versionados para que sea reproducible.
+
+## ADR-15 Presupuesto de JavaScript ajustado al mínimo del framework — Aceptada 2026-11-06
+**Contexto.** La constitución fijaba 120 KB de JS comprimido en la portada. Al medir la portada provisional con Lighthouse CI (T-07) salieron 142 KB, de los que unos 119 KB son React 19 + el runtime de Next 16 (dos chunks de 72 KB y 47 KB que no se pueden quitar) y solo unos 23 KB son nuestros (selector de idioma, enrutado y runtime de Turbopack).
+**Decisión.** Subir el límite total a 150 KB y añadir un límite más estricto para lo que sí controlamos: ≤ 30 KB de código propio. Lighthouse CI comprueba el total (153 600 bytes); el código propio se vigila revisando el desglose de `network-requests`.
+**Alternativas descartadas.** Preact (rompe compatibilidad con App Router), quitar el selector de idioma del cliente (empeora la experiencia y apenas ahorra 8 KB).
+**Consecuencia.** Aun así la web original carga jQuery + Bootstrap + dos Font Awesome + toastr (F-28), mucho más JS, así que la comparación sigue siendo favorable y honesta.
+
