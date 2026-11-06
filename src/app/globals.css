@@ -1,0 +1,47 @@
+/*
+ * Estilos globales y tokens de diseño.
+ *
+ * Los colores salen de la web original (azul marino de la cabecera, dorado
+ * de los marcos, pergamino de la tienda) y se definen una sola vez como
+ * variables. Mobile first: los estilos base son los de móvil y las media
+ * queries solo añaden (P1). Los valores definitivos se fijan en T-03.
+ */
+@import "tailwindcss";
+
+:root {
+  --color-navy-900: #0b2a4a;
+  --color-navy-700: #164a7a;
+  --color-sky-300: #8cc4ec;
+  --color-gold-500: #d9a441;
+  --color-parchment-100: #f6ecd2;
+  --color-ink-900: #1b1b1f;
+  --color-surface: #ffffff;
+}
+
+@theme inline {
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-700: var(--color-navy-700);
+  --color-sky-300: var(--color-sky-300);
+  --color-gold-500: var(--color-gold-500);
+  --color-parchment-100: var(--color-parchment-100);
+  --color-ink-900: var(--color-ink-900);
+  --font-display: var(--font-alegreya), Georgia, serif;
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-parchment-100);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+}
+
+/* Respeta a quien pide menos movimiento (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
