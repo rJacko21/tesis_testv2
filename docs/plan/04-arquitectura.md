@@ -101,7 +101,7 @@ Convenciones: claves `BIGINT UNSIGNED`, `created_at`/`updated_at` `DATETIME(3)` 
 - `consents` (user_id o anon_id, categories, version, given_at)
 - `audit_log` (actor_id, action, entity, entity_id, diff JSON, ip, created_at)
 
-Diagrama entidad-relación: se generará desde el esquema Drizzle (T-10) y se incluirá en la tesis.
+Diagrama entidad-relación: generado desde el esquema Drizzle con `pnpm db:er` en [docs/db/modelo-er.md](../db/modelo-er.md) (T-10). CI comprueba que está al día. Datos: `pnpm db:seed` (referencia, idempotente, apto para producción) y `pnpm db:seed:demo` (sintéticos y deterministas, solo contra una base local).
 
 ## 5. Rutas e i18n
 

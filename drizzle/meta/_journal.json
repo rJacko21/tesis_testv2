@@ -8,6 +8,13 @@
       "when": 1793973279926,
       "tag": "0000_init_locales",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1793978634262,
+      "tag": "0001_modelo_completo",
+      "breakpoints": true
     }
   ]
 }
