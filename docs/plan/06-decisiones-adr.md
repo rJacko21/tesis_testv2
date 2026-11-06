@@ -25,10 +25,11 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 **Decisión.** Cuentas en la propia MySQL con Better Auth (sesiones en BD, Argon2id, verificación de email, rate limit). Diseñado tras una interfaz `AuthProvider` para poder conectar en el futuro un SSO real.
 **Alternativas.** Auth.js (las credenciales con usuario/contraseña son ciudadanas de segunda); implementación propia (más riesgo de seguridad).
 
-## ADR-06 next-intl y rutas con prefijo — Propuesta
-**Decisión.** next-intl, mensajes ICU (plurales y géneros correctos en los 7 idiomas), prefijo de idioma siempre visible, slugs en inglés.
-**Por qué.** Prefijo = URLs indexables por idioma y compatibles con las actuales; slugs traducidos multiplican redirecciones y trabajo editorial sin beneficio claro para un juego con nombres propios.
-**pt-BR** en vez de `pt` porque el público y el idioma pedido es portugués de Brasil; `/pt/*` redirige con 301.
+## ADR-06 i18n nativa de Next.js + ICU, rutas con prefijo — Aceptada (revisada 2026-11-06, T-08)
+**Decisión.** Prefijo de idioma siempre visible (`/{locale}/…`), slugs en inglés, `pt-BR` en vez de `pt` (`/pt/*` → 301). En lugar de next-intl se usa el **patrón nativo de Next.js 16**: segmento `[locale]` como parámetro raíz leído con `next/root-params`, catálogos JSON cargados solo en el servidor y un traductor propio de ~40 líneas sobre `intl-messageformat` (ICU: plurales y géneros correctos en los 7 idiomas).
+**Por qué se cambió.** Next.js 16 trae Cache Components y `next/root-params`, que resuelven lo que antes aportaba next-intl (leer el idioma en cualquier componente sin pasarlo por props). La solución nativa es compatible con el pre-renderizado parcial sin configuración extra, no envía catálogos ni motor ICU al navegador (los Client Components reciben los textos ya traducidos, RNF-01) y tiene menos dependencias que mantener (P8).
+**Alternativas.** next-intl (más funciones, pero una capa más sobre una versión de Next.js muy reciente); slugs traducidos (multiplican redirecciones y trabajo editorial sin beneficio claro).
+**Consecuencias.** Las claves de traducción están tipadas (una clave mal escrita no compila) y `pnpm i18n:check` valida en CI que los 7 catálogos tengan las mismas claves, ICU válido y los mismos marcadores.
 
 ## ADR-07 Tailwind CSS + Radix UI — Propuesta
 **Por qué.** Tailwind genera solo el CSS usado (CSS pequeño, RNF-01) y favorece mobile first; Radix aporta comportamiento accesible probado (menús, diálogos, pestañas) sin imponer estilos, así se conserva la estética propia.

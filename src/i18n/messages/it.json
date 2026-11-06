@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Florensia: MMORPG anime gratuito",
+    "description": "Gioca gratis a Florensia: un MMORPG in stile anime in cui combatti sulla terraferma e navighi per i mari con la tua gilda."
+  },
+  "a11y": {
+    "skipToContent": "Vai al contenuto principale"
+  },
+  "nav": {
+    "label": "Navigazione principale",
+    "download": "Download",
+    "shop": "Negozio",
+    "playNow": "Gioca ora",
+    "community": "Community",
+    "support": "Assistenza",
+    "rules": "Regole",
+    "rankings": "Classifiche",
+    "wiki": "Wiki Flandria",
+    "pvpLeague": "Lega PvP",
+    "login": "Accedi"
+  },
+  "localeSwitcher": {
+    "label": "Lingua",
+    "current": "{language} (lingua attuale)"
+  },
+  "home": {
+    "tagline": "MMORPG anime gratuito. Combatti sulla terraferma, naviga per i mari e costruisci la tua gilda.",
+    "underConstruction": "Nuovo sito in costruzione."
+  },
+  "footer": {
+    "copyright": "© {year} Giiku Games GmbH",
+    "imprint": "Note legali",
+    "terms": "Termini di servizio",
+    "conduct": "Codice di condotta",
+    "privacy": "Informativa sulla privacy"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "body": "La pagina che cerchi non esiste o è stata spostata.",
+    "back": "Torna alla home page"
+  }
+}
