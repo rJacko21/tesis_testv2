@@ -74,7 +74,11 @@ export const guilds = mysqlTable(
       .references(() => servers.id),
     name: varchar("name", { length: 32 }).notNull(),
   },
-  (t) => [uniqueIndex("guilds_server_name_uq").on(t.serverId, t.name)],
+  (t) => [
+    uniqueIndex("guilds_server_name_uq").on(t.serverId, t.name),
+    // Búsqueda por nombre de gremio en los rankings (RF-07): `name LIKE 'abc%'`.
+    index("guilds_name_idx").on(t.name),
+  ],
 );
 
 export const characters = mysqlTable(
@@ -101,16 +105,19 @@ export const characters = mysqlTable(
     uniqueIndex("characters_server_name_uq").on(t.serverId, t.name),
     index("characters_user_idx").on(t.userId),
     index("characters_guild_idx").on(t.guildId),
+    // Búsqueda por nombre de personaje en los rankings (RF-07): `name LIKE 'abc%'`.
+    index("characters_name_idx").on(t.name),
   ],
 );
 
 /**
  * Foto del ranking en un momento dado.
  *
- * `area`: `all` (combinado), `land` o `sea`. `class_id` nulo es el ranking de
- * todas las clases. `rank` empieza en 1. El índice principal sirve
- * directamente cada página: `WHERE taken_at = ? AND area = ? AND class_id = ?
- * ORDER BY rank LIMIT 50 OFFSET n`.
+ * `area`: `all` (combinado), `land` o `sea`. `class_scope` 0 es el ranking de
+ * todas las clases; si no, el id de una clase base (incluye sus
+ * especializaciones) o de una especialización. `rank` empieza en 1. El índice principal sirve
+ * directamente cada página: `WHERE taken_at = ? AND area = ? AND class_scope = ?
+ * AND rank BETWEEN ? AND ?`.
  */
 export const rankingSnapshots = mysqlTable(
   "ranking_snapshots",

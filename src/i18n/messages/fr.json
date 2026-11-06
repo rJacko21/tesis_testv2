@@ -128,13 +128,7 @@
     "englishOnlyBody": "Cette actualité n’a pas encore été traduite dans votre langue.",
     "empty": "Il n’y a pas encore d’actualité dans cette catégorie.",
     "unavailable": "Impossible de charger les actualités. Réessayez dans quelques minutes.",
-    "back": "Retour aux actualités",
-    "pagination": {
-      "label": "Pages",
-      "previous": "Précédente",
-      "next": "Suivante",
-      "page": "Page {page} sur {count}"
-    }
+    "back": "Retour aux actualités"
   },
   "download": {
     "title": "Télécharger Florensia",
@@ -219,5 +213,64 @@
     "englishOnly": "Disponible uniquement en anglais",
     "englishOnlyBody": "Ce texte n’a pas encore été traduit dans votre langue.",
     "unavailable": "Impossible de charger cette page. Réessayez dans quelques minutes."
+  },
+  "pagination": {
+    "label": "Pages",
+    "previous": "Précédente",
+    "next": "Suivante",
+    "page": "Page {page} sur {count}"
+  },
+  "rankings": {
+    "title": "Classements",
+    "description": "Classements des personnages de Florensia : général, terre et mer, par classe et spécialisation, avec recherche par personnage ou guilde.",
+    "intro": "Les personnages les plus forts sur terre et en mer. Filtrez par classe ou cherchez un personnage ou une guilde.",
+    "updated": "Mis à jour le {date} à {time} UTC",
+    "noData": "Il n’y a pas encore de classement.",
+    "unavailable": "Le classement n’a pas pu être chargé. Réessayez dans quelques minutes.",
+    "filters": {
+      "label": "Filtrer le classement",
+      "area": "Zone",
+      "class": "Classe",
+      "allClasses": "Toutes les classes",
+      "classAll": "{name} (toutes)",
+      "server": "Serveur",
+      "allServers": "Tous les serveurs",
+      "search": "Personnage ou guilde",
+      "searchHint": "Saisissez le début du nom.",
+      "apply": "Appliquer",
+      "reset": "Effacer les filtres"
+    },
+    "areas": {
+      "all": "Général",
+      "land": "Terre",
+      "sea": "Mer"
+    },
+    "table": {
+      "caption": "Classement {area}, {class}. Page {page} sur {count}.",
+      "rank": "Rang",
+      "trend": "Évolution",
+      "name": "Personnage",
+      "class": "Classe",
+      "land": "Niveau terre",
+      "sea": "Niveau mer",
+      "guild": "Guilde",
+      "server": "Serveur",
+      "noGuild": "Sans guilde",
+      "scroll": "Faites défiler horizontalement pour voir toutes les colonnes"
+    },
+    "trend": {
+      "up": "Gagne {places, plural, one {# place} other {# places}}",
+      "down": "Perd {places, plural, one {# place} other {# places}}",
+      "same": "Inchangé",
+      "new": "Nouveau"
+    },
+    "results": "{total, plural, one {# personnage} other {# personnages}}",
+    "searchNote": "Résultats pour « {query} ». Le rang est celui du classement complet.",
+    "empty": "Aucun personnage ni aucune guilde ne commence par « {query} ».",
+    "emptyFilter": "Aucun personnage ne correspond à ce filtre.",
+    "jump": {
+      "label": "Aller à la page",
+      "go": "OK"
+    }
   }
 }

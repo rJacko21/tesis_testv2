@@ -6,7 +6,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const LOCALES = ["en", "pt-BR", "tr", "it", "de", "fr", "es"] as const;
-// Las de noticias necesitan la base de datos con la demo (`pnpm db:seed:demo`).
+// Las de noticias y rankings necesitan la base de datos con la demo (`pnpm db:seed:demo`).
 const PAGES = [
   "",
   "/no-existe",
@@ -14,6 +14,8 @@ const PAGES = [
   "/news/shop-8",
   "/news/redeem-5",
   "/download",
+  "/rankings",
+  "/rankings?area=sea&class=sniper&q=a",
   "/support",
   "/rules",
   "/privacy",
@@ -30,13 +32,15 @@ for (const locale of LOCALES) {
     });
   }
 
-  test(`${locale}: sin scroll horizontal`, async ({ page }) => {
-    await page.goto(`/${locale}`);
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - window.innerWidth,
-    );
-    expect(overflow).toBeLessThanOrEqual(0);
-  });
+  for (const path of ["", "/rankings"]) {
+    test(`${locale}${path || "/"}: sin scroll horizontal`, async ({ page }) => {
+      await page.goto(`/${locale}${path}`);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - window.innerWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
 }
 
 test("se puede hacer zoom en móvil (F-26)", async ({ page }) => {

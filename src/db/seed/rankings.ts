@@ -23,7 +23,7 @@ export type RankingArea = "all" | "land" | "sea";
 
 export interface RankingRow {
   area: RankingArea;
-  /** 0 = todas las clases; si no, el id de la clase base. */
+  /** 0 = todas las clases; si no, el id de la clase base o de la especialización. */
   classScope: number;
   rank: number;
   characterId: number;
@@ -47,15 +47,25 @@ function compare(area: RankingArea) {
     scoreFor(b, area) - scoreFor(a, area) || b.experience - a.experience || a.id - b.id;
 }
 
-/** Genera las filas de ranking de todas las áreas, globales y por clase base. */
+/**
+ * Genera las filas de ranking de todas las áreas: global, por clase base
+ * (que incluye a sus especializaciones) y por especialización. Así cada
+ * filtro de la página es una lectura directa por la clave primaria.
+ */
 export function buildRankings(characters: readonly RankableCharacter[]): RankingRow[] {
   const rows: RankingRow[] = [];
-  const baseClasses = [...new Set(characters.map((c) => c.baseClassId))].sort((a, b) => a - b);
+  const scopes = new Set<number>();
+  for (const c of characters) {
+    scopes.add(c.baseClassId);
+    if (c.classId !== c.baseClassId) scopes.add(c.classId);
+  }
+  const classScopes = [...scopes].sort((a, b) => a - b);
+  const inScope = (c: RankableCharacter, scope: number) =>
+    scope === 0 || c.baseClassId === scope || c.classId === scope;
 
   for (const area of ["all", "land", "sea"] as const) {
-    for (const classScope of [0, ...baseClasses]) {
-      const group =
-        classScope === 0 ? [...characters] : characters.filter((c) => c.baseClassId === classScope);
+    for (const classScope of [0, ...classScopes]) {
+      const group = characters.filter((c) => inScope(c, classScope));
       group.sort(compare(area));
       group.forEach((character, index) => {
         rows.push({

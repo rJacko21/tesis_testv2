@@ -128,13 +128,7 @@
     "englishOnlyBody": "This news item has not been translated into your language yet.",
     "empty": "There is no news in this category yet.",
     "unavailable": "The news could not be loaded. Please try again in a few minutes.",
-    "back": "Back to news",
-    "pagination": {
-      "label": "Pages",
-      "previous": "Previous",
-      "next": "Next",
-      "page": "Page {page} of {count}"
-    }
+    "back": "Back to news"
   },
   "download": {
     "title": "Download Florensia",
@@ -219,5 +213,64 @@
     "englishOnly": "Available in English only",
     "englishOnlyBody": "This text has not been translated into your language yet.",
     "unavailable": "This page could not be loaded. Please try again in a few minutes."
+  },
+  "pagination": {
+    "label": "Pages",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page} of {count}"
+  },
+  "rankings": {
+    "title": "Rankings",
+    "description": "Florensia character rankings: overall, land and sea, by class and specialization, with search by character or guild.",
+    "intro": "The strongest characters on land and at sea. Filter by class or search for a character or guild.",
+    "updated": "Updated on {date} at {time} UTC",
+    "noData": "There is no ranking yet.",
+    "unavailable": "The ranking could not be loaded. Please try again in a few minutes.",
+    "filters": {
+      "label": "Filter the ranking",
+      "area": "Area",
+      "class": "Class",
+      "allClasses": "All classes",
+      "classAll": "{name} (all)",
+      "server": "Server",
+      "allServers": "All servers",
+      "search": "Character or guild",
+      "searchHint": "Type the beginning of the name.",
+      "apply": "Apply",
+      "reset": "Clear filters"
+    },
+    "areas": {
+      "all": "Overall",
+      "land": "Land",
+      "sea": "Sea"
+    },
+    "table": {
+      "caption": "{area} ranking, {class}. Page {page} of {count}.",
+      "rank": "Rank",
+      "trend": "Change",
+      "name": "Character",
+      "class": "Class",
+      "land": "Land level",
+      "sea": "Sea level",
+      "guild": "Guild",
+      "server": "Server",
+      "noGuild": "No guild",
+      "scroll": "Scroll sideways to see all columns"
+    },
+    "trend": {
+      "up": "Up {places, plural, one {# place} other {# places}}",
+      "down": "Down {places, plural, one {# place} other {# places}}",
+      "same": "No change",
+      "new": "New"
+    },
+    "results": "{total, plural, one {# character} other {# characters}}",
+    "searchNote": "Results for “{query}”. Ranks are from the full ranking.",
+    "empty": "No character or guild starts with “{query}”.",
+    "emptyFilter": "No characters match this filter.",
+    "jump": {
+      "label": "Go to page",
+      "go": "Go"
+    }
   }
 }

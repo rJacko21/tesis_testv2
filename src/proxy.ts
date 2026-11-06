@@ -23,7 +23,10 @@ export function proxy(request: NextRequest): NextResponse {
 
   if (route.action === "redirect") {
     const url = request.nextUrl.clone();
-    url.pathname = route.pathname;
+    const [pathname = "/", search] = route.pathname.split("?");
+    url.pathname = pathname;
+    // Parámetros que añade una ruta antigua (`/rankings?area=sea`), junto a los que ya traía.
+    for (const [key, value] of new URLSearchParams(search)) url.searchParams.set(key, value);
     const response = NextResponse.redirect(url, route.status);
     // La caché compartida no debe guardar una redirección que depende del visitante.
     if (route.status === 307) response.headers.set("Vary", "Accept-Language, Cookie");

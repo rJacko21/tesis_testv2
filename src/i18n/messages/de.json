@@ -128,13 +128,7 @@
     "englishOnlyBody": "Diese Neuigkeit wurde noch nicht in deine Sprache übersetzt.",
     "empty": "In dieser Kategorie gibt es noch keine News.",
     "unavailable": "Die News konnten nicht geladen werden. Bitte versuche es in ein paar Minuten erneut.",
-    "back": "Zurück zu den News",
-    "pagination": {
-      "label": "Seiten",
-      "previous": "Zurück",
-      "next": "Weiter",
-      "page": "Seite {page} von {count}"
-    }
+    "back": "Zurück zu den News"
   },
   "download": {
     "title": "Florensia herunterladen",
@@ -219,5 +213,64 @@
     "englishOnly": "Nur auf Englisch verfügbar",
     "englishOnlyBody": "Dieser Text wurde noch nicht in deine Sprache übersetzt.",
     "unavailable": "Diese Seite konnte nicht geladen werden. Bitte versuche es in ein paar Minuten erneut."
+  },
+  "pagination": {
+    "label": "Seiten",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "page": "Seite {page} von {count}"
+  },
+  "rankings": {
+    "title": "Ranglisten",
+    "description": "Florensia-Charakterranglisten: gesamt, Land und See, nach Klasse und Spezialisierung, mit Suche nach Charakter oder Gilde.",
+    "intro": "Die stärksten Charaktere an Land und auf See. Filtere nach Klasse oder suche einen Charakter oder eine Gilde.",
+    "updated": "Aktualisiert am {date} um {time} UTC",
+    "noData": "Es gibt noch keine Rangliste.",
+    "unavailable": "Die Rangliste konnte nicht geladen werden. Bitte versuche es in ein paar Minuten erneut.",
+    "filters": {
+      "label": "Rangliste filtern",
+      "area": "Bereich",
+      "class": "Klasse",
+      "allClasses": "Alle Klassen",
+      "classAll": "{name} (alle)",
+      "server": "Server",
+      "allServers": "Alle Server",
+      "search": "Charakter oder Gilde",
+      "searchHint": "Gib den Anfang des Namens ein.",
+      "apply": "Anwenden",
+      "reset": "Filter entfernen"
+    },
+    "areas": {
+      "all": "Gesamt",
+      "land": "Land",
+      "sea": "See"
+    },
+    "table": {
+      "caption": "Rangliste {area}, {class}. Seite {page} von {count}.",
+      "rank": "Rang",
+      "trend": "Veränderung",
+      "name": "Charakter",
+      "class": "Klasse",
+      "land": "Landstufe",
+      "sea": "Seestufe",
+      "guild": "Gilde",
+      "server": "Server",
+      "noGuild": "Keine Gilde",
+      "scroll": "Seitlich wischen, um alle Spalten zu sehen"
+    },
+    "trend": {
+      "up": "{places, plural, one {# Platz} other {# Plätze}} aufgestiegen",
+      "down": "{places, plural, one {# Platz} other {# Plätze}} abgestiegen",
+      "same": "Unverändert",
+      "new": "Neu"
+    },
+    "results": "{total, plural, one {# Charakter} other {# Charaktere}}",
+    "searchNote": "Ergebnisse für „{query}“. Der Rang stammt aus der vollständigen Rangliste.",
+    "empty": "Kein Charakter und keine Gilde beginnt mit „{query}“.",
+    "emptyFilter": "Keine Charaktere für diesen Filter.",
+    "jump": {
+      "label": "Zu Seite",
+      "go": "Los"
+    }
   }
 }

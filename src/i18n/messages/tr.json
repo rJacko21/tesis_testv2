@@ -128,13 +128,7 @@
     "englishOnlyBody": "Bu haber henüz dilinize çevrilmedi.",
     "empty": "Bu kategoride henüz haber yok.",
     "unavailable": "Haberler yüklenemedi. Lütfen birkaç dakika sonra tekrar deneyin.",
-    "back": "Haberlere dön",
-    "pagination": {
-      "label": "Sayfalar",
-      "previous": "Önceki",
-      "next": "Sonraki",
-      "page": "Sayfa {page} / {count}"
-    }
+    "back": "Haberlere dön"
   },
   "download": {
     "title": "Florensia'yı indir",
@@ -219,5 +213,64 @@
     "englishOnly": "Yalnızca İngilizce",
     "englishOnlyBody": "Bu metin henüz dilinize çevrilmedi.",
     "unavailable": "Bu sayfa yüklenemedi. Lütfen birkaç dakika sonra tekrar deneyin."
+  },
+  "pagination": {
+    "label": "Sayfalar",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "page": "Sayfa {page} / {count}"
+  },
+  "rankings": {
+    "title": "Sıralamalar",
+    "description": "Florensia karakter sıralamaları: genel, kara ve deniz; sınıfa ve uzmanlığa göre, karakter veya lonca araması ile.",
+    "intro": "Karada ve denizde en güçlü karakterler. Sınıfa göre filtreleyin ya da bir karakter veya lonca arayın.",
+    "updated": "Son güncelleme: {date}, {time} UTC",
+    "noData": "Henüz sıralama yok.",
+    "unavailable": "Sıralama yüklenemedi. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "filters": {
+      "label": "Sıralamayı filtrele",
+      "area": "Alan",
+      "class": "Sınıf",
+      "allClasses": "Tüm sınıflar",
+      "classAll": "{name} (tümü)",
+      "server": "Sunucu",
+      "allServers": "Tüm sunucular",
+      "search": "Karakter veya lonca",
+      "searchHint": "Adın başını yazın.",
+      "apply": "Uygula",
+      "reset": "Filtreleri temizle"
+    },
+    "areas": {
+      "all": "Genel",
+      "land": "Kara",
+      "sea": "Deniz"
+    },
+    "table": {
+      "caption": "{area} sıralaması, {class}. Sayfa {page} / {count}.",
+      "rank": "Sıra",
+      "trend": "Değişim",
+      "name": "Karakter",
+      "class": "Sınıf",
+      "land": "Kara seviyesi",
+      "sea": "Deniz seviyesi",
+      "guild": "Lonca",
+      "server": "Sunucu",
+      "noGuild": "Loncası yok",
+      "scroll": "Tüm sütunları görmek için yana kaydırın"
+    },
+    "trend": {
+      "up": "{places, plural, other {# sıra}} yükseldi",
+      "down": "{places, plural, other {# sıra}} düştü",
+      "same": "Değişmedi",
+      "new": "Yeni"
+    },
+    "results": "{total, plural, other {# karakter}}",
+    "searchNote": "“{query}” için sonuçlar. Sıra, tam sıralamadaki sıradır.",
+    "empty": "“{query}” ile başlayan karakter veya lonca yok.",
+    "emptyFilter": "Bu filtreye uyan karakter yok.",
+    "jump": {
+      "label": "Sayfaya git",
+      "go": "Git"
+    }
   }
 }

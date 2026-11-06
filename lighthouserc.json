@@ -9,7 +9,8 @@
         "http://localhost:3200/es/news",
         "http://localhost:3200/es/news/shop-8",
         "http://localhost:3200/es/download",
-        "http://localhost:3200/es/rules"
+        "http://localhost:3200/es/rules",
+        "http://localhost:3200/es/rankings"
       ],
       "numberOfRuns": 3,
       "settings": {

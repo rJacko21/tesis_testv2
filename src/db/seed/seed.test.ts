@@ -78,6 +78,12 @@ describe("buildRankings (RF-07)", () => {
     expect(order("land", 1)).toEqual([2, 3, 1]);
   });
 
+  it("cada especialización tiene su propio ranking", () => {
+    expect(order("sea", 5)).toEqual([4]);
+    // Una especialización sin personajes no genera filas.
+    expect(rows.some((r) => r.classScope === 2)).toBe(false);
+  });
+
   it("los puestos empiezan en 1 y no tienen huecos", () => {
     expect(rows.filter((r) => r.area === "land" && r.classScope === 0).map((r) => r.rank)).toEqual([
       1, 2, 3, 4,

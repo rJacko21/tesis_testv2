@@ -23,6 +23,7 @@ import { tryLoad } from "@/lib/safe";
 const PUBLIC_PATHS = [
   "",
   "/news",
+  "/rankings",
   "/download",
   "/support",
   "/rules",

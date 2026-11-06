@@ -15,6 +15,23 @@
  * @see RF-02 · RNF-05 (redirecciones 301 desde URLs antiguas) · F-07
  */
 import { isLocale, type Locale, normalizeLocale } from "@/config/locales";
+import { RANKING_AREAS, RANKING_CLASS_CODES } from "@/lib/ranking-filters";
+
+/**
+ * `/rankings/global/{área}/{clase}` de la web original → `/rankings?area=…&class=…`.
+ * Un área o clase que no se reconoce se descarta en lugar de dar 404: el
+ * visitante llega al ranking general, que es lo más parecido.
+ */
+function legacyRanking(rest: string[]): string {
+  const [area = "", rawClass = ""] = rest.map((s) => s.toLowerCase());
+  const classCode = rawClass.replaceAll(/(?:%20|[\s_])+/g, "-");
+  const params = new URLSearchParams();
+  if (area !== "all" && (RANKING_AREAS as readonly string[]).includes(area))
+    params.set("area", area);
+  if (RANKING_CLASS_CODES.includes(classCode)) params.set("class", classCode);
+  const query = params.toString();
+  return `/rankings${query ? `?${query}` : ""}`;
+}
 
 /**
  * Rutas de la web original (Camaleon CMS) con su equivalente aquí, sin el
@@ -27,9 +44,15 @@ export const LEGACY_PATHS: readonly { prefix: string; to: (rest: string[]) => st
   { prefix: "/lp/style1/PlayNow", to: () => "/play-now" },
   // Ficha de la tienda: `/en/shop/detail/index/{id}` → `/shop/item/{id}` (T-19).
   { prefix: "/shop/detail/index", to: (rest) => `/shop/item/${rest.join("/")}` },
+  // Rankings: el área y la clase pasan de la ruta a la URL de filtros (RF-07).
+  { prefix: "/rankings/global", to: legacyRanking },
 ];
 
-/** Traduce una ruta antigua sin idioma, o devuelve `null` si no lo es. */
+/**
+ * Traduce una ruta antigua sin idioma, o devuelve `null` si no lo es. El
+ * resultado puede llevar parámetros (`/rankings?area=sea`); el proxy los
+ * suma a los que ya traía la URL (p. ej. `?page=3`).
+ */
 export function legacyPath(path: string): string | null {
   for (const rule of LEGACY_PATHS) {
     if (path === rule.prefix || path.startsWith(`${rule.prefix}/`)) {

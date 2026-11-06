@@ -26,3 +26,15 @@ export function formatDate(locale: Locale, date: Date): string {
 export function isoDate(date: Date): string {
   return date.toISOString();
 }
+
+const timeFormatters = new Map<Locale, Intl.DateTimeFormat>();
+
+/** Hora en UTC con el formato del idioma: "17:06", "5:06 PM"… */
+export function formatTime(locale: Locale, date: Date): string {
+  let formatter = timeFormatters.get(locale);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat(locale, { timeStyle: "short", timeZone: "UTC" });
+    timeFormatters.set(locale, formatter);
+  }
+  return formatter.format(date);
+}

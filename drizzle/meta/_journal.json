@@ -22,6 +22,13 @@
       "when": 1793984388520,
       "tag": "0002_categorias_de_noticias",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1793991279731,
+      "tag": "0003_indices_busqueda_ranking",
+      "breakpoints": true
     }
   ]
 }
