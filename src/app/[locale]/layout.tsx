@@ -17,7 +17,7 @@ import { Consent } from "@/components/consent/Consent";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LOCALES } from "@/config/locales";
-import { languageAlternates, SITE_URL } from "@/config/site";
+import { languageAlternates, OG_IMAGE, SITE_URL } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
 import { CONSENT_HIDE_SCRIPT } from "@/lib/consent";
 
@@ -54,7 +54,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: t("meta.title"), template: "%s · Florensia" },
     description: t("meta.description"),
     alternates: { canonical: `/${locale}`, languages: languageAlternates("") },
-    openGraph: { siteName: "Florensia", locale, type: "website" },
+    openGraph: { siteName: "Florensia", locale, type: "website", images: [OG_IMAGE] },
+    twitter: { card: "summary_large_image", images: [OG_IMAGE.url] },
   };
 }
 

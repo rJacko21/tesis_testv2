@@ -21,14 +21,17 @@ import { notFound } from "next/navigation";
 
 import { CATEGORY_TONE } from "@/components/news/categories";
 import { NewsCover } from "@/components/news/NewsCover";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge, Container } from "@/components/ui";
 import { DEFAULT_LOCALE, type Locale } from "@/config/locales";
+import { OG_IMAGE } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
 import type { Translate } from "@/i18n/translator";
 import { formatDate, isoDate } from "@/lib/format";
 import { Markdown } from "@/lib/markdown";
 import { getPost, type PostDetail } from "@/lib/news";
 import { tryLoad } from "@/lib/safe";
+import { breadcrumbs, newsArticle } from "@/lib/structured-data";
 
 export const instant = false;
 
@@ -54,8 +57,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/${post.contentLocale}${path}`,
       languages: { ...languages, "x-default": `/${DEFAULT_LOCALE}${path}` },
     },
+    // `openGraph` de la página sustituye entero al del layout: se repite la imagen.
     openGraph: {
       type: "article",
+      siteName: "Florensia",
+      locale,
+      images: [OG_IMAGE],
       publishedTime: isoDate(post.publishedAt),
       modifiedTime: isoDate(post.updatedAt),
     },
@@ -99,6 +106,24 @@ function PostArticle({ post, locale, t }: { post: PostDetail; locale: Locale; t:
 
   return (
     <article className="mt-4">
+      <JsonLd
+        data={[
+          newsArticle({
+            url: `/${locale}/news/${post.slug}`,
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt,
+            inLanguage: post.contentLocale,
+            author: post.author,
+          }),
+          breadcrumbs([
+            ["Florensia", `/${locale}`],
+            [t("news.title"), `/${locale}/news`],
+            [post.title, `/${locale}/news/${post.slug}`],
+          ]),
+        ]}
+      />
       <header className="flex flex-col gap-3">
         <div className="flex flex-wrap gap-2">
           <Badge tone={CATEGORY_TONE[post.category]}>{t(`news.categories.${post.category}`)}</Badge>

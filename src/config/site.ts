@@ -24,3 +24,11 @@ export function languageAlternates(path: string): Record<string, string> {
   const entries = LOCALES.map((locale) => [locale, `/${locale}${path}`] as const);
   return Object.fromEntries([...entries, ["x-default", `/${DEFAULT_LOCALE}${path}`]]);
 }
+
+/**
+ * Imagen para compartir en redes (1200 × 630, `scripts/make-og-image.py`).
+ * Es relativa, pero Next.js la publica como URL absoluta gracias a
+ * `metadataBase`. La original era relativa y, en algunas páginas, la imagen
+ * «image-not-found» del CMS (F-12).
+ */
+export const OG_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "Florensia" } as const;
