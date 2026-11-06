@@ -20,10 +20,17 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 **Alternativas.** Prisma (más popular, motor más pesado y SQL menos controlable); Kysely (solo query builder); SQL a mano (sin tipos).
 **Por qué Drizzle.** Tipado de extremo a extremo, SQL predecible (importa para optimizar rankings), migraciones en el repo, ligero en entornos serverless.
 
-## ADR-05 Autenticación propia con Better Auth — Propuesta
+## ADR-05 Autenticación propia con Better Auth — Aceptada (2026-11-06, T-17)
 **Contexto.** La web actual delega el login en `us.online-games.services` (otro dominio, otro diseño, solo inglés, F-24). En la tesis no hay acceso a ese servicio.
-**Decisión.** Cuentas en la propia MySQL con Better Auth (sesiones en BD, Argon2id, verificación de email, rate limit). Diseñado tras una interfaz `AuthProvider` para poder conectar en el futuro un SSO real.
+**Decisión.** Cuentas en la propia MySQL con Better Auth 1.7 (sesiones en BD, verificación de email, tokens de recuperación) y el plugin `username` para entrar con nombre de cuenta o correo. Encima, reglas propias:
+- Hash Argon2id (`@node-rs/argon2`, parámetros mínimos de OWASP) en lugar de scrypt, el algoritmo por defecto de Better Auth.
+- Comprobación de contraseñas filtradas con Have I Been Pwned (k-anonimato).
+- Límites de intentos guardados en MySQL.
+- Correos en el idioma del jugador.
+
+**Sin API HTTP pública:** todo pasa por Server Actions, que validan, limitan y traducen. Next.js comprueba su origen, lo que protege contra CSRF. Los modelos de Better Auth (`users`, `accounts`, `sessions`, `verifications`) usan ids numéricos (`generateId: "serial"`), así que las tablas de la tienda y del libro mayor de AP siguen enlazando con `users.id` igual que antes.
 **Alternativas.** Auth.js (las credenciales con usuario/contraseña son ciudadanas de segunda); implementación propia (más riesgo de seguridad).
+**Consecuencias.** El token de sesión se guarda tal cual en `sessions`, como lo hace Better Auth. Aun así, la cookie va firmada con HMAC y `BETTER_AUTH_SECRET`, y sin el secreto un volcado de la tabla no permite fabricar cookies. Los tokens de verificación sí se guardan como hash (`storeIdentifier: "hashed"`). Detalle en `docs/mejoras/cuentas.md`.
 
 ## ADR-06 i18n nativa de Next.js + ICU, rutas con prefijo — Aceptada (revisada 2026-11-06, T-08)
 **Decisión.** Prefijo de idioma siempre visible (`/{locale}/…`), slugs en inglés, `pt-BR` en vez de `pt` (`/pt/*` → 301). En lugar de next-intl se usa el **patrón nativo de Next.js 16**: segmento `[locale]` como parámetro raíz leído con `next/root-params`, catálogos JSON cargados solo en el servidor y un traductor propio de ~40 líneas sobre `intl-messageformat` (ICU: plurales y géneros correctos en los 7 idiomas).

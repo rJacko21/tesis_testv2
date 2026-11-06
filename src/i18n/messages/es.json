@@ -21,7 +21,8 @@
     "login": "Iniciar sesión",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "externalSite": "(sitio externo)"
+    "externalSite": "(sitio externo)",
+    "account": "Mi cuenta"
   },
   "localeSwitcher": {
     "label": "Idioma",
@@ -271,6 +272,107 @@
     "jump": {
       "label": "Ir a la página",
       "go": "Ir"
+    }
+  },
+  "auth": {
+    "fields": {
+      "username": "Nombre de cuenta",
+      "usernameHint": "De {min} a {max} caracteres: letras, números y _.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordHint": "Al menos {min} caracteres. Mejor una frase que una palabra.",
+      "identifier": "Nombre de cuenta o correo",
+      "newPassword": "Contraseña nueva"
+    },
+    "errorSummary": "Revisa los campos marcados.",
+    "errors": {
+      "required": "Rellena este campo.",
+      "usernameLength": "El nombre de cuenta debe tener entre {min} y {max} caracteres.",
+      "usernameFormat": "Usa solo letras sin acentos, números y _.",
+      "usernameTaken": "Ese nombre de cuenta ya está en uso.",
+      "email": "Escribe un correo válido.",
+      "passwordLength": "La contraseña debe tener entre {min} y {max} caracteres.",
+      "pwned": "Esta contraseña aparece en filtraciones de datos conocidas. Elige otra.",
+      "terms": "Tienes que aceptar los términos del servicio y la política de privacidad.",
+      "credentials": "El nombre de cuenta, el correo o la contraseña no son correctos.",
+      "locked": "Demasiados intentos. Espera {minutes, plural, one {# minuto} other {# minutos}} y vuelve a intentarlo.",
+      "rateLimited": "Demasiadas solicitudes. Espera {minutes, plural, one {# minuto} other {# minutos}} y vuelve a intentarlo.",
+      "generic": "Algo ha fallado. Inténtalo de nuevo en unos minutos."
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "description": "Crea tu cuenta gratuita de Florensia para jugar, usar la tienda y canjear códigos.",
+      "intro": "Es gratis. Solo necesitas un correo electrónico.",
+      "accept": "Acepto los {terms} y la {privacy}.",
+      "termsLink": "términos del servicio",
+      "privacyLink": "política de privacidad",
+      "submit": "Crear cuenta",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "signInLink": "Inicia sesión",
+      "sentTitle": "Revisa tu correo",
+      "sentBody": "Si los datos son correctos, te hemos enviado un enlace a {email} para confirmar tu cuenta. Caduca en 24 horas. Ya puedes iniciar sesión."
+    },
+    "signIn": {
+      "title": "Iniciar sesión",
+      "description": "Entra en tu cuenta de Florensia.",
+      "submit": "Iniciar sesión",
+      "forgot": "¿Has olvidado tu contraseña?",
+      "noAccount": "¿Aún no tienes cuenta?",
+      "registerLink": "Créala gratis"
+    },
+    "forgot": {
+      "title": "Recuperar la contraseña",
+      "description": "Recibe un enlace para elegir una contraseña nueva.",
+      "intro": "Escribe el correo de tu cuenta y te enviaremos un enlace para elegir una contraseña nueva.",
+      "submit": "Enviar enlace",
+      "sent": "Si existe una cuenta con ese correo, le hemos enviado un enlace para elegir una contraseña nueva. El enlace caduca en 30 minutos.",
+      "back": "Volver a iniciar sesión"
+    },
+    "reset": {
+      "title": "Elige una contraseña nueva",
+      "submit": "Guardar contraseña",
+      "done": "Tu contraseña ha cambiado. Hemos cerrado la sesión en todos los demás dispositivos.",
+      "invalid": "El enlace no es válido o ha caducado.",
+      "requestNew": "Pedir un enlace nuevo",
+      "signIn": "Iniciar sesión"
+    },
+    "verify": {
+      "title": "Confirmar el correo",
+      "ok": "Tu correo está confirmado. ¡Gracias!",
+      "invalid": "El enlace no es válido o ha caducado. Inicia sesión y pide uno nuevo desde tu cuenta.",
+      "account": "Ir a mi cuenta"
+    },
+    "account": {
+      "title": "Mi cuenta",
+      "greeting": "Hola, {name}",
+      "email": "Correo",
+      "verified": "Confirmado",
+      "unverified": "Aún sin confirmar. Tendrás que confirmarlo antes de comprar en la tienda.",
+      "resend": "Enviar el enlace otra vez",
+      "resent": "Te hemos enviado un enlace nuevo.",
+      "signOut": "Cerrar sesión",
+      "comingSoon": "Pronto verás aquí tu saldo de AP, tus compras y tus rankings."
+    }
+  },
+  "email": {
+    "greeting": "Hola, {name}:",
+    "verify": {
+      "subject": "Confirma tu cuenta de Florensia",
+      "body": "Gracias por crear tu cuenta. Confirma tu correo abriendo este enlace:",
+      "action": "Confirmar mi correo",
+      "note": "El enlace caduca en 24 horas. Si no has creado esta cuenta, puedes ignorar este correo."
+    },
+    "reset": {
+      "subject": "Recupera tu contraseña de Florensia",
+      "body": "Hemos recibido una solicitud para cambiar tu contraseña. Elige una nueva abriendo este enlace:",
+      "action": "Elegir una contraseña nueva",
+      "note": "El enlace caduca en 30 minutos y solo sirve una vez. Si no lo has pedido tú, ignora este correo: tu contraseña no cambia."
+    },
+    "existing": {
+      "subject": "Alguien intentó registrarse con tu correo",
+      "body": "Alguien ha intentado crear una cuenta de Florensia con este correo, pero ya tienes una. Si has sido tú, solo tienes que iniciar sesión:",
+      "action": "Iniciar sesión",
+      "note": "Si has olvidado tu contraseña, usa «¿Has olvidado tu contraseña?» en la página de inicio de sesión. Si no has sido tú, puedes ignorar este correo."
     }
   }
 }

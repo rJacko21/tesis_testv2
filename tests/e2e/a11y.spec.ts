@@ -17,6 +17,9 @@ const PAGES = [
   "/rankings",
   "/rankings?area=sea&class=sniper&q=a",
   "/support",
+  "/register",
+  "/sign-in",
+  "/forgot-password",
   "/rules",
   "/privacy",
 ] as const;

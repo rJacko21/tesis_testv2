@@ -5,21 +5,25 @@
  * dominio (us.online-games.services) y solo en inglés (F-21, F-24). Aquí
  * son parte del sitio.
  *
- * Las contraseñas se guardan como hash Argon2id (`password_hash`), nunca en
- * claro ni con cifrado reversible (OWASP ASVS V2.4).
+ * Las tablas `users`, `accounts`, `sessions` y `verifications` siguen el
+ * modelo de Better Auth (ADR-05), con nombres de columna en snake_case e
+ * ids numéricos autoincrementales (`generateId: "serial"`). Las
+ * contraseñas se guardan como hash Argon2id en `accounts.password`, nunca
+ * en claro ni con cifrado reversible (OWASP ASVS V2.4).
  *
- * @see RF-03 Cuentas · RF-04 Mi cuenta · 04-arquitectura §4
+ * @see RF-03 Cuentas · RF-04 Mi cuenta · 04-arquitectura §4 · ADR-05
  */
 import {
+  boolean,
   index,
   int,
   mysqlEnum,
   mysqlTable,
   primaryKey,
   smallint,
+  text,
   uniqueIndex,
   varchar,
-  char,
 } from "drizzle-orm/mysql-core";
 
 import { dt, fk, id, localeCode, timestamps } from "./_columns";
@@ -29,11 +33,25 @@ export const users = mysqlTable(
   "users",
   {
     id: id(),
-    /** Nombre de cuenta visible; único sin distinguir mayúsculas (collation `_ai_ci`). */
+    /**
+     * Nombre de cuenta normalizado (minúsculas): es el que se busca al
+     * iniciar sesión y el que garantiza la unicidad. Lo gestiona el plugin
+     * `username` de Better Auth.
+     */
     username: varchar("username", { length: 32 }).notNull(),
+    /** Nombre de cuenta tal como lo escribió el jugador («Misaja»). */
+    displayUsername: varchar("display_username", { length: 32 }),
+    /**
+     * Nombre visible que exige el modelo de Better Auth. Al registrarse se
+     * copia el nombre de cuenta; la web no pide un nombre real (RGPD,
+     * minimización de datos).
+     */
+    name: varchar("name", { length: 32 }).notNull(),
     email: varchar("email", { length: 254 }).notNull(),
-    emailVerifiedAt: dt("email_verified_at"),
-    passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+    /** El correo se confirmó con el enlace enviado. Hace falta para comprar (RF-03). */
+    emailVerified: boolean("email_verified").notNull().default(false),
+    /** Avatar; el modelo de Better Auth lo incluye, la web aún no lo usa. */
+    image: varchar("image", { length: 255 }),
     /** Idioma preferido para correos y para la primera visita. */
     locale: localeCode()
       .notNull()
@@ -55,35 +73,89 @@ export const users = mysqlTable(
   ],
 );
 
+/**
+ * Formas de iniciar sesión de cada usuario (modelo `account` de Better
+ * Auth). Con usuario y contraseña hay una fila `provider_id = 'credential'`
+ * con el hash Argon2id en `password`. Las columnas de OAuth quedan
+ * preparadas para enlazar en el futuro la cuenta del juego (ADR-05).
+ */
+export const accounts = mysqlTable(
+  "accounts",
+  {
+    id: id(),
+    accountId: varchar("account_id", { length: 255 }).notNull(),
+    providerId: varchar("provider_id", { length: 64 }).notNull(),
+    userId: fk("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    accessToken: text("access_token"),
+    refreshToken: text("refresh_token"),
+    idToken: text("id_token"),
+    accessTokenExpiresAt: dt("access_token_expires_at"),
+    refreshTokenExpiresAt: dt("refresh_token_expires_at"),
+    scope: varchar("scope", { length: 255 }),
+    /** Hash Argon2id (`$argon2id$…`). Nunca la contraseña ni un cifrado reversible (ASVS V2.4). */
+    password: varchar("password", { length: 255 }),
+    ...timestamps,
+  },
+  (t) => [
+    uniqueIndex("accounts_provider_account_uq").on(t.providerId, t.accountId),
+    index("accounts_user_idx").on(t.userId),
+  ],
+);
+
+/**
+ * Sesiones abiertas. La cookie lleva el token firmado con HMAC y el
+ * secreto del servidor (`BETTER_AUTH_SECRET`): aunque se filtrara esta
+ * tabla, sin el secreto no se puede fabricar una cookie válida.
+ */
 export const sessions = mysqlTable(
   "sessions",
   {
-    /** SHA-256 del token de la cookie: si se filtra la tabla, no sirve para entrar. */
-    tokenHash: char("token_hash", { length: 64 }).primaryKey(),
+    id: id(),
+    token: varchar("token", { length: 255 }).notNull(),
     userId: fk("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     expiresAt: dt("expires_at").notNull(),
+    ipAddress: varchar("ip_address", { length: 45 }),
     userAgent: varchar("user_agent", { length: 255 }),
     ...timestamps,
   },
-  (t) => [index("sessions_user_idx").on(t.userId), index("sessions_expires_idx").on(t.expiresAt)],
+  (t) => [
+    uniqueIndex("sessions_token_uq").on(t.token),
+    index("sessions_user_idx").on(t.userId),
+    index("sessions_expires_idx").on(t.expiresAt),
+  ],
 );
 
-export const verificationTokens = mysqlTable(
-  "verification_tokens",
+/**
+ * Tokens de un solo uso: verificar el correo y recuperar la contraseña.
+ * Se guarda el SHA-256 del token (`storeIdentifier: "hashed"`), no el
+ * token: quien lea la tabla no puede usar los enlaces pendientes.
+ */
+export const verifications = mysqlTable(
+  "verifications",
   {
-    tokenHash: char("token_hash", { length: 64 }).primaryKey(),
-    userId: fk("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-    purpose: mysqlEnum("purpose", ["verify_email", "reset_password"]).notNull(),
+    id: id(),
+    identifier: varchar("identifier", { length: 255 }).notNull(),
+    value: text("value").notNull(),
     expiresAt: dt("expires_at").notNull(),
-    usedAt: dt("used_at"),
     ...timestamps,
   },
-  (t) => [index("verification_tokens_user_idx").on(t.userId)],
+  (t) => [index("verifications_identifier_idx").on(t.identifier)],
 );
+
+/**
+ * Contadores de límite de peticiones por clave (`signup:ip:1.2.3.4`…), en
+ * ventana fija. En la base de datos y no en memoria porque en Vercel cada
+ * petición puede ir a una instancia distinta.
+ */
+export const rateLimits = mysqlTable("rate_limits", {
+  key: varchar("rate_key", { length: 191 }).primaryKey(),
+  count: int("count", { unsigned: true }).notNull(),
+  windowStart: dt("window_start").notNull(),
+});
 
 /** Intentos de inicio de sesión, para limitar la fuerza bruta por cuenta e IP. */
 export const loginAttempts = mysqlTable(

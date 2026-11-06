@@ -21,7 +21,8 @@
     "login": "Log in",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "externalSite": "(external site)"
+    "externalSite": "(external site)",
+    "account": "My account"
   },
   "localeSwitcher": {
     "label": "Language",
@@ -271,6 +272,107 @@
     "jump": {
       "label": "Go to page",
       "go": "Go"
+    }
+  },
+  "auth": {
+    "fields": {
+      "username": "Account name",
+      "usernameHint": "{min} to {max} characters: letters, numbers and _.",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least {min} characters. A phrase works better than a word.",
+      "identifier": "Account name or email",
+      "newPassword": "New password"
+    },
+    "errorSummary": "Please check the highlighted fields.",
+    "errors": {
+      "required": "Please fill in this field.",
+      "usernameLength": "The account name must be {min} to {max} characters long.",
+      "usernameFormat": "Use only letters without accents, numbers and _.",
+      "usernameTaken": "That account name is already taken.",
+      "email": "Enter a valid email address.",
+      "passwordLength": "The password must be {min} to {max} characters long.",
+      "pwned": "This password appears in known data breaches. Please choose another one.",
+      "terms": "You must accept the terms of service and the privacy policy.",
+      "credentials": "The account name, email or password is incorrect.",
+      "locked": "Too many attempts. Wait {minutes, plural, one {# minute} other {# minutes}} and try again.",
+      "rateLimited": "Too many requests. Wait {minutes, plural, one {# minute} other {# minutes}} and try again.",
+      "generic": "Something went wrong. Please try again in a few minutes."
+    },
+    "register": {
+      "title": "Create account",
+      "description": "Create your free Florensia account to play, use the item shop and redeem codes.",
+      "intro": "Free to play. You only need an email address.",
+      "accept": "I accept the {terms} and the {privacy}.",
+      "termsLink": "terms of service",
+      "privacyLink": "privacy policy",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "sentTitle": "Check your email",
+      "sentBody": "If the details are correct, we have sent a link to {email} to confirm your account. It expires in 24 hours. You can already sign in."
+    },
+    "signIn": {
+      "title": "Sign in",
+      "description": "Sign in to your Florensia account.",
+      "submit": "Sign in",
+      "forgot": "Forgot your password?",
+      "noAccount": "No account yet?",
+      "registerLink": "Create one for free"
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "description": "Get a link to choose a new password.",
+      "intro": "Enter the email of your account and we will send you a link to choose a new password.",
+      "submit": "Send link",
+      "sent": "If there is an account with that email, we have sent it a link to choose a new password. The link expires in 30 minutes.",
+      "back": "Back to sign in"
+    },
+    "reset": {
+      "title": "Choose a new password",
+      "submit": "Save password",
+      "done": "Your password has been changed. We have signed you out on all other devices.",
+      "invalid": "This link is not valid or has expired.",
+      "requestNew": "Request a new link",
+      "signIn": "Sign in"
+    },
+    "verify": {
+      "title": "Confirm your email",
+      "ok": "Your email is confirmed. Thank you!",
+      "invalid": "This link is not valid or has expired. Sign in and request a new one from your account.",
+      "account": "Go to my account"
+    },
+    "account": {
+      "title": "My account",
+      "greeting": "Hello, {name}",
+      "email": "Email",
+      "verified": "Confirmed",
+      "unverified": "Not confirmed yet. You will need to confirm it before buying in the item shop.",
+      "resend": "Send the link again",
+      "resent": "We have sent you a new link.",
+      "signOut": "Sign out",
+      "comingSoon": "Your AP balance, purchase history and rankings are coming soon."
+    }
+  },
+  "email": {
+    "greeting": "Hello {name},",
+    "verify": {
+      "subject": "Confirm your Florensia account",
+      "body": "Thank you for creating your account. Confirm your email address by opening this link:",
+      "action": "Confirm my email",
+      "note": "The link expires in 24 hours. If you did not create this account, you can ignore this email."
+    },
+    "reset": {
+      "subject": "Reset your Florensia password",
+      "body": "We received a request to reset your password. Choose a new one by opening this link:",
+      "action": "Choose a new password",
+      "note": "The link expires in 30 minutes and can only be used once. If you did not ask for it, ignore this email: your password does not change."
+    },
+    "existing": {
+      "subject": "Someone tried to register with your email",
+      "body": "Someone tried to create a Florensia account with this email address, but you already have one. If it was you, simply sign in:",
+      "action": "Sign in",
+      "note": "If you have forgotten your password, use “Forgot your password?” on the sign-in page. If it was not you, you can ignore this email."
     }
   }
 }

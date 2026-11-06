@@ -28,6 +28,8 @@ jobs:
         env:
           # El build no conecta a la base de datos; solo valida el formato.
           DATABASE_URL: mysql://ci:ci@localhost:3306/ci
+          # Secreto de prueba, solo para CI (no protege nada real).
+          BETTER_AUTH_SECRET: ci-only-secret-not-used-anywhere-else-0123456789
 
   # Desde T-13 las páginas de noticias leen MySQL: se levanta la base con
   # los datos de demo para que e2e y Lighthouse midan páginas reales.
@@ -47,8 +49,16 @@ jobs:
           --health-interval=5s
           --health-timeout=5s
           --health-retries=20
+      # Bandeja de correo de pruebas: las e2e de cuentas (RF-03) leen de aquí
+      # los enlaces de verificación y de recuperación.
+      mailpit:
+        image: axllent/mailpit:v1.27
+        ports: ["1025:1025", "8025:8025"]
     env:
       DATABASE_URL: mysql://florensia:florensia@127.0.0.1:3306/florensia
+      BETTER_AUTH_SECRET: ci-only-secret-not-used-anywhere-else-0123456789
+      SMTP_URL: smtp://127.0.0.1:1025
+      MAILPIT_URL: http://127.0.0.1:8025
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

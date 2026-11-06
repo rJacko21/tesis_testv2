@@ -59,16 +59,12 @@ const DEMO_TABLES = [
   "posts",
   "user_roles",
   "login_attempts",
-  "verification_tokens",
+  "rate_limits",
+  "verifications",
   "sessions",
+  "accounts",
   "users",
 ] as const;
-
-/**
- * Hash que ningún algoritmo produce: estas cuentas no pueden iniciar sesión.
- * Las cuentas de prueba con contraseña llegan con el registro (T-15).
- */
-const DISABLED_PASSWORD = "!disabled";
 
 /** Inserta en lotes para no superar `max_allowed_packet` de MySQL. */
 async function insertInBatches<T>(
@@ -328,10 +324,13 @@ async function main(): Promise<void> {
     db.insert(schema.users).values(
       batch.map((u) => ({
         id: u.id,
-        username: u.username,
+        // Sin fila en `accounts`: estas cuentas sintéticas no tienen
+        // contraseña y no pueden iniciar sesión.
+        username: u.username.toLowerCase(),
+        displayUsername: u.username,
+        name: u.username,
         email: u.email,
-        emailVerifiedAt: now,
-        passwordHash: DISABLED_PASSWORD,
+        emailVerified: true,
         locale: u.locale,
         apBalance: balance.get(u.id) ?? 0,
       })),
