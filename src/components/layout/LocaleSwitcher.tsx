@@ -9,7 +9,8 @@
  *
  * Usa `<details>`/`<summary>` nativos: abrir y cerrar funciona con teclado
  * y lector de pantalla sin JavaScript propio. Solo se necesita JS para leer
- * la ruta actual, por eso es un Client Component pequeño. Los textos llegan
+ * la ruta actual y para cerrarlo con Escape o al pulsar fuera
+ * (`useDismissableDetails`), por eso es un Client Component pequeño. Los textos llegan
  * ya traducidos desde el servidor.
  *
  * @see RF-02
@@ -17,6 +18,8 @@
 import { usePathname } from "next/navigation";
 
 import { type Locale, LOCALE_NAMES, LOCALES } from "@/config/locales";
+
+import { useDismissableDetails } from "./useDismissableDetails";
 
 export interface LocaleSwitcherProps {
   /** Idioma de la página actual. */
@@ -41,9 +44,10 @@ export function switchLocalePath(pathname: string, locale: Locale): string {
 
 export function LocaleSwitcher({ current, label, currentLabel }: LocaleSwitcherProps) {
   const pathname = usePathname();
+  const ref = useDismissableDetails();
 
   return (
-    <details className="group relative">
+    <details ref={ref} className="group relative">
       <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded px-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [&::-webkit-details-marker]:hidden">
         <span>{label}</span>
         <span aria-hidden="true" className="uppercase">

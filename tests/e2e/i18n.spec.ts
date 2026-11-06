@@ -23,8 +23,11 @@ test.describe("RF-02 idioma", () => {
 
   test("el selector muestra los 7 idiomas y conserva la ruta", async ({ page }) => {
     await page.goto("/de");
-    await page.locator("summary", { hasText: "Sprache" }).click();
-    const options = page.locator("details ul a");
+    const switcher = page.locator("details", {
+      has: page.locator("summary", { hasText: "Sprache" }),
+    });
+    await switcher.locator("summary").click();
+    const options = switcher.locator("ul a");
     await expect(options).toHaveCount(7);
     await page.getByRole("link", { name: "Español" }).click();
     await expect(page).toHaveURL(/\/es$/);

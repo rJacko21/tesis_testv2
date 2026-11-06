@@ -90,7 +90,7 @@ export function ClassShowcase({ t }: { t: Translate }) {
                               sizes="64px"
                               className="h-28 w-auto object-contain"
                             />
-                            <figcaption className="text-navy-900 text-center text-sm font-bold">
+                            <figcaption className="text-navy-900 flex min-h-10 items-center text-center text-sm font-bold">
                               {specialization.name}
                             </figcaption>
                           </figure>
