@@ -10,6 +10,7 @@
  */
 import Link from "next/link";
 
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 import { Container } from "@/components/ui";
 import { SOCIAL_LINKS } from "@/config/navigation";
 import { getLocale, getTranslator } from "@/i18n/server";
@@ -66,6 +67,9 @@ export async function SiteFooter() {
               </Link>
             </li>
           ))}
+          <li>
+            <CookieSettingsButton label={t("footer.cookieSettings")} />
+          </li>
         </ul>
       </Container>
     </footer>

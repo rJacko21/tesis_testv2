@@ -78,11 +78,27 @@
     "terms": "AGB",
     "conduct": "Verhaltensregeln",
     "privacy": "Datenschutzerklärung",
-    "social": "Folge Florensia"
+    "social": "Folge Florensia",
+    "cookieSettings": "Cookie-Einstellungen"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
     "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
     "back": "Zurück zur Startseite"
+  },
+  "consent": {
+    "title": "Wir respektieren deine Privatsphäre",
+    "body": "Wir verwenden die Cookies, die die Website zum Funktionieren braucht (Sprache, Sitzung). Mit deiner Erlaubnis würden wir außerdem Analyse-Cookies nutzen, um die Website zu verbessern. Optionales wird erst geladen, wenn du entscheidest.",
+    "policyLink": "Cookie-Richtlinie",
+    "accept": "Alle akzeptieren",
+    "reject": "Alle ablehnen",
+    "configure": "Anpassen",
+    "settingsTitle": "Cookie-Einstellungen",
+    "save": "Auswahl speichern",
+    "close": "Schließen",
+    "necessaryTitle": "Notwendig",
+    "necessaryBody": "Merken sich deine Sprache und halten dich angemeldet. Immer aktiv.",
+    "analyticsTitle": "Analyse",
+    "analyticsBody": "Anonyme Statistiken zur Nutzung der Website. Aus, solange du sie nicht einschaltest."
   }
 }

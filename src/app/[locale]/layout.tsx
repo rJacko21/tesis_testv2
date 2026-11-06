@@ -13,6 +13,7 @@
 import type { Metadata, Viewport } from "next";
 import { Alegreya, Nunito } from "next/font/google";
 
+import { Consent } from "@/components/consent/Consent";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LOCALES } from "@/config/locales";
@@ -83,6 +84,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
           {children}
         </div>
         <SiteFooter />
+        <Consent />
       </body>
     </html>
   );

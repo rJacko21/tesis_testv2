@@ -25,3 +25,28 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
 - **Pendiente en T-11:** banner de consentimiento de cookies (RF-11), en un PR aparte.
 - **Fecha:** 2026-11-06
+
+### M-06 · Consentimiento de cookies real
+
+- **Fallo original:** F-31 (banner de «al usar el sitio aceptas las cookies», sin opción de rechazar, mientras cargaba GTM), F-37 (GTM antes del consentimiento), F-03 (banner turco sin traducir)
+- **Requisito:** RF-11 · **Decisión:** ADR-11
+- **Antes:** consentimiento implícito e imposible de rechazar o de cambiar después, y scripts de terceros cargados desde el inicio.
+- **Cambio:**
+  - **Banner propio:** **Aceptar**, **Rechazar** y **Configurar** con el mismo estilo, en los 7 idiomas.
+  - **Panel de configuración:** un `<dialog>` con una casilla por categoría. Se abre también desde «Configurar cookies» del pie.
+  - **Por defecto:** lo opcional está desactivado y no se carga nada de terceros.
+  - **Cookie `consent`:** guarda la elección con su versión y dura 6 meses. Si cambia la política, se vuelve a preguntar.
+  - **Prueba del consentimiento:** `POST /api/consent` la guarda en `consents` con un identificador aleatorio, sin IP (RGPD, arts. 5.1.c y 7.1).
+- **Por qué de esta forma:**
+  - Sin librería de terceros (CMP), así que no hay más JS ni más rastreo.
+  - Los botones tienen el mismo peso para evitar patrones engañosos (directrices del CEPD 03/2022).
+  - El banner va fijo y aparece tras hidratar: no desplaza el contenido (CLS 0,001) ni pasa a ser el elemento LCP.
+- **Verificación:**
+  - `src/lib/consent.test.ts`: sin elección no se permite nada; una cookie manipulada o de otra versión obliga a preguntar de nuevo.
+  - `tests/e2e/consent.spec.ts`:
+    - los tres botones son iguales;
+    - rechazar se recuerda tras recargar;
+    - la elección se cambia desde el pie;
+    - **ninguna petición a terceros** sin elección.
+  - Lighthouse móvil: LCP 1,66 s; JS 147,7 KiB, dentro del límite de 150 KiB.
+- **Fecha:** 2026-11-06
