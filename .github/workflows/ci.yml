@@ -29,10 +29,26 @@ jobs:
           # El build no conecta a la base de datos; solo valida el formato.
           DATABASE_URL: mysql://ci:ci@localhost:3306/ci
 
+  # Desde T-13 las páginas de noticias leen MySQL: se levanta la base con
+  # los datos de demo para que e2e y Lighthouse midan páginas reales.
   calidad:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: florensia
+          MYSQL_USER: florensia
+          MYSQL_PASSWORD: florensia
+          MYSQL_ROOT_PASSWORD: root
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
     env:
-      DATABASE_URL: mysql://ci:ci@localhost:3306/ci
+      DATABASE_URL: mysql://florensia:florensia@127.0.0.1:3306/florensia
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -42,6 +58,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm db:migrate && pnpm db:seed && pnpm db:seed:demo
       - run: pnpm build
       # Accesibilidad (axe, WCAG 2.2 AA), i18n y diseño responsive.
       - run: pnpm test:e2e

@@ -8,6 +8,7 @@
   },
   "nav": {
     "label": "Ana gezinme",
+    "news": "Haberler",
     "download": "İndir",
     "shop": "Mağaza",
     "playNow": "Hemen oyna",
@@ -100,5 +101,38 @@
     "necessaryBody": "Dilini hatırlar ve oturumunu açık tutar. Her zaman açık.",
     "analyticsTitle": "Analiz",
     "analyticsBody": "Sitenin nasıl kullanıldığına dair anonim istatistikler. Sen açmadıkça kapalı."
+  },
+  "news": {
+    "title": "Haberler",
+    "description": "Florensia haberleri: güncellemeler, etkinlikler, mağaza teklifleri, kodlar ve bakım.",
+    "intro": "Güncellemeler, etkinlikler, mağaza teklifleri, ücretsiz kodlar ve bakım.",
+    "latest": "Son haberler",
+    "viewAll": "Tüm haberler",
+    "filter": "Kategoriye göre filtrele",
+    "categories": {
+      "all": "Tümü",
+      "announcement": "Duyuru",
+      "event": "Etkinlik",
+      "shop": "Mağaza",
+      "redeem": "Ücretsiz kod",
+      "maintenance": "Bakım"
+    },
+    "published": "Yayınlanma: {date}",
+    "updated": "Güncellenme: {date}",
+    "by": "Yazan: {author}",
+    "byStaff": "Yazan: Florensia ekibi",
+    "endsOn": "Bitiş: {date}",
+    "ended": "Etkinlik {date} tarihinde sona erdi",
+    "englishOnly": "Yalnızca İngilizce",
+    "englishOnlyBody": "Bu haber henüz dilinize çevrilmedi.",
+    "empty": "Bu kategoride henüz haber yok.",
+    "unavailable": "Haberler yüklenemedi. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "back": "Haberlere dön",
+    "pagination": {
+      "label": "Sayfalar",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "page": "Sayfa {page} / {count}"
+    }
   }
 }

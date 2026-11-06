@@ -17,7 +17,11 @@
  * envía la prueba a `/api/consent` sin esperar la respuesta.
  *
  * Va fijo abajo (`position: fixed`), así que no desplaza el contenido
- * (CLS 0), y aparece tras la hidratación, sin bloquear el primer pintado.
+ * (CLS 0). Se renderiza **ya en el HTML del servidor**: si apareciera tras
+ * la hidratación, en páginas de texto sería el elemento más grande y
+ * retrasaría el LCP hasta que carga el JS (3 s en el detalle de noticia).
+ * Quien ya eligió no lo ve gracias a `CONSENT_HIDE_SCRIPT`, que corre en
+ * `<head>` antes del primer pintado; después, el efecto lo quita del DOM.
  * Las clases van escritas a mano en lugar de `buttonStyles` para no meter
  * tailwind-merge en el navegador (ADR-15).
  *
@@ -76,7 +80,8 @@ function saveChoice(choice: ConsentChoice): void {
 }
 
 export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
-  const [showBanner, setShowBanner] = useState(false);
+  // `true` también en el servidor: el banner va en el HTML inicial.
+  const [showBanner, setShowBanner] = useState(true);
   const [analytics, setAnalytics] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -106,6 +111,7 @@ export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
     <>
       {showBanner ? (
         <section
+          id="consent-banner"
           aria-labelledby="consent-title"
           className="border-navy-700 fixed inset-x-2 bottom-2 z-40 mx-auto max-w-2xl rounded-xl border bg-white p-4 text-sm shadow-2xl sm:inset-x-4 sm:bottom-4"
         >

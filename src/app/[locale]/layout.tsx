@@ -19,6 +19,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LOCALES } from "@/config/locales";
 import { languageAlternates, SITE_URL } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
+import { CONSENT_HIDE_SCRIPT } from "@/lib/consent";
 
 import "../globals.css";
 
@@ -71,7 +72,12 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
-    <html lang={locale} className={`${display.variable} ${body.variable}`}>
+    // `suppressHydrationWarning`: `CONSENT_HIDE_SCRIPT` añade `data-consent`
+    // a `<html>` antes de hidratar, a propósito.
+    <html lang={locale} className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_HIDE_SCRIPT }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

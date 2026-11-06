@@ -83,3 +83,11 @@ export function readConsentFromCookieHeader(header: string): ConsentChoice | nul
 export function isAllowed(choice: ConsentChoice | null, category: OptionalCategory): boolean {
   return choice?.categories[category] ?? false;
 }
+
+/**
+ * Script en línea para `<head>`: si ya hay cookie de consentimiento, marca
+ * `<html data-consent>` y el CSS oculta el banner antes de pintar (sin
+ * parpadeo). Son ~90 bytes y no depende de React. Cuando llegue la CSP
+ * (T-25) necesitará su hash o un nonce.
+ */
+export const CONSENT_HIDE_SCRIPT = `if(/(^|;\\s*)${CONSENT_COOKIE}=/.test(document.cookie))document.documentElement.dataset.consent=""`;

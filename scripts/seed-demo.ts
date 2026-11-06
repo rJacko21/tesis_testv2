@@ -17,6 +17,7 @@ import mysql from "mysql2/promise";
 
 import { LOCALES, type Locale } from "../src/config/locales";
 import * as schema from "../src/db/schema";
+import { buildDemoPosts } from "../src/db/seed/news";
 import { buildRankings } from "../src/db/seed/rankings";
 import {
   DEFAULT_OPTIONS,
@@ -163,26 +164,6 @@ const ITEM_DESCRIPTION: Record<Locale, (name: string) => string> = {
   de: (n) => `${n}. Synthetischer Gegenstand für die Demo; im Spiel gibt es ihn nicht.`,
   fr: (n) => `${n}. Objet fictif pour la démo ; il n’existe pas dans le jeu.`,
   es: (n) => `${n}. Objeto sintético para la demo; no existe en el juego.`,
-};
-
-const POST_TITLE: Record<Locale, (n: number) => string> = {
-  en: (n) => `Patch notes ${n}`,
-  "pt-BR": (n) => `Notas da atualização ${n}`,
-  tr: (n) => `Güncelleme notları ${n}`,
-  it: (n) => `Note di aggiornamento ${n}`,
-  de: (n) => `Patchnotes ${n}`,
-  fr: (n) => `Notes de mise à jour ${n}`,
-  es: (n) => `Notas del parche ${n}`,
-};
-
-const POST_BODY: Record<Locale, string> = {
-  en: "Synthetic news for the demo. The real news will be written from the admin panel.",
-  "pt-BR": "Notícia sintética para a demonstração. As notícias reais serão escritas no painel.",
-  tr: "Demo için yapay haber. Gerçek haberler yönetim panelinden yazılacak.",
-  it: "Notizia sintetica per la demo. Le notizie reali si scriveranno dal pannello.",
-  de: "Synthetische Neuigkeit für die Demo. Echte Neuigkeiten entstehen im Admin-Bereich.",
-  fr: "Actualité fictive pour la démo. Les vraies actualités seront rédigées depuis le panneau.",
-  es: "Noticia sintética para la demo. Las noticias reales se escribirán desde el panel.",
 };
 
 async function main(): Promise<void> {
@@ -410,22 +391,28 @@ async function main(): Promise<void> {
     ),
   );
 
-  // Noticias: publicadas, una programada y un borrador.
-  for (let n = 1; n <= 12; n++) {
-    const status = n === 12 ? "draft" : n === 11 ? "scheduled" : "published";
+  // Noticias (RF-08): cinco categorías, traducciones incompletas, un evento
+  // terminado, una programada y un borrador (ver `src/db/seed/news.ts`).
+  for (const demo of buildDemoPosts()) {
     const [post] = await db.insert(schema.posts).values({
-      slug: `patch-notes-${n}`,
-      category: random.pick(["news", "event", "update", "maintenance"] as const),
-      status,
-      publishedAt: status === "draft" ? null : days(n === 11 ? 3 : -(12 - n) * 7),
+      slug: demo.slug,
+      category: demo.category,
+      status: demo.status,
+      publishedAt: demo.publishedInDays === null ? null : days(demo.publishedInDays),
+      expiresAt: demo.expiresInDays === null ? null : days(demo.expiresInDays),
+      // Sin esto, todas parecerían editadas hoy (la fecha de la carga).
+      updatedAt:
+        demo.updatedInDays !== null
+          ? days(demo.updatedInDays)
+          : demo.publishedInDays !== null
+            ? days(demo.publishedInDays)
+            : undefined,
     });
     await db.insert(schema.postTranslations).values(
-      LOCALES.map((locale) => ({
+      Object.entries(demo.translations).map(([locale, text]) => ({
         postId: post.insertId,
         locale,
-        title: POST_TITLE[locale](n),
-        excerpt: POST_BODY[locale],
-        body: POST_BODY[locale],
+        ...text,
       })),
     );
   }

@@ -54,13 +54,22 @@ export const mediaTranslations = mysqlTable(
   (t) => [primaryKey({ columns: [t.mediaId, t.locale] })],
 );
 
+/**
+ * Categorías de noticia de RF-08: Anuncio, Evento, Tienda, Canje y
+ * Mantenimiento. Sustituyen a las de T-10 (`news`, `update`), que no
+ * coincidían con la especificación (migración 0002).
+ */
+export const POST_CATEGORIES = ["announcement", "event", "shop", "redeem", "maintenance"] as const;
+
+export type PostCategory = (typeof POST_CATEGORIES)[number];
+
 export const posts = mysqlTable(
   "posts",
   {
     id: id(),
     /** Igual en todos los idiomas: `/es/post/halloween-2026` ↔ `/de/post/halloween-2026`. */
     slug: varchar("slug", { length: 120 }).notNull(),
-    category: mysqlEnum("category", ["news", "event", "update", "maintenance"]).notNull(),
+    category: mysqlEnum("category", POST_CATEGORIES).notNull(),
     status: mysqlEnum("status", ["draft", "scheduled", "published"]).notNull().default("draft"),
     publishedAt: dt("published_at"),
     /** Fin de un evento: pasada esta fecha la noticia se marca como terminada. */
