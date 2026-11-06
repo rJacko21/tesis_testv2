@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Florensia: free-to-play anime MMORPG",
+    "description": "Play Florensia for free: an anime MMORPG where you fight on land and sail the seas with your guild."
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "download": "Download",
+    "shop": "Shop",
+    "playNow": "Play now",
+    "community": "Community",
+    "support": "Support",
+    "rules": "Rules",
+    "rankings": "Rankings",
+    "wiki": "Flandria Wiki",
+    "pvpLeague": "PvP League",
+    "login": "Log in"
+  },
+  "localeSwitcher": {
+    "label": "Language",
+    "current": "{language} (current language)"
+  },
+  "home": {
+    "tagline": "Free-to-play anime MMORPG. Fight on land, sail the seas and build your guild.",
+    "underConstruction": "New website under construction."
+  },
+  "footer": {
+    "copyright": "© {year} Giiku Games GmbH",
+    "imprint": "Imprint",
+    "terms": "Terms of Service",
+    "conduct": "Code of Conduct",
+    "privacy": "Privacy Policy"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has moved.",
+    "back": "Back to the home page"
+  }
+}

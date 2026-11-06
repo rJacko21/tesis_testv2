@@ -15,13 +15,14 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx scripts/seed.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "i18n:check": "tsx scripts/check-i18n.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.4",
+    "intl-messageformat": "^12.1.4",
     "mysql2": "^3.24.6",
     "next": "16.4.5",
-    "next-intl": "^4.14.9",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "server-only": "^0.0.1",
@@ -31,6 +32,7 @@
     "@axe-core/playwright": "^4.14.0",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
+    "@formatjs/icu-messageformat-parser": "^3.5.22",
     "@playwright/test": "^1.65.0",
     "@tailwindcss/turbopack": "^4",
     "@testing-library/jest-dom": "^7.0.1",
@@ -54,7 +56,7 @@
     "vitest": "^5.1.0"
   },
   "packageManager": "pnpm@10.28.0",
-  "description": "Reconstrucci\u00f3n de la web de Florensia Online (trabajo de tesis)",
+  "description": "Reconstrucción de la web de Florensia Online (trabajo de tesis)",
   "engines": {
     "node": ">=22"
   },

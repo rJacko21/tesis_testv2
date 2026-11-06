@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Florensia: ücretsiz anime MMORPG",
+    "description": "Florensia'yı ücretsiz oyna: karada savaştığın ve loncanla denizlere açıldığın bir anime MMORPG."
+  },
+  "a11y": {
+    "skipToContent": "Ana içeriğe geç"
+  },
+  "nav": {
+    "label": "Ana gezinme",
+    "download": "İndir",
+    "shop": "Mağaza",
+    "playNow": "Hemen oyna",
+    "community": "Topluluk",
+    "support": "Destek",
+    "rules": "Kurallar",
+    "rankings": "Sıralamalar",
+    "wiki": "Flandria Wiki",
+    "pvpLeague": "PvP Ligi",
+    "login": "Giriş yap"
+  },
+  "localeSwitcher": {
+    "label": "Dil",
+    "current": "{language} (geçerli dil)"
+  },
+  "home": {
+    "tagline": "Ücretsiz anime MMORPG. Karada savaş, denizlere açıl ve loncanı kur.",
+    "underConstruction": "Yeni web sitesi yapım aşamasında."
+  },
+  "footer": {
+    "copyright": "© {year} Giiku Games GmbH",
+    "imprint": "Künye",
+    "terms": "Hizmet Şartları",
+    "conduct": "Davranış Kuralları",
+    "privacy": "Gizlilik Politikası"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "body": "Aradığın sayfa mevcut değil ya da taşındı.",
+    "back": "Ana sayfaya dön"
+  }
+}

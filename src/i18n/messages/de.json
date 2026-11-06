@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Florensia: kostenloses Anime-MMORPG",
+    "description": "Spiele Florensia kostenlos: ein Anime-MMORPG, in dem du an Land kämpfst und mit deiner Gilde über die Meere segelst."
+  },
+  "a11y": {
+    "skipToContent": "Zum Hauptinhalt springen"
+  },
+  "nav": {
+    "label": "Hauptnavigation",
+    "download": "Download",
+    "shop": "Shop",
+    "playNow": "Jetzt spielen",
+    "community": "Community",
+    "support": "Support",
+    "rules": "Regeln",
+    "rankings": "Ranglisten",
+    "wiki": "Flandria-Wiki",
+    "pvpLeague": "PvP-Liga",
+    "login": "Anmelden"
+  },
+  "localeSwitcher": {
+    "label": "Sprache",
+    "current": "{language} (aktuelle Sprache)"
+  },
+  "home": {
+    "tagline": "Kostenloses Anime-MMORPG. Kämpfe an Land, segle über die Meere und baue deine Gilde auf.",
+    "underConstruction": "Neue Website im Aufbau."
+  },
+  "footer": {
+    "copyright": "© {year} Giiku Games GmbH",
+    "imprint": "Impressum",
+    "terms": "AGB",
+    "conduct": "Verhaltensregeln",
+    "privacy": "Datenschutzerklärung"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "back": "Zurück zur Startseite"
+  }
+}
