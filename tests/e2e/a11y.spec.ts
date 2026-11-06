@@ -7,7 +7,17 @@ import { expect, test } from "@playwright/test";
 
 const LOCALES = ["en", "pt-BR", "tr", "it", "de", "fr", "es"] as const;
 // Las de noticias necesitan la base de datos con la demo (`pnpm db:seed:demo`).
-const PAGES = ["", "/no-existe", "/news", "/news/shop-8", "/news/redeem-5"] as const;
+const PAGES = [
+  "",
+  "/no-existe",
+  "/news",
+  "/news/shop-8",
+  "/news/redeem-5",
+  "/download",
+  "/support",
+  "/rules",
+  "/privacy",
+] as const;
 
 for (const locale of LOCALES) {
   for (const path of PAGES) {

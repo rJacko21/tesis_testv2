@@ -58,6 +58,6 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
 ### Limitaciones conocidas
 
-- **404 en el detalle:** la cabecera se envía en streaming antes de saber si la noticia existe, así que una noticia inexistente responde con estado 200, aunque muestra la página 404 con `<meta name="robots" content="noindex">`. Google la trata como 404 suave y no la indexa. Un 404 real exigiría consultar la base de datos en el proxy y se revisará con el resto del SEO (T-15).
+- **404 en el detalle:** responde con estado 404 y `noindex`, pero el HTML inicial llega vacío y la página 404 la pinta el JavaScript. Es un comportamiento de Next.js con esta estructura de rutas, analizado en [paginas-fijas.md](paginas-fijas.md#fallo-encontrado-la-404-llega-vacía-sin-javascript).
 - **Imágenes de portada:** las noticias de demo no tienen fotos (el almacenamiento llega con el panel, T-23). Cada categoría usa un degradado y un personaje del juego, decorativos (`alt=""`) y de tamaño fijo 16:9.
 - **Redirecciones desde `/en/post/{slug}`** (URLs de la web original): en T-15.

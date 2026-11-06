@@ -79,6 +79,7 @@
     "terms": "Terms of Service",
     "conduct": "Code of Conduct",
     "privacy": "Privacy Policy",
+    "cookiePolicy": "Cookie policy",
     "social": "Follow Florensia",
     "cookieSettings": "Cookie settings"
   },
@@ -134,5 +135,89 @@
       "next": "Next",
       "page": "Page {page} of {count}"
     }
+  },
+  "download": {
+    "title": "Download Florensia",
+    "description": "Download Florensia for free on Windows through Steam. System requirements, size and installation steps.",
+    "intro": "Florensia is free to play on Windows 10 or later. Install it through Steam in a few minutes.",
+    "recommendation": {
+      "windows": "Your computer runs Windows: you can play",
+      "windowsBody": "Install Florensia from Steam. The download is about {size} GB.",
+      "desktop": "Florensia needs Windows",
+      "desktopBody": "The game is only available for Windows 10 or later. You can still add it to your Steam library now and install it from a Windows PC.",
+      "mobile": "Florensia is a PC game",
+      "mobileBody": "Open this page on your Windows computer to install it. You can add it to your Steam library from your phone now.",
+      "unknown": "Florensia runs on Windows",
+      "unknownBody": "The game is available for Windows 10 or later through Steam."
+    },
+    "steam": "Get it on Steam",
+    "installer": "Download installer",
+    "free": "Free to play",
+    "version": "Version {version}",
+    "requirements": {
+      "title": "System requirements",
+      "minimum": "Minimum",
+      "recommended": "Recommended",
+      "component": "Component",
+      "os": "Operating system",
+      "osValue": "Windows 10 or later",
+      "processor": "Processor",
+      "memory": "Memory",
+      "graphics": "Graphics card",
+      "directx": "DirectX",
+      "network": "Network",
+      "networkValue": "Broadband internet connection",
+      "storage": "Storage",
+      "storageValue": "{size} GB available space",
+      "note": "Intel integrated graphics older than the 7th generation might not be supported."
+    },
+    "steps": {
+      "title": "How to install",
+      "one": "Install Steam and sign in, or create a free Steam account.",
+      "two": "Open Florensia in Steam and press Play.",
+      "three": "Create your Florensia account in the game launcher and choose a server."
+    }
+  },
+  "support": {
+    "title": "Support",
+    "description": "Answers to frequent questions about Florensia: account, payments, installation and rules.",
+    "intro": "Find quick answers here. If your question is not listed, ask the community on Discord.",
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "free": {
+        "question": "Is Florensia free?",
+        "answer": "Yes. The game is free to play. The shop sells optional items with AP, the shop currency."
+      },
+      "system": {
+        "question": "Which computer do I need?",
+        "answer": "Windows 10 or later. The download page lists the minimum and recommended requirements."
+      },
+      "ap": {
+        "question": "What is AP and how do I get it?",
+        "answer": "AP is the currency of the item shop. You top it up from your account and your balance is shown on every purchase."
+      },
+      "password": {
+        "question": "I forgot my password",
+        "answer": "Use the password recovery link on the sign-in page. You will receive an email with a link that works only once."
+      },
+      "report": {
+        "question": "How do I report a player?",
+        "answer": "Note the character name, server and time, take a screenshot if you can and send it to support. The rules explain what is not allowed."
+      },
+      "migration": {
+        "question": "Can I move my character to another server?",
+        "answer": "Character migration is handled by support. Include your account name, the character and the target server in your request."
+      }
+    },
+    "communityTitle": "Still need help?",
+    "communityBody": "The Florensia community and team answer questions on the official Discord server.",
+    "discord": "Open Discord"
+  },
+  "legal": {
+    "toc": "Contents",
+    "effective": "In force since {date} · version {version}",
+    "englishOnly": "Available in English only",
+    "englishOnlyBody": "This text has not been translated into your language yet.",
+    "unavailable": "This page could not be loaded. Please try again in a few minutes."
   }
 }

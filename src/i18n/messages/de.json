@@ -79,6 +79,7 @@
     "terms": "AGB",
     "conduct": "Verhaltensregeln",
     "privacy": "Datenschutzerklärung",
+    "cookiePolicy": "Cookie-Richtlinie",
     "social": "Folge Florensia",
     "cookieSettings": "Cookie-Einstellungen"
   },
@@ -134,5 +135,89 @@
       "next": "Weiter",
       "page": "Seite {page} von {count}"
     }
+  },
+  "download": {
+    "title": "Florensia herunterladen",
+    "description": "Lade Florensia kostenlos für Windows über Steam herunter. Systemanforderungen, Größe und Installationsschritte.",
+    "intro": "Florensia ist kostenlos spielbar auf Windows 10 oder neuer. Installiere es in wenigen Minuten über Steam.",
+    "recommendation": {
+      "windows": "Dein Computer nutzt Windows: du kannst spielen",
+      "windowsBody": "Installiere Florensia über Steam. Der Download umfasst etwa {size} GB.",
+      "desktop": "Florensia benötigt Windows",
+      "desktopBody": "Das Spiel gibt es nur für Windows 10 oder neuer. Du kannst es schon jetzt deiner Steam-Bibliothek hinzufügen und später auf einem Windows-PC installieren.",
+      "mobile": "Florensia ist ein PC-Spiel",
+      "mobileBody": "Öffne diese Seite auf deinem Windows-Computer, um es zu installieren. Du kannst es schon jetzt vom Handy aus deiner Steam-Bibliothek hinzufügen.",
+      "unknown": "Florensia läuft unter Windows",
+      "unknownBody": "Das Spiel ist über Steam für Windows 10 oder neuer erhältlich."
+    },
+    "steam": "Auf Steam holen",
+    "installer": "Installer herunterladen",
+    "free": "Kostenlos spielbar",
+    "version": "Version {version}",
+    "requirements": {
+      "title": "Systemanforderungen",
+      "minimum": "Minimum",
+      "recommended": "Empfohlen",
+      "component": "Komponente",
+      "os": "Betriebssystem",
+      "osValue": "Windows 10 oder neuer",
+      "processor": "Prozessor",
+      "memory": "Arbeitsspeicher",
+      "graphics": "Grafikkarte",
+      "directx": "DirectX",
+      "network": "Netzwerk",
+      "networkValue": "Breitband-Internetverbindung",
+      "storage": "Speicherplatz",
+      "storageValue": "{size} GB verfügbarer Speicherplatz",
+      "note": "Integrierte Intel-Grafik vor der 7. Generation wird möglicherweise nicht unterstützt."
+    },
+    "steps": {
+      "title": "So installierst du es",
+      "one": "Installiere Steam und melde dich an oder erstelle ein kostenloses Steam-Konto.",
+      "two": "Öffne Florensia in Steam und klicke auf Spielen.",
+      "three": "Erstelle im Launcher dein Florensia-Konto und wähle einen Server."
+    }
+  },
+  "support": {
+    "title": "Support",
+    "description": "Antworten auf häufige Fragen zu Florensia: Konto, Zahlungen, Installation und Regeln.",
+    "intro": "Hier findest du schnelle Antworten. Steht deine Frage nicht dabei, frag die Community auf Discord.",
+    "faqTitle": "Häufige Fragen",
+    "faq": {
+      "free": {
+        "question": "Ist Florensia kostenlos?",
+        "answer": "Ja. Das Spiel ist kostenlos spielbar. Im Shop gibt es optionale Gegenstände für AP, die Shop-Währung."
+      },
+      "system": {
+        "question": "Welchen Computer brauche ich?",
+        "answer": "Windows 10 oder neuer. Auf der Download-Seite stehen die Mindest- und empfohlenen Anforderungen."
+      },
+      "ap": {
+        "question": "Was sind AP und wie bekomme ich sie?",
+        "answer": "AP sind die Währung des Item-Shops. Du lädst sie über dein Konto auf und siehst dein Guthaben bei jedem Kauf."
+      },
+      "password": {
+        "question": "Ich habe mein Passwort vergessen",
+        "answer": "Nutze den Link zur Passwort-Wiederherstellung auf der Anmeldeseite. Du erhältst eine E-Mail mit einem Link, der nur einmal funktioniert."
+      },
+      "report": {
+        "question": "Wie melde ich einen Spieler?",
+        "answer": "Notiere Charaktername, Server und Uhrzeit, mach wenn möglich einen Screenshot und schick alles an den Support. Die Regeln erklären, was nicht erlaubt ist."
+      },
+      "migration": {
+        "question": "Kann ich meinen Charakter auf einen anderen Server verschieben?",
+        "answer": "Charakter-Transfers übernimmt der Support. Gib in deiner Anfrage Kontoname, Charakter und Zielserver an."
+      }
+    },
+    "communityTitle": "Brauchst du noch Hilfe?",
+    "communityBody": "Die Florensia-Community und das Team beantworten Fragen auf dem offiziellen Discord-Server.",
+    "discord": "Discord öffnen"
+  },
+  "legal": {
+    "toc": "Inhalt",
+    "effective": "Gültig seit {date} · Version {version}",
+    "englishOnly": "Nur auf Englisch verfügbar",
+    "englishOnlyBody": "Dieser Text wurde noch nicht in deine Sprache übersetzt.",
+    "unavailable": "Diese Seite konnte nicht geladen werden. Bitte versuche es in ein paar Minuten erneut."
   }
 }

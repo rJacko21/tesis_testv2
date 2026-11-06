@@ -1,5 +1,6 @@
 /**
- * Carga los datos de referencia: idiomas, roles, clases y servidores.
+ * Carga los datos de referencia: idiomas, roles, clases, servidores y las
+ * páginas fijas (reglas y legales, solo si aún no existen).
  *
  * Es idempotente: se puede ejecutar varias veces sin duplicar filas, porque
  * usa `ON DUPLICATE KEY UPDATE`. Es seguro también en producción.
@@ -18,9 +19,12 @@ import {
   characterClasses,
   characterClassTranslations,
   locales,
+  pageTranslations,
+  pages,
   roles,
   servers,
 } from "../src/db/schema";
+import { PAGE_SLUGS, PAGE_TEXTS } from "../src/db/seed/pages";
 import { ROLE_CODES, SERVER_NAMES, classSeeds } from "../src/db/seed/reference";
 
 type ClassTexts = Record<string, { role: string; description: string }>;
@@ -110,9 +114,21 @@ async function main(): Promise<void> {
     }
   }
 
+  // Páginas fijas: `INSERT IGNORE` para no pisar nunca un texto editado en el panel.
+  for (const slug of PAGE_SLUGS) {
+    await db.insert(pages).ignore().values({ slug });
+    const [page] = await db.select({ id: pages.id }).from(pages).where(eq(pages.slug, slug));
+    const rows = Object.entries(PAGE_TEXTS[slug]).map(([locale, text]) => ({
+      pageId: page!.id,
+      locale,
+      ...text,
+    }));
+    await db.insert(pageTranslations).ignore().values(rows);
+  }
+
   console.log(
     `Referencia cargada: ${LOCALES.length} idiomas, ${ROLE_CODES.length} roles, ` +
-      `${SERVER_NAMES.length} servidores, ${seeds.length} clases.`,
+      `${SERVER_NAMES.length} servidores, ${seeds.length} clases, ${PAGE_SLUGS.length} páginas.`,
   );
   await connection.end();
 }

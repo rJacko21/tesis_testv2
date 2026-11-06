@@ -97,10 +97,60 @@ export function isSafeHref(href: string): boolean {
   return /^(https?:\/\/|mailto:)/i.test(href);
 }
 
-/** Opciones de presentación de los enlaces. */
+/** Opciones de presentación. */
 export interface MarkdownOptions {
   /** Texto oculto que se añade a los enlaces externos, p. ej. "(sitio externo)". */
   externalLabel: string;
+  /**
+   * Da un `id` a cada `h2` para poder enlazarlo desde un índice (reglas y
+   * páginas legales, RF-10). Ver {@link tableOfContents}.
+   */
+  headingIds?: boolean;
+}
+
+/** Quita el formato en línea para usar el texto en un índice o un `id`. */
+function plainText(text: string): string {
+  return text.replace(/\*\*(.+?)\*\*|\*(.+?)\*|`([^`]+)`|\[([^\]]+)\]\([^)]*\)/g, "$1$2$3$4");
+}
+
+/**
+ * Convierte un título en un `id` legible y estable: "Juego limpio" →
+ * "juego-limpio". Quita acentos y conserva letras de cualquier alfabeto.
+ */
+export function slugify(text: string): string {
+  return (
+    plainText(text)
+      .normalize("NFKD")
+      .replace(/\p{M}/gu, "")
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, "-")
+      .replace(/^-|-$/g, "") || "seccion"
+  );
+}
+
+/** Entrada del índice: `id` del `h2` y su texto. */
+export interface TocEntry {
+  id: string;
+  title: string;
+}
+
+/**
+ * Índice de los títulos `h2`, con los mismos `id` que pone {@link Markdown}
+ * con `headingIds` (los repetidos llevan sufijo `-2`, `-3`…).
+ */
+export function tableOfContents(source: string): TocEntry[] {
+  const seen = new Map<string, number>();
+  return parseMarkdown(source)
+    .filter(
+      (block): block is Extract<MarkdownBlock, { type: "heading" }> =>
+        block.type === "heading" && block.level === 2,
+    )
+    .map((block) => {
+      const base = slugify(block.text);
+      const count = (seen.get(base) ?? 0) + 1;
+      seen.set(base, count);
+      return { id: count === 1 ? base : `${base}-${count}`, title: plainText(block.text) };
+    });
 }
 
 // Un único patrón con alternativas: negrita, cursiva, código y enlace.
@@ -140,11 +190,19 @@ export function renderInline(text: string, options: MarkdownOptions): ReactNode[
 
 /** Renderiza el Markdown completo. Los estilos los pone el contenedor (`.prose-news`). */
 export function Markdown({ source, ...options }: MarkdownOptions & { source: string }) {
+  const ids = options.headingIds ? tableOfContents(source).map((entry) => entry.id) : [];
+  let h2 = 0;
   return parseMarkdown(source).map((block, i) => {
     switch (block.type) {
       case "heading": {
-        const Heading = block.level === 2 ? "h2" : "h3";
-        return <Heading key={i}>{renderInline(block.text, options)}</Heading>;
+        if (block.level === 2) {
+          return (
+            <h2 key={i} id={ids[h2++]}>
+              {renderInline(block.text, options)}
+            </h2>
+          );
+        }
+        return <h3 key={i}>{renderInline(block.text, options)}</h3>;
       }
       case "paragraph":
         return <p key={i}>{renderInline(block.text, options)}</p>;
