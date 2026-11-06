@@ -142,3 +142,8 @@ body {
 html[data-consent] #consent-banner {
   display: none;
 }
+
+/* Sin scroll de fondo mientras el menú móvil está abierto (sin JavaScript, ver MobileMenu). */
+html:has(#mobile-menu[open]) {
+  overflow: hidden;
+}

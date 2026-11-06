@@ -41,6 +41,44 @@ test.describe("menú móvil", () => {
     await page.getByRole("dialog").getByRole("link", { name: "Rankings" }).click();
     await expect(page).toHaveURL(/\/es\/rankings$/);
     await expect(page.getByRole("dialog")).toBeHidden();
+    // La cabecera no se vuelve a pintar al navegar, pero marca la página actual.
+    await page.getByRole("button", { name: "Abrir menú" }).click();
+    await expect(page.getByRole("dialog").getByRole("link", { name: "Rankings" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  test("se cierra al pulsar fuera del panel", async ({ page }) => {
+    await page.goto("/es");
+    await page.getByRole("button", { name: "Abrir menú" }).click();
+    const menu = page.getByRole("dialog", { name: "Navegación principal" });
+    await expect(menu).toBeVisible();
+    // El fondo queda a la izquierda del panel, que ocupa el lado derecho.
+    await page.mouse.click(5, 300);
+    await expect(menu).toBeHidden();
+  });
+
+  test("funciona sin Invoker Commands (Safari < 26.2)", async ({ page }) => {
+    await page.addInitScript(() => {
+      delete (HTMLButtonElement.prototype as { command?: string }).command;
+      // Sin la API el navegador ignora `commandfor`: se anula el comando nativo.
+      document.addEventListener(
+        "click",
+        (event) => {
+          if ((event.target as Element).closest("button[commandfor]")) event.preventDefault();
+        },
+        true,
+      );
+    });
+    await page.goto("/es");
+    const button = page.getByRole("button", { name: "Abrir menú" });
+    await button.click();
+    await expect(page.getByRole("dialog", { name: "Navegación principal" })).toBeVisible();
+    await expect(button).toHaveAttribute("aria-expanded", "true");
+    await page.getByRole("button", { name: "Cerrar menú" }).click();
+    await expect(page.getByRole("dialog", { name: "Navegación principal" })).toBeHidden();
+    await expect(button).toHaveAttribute("aria-expanded", "false");
   });
 });
 
@@ -63,6 +101,30 @@ test.describe("navegación de escritorio", () => {
     await page.keyboard.press("Escape");
     await expect(rules).toBeHidden();
     await expect(summary).toBeFocused();
+  });
+
+  test("el selector de idioma conserva la página tras navegar y se cierra al salir", async ({
+    page,
+  }) => {
+    await page.goto("/es");
+    const nav = page.getByRole("navigation", { name: "Navegación principal" });
+    await nav.getByRole("link", { name: "Noticias" }).click();
+    await expect(page).toHaveURL(/\/es\/news$/);
+    await expect(nav.getByRole("link", { name: "Noticias" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+
+    const switcher = page
+      .getByRole("banner")
+      .locator("details", { has: page.locator("[hreflang]") });
+    await switcher.locator("summary").click();
+    await expect(switcher.getByRole("link", { name: "Deutsch" })).toHaveAttribute(
+      "href",
+      "/de/news",
+    );
+    await page.getByRole("main").click({ position: { x: 5, y: 5 } });
+    await expect(switcher).not.toHaveAttribute("open");
   });
 
   test("todos los enlaces internos mantienen el idioma (F-06)", async ({ page }) => {
