@@ -55,3 +55,38 @@ jobs:
             .lighthouseci
             playwright-report
           retention-days: 14
+
+  # T-10: las migraciones se aplican sobre un MySQL 8.4 vacío, los datos de
+  # referencia y de demo se cargan sin errores y el diagrama ER está al día.
+  base-de-datos:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: florensia
+          MYSQL_USER: florensia
+          MYSQL_PASSWORD: florensia
+          MYSQL_ROOT_PASSWORD: root
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+    env:
+      DATABASE_URL: mysql://florensia:florensia@127.0.0.1:3306/florensia
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:migrate
+      # Dos veces: la carga de referencia debe ser idempotente.
+      - run: pnpm db:seed && pnpm db:seed
+      - run: pnpm db:seed:demo
+      - name: El diagrama ER coincide con el esquema
+        run: pnpm db:er && pnpm exec prettier --write docs/db/modelo-er.md && git diff --exit-code docs/db/modelo-er.md

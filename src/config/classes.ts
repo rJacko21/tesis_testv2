@@ -1,11 +1,9 @@
 /**
- * Clases jugables de Florensia y su arte.
+ * Clases jugables con su arte, para la interfaz.
  *
- * El juego tiene 4 clases base y cada una elige entre 2 especializaciones
- * al llegar al nivel 40 (auditoría, sección de clases de la portada). Los
- * nombres de clase son nombres propios del juego y no se traducen
- * (glosario); el rol y la descripción sí, en `classes.<id>.*` de los
- * catálogos.
+ * Los nombres y el orden vienen de `class-catalog.ts` (sin imágenes); aquí
+ * solo se añade el arte. El rol y la descripción traducidos están en
+ * `classes.<id>.*` de los catálogos i18n.
  *
  * El arte lo cede Giiku Games para la tesis (Q4). Se procesa con
  * `scripts/process-character-art.py` y se importa de forma estática para
@@ -15,6 +13,8 @@
  * @see RF-01 Portada con presentación de las clases.
  */
 import type { StaticImageData } from "next/image";
+
+import { CLASS_CATALOG, type ClassId } from "./class-catalog";
 
 import courtMagician from "@/assets/characters/court-magician.webp";
 import excavator from "@/assets/characters/excavator.webp";
@@ -32,9 +32,6 @@ import explorerIcon from "@/assets/icons/explorer.png";
 import mercenaryIcon from "@/assets/icons/mercenary.png";
 import nobleIcon from "@/assets/icons/noble.png";
 import saintIcon from "@/assets/icons/saint.png";
-
-/** Identificador estable de una clase base (también clave de traducción). */
-export type ClassId = "mercenary" | "explorer" | "noble" | "saint";
 
 /** Especialización a la que se cambia en el nivel 40. */
 export interface Specialization {
@@ -54,49 +51,31 @@ export interface GameClass {
   specializations: readonly [Specialization, Specialization];
 }
 
-/** Nivel en el que se elige especialización. Texto: ver la nota de ICU en el glosario. */
-export const JOB_CHANGE_LEVEL = "40";
+export { JOB_CHANGE_LEVEL, type ClassId } from "./class-catalog";
 
-/** Clases en el orden de la web original. */
-export const GAME_CLASSES: readonly GameClass[] = [
-  {
-    id: "mercenary",
-    name: "Mercenary",
-    icon: mercenaryIcon,
-    art: mercenaryArt,
-    specializations: [
-      { name: "Gladiator", image: gladiator },
-      { name: "Guardian Swordsman", image: guardianSwordsman },
-    ],
+const ART: Record<
+  ClassId,
+  { icon: StaticImageData; art: StaticImageData; specs: [StaticImageData, StaticImageData] }
+> = {
+  mercenary: { icon: mercenaryIcon, art: mercenaryArt, specs: [gladiator, guardianSwordsman] },
+  explorer: { icon: explorerIcon, art: explorerArt, specs: [excavator, sniper] },
+  noble: { icon: nobleIcon, art: nobleArt, specs: [courtMagician, magicKnight] },
+  saint: { icon: saintIcon, art: saintArt, specs: [priest, shaman] },
+};
+
+/** Clases en el orden de la web original, con su arte. */
+export const GAME_CLASSES: readonly GameClass[] = CLASS_CATALOG.map(
+  ({ id, name, specializations }) => {
+    const art = ART[id];
+    return {
+      id,
+      name,
+      icon: art.icon,
+      art: art.art,
+      specializations: [
+        { name: specializations[0], image: art.specs[0] },
+        { name: specializations[1], image: art.specs[1] },
+      ],
+    };
   },
-  {
-    id: "explorer",
-    name: "Explorer",
-    icon: explorerIcon,
-    art: explorerArt,
-    specializations: [
-      { name: "Excavator", image: excavator },
-      { name: "Sniper", image: sniper },
-    ],
-  },
-  {
-    id: "noble",
-    name: "Noble",
-    icon: nobleIcon,
-    art: nobleArt,
-    specializations: [
-      { name: "Court Magician", image: courtMagician },
-      { name: "Magic Knight", image: magicKnight },
-    ],
-  },
-  {
-    id: "saint",
-    name: "Saint",
-    icon: saintIcon,
-    art: saintArt,
-    specializations: [
-      { name: "Priest", image: priest },
-      { name: "Shaman", image: shaman },
-    ],
-  },
-];
+);

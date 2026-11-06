@@ -25,6 +25,8 @@ const pool =
     uri: env.DATABASE_URL,
     // Pocas conexiones: el plan gratuito de MySQL (ADR-12) limita el total.
     connectionLimit: 10,
+    // Las fechas se guardan y leen en UTC (ver `schema/_columns.ts`).
+    timezone: "Z",
   });
 
 if (env.NODE_ENV !== "production") globalForDb.mysqlPool = pool;
