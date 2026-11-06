@@ -4,8 +4,7 @@
  * Se muestra cuando una ruta con idioma no existe (`/es/no-existe`) o
  * cuando el idioma de la URL no es válido.
  */
-import Link from "next/link";
-
+import { ButtonLink } from "@/components/ui";
 import { getLocale, getTranslator } from "@/i18n/server";
 
 export default async function NotFound() {
@@ -16,12 +15,9 @@ export default async function NotFound() {
       <h1 className="font-display text-navy-900 text-3xl font-bold">{t("notFound.title")}</h1>
       <p>{t("notFound.body")}</p>
       <p>
-        <Link
-          href={`/${locale}`}
-          className="text-navy-700 font-semibold underline underline-offset-4"
-        >
+        <ButtonLink href={`/${locale}`} variant="secondary">
           {t("notFound.back")}
-        </Link>
+        </ButtonLink>
       </p>
     </main>
   );

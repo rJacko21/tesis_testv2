@@ -19,6 +19,7 @@
     "i18n:check": "tsx scripts/check-i18n.ts"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.4",
     "intl-messageformat": "^12.1.4",
     "mysql2": "^3.24.6",
@@ -26,6 +27,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "server-only": "^0.0.1",
+    "tailwind-merge": "^3.7.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.2.1",
+    "axe-core": "^4.14.0",
     "dotenv": "^18.0.9",
     "drizzle-kit": "^0.31.11",
     "eslint": "^9",

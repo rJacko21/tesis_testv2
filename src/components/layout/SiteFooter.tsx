@@ -6,6 +6,7 @@
  */
 import Link from "next/link";
 
+import { Container } from "@/components/ui";
 import { getLocale, getTranslator } from "@/i18n/server";
 
 /** Enlaces legales: clave de traducción y ruta (sin idioma). */
@@ -31,7 +32,7 @@ export async function SiteFooter() {
 
   return (
     <footer className="bg-navy-900 mt-auto text-sm text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+      <Container className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
         <p>{t("footer.copyright", { year })}</p>
         <ul className="flex flex-wrap gap-x-4 gap-y-1">
           {LEGAL_LINKS.map(({ key, path }) => (
@@ -45,7 +46,7 @@ export async function SiteFooter() {
             </li>
           ))}
         </ul>
-      </div>
+      </Container>
     </footer>
   );
 }
