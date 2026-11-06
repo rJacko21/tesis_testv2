@@ -4,6 +4,7 @@
  * Flandria, Liga PvP) e Iniciar sesión.
  *
  * Cambios respecto a la original:
+ * - Enlace a Noticias (RF-08, F-14).
  * - Soporte ya no es un `mailto:` (F-23); lleva a la página de soporte (RF-10).
  * - Iniciar sesión y Jugar ahora se quedan en este sitio y en el idioma
  *   actual: en la original saltaban a otro dominio solo en inglés (F-06, F-24).
@@ -23,8 +24,13 @@ export interface NavLink {
   external?: boolean;
 }
 
-/** Enlaces principales, en el orden de la web original. */
+/**
+ * Enlaces principales, en el orden de la web original. Noticias es nuevo: en
+ * la original el listado `/en/post` no estaba enlazado y llegaba como texto
+ * plano (F-14).
+ */
 export const PRIMARY_LINKS: readonly NavLink[] = [
+  { label: "nav.news", href: "/news" },
   { label: "nav.download", href: "/download" },
   { label: "nav.shop", href: "/shop" },
 ];

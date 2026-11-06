@@ -78,3 +78,67 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Cuerpo de las noticias (Markdown convertido en `lib/markdown.tsx`).
+ * Estilos propios en lugar del plugin de tipografía de Tailwind: son pocas
+ * reglas y no añaden dependencias. Líneas de ~70 caracteres y 1,7 de
+ * interlineado para leer cómodo en móvil.
+ */
+.prose-news {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+.prose-news > * + * {
+  margin-top: 1em;
+}
+.prose-news h2,
+.prose-news h3 {
+  font-family: var(--font-display);
+  color: var(--color-navy-900);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 1.6em;
+}
+.prose-news h2 {
+  font-size: 1.5rem;
+}
+.prose-news h3 {
+  font-size: 1.25rem;
+}
+.prose-news ul,
+.prose-news ol {
+  padding-left: 1.5em;
+}
+.prose-news ul {
+  list-style: disc;
+}
+.prose-news ol {
+  list-style: decimal;
+}
+.prose-news li + li {
+  margin-top: 0.35em;
+}
+.prose-news a {
+  color: var(--color-navy-700);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-news blockquote {
+  border-left: 4px solid var(--color-gold-500);
+  padding-left: 1em;
+  color: var(--color-ink-600);
+}
+.prose-news code {
+  background: var(--color-parchment-100);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+
+/* Banner de cookies oculto antes de pintar si ya hay elección (ver ConsentManager). */
+html[data-consent] #consent-banner {
+  display: none;
+}

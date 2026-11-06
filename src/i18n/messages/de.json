@@ -8,6 +8,7 @@
   },
   "nav": {
     "label": "Hauptnavigation",
+    "news": "News",
     "download": "Download",
     "shop": "Shop",
     "playNow": "Jetzt spielen",
@@ -100,5 +101,38 @@
     "necessaryBody": "Merken sich deine Sprache und halten dich angemeldet. Immer aktiv.",
     "analyticsTitle": "Analyse",
     "analyticsBody": "Anonyme Statistiken zur Nutzung der Website. Aus, solange du sie nicht einschaltest."
+  },
+  "news": {
+    "title": "News",
+    "description": "Florensia-News: Updates, Events, Shop-Angebote, Codes und Wartungen.",
+    "intro": "Updates, Events, Shop-Angebote, Gratis-Codes und Wartungen.",
+    "latest": "Neueste News",
+    "viewAll": "Alle News",
+    "filter": "Nach Kategorie filtern",
+    "categories": {
+      "all": "Alle",
+      "announcement": "Ankündigung",
+      "event": "Event",
+      "shop": "Shop",
+      "redeem": "Gratis-Code",
+      "maintenance": "Wartung"
+    },
+    "published": "Veröffentlicht am {date}",
+    "updated": "Aktualisiert am {date}",
+    "by": "Von {author}",
+    "byStaff": "Vom Florensia-Team",
+    "endsOn": "Endet am {date}",
+    "ended": "Event beendet am {date}",
+    "englishOnly": "Nur auf Englisch verfügbar",
+    "englishOnlyBody": "Diese Neuigkeit wurde noch nicht in deine Sprache übersetzt.",
+    "empty": "In dieser Kategorie gibt es noch keine News.",
+    "unavailable": "Die News konnten nicht geladen werden. Bitte versuche es in ein paar Minuten erneut.",
+    "back": "Zurück zu den News",
+    "pagination": {
+      "label": "Seiten",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite {page} von {count}"
+    }
   }
 }

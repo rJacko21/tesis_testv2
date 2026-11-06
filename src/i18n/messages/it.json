@@ -8,6 +8,7 @@
   },
   "nav": {
     "label": "Navigazione principale",
+    "news": "Notizie",
     "download": "Download",
     "shop": "Negozio",
     "playNow": "Gioca ora",
@@ -100,5 +101,38 @@
     "necessaryBody": "Ricordano la tua lingua e mantengono l’accesso. Sempre attivi.",
     "analyticsTitle": "Analisi",
     "analyticsBody": "Statistiche anonime sull’uso del sito. Disattivati, a meno che tu non li attivi."
+  },
+  "news": {
+    "title": "Notizie",
+    "description": "Notizie di Florensia: aggiornamenti, eventi, offerte del negozio, codici e manutenzione.",
+    "intro": "Aggiornamenti, eventi, offerte del negozio, codici gratuiti e manutenzione.",
+    "latest": "Ultime notizie",
+    "viewAll": "Tutte le notizie",
+    "filter": "Filtra per categoria",
+    "categories": {
+      "all": "Tutte",
+      "announcement": "Annuncio",
+      "event": "Evento",
+      "shop": "Negozio",
+      "redeem": "Codice gratuito",
+      "maintenance": "Manutenzione"
+    },
+    "published": "Pubblicata il {date}",
+    "updated": "Aggiornata il {date}",
+    "by": "Di {author}",
+    "byStaff": "Dal team di Florensia",
+    "endsOn": "Termina il {date}",
+    "ended": "Evento terminato il {date}",
+    "englishOnly": "Disponibile solo in inglese",
+    "englishOnlyBody": "Questa notizia non è ancora stata tradotta nella tua lingua.",
+    "empty": "Non ci sono ancora notizie in questa categoria.",
+    "unavailable": "Impossibile caricare le notizie. Riprova tra qualche minuto.",
+    "back": "Torna alle notizie",
+    "pagination": {
+      "label": "Pagine",
+      "previous": "Precedente",
+      "next": "Successiva",
+      "page": "Pagina {page} di {count}"
+    }
   }
 }

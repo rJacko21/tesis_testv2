@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  CONSENT_HIDE_SCRIPT,
   CONSENT_VERSION,
   isAllowed,
   parseConsent,
@@ -33,5 +34,21 @@ describe("consentimiento de cookies (RF-11)", () => {
     expect(parseConsent(`${CONSENT_VERSION + 1}.analytics:1`)).toBeNull();
     expect(parseConsent(`${CONSENT_VERSION}.analytics:yes`)).toBeNull();
     expect(parseConsent("basura")).toBeNull();
+  });
+});
+
+describe("CONSENT_HIDE_SCRIPT", () => {
+  const run = (cookie: string) => {
+    const root = { dataset: {} as Record<string, string> };
+    new Function("document", CONSENT_HIDE_SCRIPT)({ cookie, documentElement: root });
+    return "consent" in root.dataset;
+  };
+
+  it("marca <html> solo si existe la cookie de consentimiento", () => {
+    expect(run("consent=1.analytics%3A0")).toBe(true);
+    expect(run("locale=es; consent=1.analytics%3A1")).toBe(true);
+    expect(run("locale=es")).toBe(false);
+    expect(run("consent_id=abc")).toBe(false);
+    expect(run("noconsent=1")).toBe(false);
   });
 });

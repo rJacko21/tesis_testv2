@@ -8,6 +8,7 @@
   },
   "nav": {
     "label": "Navigation principale",
+    "news": "Actualités",
     "download": "Télécharger",
     "shop": "Boutique",
     "playNow": "Jouer maintenant",
@@ -100,5 +101,38 @@
     "necessaryBody": "Mémorisent votre langue et maintiennent votre connexion. Toujours actifs.",
     "analyticsTitle": "Mesure d’audience",
     "analyticsBody": "Statistiques anonymes sur l’utilisation du site. Désactivés sauf si vous les activez."
+  },
+  "news": {
+    "title": "Actualités",
+    "description": "Actualités de Florensia : mises à jour, événements, offres de la boutique, codes et maintenances.",
+    "intro": "Mises à jour, événements, offres de la boutique, codes gratuits et maintenances.",
+    "latest": "Dernières actualités",
+    "viewAll": "Toutes les actualités",
+    "filter": "Filtrer par catégorie",
+    "categories": {
+      "all": "Toutes",
+      "announcement": "Annonce",
+      "event": "Événement",
+      "shop": "Boutique",
+      "redeem": "Code gratuit",
+      "maintenance": "Maintenance"
+    },
+    "published": "Publiée le {date}",
+    "updated": "Mise à jour le {date}",
+    "by": "Par {author}",
+    "byStaff": "Par l’équipe de Florensia",
+    "endsOn": "Se termine le {date}",
+    "ended": "Événement terminé le {date}",
+    "englishOnly": "Disponible uniquement en anglais",
+    "englishOnlyBody": "Cette actualité n’a pas encore été traduite dans votre langue.",
+    "empty": "Il n’y a pas encore d’actualité dans cette catégorie.",
+    "unavailable": "Impossible de charger les actualités. Réessayez dans quelques minutes.",
+    "back": "Retour aux actualités",
+    "pagination": {
+      "label": "Pages",
+      "previous": "Précédente",
+      "next": "Suivante",
+      "page": "Page {page} sur {count}"
+    }
   }
 }
