@@ -1,38 +1,65 @@
 /*
  * Estilos globales y tokens de diseño.
  *
- * Los colores salen de la web original (azul marino de la cabecera, dorado
- * de los marcos, pergamino de la tienda) y se definen una sola vez como
- * variables. Mobile first: los estilos base son los de móvil y las media
- * queries solo añaden (P1). Los valores definitivos se fijan en T-03.
+ * Los colores se tomaron de la web original (auditoría del 2026-11-06):
+ * el azul marino del marco de la cabecera, el azul cielo de los paneles de
+ * la cuenta, el turquesa de la tienda, el pergamino del canje de códigos y
+ * el dorado de los adornos. Se definen una sola vez como variables y
+ * Tailwind genera las clases (`bg-navy-900`, `text-gold-700`…).
+ *
+ * Cada par texto/fondo que se usa en la interfaz tiene un contraste mínimo
+ * de 4.5:1 (WCAG 2.2 AA), comprobado por `src/components/ui/contrast.test.ts`.
+ * En la web original había texto gris pequeño sobre gris (F-43).
+ *
+ * Mobile first (P1): los estilos base son los de móvil y las media queries
+ * solo añaden.
  */
 @import "tailwindcss";
 
-:root {
+@theme {
+  /* Azules del marco y la cabecera */
+  --color-navy-950: #071d33;
   --color-navy-900: #0b2a4a;
   --color-navy-700: #164a7a;
+  --color-navy-500: #2a6fae;
+  /* Azul cielo de los paneles de cuenta */
+  --color-sky-100: #e4f1fb;
   --color-sky-300: #8cc4ec;
+  /* Turquesa de los paneles de la tienda */
+  --color-teal-100: #dcefee;
+  --color-teal-700: #2f6f6d;
+  --color-teal-900: #1d4746;
+  /* Dorado de adornos y llamadas a la acción */
+  --color-gold-300: #f2cd7a;
   --color-gold-500: #d9a441;
+  --color-gold-700: #8a5f12;
+  /* Pergamino (fondo general) */
+  --color-parchment-50: #fbf6ea;
   --color-parchment-100: #f6ecd2;
+  --color-parchment-300: #e6d3a4;
+  /* Texto y estados */
   --color-ink-900: #1b1b1f;
-  --color-surface: #ffffff;
-}
+  --color-ink-600: #4a4a55;
+  --color-danger-700: #a4262c;
+  --color-success-700: #1e6b3a;
 
-@theme inline {
-  --color-navy-900: var(--color-navy-900);
-  --color-navy-700: var(--color-navy-700);
-  --color-sky-300: var(--color-sky-300);
-  --color-gold-500: var(--color-gold-500);
-  --color-parchment-100: var(--color-parchment-100);
-  --color-ink-900: var(--color-ink-900);
   --font-display: var(--font-alegreya), Georgia, serif;
   --font-sans: var(--font-nunito), system-ui, sans-serif;
+
+  --radius-panel: 0.75rem;
+  --shadow-panel: 0 1px 2px rgb(7 29 51 / 0.12), 0 4px 12px rgb(7 29 51 / 0.08);
 }
 
 body {
   background: var(--color-parchment-100);
   color: var(--color-ink-900);
   font-family: var(--font-sans);
+}
+
+/* Foco siempre visible y con el mismo estilo en todo el sitio (WCAG 2.4.7, 2.4.11). */
+:focus-visible {
+  outline: 3px solid var(--color-gold-500);
+  outline-offset: 2px;
 }
 
 /* Respeta a quien pide menos movimiento (WCAG 2.3.3). */

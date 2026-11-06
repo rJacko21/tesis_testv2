@@ -6,6 +6,7 @@
  */
 import Link from "next/link";
 
+import { Container } from "@/components/ui";
 import { LOCALE_NAMES } from "@/config/locales";
 import { getLocale, getTranslator } from "@/i18n/server";
 
@@ -16,7 +17,7 @@ export async function SiteHeader() {
 
   return (
     <header className="bg-navy-900 text-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2">
+      <Container className="flex items-center justify-between gap-4 py-2">
         <Link
           href={`/${locale}`}
           className="font-display flex min-h-11 items-center text-2xl font-bold tracking-wide"
@@ -28,7 +29,7 @@ export async function SiteHeader() {
           label={t("localeSwitcher.label")}
           currentLabel={t("localeSwitcher.current", { language: LOCALE_NAMES[locale] })}
         />
-      </div>
+      </Container>
     </header>
   );
 }
