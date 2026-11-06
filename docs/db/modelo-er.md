@@ -2,7 +2,7 @@
 
 > Generado por `pnpm db:er` a partir de `src/db/schema`. No se edita a mano.
 
-41 tablas en 5 dominios. Cada diagrama muestra las tablas de su dominio y sus claves ajenas, también las que apuntan a tablas de otros dominios (por ejemplo, `users`). Convenciones: ver [04-arquitectura §4](../plan/04-arquitectura.md).
+43 tablas en 5 dominios. Cada diagrama muestra las tablas de su dominio y sus claves ajenas, también las que apuntan a tablas de otros dominios (por ejemplo, `users`). Convenciones: ver [04-arquitectura §4](../plan/04-arquitectura.md).
 
 ## Identidad
 
@@ -11,29 +11,47 @@ erDiagram
   users {
     bigint id PK
     varchar username
+    varchar display_username
+    varchar name
     varchar email
-    datetime email_verified_at
-    varchar password_hash
+    boolean email_verified
+    varchar image
     varchar locale FK
     enum status
     int ap_balance
     datetime created_at
     datetime updated_at
   }
+  accounts {
+    bigint id PK
+    varchar account_id
+    varchar provider_id
+    bigint user_id FK
+    text access_token
+    text refresh_token
+    text id_token
+    datetime access_token_expires_at
+    datetime refresh_token_expires_at
+    varchar scope
+    varchar password
+    datetime created_at
+    datetime updated_at
+  }
   sessions {
-    char token_hash PK
+    bigint id PK
+    varchar token
     bigint user_id FK
     datetime expires_at
+    varchar ip_address
     varchar user_agent
     datetime created_at
     datetime updated_at
   }
-  verification_tokens {
-    char token_hash PK
-    bigint user_id FK
-    enum purpose
+  verifications {
+    bigint id PK
+    varchar identifier
+    text value
     datetime expires_at
-    datetime used_at
     datetime created_at
     datetime updated_at
   }
@@ -44,6 +62,11 @@ erDiagram
     smallint succeeded
     datetime attempted_at
   }
+  rate_limits {
+    varchar rate_key PK
+    int count
+    datetime window_start
+  }
   roles {
     bigint id PK
     varchar code
@@ -53,8 +76,8 @@ erDiagram
     bigint role_id PK,FK
   }
   locales ||--o{ users : "locale"
+  users ||--o{ accounts : "user_id"
   users ||--o{ sessions : "user_id"
-  users ||--o{ verification_tokens : "user_id"
   users ||--o{ user_roles : "user_id"
   roles ||--o{ user_roles : "role_id"
 ```

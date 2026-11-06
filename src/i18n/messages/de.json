@@ -21,7 +21,8 @@
     "login": "Anmelden",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "externalSite": "(externe Website)"
+    "externalSite": "(externe Website)",
+    "account": "Mein Konto"
   },
   "localeSwitcher": {
     "label": "Sprache",
@@ -271,6 +272,107 @@
     "jump": {
       "label": "Zu Seite",
       "go": "Los"
+    }
+  },
+  "auth": {
+    "fields": {
+      "username": "Kontoname",
+      "usernameHint": "{min} bis {max} Zeichen: Buchstaben, Zahlen und _.",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "passwordHint": "Mindestens {min} Zeichen. Ein Satz ist besser als ein Wort.",
+      "identifier": "Kontoname oder E-Mail",
+      "newPassword": "Neues Passwort"
+    },
+    "errorSummary": "Bitte prüfe die markierten Felder.",
+    "errors": {
+      "required": "Bitte fülle dieses Feld aus.",
+      "usernameLength": "Der Kontoname muss {min} bis {max} Zeichen lang sein.",
+      "usernameFormat": "Verwende nur Buchstaben ohne Akzente, Zahlen und _.",
+      "usernameTaken": "Dieser Kontoname ist bereits vergeben.",
+      "email": "Gib eine gültige E-Mail-Adresse ein.",
+      "passwordLength": "Das Passwort muss {min} bis {max} Zeichen lang sein.",
+      "pwned": "Dieses Passwort taucht in bekannten Datenlecks auf. Bitte wähle ein anderes.",
+      "terms": "Du musst die Nutzungsbedingungen und die Datenschutzerklärung akzeptieren.",
+      "credentials": "Kontoname, E-Mail oder Passwort sind nicht korrekt.",
+      "locked": "Zu viele Versuche. Warte {minutes, plural, one {# Minute} other {# Minuten}} und versuche es erneut.",
+      "rateLimited": "Zu viele Anfragen. Warte {minutes, plural, one {# Minute} other {# Minuten}} und versuche es erneut.",
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es in ein paar Minuten erneut."
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "description": "Erstelle dein kostenloses Florensia-Konto, um zu spielen, den Item-Shop zu nutzen und Codes einzulösen.",
+      "intro": "Kostenlos. Du brauchst nur eine E-Mail-Adresse.",
+      "accept": "Ich akzeptiere die {terms} und die {privacy}.",
+      "termsLink": "Nutzungsbedingungen",
+      "privacyLink": "Datenschutzerklärung",
+      "submit": "Konto erstellen",
+      "haveAccount": "Du hast schon ein Konto?",
+      "signInLink": "Anmelden",
+      "sentTitle": "Prüfe dein Postfach",
+      "sentBody": "Wenn die Angaben stimmen, haben wir einen Link an {email} geschickt, um dein Konto zu bestätigen. Er ist 24 Stunden gültig. Du kannst dich schon anmelden."
+    },
+    "signIn": {
+      "title": "Anmelden",
+      "description": "Melde dich bei deinem Florensia-Konto an.",
+      "submit": "Anmelden",
+      "forgot": "Passwort vergessen?",
+      "noAccount": "Noch kein Konto?",
+      "registerLink": "Kostenlos erstellen"
+    },
+    "forgot": {
+      "title": "Passwort zurücksetzen",
+      "description": "Erhalte einen Link, um ein neues Passwort festzulegen.",
+      "intro": "Gib die E-Mail-Adresse deines Kontos ein. Wir schicken dir einen Link, um ein neues Passwort festzulegen.",
+      "submit": "Link senden",
+      "sent": "Wenn es ein Konto mit dieser E-Mail-Adresse gibt, haben wir einen Link zum Festlegen eines neuen Passworts geschickt. Der Link ist 30 Minuten gültig.",
+      "back": "Zurück zur Anmeldung"
+    },
+    "reset": {
+      "title": "Neues Passwort festlegen",
+      "submit": "Passwort speichern",
+      "done": "Dein Passwort wurde geändert. Auf allen anderen Geräten wurdest du abgemeldet.",
+      "invalid": "Dieser Link ist ungültig oder abgelaufen.",
+      "requestNew": "Neuen Link anfordern",
+      "signIn": "Anmelden"
+    },
+    "verify": {
+      "title": "E-Mail bestätigen",
+      "ok": "Deine E-Mail-Adresse ist bestätigt. Danke!",
+      "invalid": "Dieser Link ist ungültig oder abgelaufen. Melde dich an und fordere in deinem Konto einen neuen an.",
+      "account": "Zu meinem Konto"
+    },
+    "account": {
+      "title": "Mein Konto",
+      "greeting": "Hallo, {name}",
+      "email": "E-Mail",
+      "verified": "Bestätigt",
+      "unverified": "Noch nicht bestätigt. Vor einem Kauf im Item-Shop musst du sie bestätigen.",
+      "resend": "Link erneut senden",
+      "resent": "Wir haben dir einen neuen Link geschickt.",
+      "signOut": "Abmelden",
+      "comingSoon": "Bald siehst du hier dein AP-Guthaben, deine Käufe und deine Ranglisten."
+    }
+  },
+  "email": {
+    "greeting": "Hallo {name},",
+    "verify": {
+      "subject": "Bestätige dein Florensia-Konto",
+      "body": "Danke, dass du ein Konto erstellt hast. Bestätige deine E-Mail-Adresse über diesen Link:",
+      "action": "E-Mail bestätigen",
+      "note": "Der Link ist 24 Stunden gültig. Wenn du dieses Konto nicht erstellt hast, kannst du diese E-Mail ignorieren."
+    },
+    "reset": {
+      "subject": "Setze dein Florensia-Passwort zurück",
+      "body": "Wir haben eine Anfrage zum Zurücksetzen deines Passworts erhalten. Lege über diesen Link ein neues fest:",
+      "action": "Neues Passwort festlegen",
+      "note": "Der Link ist 30 Minuten gültig und nur einmal verwendbar. Wenn du das nicht angefordert hast, ignoriere diese E-Mail: Dein Passwort bleibt unverändert."
+    },
+    "existing": {
+      "subject": "Jemand wollte sich mit deiner E-Mail registrieren",
+      "body": "Jemand wollte mit dieser E-Mail-Adresse ein Florensia-Konto erstellen, aber du hast bereits eines. Wenn du das warst, melde dich einfach an:",
+      "action": "Anmelden",
+      "note": "Wenn du dein Passwort vergessen hast, nutze „Passwort vergessen?“ auf der Anmeldeseite. Wenn du es nicht warst, kannst du diese E-Mail ignorieren."
     }
   }
 }

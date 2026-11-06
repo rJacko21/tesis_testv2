@@ -21,7 +21,8 @@
     "login": "Se connecter",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "externalSite": "(site externe)"
+    "externalSite": "(site externe)",
+    "account": "Mon compte"
   },
   "localeSwitcher": {
     "label": "Langue",
@@ -271,6 +272,107 @@
     "jump": {
       "label": "Aller à la page",
       "go": "OK"
+    }
+  },
+  "auth": {
+    "fields": {
+      "username": "Nom de compte",
+      "usernameHint": "De {min} à {max} caractères : lettres, chiffres et _.",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "passwordHint": "Au moins {min} caractères. Une phrase vaut mieux qu’un mot.",
+      "identifier": "Nom de compte ou e-mail",
+      "newPassword": "Nouveau mot de passe"
+    },
+    "errorSummary": "Vérifiez les champs signalés.",
+    "errors": {
+      "required": "Veuillez remplir ce champ.",
+      "usernameLength": "Le nom de compte doit contenir de {min} à {max} caractères.",
+      "usernameFormat": "Utilisez uniquement des lettres sans accent, des chiffres et _.",
+      "usernameTaken": "Ce nom de compte est déjà pris.",
+      "email": "Saisissez une adresse e-mail valide.",
+      "passwordLength": "Le mot de passe doit contenir de {min} à {max} caractères.",
+      "pwned": "Ce mot de passe figure dans des fuites de données connues. Choisissez-en un autre.",
+      "terms": "Vous devez accepter les conditions d’utilisation et la politique de confidentialité.",
+      "credentials": "Le nom de compte, l’e-mail ou le mot de passe est incorrect.",
+      "locked": "Trop de tentatives. Patientez {minutes, plural, one {# minute} other {# minutes}} puis réessayez.",
+      "rateLimited": "Trop de demandes. Patientez {minutes, plural, one {# minute} other {# minutes}} puis réessayez.",
+      "generic": "Une erreur s’est produite. Réessayez dans quelques minutes."
+    },
+    "register": {
+      "title": "Créer un compte",
+      "description": "Créez votre compte Florensia gratuit pour jouer, utiliser la boutique et utiliser des codes.",
+      "intro": "C’est gratuit. Il vous suffit d’une adresse e-mail.",
+      "accept": "J’accepte les {terms} et la {privacy}.",
+      "termsLink": "conditions d’utilisation",
+      "privacyLink": "politique de confidentialité",
+      "submit": "Créer un compte",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "signInLink": "Se connecter",
+      "sentTitle": "Consultez votre messagerie",
+      "sentBody": "Si les informations sont correctes, nous avons envoyé un lien à {email} pour confirmer votre compte. Il expire dans 24 heures. Vous pouvez déjà vous connecter."
+    },
+    "signIn": {
+      "title": "Se connecter",
+      "description": "Connectez-vous à votre compte Florensia.",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ?",
+      "registerLink": "Créez-en un gratuitement"
+    },
+    "forgot": {
+      "title": "Réinitialiser le mot de passe",
+      "description": "Recevez un lien pour choisir un nouveau mot de passe.",
+      "intro": "Saisissez l’adresse e-mail de votre compte et nous vous enverrons un lien pour choisir un nouveau mot de passe.",
+      "submit": "Envoyer le lien",
+      "sent": "S’il existe un compte avec cette adresse, nous lui avons envoyé un lien pour choisir un nouveau mot de passe. Le lien expire dans 30 minutes.",
+      "back": "Retour à la connexion"
+    },
+    "reset": {
+      "title": "Choisissez un nouveau mot de passe",
+      "submit": "Enregistrer le mot de passe",
+      "done": "Votre mot de passe a été modifié. Nous vous avons déconnecté de tous les autres appareils.",
+      "invalid": "Ce lien n’est pas valide ou a expiré.",
+      "requestNew": "Demander un nouveau lien",
+      "signIn": "Se connecter"
+    },
+    "verify": {
+      "title": "Confirmer l’adresse e-mail",
+      "ok": "Votre adresse e-mail est confirmée. Merci !",
+      "invalid": "Ce lien n’est pas valide ou a expiré. Connectez-vous et demandez-en un nouveau depuis votre compte.",
+      "account": "Aller à mon compte"
+    },
+    "account": {
+      "title": "Mon compte",
+      "greeting": "Bonjour, {name}",
+      "email": "Adresse e-mail",
+      "verified": "Confirmée",
+      "unverified": "Pas encore confirmée. Vous devrez la confirmer avant d’acheter dans la boutique.",
+      "resend": "Renvoyer le lien",
+      "resent": "Nous vous avons envoyé un nouveau lien.",
+      "signOut": "Se déconnecter",
+      "comingSoon": "Bientôt, vous verrez ici votre solde d’AP, vos achats et vos classements."
+    }
+  },
+  "email": {
+    "greeting": "Bonjour {name},",
+    "verify": {
+      "subject": "Confirmez votre compte Florensia",
+      "body": "Merci d’avoir créé votre compte. Confirmez votre adresse e-mail en ouvrant ce lien :",
+      "action": "Confirmer mon adresse",
+      "note": "Le lien expire dans 24 heures. Si vous n’avez pas créé ce compte, vous pouvez ignorer cet e-mail."
+    },
+    "reset": {
+      "subject": "Réinitialisez votre mot de passe Florensia",
+      "body": "Nous avons reçu une demande de réinitialisation de votre mot de passe. Choisissez-en un nouveau en ouvrant ce lien :",
+      "action": "Choisir un nouveau mot de passe",
+      "note": "Le lien expire dans 30 minutes et ne peut servir qu’une fois. Si vous n’êtes pas à l’origine de cette demande, ignorez cet e-mail : votre mot de passe ne change pas."
+    },
+    "existing": {
+      "subject": "Quelqu’un a tenté de s’inscrire avec votre adresse",
+      "body": "Quelqu’un a tenté de créer un compte Florensia avec cette adresse e-mail, mais vous en avez déjà un. Si c’était vous, connectez-vous simplement :",
+      "action": "Se connecter",
+      "note": "Si vous avez oublié votre mot de passe, utilisez « Mot de passe oublié ? » sur la page de connexion. Si ce n’était pas vous, vous pouvez ignorer cet e-mail."
     }
   }
 }

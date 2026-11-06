@@ -29,6 +29,13 @@
       "when": 1793991279731,
       "tag": "0003_indices_busqueda_ranking",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1793994527700,
+      "tag": "0004_cuentas_better_auth",
+      "breakpoints": true
     }
   ]
 }

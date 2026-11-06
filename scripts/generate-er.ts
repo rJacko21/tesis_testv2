@@ -14,7 +14,16 @@ import * as schema from "../src/db/schema";
 
 /** Dominios en el orden del documento de arquitectura. */
 const DOMAINS: Record<string, readonly string[]> = {
-  Identidad: ["users", "sessions", "verification_tokens", "login_attempts", "roles", "user_roles"],
+  Identidad: [
+    "users",
+    "accounts",
+    "sessions",
+    "verifications",
+    "login_attempts",
+    "rate_limits",
+    "roles",
+    "user_roles",
+  ],
   Contenido: [
     "locales",
     "media",

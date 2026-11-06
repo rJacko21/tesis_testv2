@@ -22,5 +22,14 @@ services:
       timeout: 5s
       retries: 20
 
+  # Bandeja de correo de pruebas (RF-03): recoge los correos de verificación
+  # y recuperación sin enviarlos a nadie. Interfaz en http://localhost:8025.
+  mail:
+    image: axllent/mailpit:v1.27
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
 volumes:
   db-data:

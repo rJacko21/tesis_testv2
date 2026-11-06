@@ -5,8 +5,8 @@
  * reales los redacta Giiku Games GmbH y se cargarán desde el panel (T-23).
  * Cada texto de ejemplo lo dice en su primera línea, para que la demo no se
  * confunda con la web oficial. La política de cookies sí describe este sitio
- * tal como es: los nombres de las cookies se toman del código (`lib/consent.ts`
- * y `i18n/negotiate.ts`), y una prueba e2e comprueba que toda cookie que pone
+ * tal como es: los nombres de las cookies se toman del código (`lib/consent.ts`,
+ * `i18n/negotiate.ts` y `lib/auth/constants.ts`), y una prueba e2e comprueba que toda cookie que pone
  * el sitio aparece en la política.
  *
  * Están en inglés, el idioma de respaldo, y en español. En los otros cinco
@@ -17,6 +17,7 @@
  */
 import type { Locale } from "../../config/locales";
 import { LOCALE_COOKIE } from "../../i18n/negotiate";
+import { SESSION_COOKIE } from "../../lib/auth/constants";
 import { CONSENT_COOKIE } from "../../lib/consent";
 
 // Nombre de la cookie anónima de `/api/consent`.
@@ -233,6 +234,7 @@ They are needed for the site to work and are always active.
 - \`${LOCALE_COOKIE}\`: remembers your language for one year.
 - \`${CONSENT_COOKIE}\`: remembers your cookie choice for six months.
 - \`${CONSENT_ID_COOKIE}\`: random identifier that links your choice to its proof, for six months.
+- \`${SESSION_COOKIE}\`: keeps you signed in, for seven days. Only if you sign in.
 
 ## Optional cookies
 
@@ -251,6 +253,7 @@ Hacen falta para que la web funcione y siempre están activas.
 - \`${LOCALE_COOKIE}\`: recuerda tu idioma durante un año.
 - \`${CONSENT_COOKIE}\`: recuerda tu elección de cookies durante seis meses.
 - \`${CONSENT_ID_COOKIE}\`: identificador aleatorio que une tu elección con su prueba, durante seis meses.
+- \`${SESSION_COOKIE}\`: mantiene tu sesión iniciada durante siete días. Solo si inicias sesión.
 
 ## Cookies opcionales
 
