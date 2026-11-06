@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "MMORPG anime gratuito. Combatti sulla terraferma, naviga per i mari e costruisci la tua gilda.",
-    "underConstruction": "Nuovo sito in costruzione."
+    "hero": {
+      "eyebrow": "MMORPG anime gratuito",
+      "artAlt": "Un’eroina Magic Knight con un abito arancione e nero"
+    },
+    "features": {
+      "title": "Avventura per terra e per mare",
+      "land": {
+        "title": "Combatti sulla terraferma",
+        "body": "Esplora isole piene di mostri, dungeon e missioni, da solo o con gli amici."
+      },
+      "sea": {
+        "title": "Solca i mari",
+        "body": "Comanda la tua nave, affronta battaglie navali e scopri nuove coste."
+      },
+      "guild": {
+        "title": "Entra in una gilda",
+        "body": "Unisciti ad altri giocatori, conquista territori e scala le classifiche insieme."
+      }
+    },
+    "classes": {
+      "title": "Scegli la tua classe",
+      "intro": "Quattro classi, otto percorsi. Al livello {level} ogni classe sceglie una di due specializzazioni.",
+      "specializations": "Specializzazioni dal livello {level}",
+      "artAlt": "Illustrazione della classe {name}"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Corpo a corpo",
+      "description": "Un guerriero in prima linea con armatura pesante che incassa i colpi e protegge il gruppo con spada e scudo."
+    },
+    "explorer": {
+      "role": "Attacchi a distanza",
+      "description": "Agile e ingegnoso, combatte a distanza con armi da fuoco e congegni e dissotterra tesori nelle isole."
+    },
+    "noble": {
+      "role": "Magia",
+      "description": "Padroneggia le arti arcane: potenti incantesimi a distanza o una lama incantata nel corpo a corpo."
+    },
+    "saint": {
+      "role": "Cure e supporto",
+      "description": "Cura le ferite, rafforza gli alleati e ribalta le sorti della battaglia con la magia sacra e della natura."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",

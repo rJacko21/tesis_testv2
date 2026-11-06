@@ -28,8 +28,13 @@ export type Translate = (key: MessageKey, values?: MessageValues) => string;
  *   un error visible a mostrar un texto vacío al usuario.
  */
 function lookup(messages: Messages, key: MessageKey): string {
-  const [section, name] = key.split(".") as [keyof Messages, string];
-  const value = (messages[section] as Record<string, unknown> | undefined)?.[name];
+  let value: unknown = messages;
+  for (const part of key.split(".")) {
+    value =
+      typeof value === "object" && value !== null
+        ? (value as Record<string, unknown>)[part]
+        : undefined;
+  }
   if (typeof value !== "string") throw new Error(`Falta la traducción "${key}"`);
   return value;
 }

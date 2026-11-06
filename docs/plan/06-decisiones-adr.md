@@ -89,3 +89,22 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 | Carga simulada: k6 con 50 → 500 usuarios virtuales recorriendo portada, tienda, rankings, noticias y compra con AP | No (prohibido) | Sí |
 | CWV bajo carga: mientras k6 genera tráfico, Playwright abre la web en un móvil emulado y recoge LCP, INP y CLS con la librería `web-vitals` | No | Sí |
 **Resultado.** Tabla comparativa de laboratorio entre ambas webs y curvas de la web nueva (TTFB, LCP, errores) según aumentan los usuarios. Todo con scripts versionados para que sea reproducible.
+
+## ADR-15 Presupuesto de JavaScript ajustado al mínimo del framework — Aceptada 2026-11-06
+**Contexto.** La constitución fijaba 120 KB de JS comprimido en la portada. Al medir la portada provisional con Lighthouse CI (T-07) salieron 142 KB, de los que unos 119 KB son React 19 + el runtime de Next 16 (dos chunks de 72 KB y 47 KB que no se pueden quitar) y solo unos 23 KB son nuestros (selector de idioma, enrutado y runtime de Turbopack).
+**Decisión.** Subir el límite total a 150 KB y añadir un límite más estricto para lo que sí controlamos: ≤ 30 KB de código propio. Lighthouse CI comprueba el total (153 600 bytes); el código propio se vigila revisando el desglose de `network-requests`.
+**Alternativas descartadas.** Preact (rompe compatibilidad con App Router), quitar el selector de idioma del cliente (empeora la experiencia y apenas ahorra 8 KB).
+**Consecuencia.** Aun así la web original carga jQuery + Bootstrap + dos Font Awesome + toastr (F-28), mucho más JS, así que la comparación sigue siendo favorable y honesta.
+
+## ADR-16 Lighthouse CI con limitación aplicada (devtools) — Aceptada 2026-11-06
+**Contexto.** Al añadir la ilustración de la cabecera (T-12), Lighthouse en modo `simulate` (el de PageSpeed) daba un LCP móvil de 2,5 a 3,4 s, con mucha variación entre ejecuciones. El registro de la propia carga mostraba otra cosa: la imagen (16 KB en AVIF) llega a los 60 ms y se pinta a los 0,5 s. El modelo `simulate` (Lantern) suma al LCP todo el trabajo de JavaScript anterior a ese pintado, aunque el navegador ya tenga la imagen. Con el mismo código y limitación aplicada (`devtools`: CPU 4× más lenta y 4G lenta de verdad) el LCP es de 1,66 a 1,70 s, estable.
+**Decisión.**
+- Lighthouse CI usa `throttlingMethod: "devtools"`, que mide la carga ralentizada de verdad en lugar de estimarla.
+- El TBT se mide más alto así, porque la CPU se ralentiza de verdad. Su límite pasa de 150 a 200 ms, que es el umbral "bueno" de Lighthouse. El presupuesto de INP (≤ 150 ms) no cambia y se mide en campo con `web-vitals` (ADR-14).
+- La comparación con la web original (T-02) usa el mismo método en las dos webs, para que sea justa.
+**Alternativas descartadas.**
+- Quitar la ilustración en móvil: incumple P1 (mobile first) y la línea estética pedida.
+- Incrustar la imagen en base64: duplica sus bytes en el HTML y en la carga RSC.
+- Subir el LCP permitido: escondería el problema en lugar de medirlo bien.
+**Consecuencia.** Las cifras de laboratorio de la tesis indican siempre el método. PageSpeed Insights (`simulate`) puede dar un LCP algo peor que el de CI, y se explica en la memoria con este ADR.
+

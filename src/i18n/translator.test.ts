@@ -18,5 +18,6 @@ describe("createTranslator", () => {
     const de = createTranslator("de", await catalogLoaders.de());
     expect(es("nav.shop")).toBe("Tienda");
     expect(de("footer.imprint")).toBe("Impressum");
+    expect(es("classes.saint.role")).toBe("Curación y apoyo");
   });
 });

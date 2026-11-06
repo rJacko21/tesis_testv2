@@ -19,8 +19,8 @@ import type { ComponentProps } from "react";
 
 import { cn } from "./cn";
 
-/** Estilo visual. */
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+/** Estilo visual. `onDark` es el secundario sobre fondos oscuros (portada). */
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "onDark";
 /** Tamaño. */
 export type ButtonSize = "md" | "lg";
 
@@ -32,6 +32,7 @@ const VARIANTS: Record<ButtonVariant, string> = {
   secondary: "bg-navy-700 text-white hover:bg-navy-900",
   ghost: "text-navy-700 hover:bg-sky-100",
   danger: "bg-danger-700 text-white hover:bg-navy-950",
+  onDark: "border-2 border-white/80 text-white hover:bg-white/10",
 };
 
 const SIZES: Record<ButtonSize, string> = {

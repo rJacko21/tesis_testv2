@@ -14,8 +14,10 @@
  */
 import { parse, TYPE, type MessageFormatElement } from "@formatjs/icu-messageformat-parser";
 
-/** Un catálogo como objeto anidado de secciones y mensajes. */
-export type Catalog = Record<string, Record<string, string>>;
+/** Un catálogo como objeto anidado de secciones y mensajes, a cualquier profundidad. */
+export interface Catalog {
+  [key: string]: string | Catalog;
+}
 
 /** Un problema encontrado en un idioma. */
 export interface CatalogIssue {
@@ -24,11 +26,16 @@ export interface CatalogIssue {
   problem: string;
 }
 
-/** Aplana `{ nav: { shop: "…" } }` a `{ "nav.shop": "…" }`. */
-function flatten(catalog: Catalog): Map<string, string> {
-  const flat = new Map<string, string>();
-  for (const [section, entries] of Object.entries(catalog)) {
-    for (const [name, value] of Object.entries(entries)) flat.set(`${section}.${name}`, value);
+/** Aplana `{ nav: { shop: "…" } }` a `{ "nav.shop": "…" }`, a cualquier profundidad. */
+function flatten(
+  catalog: Catalog,
+  prefix = "",
+  flat = new Map<string, string>(),
+): Map<string, string> {
+  for (const [name, value] of Object.entries(catalog)) {
+    const key = prefix ? `${prefix}.${name}` : name;
+    if (typeof value === "string") flat.set(key, value);
+    else flatten(value, key, flat);
   }
   return flat;
 }

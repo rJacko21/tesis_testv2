@@ -39,6 +39,12 @@ describe("checkCatalogs", () => {
     ]);
   });
 
+  it("revisa también las claves anidadas a más de dos niveles", () => {
+    const nested = { classes: { noble: { role: "Magic" } } };
+    const issues = checkCatalogs(nested, { fr: { classes: { noble: { role: "" } } } });
+    expect(issues).toEqual([{ locale: "fr", key: "classes.noble.role", problem: "mensaje vacío" }]);
+  });
+
   it("los catálogos reales del proyecto no tienen problemas (RNF-04)", async () => {
     const [en, ...rest] = await Promise.all(LOCALES.map((l) => catalogLoaders[l]()));
     const catalogs = Object.fromEntries(LOCALES.slice(1).map((l, i) => [l, rest[i]!]));

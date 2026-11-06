@@ -18,12 +18,19 @@ import type en from "./messages/en.json";
 export type Messages = typeof en;
 
 /**
- * Todas las rutas de clave válidas, en notación con puntos (`"nav.shop"`).
- * Así, una clave mal escrita es un error de TypeScript y no un texto vacío.
+ * Rutas con puntos hasta cada texto de un objeto anidado:
+ * `{ a: { b: "…", c: { d: "…" } } }` da `"a.b" | "a.c.d"`.
  */
-export type MessageKey = {
-  [Section in keyof Messages]: `${Section & string}.${keyof Messages[Section] & string}`;
-}[keyof Messages];
+type LeafPaths<T> = {
+  [K in keyof T & string]: T[K] extends string ? K : `${K}.${LeafPaths<T[K]>}`;
+}[keyof T & string];
+
+/**
+ * Todas las rutas de clave válidas, en notación con puntos (`"nav.shop"`,
+ * `"classes.noble.role"`). Así, una clave mal escrita es un error de
+ * TypeScript y no un texto vacío.
+ */
+export type MessageKey = LeafPaths<Messages>;
 
 /**
  * Carga diferida de cada catálogo: solo se importa el del idioma pedido y
