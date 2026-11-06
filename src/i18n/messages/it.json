@@ -17,7 +17,10 @@
     "rankings": "Classifiche",
     "wiki": "Wiki Flandria",
     "pvpLeague": "Lega PvP",
-    "login": "Accedi"
+    "login": "Accedi",
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu",
+    "externalSite": "(sito esterno)"
   },
   "localeSwitcher": {
     "label": "Lingua",
@@ -74,7 +77,8 @@
     "imprint": "Note legali",
     "terms": "Termini di servizio",
     "conduct": "Codice di condotta",
-    "privacy": "Informativa sulla privacy"
+    "privacy": "Informativa sulla privacy",
+    "social": "Segui Florensia"
   },
   "notFound": {
     "title": "Pagina non trovata",

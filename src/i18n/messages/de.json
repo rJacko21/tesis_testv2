@@ -17,7 +17,10 @@
     "rankings": "Ranglisten",
     "wiki": "Flandria-Wiki",
     "pvpLeague": "PvP-Liga",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "externalSite": "(externe Website)"
   },
   "localeSwitcher": {
     "label": "Sprache",
@@ -74,7 +77,8 @@
     "imprint": "Impressum",
     "terms": "AGB",
     "conduct": "Verhaltensregeln",
-    "privacy": "Datenschutzerklärung"
+    "privacy": "Datenschutzerklärung",
+    "social": "Folge Florensia"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
