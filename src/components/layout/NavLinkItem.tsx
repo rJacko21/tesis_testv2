@@ -15,18 +15,10 @@ export interface NavLinkItemProps {
   className?: string;
   /** Texto accesible para enlaces externos, p. ej. "(sitio externo)". */
   externalLabel: string;
-  /** Marca el enlace de la página actual (`aria-current="page"`). */
-  current?: boolean;
   children?: ReactNode;
 }
 
-export function NavLinkItem({
-  link,
-  className,
-  externalLabel,
-  current,
-  children,
-}: NavLinkItemProps) {
+export function NavLinkItem({ link, className, externalLabel, children }: NavLinkItemProps) {
   if (link.external) {
     return (
       <a href={link.href} rel="noopener" className={className}>
@@ -42,7 +34,8 @@ export function NavLinkItem({
     );
   }
   return (
-    <Link href={link.href} className={className} aria-current={current ? "page" : undefined}>
+    // `data-nav`: `HeaderBehavior` le pone `aria-current="page"` en la página actual.
+    <Link href={link.href} className={className} data-nav="">
       {children ?? link.label}
     </Link>
   );

@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Menú móvil (por debajo de 1024 px).
  *
@@ -8,20 +6,15 @@
  * - **Escape lo cierra** (evento `close`), y el foco vuelve al botón;
  * - el botón anuncia su estado con `aria-expanded`.
  *
- * Es lo que pide RF-02 sin una librería de diálogos: menos JavaScript
- * (presupuesto de ADR-15) y menos código que mantener. También se cierra
- * al pulsar fuera del panel y al cambiar de página.
- *
- * Las clases de los botones llegan calculadas desde el servidor
- * (`buttonClasses`): importar `buttonStyles` aquí metería tailwind-merge
- * (~8 KB) en el JavaScript del navegador.
+ * Es lo que pide RF-02 sin una librería de diálogos. Es un Server
+ * Component: el botón abre el diálogo con `commandfor`/`command`, que el
+ * navegador ejecuta sin JavaScript propio, y `HeaderBehavior` añade lo que
+ * falta (`aria-expanded`, cerrar al pulsar fuera y al cambiar de página).
+ * El scroll de fondo se bloquea con CSS (`globals.css`).
  *
  * @see RF-02
  */
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-
-import type { ResolvedLink } from "./nav-types";
+import { MOBILE_MENU_ID, type ResolvedLink } from "./nav-types";
 import { NavLinkItem } from "./NavLinkItem";
 
 export interface MobileMenuProps {
@@ -35,45 +28,27 @@ export interface MobileMenuProps {
   playNow: ResolvedLink;
   signIn: ResolvedLink;
   externalLabel: string;
-  /** Clases de botón ya resueltas en el servidor. */
+  /** Clases de los botones Jugar ahora e Iniciar sesión. */
   buttonClasses: { primary: string; secondary: string };
 }
 
+/**
+ * Atributos de Invoker Commands. React 19 los pasa tal cual al HTML, pero
+ * los tipos de JSX aún no los conocen.
+ */
+const command = (name: "show-modal" | "close") => ({ commandfor: MOBILE_MENU_ID, command: name });
+
 export function MobileMenu(props: MobileMenuProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
-  // Al navegar, se cierra.
-  useEffect(() => {
-    dialogRef.current?.close();
-  }, [pathname]);
-
-  // Sin scroll de fondo mientras está abierto.
-  useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.documentElement.style.overflow = "";
-    };
-  }, [open]);
-
-  const show = () => {
-    dialogRef.current?.showModal();
-    setOpen(true);
-  };
-
   const linkClass =
     "aria-[current]:bg-navy-700 flex min-h-12 items-center rounded-lg px-4 text-lg font-semibold hover:bg-navy-700";
 
   return (
     <>
       <button
-        ref={buttonRef}
         type="button"
-        onClick={show}
-        aria-expanded={open}
-        aria-controls="mobile-menu"
+        {...command("show-modal")}
+        aria-expanded="false"
+        aria-controls={MOBILE_MENU_ID}
         className="hover:bg-navy-700 grid size-11 place-items-center rounded lg:hidden"
       >
         <svg aria-hidden="true" viewBox="0 0 24 24" className="size-6">
@@ -83,24 +58,17 @@ export function MobileMenu(props: MobileMenuProps) {
       </button>
 
       <dialog
-        ref={dialogRef}
-        id="mobile-menu"
+        id={MOBILE_MENU_ID}
         aria-label={props.navLabel}
-        onClose={() => {
-          setOpen(false);
-          buttonRef.current?.focus();
-        }}
-        // Pulsar en el fondo (el propio <dialog>, fuera del panel) cierra.
-        onClick={(event) => {
-          if (event.target === event.currentTarget) event.currentTarget.close();
-        }}
+        // Pulsar fuera del panel cierra (donde aún no hay `closedby`, lo hace `HeaderBehavior`).
+        {...{ closedby: "any" }}
         className="bg-navy-950 m-0 ml-auto h-dvh max-h-none w-[min(22rem,100vw)] max-w-none text-white backdrop:bg-black/60 open:flex open:flex-col"
       >
         <div className="flex items-center justify-between px-4 py-2">
           <span className="font-display text-gold-300 text-2xl font-bold">Florensia</span>
           <button
             type="button"
-            onClick={() => dialogRef.current?.close()}
+            {...command("close")}
             className="hover:bg-navy-700 grid size-11 place-items-center rounded"
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" className="size-6">
@@ -123,7 +91,6 @@ export function MobileMenu(props: MobileMenuProps) {
                 <NavLinkItem
                   link={link}
                   externalLabel={props.externalLabel}
-                  current={pathname.startsWith(link.href)}
                   className={linkClass}
                 />
               </li>
@@ -139,7 +106,6 @@ export function MobileMenu(props: MobileMenuProps) {
                   <NavLinkItem
                     link={link}
                     externalLabel={props.externalLabel}
-                    current={pathname.startsWith(link.href)}
                     className={linkClass}
                   />
                 </li>
