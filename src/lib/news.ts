@@ -235,3 +235,41 @@ export async function getPost(locale: Locale, slug: string): Promise<PostDetail 
     availableLocales: translations.map((t) => t.locale).filter(isLocale),
   };
 }
+
+/** Entrada del sitemap: slug, última modificación e idiomas traducidos. */
+export interface PostSitemapEntry {
+  slug: string;
+  updatedAt: Date;
+  locales: Locale[];
+}
+
+/**
+ * Todas las noticias visibles con sus idiomas, para `sitemap.xml`
+ * (RNF-05). Una sola consulta agrupada; sin paginar, porque son cientos
+ * como mucho (la web original tenía 6 881 URLs en un sitemap de 1,35 MB,
+ * casi todas páginas internas del CMS, F-10).
+ */
+export async function listPostsForSitemap(): Promise<PostSitemapEntry[]> {
+  "use cache";
+  cacheTag(NEWS_CACHE_TAG);
+  cacheLife("hours");
+
+  const { db } = await import("@/db/client");
+  const rows = await db
+    .select({
+      slug: posts.slug,
+      updatedAt: posts.updatedAt,
+      locales: sql<string>`group_concat(${postTranslations.locale} order by ${postTranslations.locale})`,
+    })
+    .from(posts)
+    .innerJoin(postTranslations, eq(postTranslations.postId, posts.id))
+    .where(isVisible(new Date()))
+    .groupBy(posts.id)
+    .orderBy(desc(posts.publishedAt));
+
+  return rows.map((row) => ({
+    slug: row.slug,
+    updatedAt: row.updatedAt,
+    locales: row.locales.split(",").filter(isLocale),
+  }));
+}

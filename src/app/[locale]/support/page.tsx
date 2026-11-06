@@ -14,10 +14,12 @@
  */
 import type { Metadata } from "next";
 
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui";
 import { SOCIAL_LINKS } from "@/config/navigation";
 import { languageAlternates } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
+import { faqPage } from "@/lib/structured-data";
 
 /** Orden de las preguntas en pantalla. */
 const QUESTIONS = ["free", "system", "ap", "password", "report", "migration"] as const;
@@ -37,6 +39,14 @@ export default async function SupportPage() {
   const t = await getTranslator();
   return (
     <main className="flex-1 py-8 sm:py-12">
+      <JsonLd
+        data={faqPage(
+          QUESTIONS.map((key) => ({
+            question: t(`support.faq.${key}.question`),
+            answer: t(`support.faq.${key}.answer`),
+          })),
+        )}
+      />
       <Container className="flex max-w-3xl flex-col gap-8">
         <header>
           <h1 className="font-display text-navy-900 text-4xl font-bold">{t("support.title")}</h1>
