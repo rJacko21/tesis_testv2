@@ -1,28 +1,24 @@
 /**
- * Portada provisional, ya traducida a los 7 idiomas.
+ * Portada (RF-01).
  *
- * Sirve para comprobar el enrutado por idioma y el sistema de diseño; la
- * portada real se construye en T-12 según RF-01.
+ * Todo se renderiza en el servidor y se puede prerenderizar por idioma: la
+ * página no envía JavaScript propio, salvo el selector de idioma de la
+ * cabecera. Las noticias y promociones se añaden cuando exista su modelo
+ * de datos (T-10, T-12).
  */
-import { ButtonLink } from "@/components/ui";
+import { ClassShowcase } from "@/components/home/ClassShowcase";
+import { FeatureList } from "@/components/home/FeatureList";
+import { Hero } from "@/components/home/Hero";
 import { getLocale, getTranslator } from "@/i18n/server";
 
 export default async function HomePage() {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center gap-4 px-4 py-12 sm:px-6">
-      <h1 className="font-display text-navy-900 text-4xl font-bold sm:text-5xl">Florensia</h1>
-      <p className="text-lg">{t("home.tagline")}</p>
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <ButtonLink href={`/${locale}/play-now`} size="lg">
-          {t("nav.playNow")}
-        </ButtonLink>
-        <ButtonLink href={`/${locale}/download`} size="lg" variant="secondary">
-          {t("nav.download")}
-        </ButtonLink>
-      </div>
-      <p className="text-ink-600 text-sm">{t("home.underConstruction")}</p>
+    <main className="flex flex-1 flex-col">
+      <Hero locale={locale} t={t} />
+      <FeatureList t={t} />
+      <ClassShowcase t={t} />
     </main>
   );
 }

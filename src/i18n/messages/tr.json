@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "Ücretsiz anime MMORPG. Karada savaş, denizlere açıl ve loncanı kur.",
-    "underConstruction": "Yeni web sitesi yapım aşamasında."
+    "hero": {
+      "eyebrow": "Ücretsiz anime MMORPG",
+      "artAlt": "Turuncu ve siyah elbiseli bir Magic Knight kahramanı"
+    },
+    "features": {
+      "title": "Karada ve denizde macera",
+      "land": {
+        "title": "Karada savaş",
+        "body": "Canavarlar, zindanlar ve görevlerle dolu adaları tek başına ya da arkadaşlarınla keşfet."
+      },
+      "sea": {
+        "title": "Denizlere açıl",
+        "body": "Kendi gemine kaptanlık et, deniz savaşlarına katıl ve yeni kıyılar keşfet."
+      },
+      "guild": {
+        "title": "Bir loncaya katıl",
+        "body": "Diğer oyuncularla birleş, bölgeler fethet ve sıralamalarda birlikte yüksel."
+      }
+    },
+    "classes": {
+      "title": "Sınıfını seç",
+      "intro": "Dört sınıf, sekiz yol. Her sınıf {level}. seviyede iki uzmanlıktan birini seçer.",
+      "specializations": "{level}. seviyeden itibaren uzmanlıklar",
+      "artAlt": "{name} sınıfı illüstrasyonu"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Yakın dövüş",
+      "description": "Ağır zırhlı bir ön saf savaşçısı; darbeleri karşılar, kılıç ve kalkanla grubu korur."
+    },
+    "explorer": {
+      "role": "Uzak menzilli saldırı",
+      "description": "Hızlı ve becerikli; ateşli silahlar ve aletlerle uzaktan savaşır, adalarda hazine arar."
+    },
+    "noble": {
+      "role": "Büyü",
+      "description": "Gizemli sanatlarda ustadır: uzaktan güçlü büyüler ya da yakından büyülü bir kılıç."
+    },
+    "saint": {
+      "role": "İyileştirme ve destek",
+      "description": "Yaraları iyileştirir, müttefiklerini güçlendirir ve kutsal ile doğa büyüsüyle savaşın gidişatını değiştirir."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",

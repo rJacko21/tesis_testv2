@@ -25,7 +25,49 @@
   },
   "home": {
     "tagline": "MMORPG de anime gratuito. Lute em terra, navegue pelos mares e construa sua guilda.",
-    "underConstruction": "Novo site em construção."
+    "hero": {
+      "eyebrow": "MMORPG anime gratuito",
+      "artAlt": "Uma heroína Magic Knight com vestido laranja e preto"
+    },
+    "features": {
+      "title": "Aventura em terra e no mar",
+      "land": {
+        "title": "Lute em terra",
+        "body": "Explore ilhas cheias de monstros, masmorras e missões, sozinho ou com amigos."
+      },
+      "sea": {
+        "title": "Navegue pelos mares",
+        "body": "Comande seu próprio navio, trave batalhas navais e descubra novas costas."
+      },
+      "guild": {
+        "title": "Entre em uma guilda",
+        "body": "Junte-se a outros jogadores, conquiste territórios e suba nos rankings juntos."
+      }
+    },
+    "classes": {
+      "title": "Escolha sua classe",
+      "intro": "Quatro classes, oito caminhos. No nível {level}, cada classe escolhe uma de duas especializações.",
+      "specializations": "Especializações a partir do nível {level}",
+      "artAlt": "Ilustração da classe {name}"
+    }
+  },
+  "classes": {
+    "mercenary": {
+      "role": "Combate corpo a corpo",
+      "description": "Guerreiro da linha de frente com armadura pesada, que aguenta os golpes e protege o grupo com espada e escudo."
+    },
+    "explorer": {
+      "role": "Ataque à distância",
+      "description": "Ágil e engenhoso, luta à distância com armas de fogo e engenhocas e desenterra tesouros pelas ilhas."
+    },
+    "noble": {
+      "role": "Magia",
+      "description": "Domina as artes arcanas: feitiços poderosos à distância ou uma lâmina encantada de perto."
+    },
+    "saint": {
+      "role": "Cura e suporte",
+      "description": "Cura ferimentos, fortalece os aliados e vira o rumo da batalha com magia sagrada e da natureza."
+    }
   },
   "footer": {
     "copyright": "© {year} Giiku Games GmbH",

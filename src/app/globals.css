@@ -43,6 +43,12 @@
   --color-danger-700: #a4262c;
   --color-success-700: #1e6b3a;
 
+  /* Color de cada clase. Solo decorativo (bordes, brillos), nunca texto. */
+  --color-class-mercenary: #b3322f;
+  --color-class-explorer: #d9a441;
+  --color-class-noble: #5b6b82;
+  --color-class-saint: #7a4fa3;
+
   --font-display: var(--font-alegreya), Georgia, serif;
   --font-sans: var(--font-nunito), system-ui, sans-serif;
 
