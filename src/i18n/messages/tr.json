@@ -79,6 +79,7 @@
     "terms": "Hizmet Şartları",
     "conduct": "Davranış Kuralları",
     "privacy": "Gizlilik Politikası",
+    "cookiePolicy": "Çerez politikası",
     "social": "Florensia’yı takip et",
     "cookieSettings": "Çerez ayarları"
   },
@@ -134,5 +135,89 @@
       "next": "Sonraki",
       "page": "Sayfa {page} / {count}"
     }
+  },
+  "download": {
+    "title": "Florensia'yı indir",
+    "description": "Florensia'yı Steam üzerinden Windows için ücretsiz indir. Sistem gereksinimleri, boyut ve kurulum adımları.",
+    "intro": "Florensia, Windows 10 veya üzeri sürümlerde ücretsiz oynanır. Steam üzerinden birkaç dakikada kurabilirsin.",
+    "recommendation": {
+      "windows": "Bilgisayarın Windows kullanıyor: oynayabilirsin",
+      "windowsBody": "Florensia'yı Steam'den kur. İndirme boyutu yaklaşık {size} GB.",
+      "desktop": "Florensia Windows gerektirir",
+      "desktopBody": "Oyun yalnızca Windows 10 veya üzeri için mevcut. Şimdi Steam kütüphanene ekleyip daha sonra bir Windows bilgisayara kurabilirsin.",
+      "mobile": "Florensia bir PC oyunudur",
+      "mobileBody": "Kurmak için bu sayfayı Windows bilgisayarında aç. Şimdi telefonundan Steam kütüphanene ekleyebilirsin.",
+      "unknown": "Florensia Windows'ta çalışır",
+      "unknownBody": "Oyun, Steam üzerinden Windows 10 veya üzeri için mevcut."
+    },
+    "steam": "Steam'den indir",
+    "installer": "Yükleyiciyi indir",
+    "free": "Ücretsiz",
+    "version": "Sürüm {version}",
+    "requirements": {
+      "title": "Sistem gereksinimleri",
+      "minimum": "En düşük",
+      "recommended": "Önerilen",
+      "component": "Bileşen",
+      "os": "İşletim sistemi",
+      "osValue": "Windows 10 veya üzeri",
+      "processor": "İşlemci",
+      "memory": "Bellek",
+      "graphics": "Ekran kartı",
+      "directx": "DirectX",
+      "network": "Ağ",
+      "networkValue": "Geniş bant internet bağlantısı",
+      "storage": "Depolama",
+      "storageValue": "{size} GB boş alan",
+      "note": "7. nesilden eski Intel tümleşik grafik birimleri desteklenmeyebilir."
+    },
+    "steps": {
+      "title": "Nasıl kurulur",
+      "one": "Steam'i kur ve giriş yap ya da ücretsiz bir Steam hesabı oluştur.",
+      "two": "Steam'de Florensia'yı aç ve Oyna'ya bas.",
+      "three": "Oyun başlatıcısında Florensia hesabını oluştur ve bir sunucu seç."
+    }
+  },
+  "support": {
+    "title": "Destek",
+    "description": "Florensia hakkında sık sorulan sorular: hesap, ödemeler, kurulum ve kurallar.",
+    "intro": "Hızlı yanıtları burada bulabilirsin. Sorun listede yoksa Discord'da topluluğa sor.",
+    "faqTitle": "Sık sorulan sorular",
+    "faq": {
+      "free": {
+        "question": "Florensia ücretsiz mi?",
+        "answer": "Evet. Oyun ücretsiz oynanır. Mağaza, mağaza para birimi AP ile isteğe bağlı eşyalar satar."
+      },
+      "system": {
+        "question": "Nasıl bir bilgisayar gerekiyor?",
+        "answer": "Windows 10 veya üzeri. İndirme sayfasında en düşük ve önerilen gereksinimler var."
+      },
+      "ap": {
+        "question": "AP nedir, nasıl alınır?",
+        "answer": "AP, eşya mağazasının para birimidir. Hesabından yüklersin ve bakiyen her satın almada görünür."
+      },
+      "password": {
+        "question": "Şifremi unuttum",
+        "answer": "Giriş sayfasındaki şifre kurtarma bağlantısını kullan. Yalnızca bir kez çalışan bir bağlantı içeren e-posta alacaksın."
+      },
+      "report": {
+        "question": "Bir oyuncuyu nasıl şikâyet ederim?",
+        "answer": "Karakter adını, sunucuyu ve saati not al, mümkünse ekran görüntüsü al ve desteğe gönder. Kurallar neyin yasak olduğunu açıklar."
+      },
+      "migration": {
+        "question": "Karakterimi başka bir sunucuya taşıyabilir miyim?",
+        "answer": "Karakter taşıma işlemini destek ekibi yapar. Talebinde hesap adını, karakteri ve hedef sunucuyu belirt."
+      }
+    },
+    "communityTitle": "Hâlâ yardıma mı ihtiyacın var?",
+    "communityBody": "Florensia topluluğu ve ekibi resmî Discord sunucusunda soruları yanıtlıyor.",
+    "discord": "Discord'u aç"
+  },
+  "legal": {
+    "toc": "İçindekiler",
+    "effective": "{date} tarihinden beri geçerli · sürüm {version}",
+    "englishOnly": "Yalnızca İngilizce",
+    "englishOnlyBody": "Bu metin henüz dilinize çevrilmedi.",
+    "unavailable": "Bu sayfa yüklenemedi. Lütfen birkaç dakika sonra tekrar deneyin."
   }
 }

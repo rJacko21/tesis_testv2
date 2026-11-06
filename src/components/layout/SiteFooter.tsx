@@ -21,6 +21,7 @@ const LEGAL_LINKS = [
   { key: "footer.terms", path: "/terms" },
   { key: "footer.conduct", path: "/rules" },
   { key: "footer.privacy", path: "/privacy" },
+  { key: "footer.cookiePolicy", path: "/cookies" },
 ] as const;
 
 /**

@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
-import { isSafeHref, Markdown, parseMarkdown } from "./markdown";
+import { isSafeHref, Markdown, parseMarkdown, slugify, tableOfContents } from "./markdown";
 
 const html = (source: string) =>
   renderToStaticMarkup(<Markdown source={source} externalLabel="(external)" />);
@@ -62,5 +62,23 @@ describe("isSafeHref", () => {
     ["//evil.example", false],
   ])("%s → %s", (href, expected) => {
     expect(isSafeHref(href)).toBe(expected);
+  });
+});
+
+describe("índice de títulos", () => {
+  it("genera ids legibles, sin acentos y únicos", () => {
+    expect(tableOfContents("## Juego limpio\n## **Señal** útil\n## Juego limpio")).toEqual([
+      { id: "juego-limpio", title: "Juego limpio" },
+      { id: "senal-util", title: "Señal útil" },
+      { id: "juego-limpio-2", title: "Juego limpio" },
+    ]);
+    expect(slugify("Kişisel veriler")).toBe("kisisel-veriler");
+  });
+
+  it("los h2 llevan el mismo id que el índice", () => {
+    const out = renderToStaticMarkup(
+      <Markdown source={"## Uno\n### Sub\n## Dos"} externalLabel="" headingIds />,
+    );
+    expect(out).toBe('<h2 id="uno">Uno</h2><h3>Sub</h3><h2 id="dos">Dos</h2>');
   });
 });
