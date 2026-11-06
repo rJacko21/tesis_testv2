@@ -16,7 +16,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx scripts/seed.ts",
     "prepare": "husky",
-    "i18n:check": "tsx scripts/check-i18n.ts"
+    "i18n:check": "tsx scripts/check-i18n.ts",
+    "test:e2e": "playwright test",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -35,6 +37,7 @@
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@formatjs/icu-messageformat-parser": "^3.5.22",
+    "@lhci/cli": "^0.16.0",
     "@playwright/test": "^1.65.0",
     "@tailwindcss/turbopack": "^4",
     "@testing-library/jest-dom": "^7.0.1",
@@ -59,7 +62,7 @@
     "vitest": "^5.1.0"
   },
   "packageManager": "pnpm@10.28.0",
-  "description": "Reconstrucción de la web de Florensia Online (trabajo de tesis)",
+  "description": "Reconstrucci\u00f3n de la web de Florensia Online (trabajo de tesis)",
   "engines": {
     "node": ">=22"
   },

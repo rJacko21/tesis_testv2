@@ -25,7 +25,7 @@ Medido en móvil (Lighthouse, Moto G Power, 4G lenta) y en campo (percentil 75):
 | INP | ≤ 200 ms | **≤ 150 ms** |
 | CLS | ≤ 0,1 | **≤ 0,05** |
 | TTFB | ≤ 0,8 s | ≤ 0,6 s |
-| JS inicial (comprimido) en portada | — | **≤ 120 KB** |
+| JS inicial (comprimido) en portada | — | **≤ 150 KB** en total, de los que **≤ 30 KB** son código propio (ver ADR-15) |
 | CSS crítico | — | ≤ 30 KB |
 | Peso total de portada | — | ≤ 800 KB |
 | Lighthouse Rendimiento / Accesibilidad / Buenas prácticas / SEO | — | ≥ 95 / 100 / 100 / 100 |

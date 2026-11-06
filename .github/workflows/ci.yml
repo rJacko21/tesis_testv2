@@ -1,5 +1,6 @@
 # Integración continua: cada push y PR pasa lint, tipos, tests y build.
-# Lighthouse CI, Playwright y axe se añaden en T-07 (semana 2).
+# El job `calidad` (T-07) añade pruebas e2e con axe y Lighthouse CI con
+# los presupuestos de la constitución (02) y ADR-15.
 name: CI
 
 on:
@@ -27,3 +28,30 @@ jobs:
         env:
           # El build no conecta a la base de datos; solo valida el formato.
           DATABASE_URL: mysql://ci:ci@localhost:3306/ci
+
+  calidad:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://ci:ci@localhost:3306/ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
+      # Accesibilidad (axe, WCAG 2.2 AA), i18n y diseño responsive.
+      - run: pnpm test:e2e
+      # Core Web Vitals de laboratorio contra los presupuestos.
+      - run: pnpm lighthouse
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: informes-calidad
+          path: |
+            .lighthouseci
+            playwright-report
+          retention-days: 14
