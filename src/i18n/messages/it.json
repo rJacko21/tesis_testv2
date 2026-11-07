@@ -701,7 +701,9 @@
       "home": "Inizio",
       "news": "Notizie",
       "users": "Account",
-      "audit": "Registro di audit"
+      "audit": "Registro di audit",
+      "shop": "Negozio",
+      "campaigns": "Campagne"
     },
     "home": {
       "title": "Pannello di amministrazione",
@@ -709,7 +711,9 @@
       "users": "Cerca account, consulta la cronologia e sospendili o riattivali.",
       "audit": "Chi ha cambiato cosa, e quando.",
       "nothing": "Il tuo ruolo non ha ancora sezioni nel pannello.",
-      "news": "Scrivi, traduci, programma e pubblica notizie."
+      "news": "Scrivi, traduci, programma e pubblica notizie.",
+      "shop": "Crea articoli, traduci i nomi e gestisci prezzi e sconti.",
+      "campaigns": "Pianifica i periodi di sconto e le loro date."
     },
     "roles": {
       "admin": "Amministratore",
@@ -814,10 +818,24 @@
           "translationAdd": "Testo aggiunto",
           "translationDelete": "Testo rimosso",
           "delete": "Bozza eliminata"
+        },
+        "item": {
+          "create": "Articolo creato",
+          "update": "Articolo modificato",
+          "translation": "Testo dell’articolo modificato",
+          "priceAdd": "Prezzo aggiunto",
+          "priceDelete": "Prezzo futuro eliminato",
+          "priceEnd": "Prezzo terminato"
+        },
+        "campaign": {
+          "create": "Campagna creata",
+          "update": "Campagna modificata"
         }
       },
       "cli": "Riga di comando",
-      "postTarget": "Notizia n. {id}"
+      "postTarget": "Notizia n. {id}",
+      "itemTarget": "Articolo n. {id}",
+      "campaignTarget": "Campagna n. {id}"
     },
     "news": {
       "title": "Notizie",
@@ -901,6 +919,128 @@
         "translation": "Testo salvato.",
         "translationDeleted": "Testo rimosso.",
         "deleted": "Bozza eliminata."
+      }
+    },
+    "shop": {
+      "title": "Negozio",
+      "new": "Nuovo articolo",
+      "newIntro": "Viene creato inattivo. Poi scrivi i nomi, aggiungi un prezzo e attivalo.",
+      "create": "Crea articolo",
+      "back": "Torna al negozio",
+      "search": "Cerca articoli",
+      "query": "SKU o nome",
+      "category": "Categoria",
+      "active": "Attivo",
+      "inactive": "Inattivo",
+      "count": "{total, plural, one {# articolo} other {# articoli}}",
+      "empty": "Nessun articolo con questa ricerca.",
+      "caption": "Articoli, pagina {page} di {count}",
+      "name": "Nome",
+      "currentPrice": "Prezzo attuale",
+      "noPrice": "Senza prezzo",
+      "editTitle": "Articolo n. {id}",
+      "notForSale": "Questo articolo è attivo ma non ha un prezzo attuale, quindi non compare nel negozio. Aggiungi un prezzo qui sotto.",
+      "textsHint": "Se manca una lingua, il negozio mostra il nome inglese e lo segnala. L’inglese è obbligatorio per attivare l’articolo.",
+      "description": "Descrizione",
+      "prices": "Prezzi",
+      "pricesHint": "I prezzi non si modificano mai: ogni cambio è una riga nuova, così gli acquisti passati mantengono il loro prezzo. Orari in UTC.",
+      "noPrices": "Questo articolo non ha ancora prezzi.",
+      "priceAp": "Prezzo (AP)",
+      "salePriceAp": "Prezzo scontato (AP)",
+      "campaign": "Campagna",
+      "startsAt": "Inizio (UTC)",
+      "endsAt": "Fine (UTC)",
+      "noEnd": "Senza fine",
+      "actions": "Azioni",
+      "state": {
+        "current": "Attuale",
+        "future": "Futuro",
+        "active": "Sovrapposto",
+        "ended": "Terminato"
+      },
+      "deletePrice": "Elimina prezzo futuro di {amount} AP",
+      "endPrice": "Termina ora il prezzo di {amount} AP",
+      "addPrice": "Aggiungi un prezzo",
+      "addPriceHint": "Vale la riga più recente già iniziata. Uno sconto in una campagna prende le date della campagna se le lasci vuote.",
+      "addPriceSubmit": "Aggiungi prezzo",
+      "saleHint": "Facoltativo. Inferiore al prezzo; il negozio li mostra entrambi.",
+      "campaignHint": "Facoltativo. Raggruppa lo sconto in una campagna e lo limita alle sue date.",
+      "noCampaign": "Nessuna campagna",
+      "startsAtHint": "Vuoto significa adesso (o l’inizio della campagna).",
+      "endsAtHint": "Vuoto significa senza fine (o la fine della campagna).",
+      "sku": "SKU",
+      "skuHint": "Codice interno unico: maiuscole, numeri e trattini, es. COSTUME-SNOW-01.",
+      "validityDays": "Durata (giorni)",
+      "validityHint": "Vuoto significa permanente.",
+      "sortOrder": "Ordine",
+      "sortOrderHint": "I numeri più bassi compaiono prima nella categoria.",
+      "giftable": "Si può regalare",
+      "limited": "Limitato",
+      "bundle": "Pacchetto",
+      "activeField": "Attivo nel negozio",
+      "activeHint": "Compare solo se ha anche un prezzo attuale. Richiede il nome inglese.",
+      "problems": {
+        "sku": "Usa da 2 a 40 maiuscole, numeri e trattini singoli.",
+        "category": "Scegli una categoria.",
+        "validity": "Usa un numero intero di giorni tra 1 e 3650, o lascia vuoto.",
+        "sortOrder": "Usa un numero intero tra -32768 e 32767.",
+        "price": "Usa un numero intero di AP tra 1 e 1.000.000.",
+        "sale": "Il prezzo scontato deve essere un intero inferiore al prezzo.",
+        "campaign": "Scegli una campagna non terminata.",
+        "date": "Usa una data e un’ora valide.",
+        "past": "Scegli una data futura: i prezzi passati non si cambiano.",
+        "endsBeforeStart": "La fine deve essere dopo l’inizio.",
+        "outsideCampaign": "Le date devono rientrare nella campagna.",
+        "code": "Usa da 3 a 60 minuscole, numeri e trattini singoli.",
+        "required": "Questo campo è obbligatorio.",
+        "name": "Scrivi un nome di al massimo 120 caratteri.",
+        "description": "Fino a 2.000 caratteri.",
+        "campaignName": "Fino a 80 caratteri.",
+        "campaignEnglish": "Il nome inglese è obbligatorio."
+      },
+      "errors": {
+        "notFound": "Quell’articolo o prezzo non esiste più.",
+        "changed": "Nel frattempo qualcuno ha salvato modifiche. Ricarica la pagina e riprova.",
+        "skuTaken": "Un altro articolo usa già quello SKU.",
+        "codeTaken": "Un’altra campagna usa già quel codice.",
+        "english": "Il nome inglese è obbligatorio per attivare l’articolo.",
+        "unchanged": "Non c’era nulla da cambiare.",
+        "started": "Quel prezzo è già iniziato e non si può eliminare.",
+        "notActive": "Quel prezzo è già terminato.",
+        "ended": "La campagna è terminata: le sue date non si possono più cambiare.",
+        "campaignRows": "Con queste date, un prezzo collegato finirebbe prima di iniziare. Sistema prima quel prezzo."
+      },
+      "done": {
+        "created": "Articolo creato. Ora scrivi il nome in inglese.",
+        "saved": "Salvato.",
+        "text": "Testo salvato.",
+        "price": "Prezzo aggiunto.",
+        "priceEnded": "Prezzo terminato."
+      }
+    },
+    "campaigns": {
+      "title": "Campagne",
+      "intro": "Periodi di sconti che raggruppano prezzi: Natale, anniversario… Orari in UTC.",
+      "new": "Nuova campagna",
+      "create": "Crea campagna",
+      "back": "Torna alle campagne",
+      "empty": "Non ci sono ancora campagne.",
+      "name": "Nome",
+      "priceRows": "Prezzi",
+      "state": {
+        "upcoming": "In arrivo",
+        "running": "In corso",
+        "ended": "Terminata"
+      },
+      "code": "Codice",
+      "codeHint": "Unico: minuscole, numeri e trattini, es. xmas-2026.",
+      "endsAtHint": "Cambiare le date sposta anche i prezzi che seguono la campagna.",
+      "nameIn": "Nome in {language}",
+      "editTitle": "Campagna n. {id}",
+      "rowsLinked": "{count, plural, one {# prezzo collegato} other {# prezzi collegati}}",
+      "done": {
+        "created": "Campagna creata.",
+        "saved": "Campagna salvata."
       }
     }
   }

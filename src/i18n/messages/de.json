@@ -701,7 +701,9 @@
       "home": "Start",
       "news": "Neuigkeiten",
       "users": "Konten",
-      "audit": "Prüfprotokoll"
+      "audit": "Prüfprotokoll",
+      "shop": "Shop",
+      "campaigns": "Aktionen"
     },
     "home": {
       "title": "Verwaltung",
@@ -709,7 +711,9 @@
       "users": "Konten suchen, Verlauf ansehen und sperren oder entsperren.",
       "audit": "Wer hat was wann geändert.",
       "nothing": "Deine Rolle hat noch keine Bereiche in der Verwaltung.",
-      "news": "Neuigkeiten schreiben, übersetzen, planen und veröffentlichen."
+      "news": "Neuigkeiten schreiben, übersetzen, planen und veröffentlichen.",
+      "shop": "Artikel anlegen, Namen übersetzen, Preise und Angebote verwalten.",
+      "campaigns": "Angebotszeiträume und ihre Daten planen."
     },
     "roles": {
       "admin": "Administrator",
@@ -814,10 +818,24 @@
           "translationAdd": "Text hinzugefügt",
           "translationDelete": "Text entfernt",
           "delete": "Entwurf gelöscht"
+        },
+        "item": {
+          "create": "Artikel angelegt",
+          "update": "Artikel geändert",
+          "translation": "Artikeltext geändert",
+          "priceAdd": "Preis hinzugefügt",
+          "priceDelete": "Künftiger Preis gelöscht",
+          "priceEnd": "Preis beendet"
+        },
+        "campaign": {
+          "create": "Aktion angelegt",
+          "update": "Aktion geändert"
         }
       },
       "cli": "Kommandozeile",
-      "postTarget": "Beitrag Nr. {id}"
+      "postTarget": "Beitrag Nr. {id}",
+      "itemTarget": "Artikel Nr. {id}",
+      "campaignTarget": "Aktion Nr. {id}"
     },
     "news": {
       "title": "Neuigkeiten",
@@ -901,6 +919,128 @@
         "translation": "Text gespeichert.",
         "translationDeleted": "Text entfernt.",
         "deleted": "Entwurf gelöscht."
+      }
+    },
+    "shop": {
+      "title": "Shop",
+      "new": "Neuer Artikel",
+      "newIntro": "Er wird inaktiv angelegt. Danach Namen schreiben, einen Preis hinzufügen und aktivieren.",
+      "create": "Artikel anlegen",
+      "back": "Zurück zum Shop",
+      "search": "Artikel suchen",
+      "query": "SKU oder Name",
+      "category": "Kategorie",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "count": "{total, plural, one {# Artikel} other {# Artikel}}",
+      "empty": "Keine Artikel für diese Suche.",
+      "caption": "Artikel, Seite {page} von {count}",
+      "name": "Name",
+      "currentPrice": "Aktueller Preis",
+      "noPrice": "Kein Preis",
+      "editTitle": "Artikel Nr. {id}",
+      "notForSale": "Dieser Artikel ist aktiv, hat aber keinen aktuellen Preis und erscheint daher nicht im Shop. Füge unten einen Preis hinzu.",
+      "textsHint": "Fehlt eine Sprache, zeigt der Shop den englischen Namen und weist darauf hin. Englisch ist zum Aktivieren nötig.",
+      "description": "Beschreibung",
+      "prices": "Preise",
+      "pricesHint": "Preise werden nie überschrieben: Jede Änderung ist eine neue Zeile, frühere Käufe behalten ihren Preis. Zeiten in UTC.",
+      "noPrices": "Dieser Artikel hat noch keine Preise.",
+      "priceAp": "Preis (AP)",
+      "salePriceAp": "Angebotspreis (AP)",
+      "campaign": "Aktion",
+      "startsAt": "Beginn (UTC)",
+      "endsAt": "Ende (UTC)",
+      "noEnd": "Ohne Ende",
+      "actions": "Aktionen",
+      "state": {
+        "current": "Aktuell",
+        "future": "Geplant",
+        "active": "Überlagert",
+        "ended": "Beendet"
+      },
+      "deletePrice": "Künftigen Preis von {amount} AP löschen",
+      "endPrice": "Preis von {amount} AP jetzt beenden",
+      "addPrice": "Preis hinzufügen",
+      "addPriceHint": "Es gilt die neueste bereits begonnene Zeile. Ein Angebot in einer Aktion übernimmt deren Daten, wenn du sie leer lässt.",
+      "addPriceSubmit": "Preis hinzufügen",
+      "saleHint": "Optional. Niedriger als der Preis; der Shop zeigt beide.",
+      "campaignHint": "Optional. Ordnet das Angebot einer Aktion zu und begrenzt es auf deren Daten.",
+      "noCampaign": "Keine Aktion",
+      "startsAtHint": "Leer heißt jetzt (oder Beginn der Aktion).",
+      "endsAtHint": "Leer heißt ohne Ende (oder Ende der Aktion).",
+      "sku": "SKU",
+      "skuHint": "Eindeutiger interner Code: Großbuchstaben, Zahlen und Bindestriche, z. B. COSTUME-SNOW-01.",
+      "validityDays": "Laufzeit (Tage)",
+      "validityHint": "Leer heißt dauerhaft.",
+      "sortOrder": "Reihenfolge",
+      "sortOrderHint": "Kleinere Zahlen erscheinen in der Kategorie zuerst.",
+      "giftable": "Verschenkbar",
+      "limited": "Limitiert",
+      "bundle": "Paket",
+      "activeField": "Im Shop aktiv",
+      "activeHint": "Erscheint nur, wenn er auch einen aktuellen Preis hat. Erfordert den englischen Namen.",
+      "problems": {
+        "sku": "Verwende 2 bis 40 Großbuchstaben, Zahlen und einzelne Bindestriche.",
+        "category": "Wähle eine Kategorie.",
+        "validity": "Gib eine ganze Zahl von 1 bis 3650 Tagen ein oder lass das Feld leer.",
+        "sortOrder": "Gib eine ganze Zahl von -32768 bis 32767 ein.",
+        "price": "Gib eine ganze Zahl AP von 1 bis 1.000.000 ein.",
+        "sale": "Der Angebotspreis muss eine ganze Zahl unter dem Preis sein.",
+        "campaign": "Wähle eine Aktion, die nicht beendet ist.",
+        "date": "Gib ein gültiges Datum mit Uhrzeit ein.",
+        "past": "Wähle ein künftiges Datum: Vergangene Preise lassen sich nicht ändern.",
+        "endsBeforeStart": "Das Ende muss nach dem Beginn liegen.",
+        "outsideCampaign": "Die Daten müssen innerhalb der Aktion liegen.",
+        "code": "Verwende 3 bis 60 Kleinbuchstaben, Zahlen und einzelne Bindestriche.",
+        "required": "Dieses Feld ist erforderlich.",
+        "name": "Schreibe einen Namen mit höchstens 120 Zeichen.",
+        "description": "Bis zu 2.000 Zeichen.",
+        "campaignName": "Bis zu 80 Zeichen.",
+        "campaignEnglish": "Der englische Name ist erforderlich."
+      },
+      "errors": {
+        "notFound": "Dieser Artikel oder Preis existiert nicht mehr.",
+        "changed": "Inzwischen hat jemand Änderungen gespeichert. Lade die Seite neu und versuche es erneut.",
+        "skuTaken": "Ein anderer Artikel nutzt diese SKU bereits.",
+        "codeTaken": "Eine andere Aktion nutzt diesen Code bereits.",
+        "english": "Zum Aktivieren ist der englische Name nötig.",
+        "unchanged": "Es gab nichts zu ändern.",
+        "started": "Dieser Preis hat bereits begonnen und kann nicht gelöscht werden.",
+        "notActive": "Dieser Preis ist bereits beendet.",
+        "ended": "Die Aktion ist beendet: Ihre Daten lassen sich nicht mehr ändern.",
+        "campaignRows": "Mit diesen Daten würde ein verknüpfter Preis enden, bevor er beginnt. Passe zuerst diesen Preis an."
+      },
+      "done": {
+        "created": "Artikel angelegt. Schreibe jetzt den englischen Namen.",
+        "saved": "Gespeichert.",
+        "text": "Text gespeichert.",
+        "price": "Preis hinzugefügt.",
+        "priceEnded": "Preis beendet."
+      }
+    },
+    "campaigns": {
+      "title": "Aktionen",
+      "intro": "Angebotszeiträume, die Preise bündeln: Weihnachten, Jubiläum … Zeiten in UTC.",
+      "new": "Neue Aktion",
+      "create": "Aktion anlegen",
+      "back": "Zurück zu den Aktionen",
+      "empty": "Es gibt noch keine Aktionen.",
+      "name": "Name",
+      "priceRows": "Preise",
+      "state": {
+        "upcoming": "Geplant",
+        "running": "Läuft",
+        "ended": "Beendet"
+      },
+      "code": "Code",
+      "codeHint": "Eindeutig: Kleinbuchstaben, Zahlen und Bindestriche, z. B. xmas-2026.",
+      "endsAtHint": "Eine Änderung der Daten verschiebt auch die Preise, die der Aktion folgen.",
+      "nameIn": "Name auf {language}",
+      "editTitle": "Aktion Nr. {id}",
+      "rowsLinked": "{count, plural, one {# verknüpfter Preis} other {# verknüpfte Preise}}",
+      "done": {
+        "created": "Aktion angelegt.",
+        "saved": "Aktion gespeichert."
       }
     }
   }

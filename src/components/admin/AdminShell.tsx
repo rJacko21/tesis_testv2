@@ -56,7 +56,7 @@ export function AdminShell({ locale, t, roles, current, title, intro, children }
                   aria-current={area === current ? "page" : undefined}
                   className={LINK}
                 >
-                  {t(`admin.nav.${area as "news" | "users" | "audit"}`)}
+                  {t(`admin.nav.${area as Exclude<AdminArea, "roles">}`)}
                 </Link>
               </li>
             ))}

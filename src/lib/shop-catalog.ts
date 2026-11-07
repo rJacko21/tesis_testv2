@@ -28,8 +28,8 @@ export interface PriceRow {
  * al acabar, vuelve sola el precio normal. `null` si no hay ninguna activa
  * (el artículo no se vende).
  */
-export function currentPrice(rows: readonly PriceRow[], now: Date): PriceRow | null {
-  let best: PriceRow | null = null;
+export function currentPrice<T extends PriceRow>(rows: readonly T[], now: Date): T | null {
+  let best: T | null = null;
   for (const row of rows) {
     const active = row.startsAt <= now && (row.endsAt === null || row.endsAt > now);
     if (active && (best === null || row.startsAt > best.startsAt)) best = row;

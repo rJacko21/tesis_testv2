@@ -4,12 +4,13 @@ import { areasFor, can, canChangeStatus, canSetRoles, isStaff } from "./permissi
 
 describe("permisos del panel (RF-12)", () => {
   it("cada rol abre solo sus zonas", () => {
-    expect(areasFor(["admin"])).toEqual(["news", "users", "roles", "audit"]);
+    expect(areasFor(["admin"])).toEqual(["news", "shop", "campaigns", "users", "roles", "audit"]);
     expect(areasFor(["support"])).toEqual(["users"]);
     expect(areasFor(["editor"])).toEqual(["news"]);
     expect(areasFor([])).toEqual([]);
     expect(can(["editor", "support"], "users")).toBe(true);
     expect(can(["support"], "audit")).toBe(false);
+    expect(can(["editor"], "shop")).toBe(false);
   });
 
   it("un jugador sin roles del equipo no es del equipo", () => {

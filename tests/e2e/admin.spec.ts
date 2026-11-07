@@ -158,7 +158,7 @@ test("un admin cambia roles y lo ve en la auditoría", async ({ page }) => {
 test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas", async ({
   page,
 }) => {
-  test.slow();
+  test.setTimeout(300_000);
   const admin = await signedInAccount(page);
   await grant(admin.username, "admin");
   const id = await userId(admin.username);
@@ -175,6 +175,21 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
     );
     return insertId;
   });
+  // Un artículo del catálogo y una campaña sin precios: verlos no cambia la tienda.
+  const code = `a11y-${Date.now().toString(36)}`;
+  const [itemId, campaignId] = await withDb(async (db) => {
+    const [items] = await db.query("SELECT MIN(id) AS id FROM shop_items");
+    const [result] = await db.query(
+      "INSERT INTO campaigns (code, starts_at, ends_at) VALUES (?, NOW(3), NOW(3) + INTERVAL 7 DAY)",
+      [code],
+    );
+    const insertId = (result as { insertId: number }).insertId;
+    await db.query(
+      "INSERT INTO campaign_translations (campaign_id, locale, name) VALUES (?, 'en', 'A11y sale')",
+      [insertId],
+    );
+    return [(items as { id: number }[])[0]!.id, insertId];
+  });
   const pages = [
     "/admin",
     "/admin/users",
@@ -183,6 +198,12 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
     "/admin/news",
     "/admin/news/new",
     `/admin/news/${postId}?lang=en`,
+    "/admin/shop",
+    "/admin/shop/new",
+    `/admin/shop/${itemId}`,
+    "/admin/campaigns",
+    "/admin/campaigns/new",
+    `/admin/campaigns/${campaignId}`,
   ];
   for (const locale of ["en", "pt-BR", "tr", "it", "de", "fr", "es"]) {
     for (const path of pages) {
@@ -195,5 +216,8 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
       expect(overflow, `${locale}${path}`).toBeLessThanOrEqual(0);
     }
   }
-  await withDb((db) => db.query("DELETE FROM posts WHERE id = ?", [postId]));
+  await withDb(async (db) => {
+    await db.query("DELETE FROM posts WHERE id = ?", [postId]);
+    await db.query("DELETE FROM campaigns WHERE id = ?", [campaignId]);
+  });
 });
