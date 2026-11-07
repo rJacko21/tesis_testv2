@@ -699,6 +699,7 @@
     "nav": {
       "label": "Admin panel sections",
       "home": "Home",
+      "news": "News",
       "users": "Accounts",
       "audit": "Audit log"
     },
@@ -707,7 +708,8 @@
       "intro": "Hello, {name}. Your roles: {roles}.",
       "users": "Find accounts, see their history, and suspend or reactivate them.",
       "audit": "Who changed what, and when.",
-      "nothing": "Your role has no sections in this version of the panel yet. News and promotions will arrive in the next parts."
+      "nothing": "Your role has no sections in the panel yet.",
+      "news": "Write, translate, schedule and publish news."
     },
     "roles": {
       "admin": "Administrator",
@@ -804,9 +806,102 @@
           "suspend": "Account suspended",
           "reactivate": "Account reactivated",
           "roles": "Roles changed"
+        },
+        "post": {
+          "create": "Article created",
+          "update": "Article changed",
+          "translation": "Text changed",
+          "translationAdd": "Text added",
+          "translationDelete": "Text removed",
+          "delete": "Draft deleted"
         }
       },
-      "cli": "Command line"
+      "cli": "Command line",
+      "postTarget": "Article no. {id}"
+    },
+    "news": {
+      "title": "News",
+      "filter": "Filter news",
+      "apply": "Apply",
+      "new": "New article",
+      "newIntro": "It is created as a draft. Then write its texts and choose when it is published.",
+      "create": "Create draft",
+      "back": "Back to news",
+      "empty": "No news with this filter.",
+      "caption": "News, page {page} of {count}",
+      "titleField": "Title",
+      "status": "Status",
+      "statuses": {
+        "draft": "Draft",
+        "scheduled": "Scheduled",
+        "published": "Published"
+      },
+      "publishedAt": "Publication (UTC)",
+      "expiresAt": "Event ends (UTC)",
+      "publishedAtHint": "Required to schedule. If you publish without a date, it is now.",
+      "expiresAtHint": "Optional. After it, the article stays visible but marked as ended.",
+      "statusHint": "Scheduled articles appear on their own at their time. To publish or schedule, the English text is required.",
+      "languages": "Languages",
+      "languageCount": "{count} of {total}",
+      "missing": "Missing: {list}",
+      "missingShort": "missing",
+      "editTitle": "Article no. {id}",
+      "scheduledFor": "Appears on",
+      "viewPublic": "View on the site",
+      "data": "Details and publication",
+      "slug": "URL slug",
+      "slugHint": "Lowercase letters, numbers and hyphens, the same in every language: /news/winter-festival.",
+      "category": "Category",
+      "save": "Save",
+      "meta": "Author: {author}. Last saved:",
+      "texts": "Texts by language",
+      "textsHint": "If a language is missing, the site shows the English text and says so.",
+      "textIn": "Text in {language}",
+      "englishFirst": "Start with English: it is the fallback for missing languages and is required to publish.",
+      "noText": "There is no text in this language yet.",
+      "excerpt": "Summary",
+      "excerptHint": "Shown in the list and on the home page. Up to {max} characters.",
+      "body": "Body (Markdown)",
+      "bodyHint": "Blank line between paragraphs; ## headings; - lists; **bold**, *italic* and [link](https://…).",
+      "seoTitle": "Search title (optional)",
+      "seoTitleHint": "Up to {max} characters. Without it, the title is used.",
+      "seoDescription": "Search description (optional)",
+      "seoDescriptionHint": "Up to {max} characters. Without it, the summary is used.",
+      "saveText": "Save text",
+      "deleteText": "Remove the {language} text",
+      "preview": "Preview (saved text)",
+      "deleteTitle": "Delete draft",
+      "deleteHint": "Only drafts can be deleted. To withdraw a published article, set it to draft.",
+      "delete": "Delete draft",
+      "errorSummary": "Check the fields marked in red.",
+      "problems": {
+        "slug": "Use 3 to 120 lowercase letters, numbers and single hyphens.",
+        "category": "Choose a category.",
+        "status": "Choose a status.",
+        "date": "Write a valid date and time.",
+        "scheduledPast": "To schedule, choose a future date.",
+        "publishedFuture": "A future date means “Scheduled”, not “Published”.",
+        "expiresBeforePublish": "The end must be after the publication."
+      },
+      "translationProblems": {
+        "required": "Fill in this field.",
+        "tooLong": "Up to {max} characters."
+      },
+      "errors": {
+        "notFound": "That article does not exist.",
+        "changed": "Someone else saved this article while you were editing. Nothing was saved: reload the page to see their changes.",
+        "slugTaken": "Another article already uses this slug.",
+        "english": "The English text is required to publish or schedule, and it cannot be removed.",
+        "unchanged": "Nothing had changed.",
+        "published": "Only drafts can be deleted. Set it to draft first."
+      },
+      "done": {
+        "created": "Draft created. Now write the English text.",
+        "saved": "Saved.",
+        "translation": "Text saved.",
+        "translationDeleted": "Text removed.",
+        "deleted": "Draft deleted."
+      }
     }
   }
 }

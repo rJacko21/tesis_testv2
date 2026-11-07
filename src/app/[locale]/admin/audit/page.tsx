@@ -124,6 +124,13 @@ export default async function AdminAuditPage({ searchParams }: PageProps<"/[loca
                       >
                         {t("admin.audit.userTarget", { id: entry.entityId })}
                       </Link>
+                    ) : entry.entity === "post" && entry.entityId ? (
+                      <Link
+                        href={adminPath(locale, `news/${entry.entityId}`)}
+                        className="underline"
+                      >
+                        {t("admin.audit.postTarget", { id: entry.entityId })}
+                      </Link>
                     ) : (
                       `${entry.entity} ${entry.entityId ?? ""}`
                     )}

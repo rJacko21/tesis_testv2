@@ -11,6 +11,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
+/** Pruebas que cambian contenido público y no pueden ir en paralelo con el resto. */
+const PUBLISHING = /admin-news\.spec\.ts$/;
 const executablePath = process.env.CHROMIUM_PATH;
 const launchOptions = executablePath ? { executablePath } : {};
 
@@ -26,8 +28,24 @@ export default defineConfig({
   },
   projects: [
     // Móvil primero: Pixel 7 emulado en Chromium (360-412 px de ancho).
-    { name: "movil", use: { ...devices["Pixel 7"], launchOptions } },
-    { name: "escritorio", use: { ...devices["Desktop Chrome"], launchOptions } },
+    {
+      name: "movil",
+      testIgnore: PUBLISHING,
+      use: { ...devices["Pixel 7"], launchOptions },
+    },
+    {
+      name: "escritorio",
+      testIgnore: PUBLISHING,
+      use: { ...devices["Desktop Chrome"], launchOptions },
+    },
+    // Publica noticias de verdad: va después, para no cambiar lo que cuentan
+    // las pruebas de la web pública (`news.spec.ts`) mientras se ejecutan.
+    {
+      name: "publicacion",
+      testMatch: PUBLISHING,
+      dependencies: ["movil", "escritorio"],
+      use: { ...devices["Desktop Chrome"], launchOptions },
+    },
   ],
   webServer: {
     command: `pnpm start --port ${PORT}`,

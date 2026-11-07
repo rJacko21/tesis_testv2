@@ -699,6 +699,7 @@
     "nav": {
       "label": "Secciones del panel",
       "home": "Inicio",
+      "news": "Noticias",
       "users": "Cuentas",
       "audit": "Auditoría"
     },
@@ -707,7 +708,8 @@
       "intro": "Hola, {name}. Tus roles: {roles}.",
       "users": "Busca cuentas, mira su historial y suspéndelas o reactívalas.",
       "audit": "Quién cambió qué y cuándo.",
-      "nothing": "Tu rol aún no tiene secciones en esta versión del panel. Noticias y promociones llegan en las siguientes partes."
+      "nothing": "Tu rol aún no tiene secciones en el panel.",
+      "news": "Escribe, traduce, programa y publica noticias."
     },
     "roles": {
       "admin": "Administrador",
@@ -804,9 +806,102 @@
           "suspend": "Cuenta suspendida",
           "reactivate": "Cuenta reactivada",
           "roles": "Roles cambiados"
+        },
+        "post": {
+          "create": "Noticia creada",
+          "update": "Noticia cambiada",
+          "translation": "Texto cambiado",
+          "translationAdd": "Texto añadido",
+          "translationDelete": "Texto quitado",
+          "delete": "Borrador borrado"
         }
       },
-      "cli": "Terminal"
+      "cli": "Terminal",
+      "postTarget": "Noticia n.º {id}"
+    },
+    "news": {
+      "title": "Noticias",
+      "filter": "Filtrar noticias",
+      "apply": "Aplicar",
+      "new": "Nueva noticia",
+      "newIntro": "Se crea como borrador. Después escribe sus textos y elige cuándo se publica.",
+      "create": "Crear borrador",
+      "back": "Volver a noticias",
+      "empty": "No hay noticias con este filtro.",
+      "caption": "Noticias, página {page} de {count}",
+      "titleField": "Título",
+      "status": "Estado",
+      "statuses": {
+        "draft": "Borrador",
+        "scheduled": "Programada",
+        "published": "Publicada"
+      },
+      "publishedAt": "Publicación (UTC)",
+      "expiresAt": "Fin del evento (UTC)",
+      "publishedAtHint": "Obligatoria para programar. Si publicas sin fecha, es ahora.",
+      "expiresAtHint": "Opcional. Después, la noticia sigue visible pero marcada como terminada.",
+      "statusHint": "Las programadas aparecen solas a su hora. Para publicar o programar hace falta el texto en inglés.",
+      "languages": "Idiomas",
+      "languageCount": "{count} de {total}",
+      "missing": "Faltan: {list}",
+      "missingShort": "falta",
+      "editTitle": "Noticia n.º {id}",
+      "scheduledFor": "Aparece el",
+      "viewPublic": "Ver en la web",
+      "data": "Datos y publicación",
+      "slug": "Slug de la URL",
+      "slugHint": "Minúsculas, números y guiones, igual en todos los idiomas: /news/festival-invierno.",
+      "category": "Categoría",
+      "save": "Guardar",
+      "meta": "Autor: {author}. Última vez guardada:",
+      "texts": "Textos por idioma",
+      "textsHint": "Si falta un idioma, la web muestra el texto en inglés y lo avisa.",
+      "textIn": "Texto en {language}",
+      "englishFirst": "Empieza por el inglés: es el idioma de respaldo y hace falta para publicar.",
+      "noText": "Aún no hay texto en este idioma.",
+      "excerpt": "Entradilla",
+      "excerptHint": "Sale en el listado y en la portada. Hasta {max} caracteres.",
+      "body": "Cuerpo (Markdown)",
+      "bodyHint": "Línea en blanco entre párrafos; ## títulos; - listas; **negrita**, *cursiva* y [enlace](https://…).",
+      "seoTitle": "Título para buscadores (opcional)",
+      "seoTitleHint": "Hasta {max} caracteres. Sin él, se usa el título.",
+      "seoDescription": "Descripción para buscadores (opcional)",
+      "seoDescriptionHint": "Hasta {max} caracteres. Sin ella, se usa la entradilla.",
+      "saveText": "Guardar texto",
+      "deleteText": "Quitar el texto en {language}",
+      "preview": "Vista previa (texto guardado)",
+      "deleteTitle": "Borrar borrador",
+      "deleteHint": "Solo se borran los borradores. Para retirar una noticia publicada, pásala a borrador.",
+      "delete": "Borrar borrador",
+      "errorSummary": "Revisa los campos marcados en rojo.",
+      "problems": {
+        "slug": "Usa de 3 a 120 minúsculas, números y guiones sueltos.",
+        "category": "Elige una categoría.",
+        "status": "Elige un estado.",
+        "date": "Escribe una fecha y hora válidas.",
+        "scheduledPast": "Para programar, elige una fecha futura.",
+        "publishedFuture": "Una fecha futura es «Programada», no «Publicada».",
+        "expiresBeforePublish": "El fin tiene que ser posterior a la publicación."
+      },
+      "translationProblems": {
+        "required": "Rellena este campo.",
+        "tooLong": "Hasta {max} caracteres."
+      },
+      "errors": {
+        "notFound": "La noticia no existe.",
+        "changed": "Otra persona guardó esta noticia mientras la editabas. No se ha guardado nada: recarga la página para ver sus cambios.",
+        "slugTaken": "Otra noticia ya usa ese slug.",
+        "english": "El texto en inglés hace falta para publicar o programar, y no se puede quitar.",
+        "unchanged": "No había cambiado nada.",
+        "published": "Solo se borran los borradores. Pásala antes a borrador."
+      },
+      "done": {
+        "created": "Borrador creado. Ahora escribe el texto en inglés.",
+        "saved": "Guardado.",
+        "translation": "Texto guardado.",
+        "translationDeleted": "Texto quitado.",
+        "deleted": "Borrador borrado."
+      }
     }
   }
 }

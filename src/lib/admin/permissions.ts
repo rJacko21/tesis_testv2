@@ -4,7 +4,7 @@
  * Los roles son los de la tabla `roles` (`admin`, `editor`, `support`). Cada
  * zona del panel dice qué roles la abren:
  * - **admin:** todo, incluidos los roles de otras cuentas y la auditoría.
- * - **editor:** contenido (noticias y promociones).
+ * - **editor:** contenido (noticias; promociones en la siguiente parte).
  * - **support:** atender a los jugadores (buscar cuentas, ver su historial,
  *   suspenderlas o reactivarlas).
  *
@@ -18,11 +18,12 @@
 export const STAFF_ROLES = ["admin", "editor", "support"] as const;
 export type StaffRole = (typeof STAFF_ROLES)[number];
 
-/** Zonas del panel. Las de contenido y tienda llegan en las siguientes partes de T-23. */
-export const ADMIN_AREAS = ["users", "roles", "audit"] as const;
+/** Zonas del panel, en el orden del menú. La tienda llega en la siguiente parte de T-23. */
+export const ADMIN_AREAS = ["news", "users", "roles", "audit"] as const;
 export type AdminArea = (typeof ADMIN_AREAS)[number];
 
 const ACCESS: Record<AdminArea, readonly StaffRole[]> = {
+  news: ["admin", "editor"],
   users: ["admin", "support"],
   roles: ["admin"],
   audit: ["admin"],

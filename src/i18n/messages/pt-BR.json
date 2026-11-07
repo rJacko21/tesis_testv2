@@ -699,6 +699,7 @@
     "nav": {
       "label": "Seções do painel",
       "home": "Início",
+      "news": "Notícias",
       "users": "Contas",
       "audit": "Auditoria"
     },
@@ -707,7 +708,8 @@
       "intro": "Olá, {name}. Seus papéis: {roles}.",
       "users": "Busque contas, veja o histórico e suspenda ou reative.",
       "audit": "Quem mudou o quê, e quando.",
-      "nothing": "Seu papel ainda não tem seções nesta versão do painel. Notícias e promoções chegam nas próximas partes."
+      "nothing": "Seu papel ainda não tem seções no painel.",
+      "news": "Escreva, traduza, agende e publique notícias."
     },
     "roles": {
       "admin": "Administrador",
@@ -804,9 +806,102 @@
           "suspend": "Conta suspensa",
           "reactivate": "Conta reativada",
           "roles": "Papéis alterados"
+        },
+        "post": {
+          "create": "Notícia criada",
+          "update": "Notícia alterada",
+          "translation": "Texto alterado",
+          "translationAdd": "Texto adicionado",
+          "translationDelete": "Texto removido",
+          "delete": "Rascunho excluído"
         }
       },
-      "cli": "Linha de comando"
+      "cli": "Linha de comando",
+      "postTarget": "Notícia n.º {id}"
+    },
+    "news": {
+      "title": "Notícias",
+      "filter": "Filtrar notícias",
+      "apply": "Aplicar",
+      "new": "Nova notícia",
+      "newIntro": "Ela é criada como rascunho. Depois escreva os textos e escolha quando publicar.",
+      "create": "Criar rascunho",
+      "back": "Voltar às notícias",
+      "empty": "Nenhuma notícia com este filtro.",
+      "caption": "Notícias, página {page} de {count}",
+      "titleField": "Título",
+      "status": "Estado",
+      "statuses": {
+        "draft": "Rascunho",
+        "scheduled": "Agendada",
+        "published": "Publicada"
+      },
+      "publishedAt": "Publicação (UTC)",
+      "expiresAt": "Fim do evento (UTC)",
+      "publishedAtHint": "Obrigatória para agendar. Se publicar sem data, vale agora.",
+      "expiresAtHint": "Opcional. Depois dela, a notícia continua visível, mas marcada como encerrada.",
+      "statusHint": "As agendadas aparecem sozinhas na hora marcada. Para publicar ou agendar, é preciso o texto em inglês.",
+      "languages": "Idiomas",
+      "languageCount": "{count} de {total}",
+      "missing": "Faltam: {list}",
+      "missingShort": "falta",
+      "editTitle": "Notícia n.º {id}",
+      "scheduledFor": "Aparece em",
+      "viewPublic": "Ver no site",
+      "data": "Dados e publicação",
+      "slug": "Slug da URL",
+      "slugHint": "Letras minúsculas, números e hífens, igual em todos os idiomas: /news/festival-inverno.",
+      "category": "Categoria",
+      "save": "Salvar",
+      "meta": "Autor: {author}. Última gravação:",
+      "texts": "Textos por idioma",
+      "textsHint": "Se faltar um idioma, o site mostra o texto em inglês e avisa.",
+      "textIn": "Texto em {language}",
+      "englishFirst": "Comece pelo inglês: é o idioma reserva e é obrigatório para publicar.",
+      "noText": "Ainda não há texto neste idioma.",
+      "excerpt": "Resumo",
+      "excerptHint": "Aparece na lista e na página inicial. Até {max} caracteres.",
+      "body": "Corpo (Markdown)",
+      "bodyHint": "Linha em branco entre parágrafos; ## títulos; - listas; **negrito**, *itálico* e [link](https://…).",
+      "seoTitle": "Título para buscadores (opcional)",
+      "seoTitleHint": "Até {max} caracteres. Sem ele, usa-se o título.",
+      "seoDescription": "Descrição para buscadores (opcional)",
+      "seoDescriptionHint": "Até {max} caracteres. Sem ela, usa-se o resumo.",
+      "saveText": "Salvar texto",
+      "deleteText": "Remover o texto em {language}",
+      "preview": "Pré-visualização (texto salvo)",
+      "deleteTitle": "Excluir rascunho",
+      "deleteHint": "Só rascunhos podem ser excluídos. Para retirar uma notícia publicada, passe-a para rascunho.",
+      "delete": "Excluir rascunho",
+      "errorSummary": "Revise os campos marcados em vermelho.",
+      "problems": {
+        "slug": "Use de 3 a 120 letras minúsculas, números e hífens simples.",
+        "category": "Escolha uma categoria.",
+        "status": "Escolha um estado.",
+        "date": "Escreva uma data e hora válidas.",
+        "scheduledPast": "Para agendar, escolha uma data futura.",
+        "publishedFuture": "Uma data futura é “Agendada”, não “Publicada”.",
+        "expiresBeforePublish": "O fim deve ser depois da publicação."
+      },
+      "translationProblems": {
+        "required": "Preencha este campo.",
+        "tooLong": "Até {max} caracteres."
+      },
+      "errors": {
+        "notFound": "Essa notícia não existe.",
+        "changed": "Outra pessoa salvou esta notícia enquanto você editava. Nada foi salvo: recarregue a página para ver as mudanças.",
+        "slugTaken": "Outra notícia já usa este slug.",
+        "english": "O texto em inglês é obrigatório para publicar ou agendar e não pode ser removido.",
+        "unchanged": "Nada tinha mudado.",
+        "published": "Só rascunhos podem ser excluídos. Passe-a antes para rascunho."
+      },
+      "done": {
+        "created": "Rascunho criado. Agora escreva o texto em inglês.",
+        "saved": "Salvo.",
+        "translation": "Texto salvo.",
+        "translationDeleted": "Texto removido.",
+        "deleted": "Rascunho excluído."
+      }
     }
   }
 }

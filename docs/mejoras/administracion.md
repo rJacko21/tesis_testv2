@@ -2,7 +2,11 @@
 
 Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
-T-23 se entrega por partes, cada una con su PR. Esta primera parte pone la base del panel (acceso por roles y auditoría) y la gestión de cuentas. Noticias y promociones (F-16, F-18), tienda, precios, campañas y paquetes de recarga llegan en las siguientes y usan la misma base.
+T-23 se entrega por partes, cada una con su PR:
+
+1. Base del panel (acceso por roles y auditoría) y gestión de cuentas: M-35.
+2. Noticias: M-36.
+3. Promociones con imagen (F-16, F-18), tienda, precios, campañas y paquetes de recarga: siguientes partes, sobre la misma base.
 
 ### M-35 · Panel con roles, gestión de cuentas y auditoría
 
@@ -55,9 +59,57 @@ T-23 se entrega por partes, cada una con su PR. Esta primera parte pone la base 
     - axe sin errores y sin scroll horizontal en las cuatro páginas del panel, en los 7 idiomas.
 - **Fecha:** 2026-11-07
 
+### M-36 · Noticias desde el panel: borrador, programada y publicada
+
+- **Fallo original:**
+  - F-16: contenido caducado sin fecha y sin forma de programar inicio y fin.
+  - F-17: noticias sin fecha ni autor.
+  - F-03: traducciones a medias sin que nadie lo viera.
+- **Requisito:** RF-08 · RF-12 (gestión de noticias: borrador, programada, publicada; traducciones por idioma)
+- **Cambio** (`/{idioma}/admin/news`, roles `editor` y `admin`):
+  - **Listado** con todas las noticias, también borradores y programadas, filtro por estado, y los idiomas de cada una («5 de 7», «Faltan: tr, it»).
+  - **Nueva noticia:** slug y categoría. Se crea como borrador.
+  - **Ficha:**
+    - **datos y publicación:** slug, categoría, estado, fecha de publicación y fin del evento (en UTC, como las muestra la web);
+    - **textos por idioma:** una pestaña por idioma, con «(falta)» en los que no tienen texto. Título, entradilla, cuerpo en Markdown y título y descripción para buscadores;
+    - **vista previa** del texto guardado con el mismo Markdown que la web pública;
+    - «Ver en la web» cuando ya es pública, y «Aparece el…» cuando está programada;
+    - borrar, solo si es un borrador.
+  - **Auditoría:** creada, cambiada (con los campos antes y después), texto añadido, cambiado o quitado, y borrador borrado. La auditoría enlaza a la ficha.
+  - **La web pública se actualiza al guardar** (`updateTag("posts")`), sin esperar a que caduque la caché.
+- **Por qué de esta forma:**
+  - **Reglas de estado en una función pura** (`post-rules.ts`):
+    - una noticia programada necesita una fecha futura;
+    - publicada sin fecha es «ahora», y con fecha futura no vale (sería programada);
+    - el fin del evento va después de la publicación.
+    - Son las mismas reglas que usa la web pública para decidir qué se ve (`news.ts`), así que el panel no puede dejar una noticia en un estado que la web interprete de otra forma.
+  - **El inglés es obligatorio para publicar o programar, y no se puede quitar:** es el idioma de respaldo cuando falta una traducción. Así ninguna noticia pública queda sin texto en algún idioma.
+  - **Bloqueo optimista:** cada formulario envía la versión (`updated_at`) que vio. Si otra persona guardó entretanto, no se guarda nada y se avisa de que hay que recargar. Es mejor que «el último gana», que borraría el trabajo de la otra persona sin avisar. Guardar un texto también cambia la versión.
+  - **Solo se borran borradores.** Una noticia pública se retira pasándola a borrador: la URL deja de verse y la auditoría conserva su historia.
+  - **Auditoría sin el cuerpo entero:** se guardan los campos que cambiaron y el título antes y después. El cuerpo puede tener 20 000 caracteres por idioma y no aporta a «quién cambió qué».
+  - **Formulario con errores por campo sin perder lo escrito** (`AdminForm`): con JavaScript, el error vuelve sin recargar y con los valores. Sin JavaScript también funciona. Los campos se vuelven a montar tras un error porque React restablece el formulario después de la acción y un `<select>` volvía a su valor inicial.
+    - Coste: 1137 bytes en las dos páginas con formulario (`pnpm js:budget`: 142 691 B, por debajo de la página más pesada).
+  - **Fechas en UTC:** el campo `datetime-local` no tiene zona. Se lee en UTC, como se muestran todas las fechas de la web, y la etiqueta lo dice.
+- **Verificación:**
+  - `post-rules.test.ts` (9 casos): fechas UTC (incluido el 31 de febrero), estados, fin de evento, slug y textos.
+  - **Contra MySQL** (`tests/db/posts.test.ts`, 7 casos):
+    - siempre se crea como borrador, con autor y auditoría;
+    - publicar exige el inglés (no basta otro idioma), y la auditoría guarda antes y después;
+    - una versión antigua se rechaza y no cambia nada;
+    - slug repetido y guardado sin cambios;
+    - el inglés no se quita y otro idioma sí;
+    - solo se borran borradores;
+    - el listado incluye borradores y sus idiomas.
+  - **e2e** (`tests/e2e/admin-news.spec.ts`): un editor crea un borrador, no puede publicar sin inglés, escribe en inglés y español (con la vista previa), no puede programar en el pasado sin perder lo elegido, programa (no se ve en la web), publica (se ve en la ficha y el listado públicos), la retira y la borra.
+    - Publica de verdad, así que va en su propio proyecto de Playwright, después de los demás: si corriera a la vez, cambiaría lo que cuentan las pruebas de noticias.
+  - axe sin errores y sin scroll horizontal en el listado, la página nueva y la ficha con vista previa, en los 7 idiomas.
+- **Fecha:** 2026-11-07
+
 ### Pendiente
 
-- **Siguientes partes de T-23:** noticias (borrador, programada, publicada, traducciones), promociones con fechas, tienda y precios, campañas y paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
+- **Siguientes partes de T-23:** promociones con fechas e imagen (necesitan subir imágenes, con `media` y su `alt` por idioma), tienda y precios, campañas y paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
+- **Imagen de portada de las noticias** (`cover_image_id`): con la subida de imágenes.
+- **Una noticia programada aparece con unos minutos de retraso:** el listado público va en caché (`cacheLife("minutes")`) y nada la invalida a la hora exacta. Se podría invalidar con una tarea programada (T-28b).
 - **Aviso al jugador suspendido:** al iniciar sesión ve el mensaje genérico de credenciales. Un mensaje propio («tu cuenta está suspendida, escribe a soporte») solo debería mostrarse tras comprobar la contraseña, para no revelar el estado de cuentas ajenas.
 - **Reembolsos de recargas:** en la parte de tienda y recargas del panel ([recarga.md](recarga.md)). **Tickets de soporte:** con T-24.
 - **Panel de traducciones pendientes y estadísticas:** ampliaciones (C) de RF-12.

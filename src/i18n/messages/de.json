@@ -699,6 +699,7 @@
     "nav": {
       "label": "Bereiche der Verwaltung",
       "home": "Start",
+      "news": "Neuigkeiten",
       "users": "Konten",
       "audit": "Prüfprotokoll"
     },
@@ -707,7 +708,8 @@
       "intro": "Hallo {name}. Deine Rollen: {roles}.",
       "users": "Konten suchen, Verlauf ansehen und sperren oder entsperren.",
       "audit": "Wer hat was wann geändert.",
-      "nothing": "Deine Rolle hat in dieser Version der Verwaltung noch keine Bereiche. Neuigkeiten und Aktionen folgen in den nächsten Teilen."
+      "nothing": "Deine Rolle hat noch keine Bereiche in der Verwaltung.",
+      "news": "Neuigkeiten schreiben, übersetzen, planen und veröffentlichen."
     },
     "roles": {
       "admin": "Administrator",
@@ -804,9 +806,102 @@
           "suspend": "Konto gesperrt",
           "reactivate": "Konto entsperrt",
           "roles": "Rollen geändert"
+        },
+        "post": {
+          "create": "Beitrag angelegt",
+          "update": "Beitrag geändert",
+          "translation": "Text geändert",
+          "translationAdd": "Text hinzugefügt",
+          "translationDelete": "Text entfernt",
+          "delete": "Entwurf gelöscht"
         }
       },
-      "cli": "Kommandozeile"
+      "cli": "Kommandozeile",
+      "postTarget": "Beitrag Nr. {id}"
+    },
+    "news": {
+      "title": "Neuigkeiten",
+      "filter": "Neuigkeiten filtern",
+      "apply": "Anwenden",
+      "new": "Neuer Beitrag",
+      "newIntro": "Er wird als Entwurf angelegt. Danach schreibst du die Texte und legst fest, wann er erscheint.",
+      "create": "Entwurf anlegen",
+      "back": "Zurück zu den Neuigkeiten",
+      "empty": "Keine Neuigkeiten mit diesem Filter.",
+      "caption": "Neuigkeiten, Seite {page} von {count}",
+      "titleField": "Titel",
+      "status": "Status",
+      "statuses": {
+        "draft": "Entwurf",
+        "scheduled": "Geplant",
+        "published": "Veröffentlicht"
+      },
+      "publishedAt": "Veröffentlichung (UTC)",
+      "expiresAt": "Ende der Aktion (UTC)",
+      "publishedAtHint": "Pflicht zum Planen. Ohne Datum gilt beim Veröffentlichen jetzt.",
+      "expiresAtHint": "Optional. Danach bleibt der Beitrag sichtbar, aber als beendet markiert.",
+      "statusHint": "Geplante Beiträge erscheinen automatisch zur angegebenen Zeit. Zum Veröffentlichen oder Planen ist der englische Text nötig.",
+      "languages": "Sprachen",
+      "languageCount": "{count} von {total}",
+      "missing": "Fehlen: {list}",
+      "missingShort": "fehlt",
+      "editTitle": "Beitrag Nr. {id}",
+      "scheduledFor": "Erscheint am",
+      "viewPublic": "Auf der Website ansehen",
+      "data": "Daten und Veröffentlichung",
+      "slug": "URL-Slug",
+      "slugHint": "Kleinbuchstaben, Zahlen und Bindestriche, in allen Sprachen gleich: /news/winterfest.",
+      "category": "Kategorie",
+      "save": "Speichern",
+      "meta": "Autor: {author}. Zuletzt gespeichert:",
+      "texts": "Texte nach Sprache",
+      "textsHint": "Fehlt eine Sprache, zeigt die Website den englischen Text und weist darauf hin.",
+      "textIn": "Text auf {language}",
+      "englishFirst": "Beginne mit Englisch: Es ist die Ersatzsprache und zum Veröffentlichen nötig.",
+      "noText": "In dieser Sprache gibt es noch keinen Text.",
+      "excerpt": "Zusammenfassung",
+      "excerptHint": "Erscheint in der Liste und auf der Startseite. Bis zu {max} Zeichen.",
+      "body": "Inhalt (Markdown)",
+      "bodyHint": "Leerzeile zwischen Absätzen; ## Überschriften; - Listen; **fett**, *kursiv* und [Link](https://…).",
+      "seoTitle": "Titel für Suchmaschinen (optional)",
+      "seoTitleHint": "Bis zu {max} Zeichen. Ohne ihn wird der Titel verwendet.",
+      "seoDescription": "Beschreibung für Suchmaschinen (optional)",
+      "seoDescriptionHint": "Bis zu {max} Zeichen. Ohne sie wird die Zusammenfassung verwendet.",
+      "saveText": "Text speichern",
+      "deleteText": "Text auf {language} entfernen",
+      "preview": "Vorschau (gespeicherter Text)",
+      "deleteTitle": "Entwurf löschen",
+      "deleteHint": "Nur Entwürfe können gelöscht werden. Um einen veröffentlichten Beitrag zurückzuziehen, setze ihn auf Entwurf.",
+      "delete": "Entwurf löschen",
+      "errorSummary": "Prüfe die rot markierten Felder.",
+      "problems": {
+        "slug": "Verwende 3 bis 120 Kleinbuchstaben, Zahlen und einzelne Bindestriche.",
+        "category": "Wähle eine Kategorie.",
+        "status": "Wähle einen Status.",
+        "date": "Gib ein gültiges Datum mit Uhrzeit ein.",
+        "scheduledPast": "Zum Planen wähle ein Datum in der Zukunft.",
+        "publishedFuture": "Ein Datum in der Zukunft heißt „Geplant“, nicht „Veröffentlicht“.",
+        "expiresBeforePublish": "Das Ende muss nach der Veröffentlichung liegen."
+      },
+      "translationProblems": {
+        "required": "Fülle dieses Feld aus.",
+        "tooLong": "Höchstens {max} Zeichen."
+      },
+      "errors": {
+        "notFound": "Diesen Beitrag gibt es nicht.",
+        "changed": "Jemand anderes hat den Beitrag gespeichert, während du ihn bearbeitet hast. Es wurde nichts gespeichert: Lade die Seite neu, um die Änderungen zu sehen.",
+        "slugTaken": "Ein anderer Beitrag verwendet diesen Slug bereits.",
+        "english": "Der englische Text ist zum Veröffentlichen oder Planen nötig und kann nicht entfernt werden.",
+        "unchanged": "Es hatte sich nichts geändert.",
+        "published": "Nur Entwürfe können gelöscht werden. Setze ihn zuerst auf Entwurf."
+      },
+      "done": {
+        "created": "Entwurf angelegt. Schreibe jetzt den englischen Text.",
+        "saved": "Gespeichert.",
+        "translation": "Text gespeichert.",
+        "translationDeleted": "Text entfernt.",
+        "deleted": "Entwurf gelöscht."
+      }
     }
   }
 }

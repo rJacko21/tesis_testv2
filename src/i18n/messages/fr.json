@@ -699,6 +699,7 @@
     "nav": {
       "label": "Sections du panneau",
       "home": "Accueil",
+      "news": "Actualités",
       "users": "Comptes",
       "audit": "Journal d’audit"
     },
@@ -707,7 +708,8 @@
       "intro": "Bonjour, {name}. Vos rôles : {roles}.",
       "users": "Recherchez des comptes, consultez leur historique, suspendez-les ou réactivez-les.",
       "audit": "Qui a modifié quoi, et quand.",
-      "nothing": "Votre rôle n’a encore aucune section dans cette version du panneau. Les actualités et promotions arrivent dans les prochaines parties."
+      "nothing": "Votre rôle n’a encore aucune section dans le panneau.",
+      "news": "Rédigez, traduisez, programmez et publiez les actualités."
     },
     "roles": {
       "admin": "Administrateur",
@@ -804,9 +806,102 @@
           "suspend": "Compte suspendu",
           "reactivate": "Compte réactivé",
           "roles": "Rôles modifiés"
+        },
+        "post": {
+          "create": "Actualité créée",
+          "update": "Actualité modifiée",
+          "translation": "Texte modifié",
+          "translationAdd": "Texte ajouté",
+          "translationDelete": "Texte supprimé",
+          "delete": "Brouillon supprimé"
         }
       },
-      "cli": "Ligne de commande"
+      "cli": "Ligne de commande",
+      "postTarget": "Actualité n° {id}"
+    },
+    "news": {
+      "title": "Actualités",
+      "filter": "Filtrer les actualités",
+      "apply": "Appliquer",
+      "new": "Nouvelle actualité",
+      "newIntro": "Elle est créée en brouillon. Rédigez ensuite ses textes et choisissez quand la publier.",
+      "create": "Créer le brouillon",
+      "back": "Retour aux actualités",
+      "empty": "Aucune actualité avec ce filtre.",
+      "caption": "Actualités, page {page} sur {count}",
+      "titleField": "Titre",
+      "status": "Statut",
+      "statuses": {
+        "draft": "Brouillon",
+        "scheduled": "Programmée",
+        "published": "Publiée"
+      },
+      "publishedAt": "Publication (UTC)",
+      "expiresAt": "Fin de l’événement (UTC)",
+      "publishedAtHint": "Obligatoire pour programmer. Publiée sans date, elle part maintenant.",
+      "expiresAtHint": "Facultative. Ensuite, l’actualité reste visible mais marquée comme terminée.",
+      "statusHint": "Les actualités programmées apparaissent seules à l’heure prévue. Pour publier ou programmer, le texte anglais est requis.",
+      "languages": "Langues",
+      "languageCount": "{count} sur {total}",
+      "missing": "Manquent : {list}",
+      "missingShort": "manque",
+      "editTitle": "Actualité n° {id}",
+      "scheduledFor": "Paraît le",
+      "viewPublic": "Voir sur le site",
+      "data": "Informations et publication",
+      "slug": "Slug de l’URL",
+      "slugHint": "Minuscules, chiffres et tirets, identique dans toutes les langues : /news/festival-hiver.",
+      "category": "Catégorie",
+      "save": "Enregistrer",
+      "meta": "Auteur : {author}. Dernier enregistrement :",
+      "texts": "Textes par langue",
+      "textsHint": "Si une langue manque, le site affiche le texte anglais et le signale.",
+      "textIn": "Texte en {language}",
+      "englishFirst": "Commencez par l’anglais : c’est la langue de secours, obligatoire pour publier.",
+      "noText": "Il n’y a pas encore de texte dans cette langue.",
+      "excerpt": "Résumé",
+      "excerptHint": "Affiché dans la liste et sur l’accueil. Jusqu’à {max} caractères.",
+      "body": "Corps (Markdown)",
+      "bodyHint": "Ligne vide entre paragraphes ; ## titres ; - listes ; **gras**, *italique* et [lien](https://…).",
+      "seoTitle": "Titre pour les moteurs (facultatif)",
+      "seoTitleHint": "Jusqu’à {max} caractères. Sinon, le titre est utilisé.",
+      "seoDescription": "Description pour les moteurs (facultative)",
+      "seoDescriptionHint": "Jusqu’à {max} caractères. Sinon, le résumé est utilisé.",
+      "saveText": "Enregistrer le texte",
+      "deleteText": "Supprimer le texte en {language}",
+      "preview": "Aperçu (texte enregistré)",
+      "deleteTitle": "Supprimer le brouillon",
+      "deleteHint": "Seuls les brouillons peuvent être supprimés. Pour retirer une actualité publiée, repassez-la en brouillon.",
+      "delete": "Supprimer le brouillon",
+      "errorSummary": "Vérifiez les champs en rouge.",
+      "problems": {
+        "slug": "Utilisez 3 à 120 minuscules, chiffres et tirets simples.",
+        "category": "Choisissez une catégorie.",
+        "status": "Choisissez un statut.",
+        "date": "Saisissez une date et une heure valides.",
+        "scheduledPast": "Pour programmer, choisissez une date future.",
+        "publishedFuture": "Une date future correspond à « Programmée », pas « Publiée ».",
+        "expiresBeforePublish": "La fin doit suivre la publication."
+      },
+      "translationProblems": {
+        "required": "Remplissez ce champ.",
+        "tooLong": "{max} caractères au maximum."
+      },
+      "errors": {
+        "notFound": "Cette actualité n’existe pas.",
+        "changed": "Quelqu’un d’autre a enregistré cette actualité pendant votre modification. Rien n’a été enregistré : rechargez la page pour voir ses changements.",
+        "slugTaken": "Une autre actualité utilise déjà ce slug.",
+        "english": "Le texte anglais est requis pour publier ou programmer, et ne peut pas être supprimé.",
+        "unchanged": "Rien n’avait changé.",
+        "published": "Seuls les brouillons peuvent être supprimés. Repassez-la d’abord en brouillon."
+      },
+      "done": {
+        "created": "Brouillon créé. Rédigez maintenant le texte anglais.",
+        "saved": "Enregistré.",
+        "translation": "Texte enregistré.",
+        "translationDeleted": "Texte supprimé.",
+        "deleted": "Brouillon supprimé."
+      }
     }
   }
 }
