@@ -1,12 +1,12 @@
 /**
  * Páginas fijas (reglas y legales) de RF-10 y RF-11.
  *
- * - **Aviso legal y código de conducta:** textos oficiales de Giiku Games GmbH
+ * - **Aviso legal, código de conducta y privacidad:** textos oficiales de Giiku Games GmbH
  *   tal como están en florensia-online.com (los facilitó Armando el
  *   2026-11-07), solo en inglés, como en la web original. Solo se les han
  *   puesto encabezados `##`/`###` y listas para que tengan índice; la
  *   redacción no se ha tocado.
- * - **Términos y privacidad:** aún son textos de ejemplo, y lo dicen en su
+ * - **Términos:** aún es un texto de ejemplo, y lo dicen en su
  *   primera línea para que la demo no se confunda con la web oficial.
  * - **Política de cookies:** describe este sitio tal como es. Los nombres de
  *   las cookies se toman del código (`lib/consent.ts`, `i18n/negotiate.ts` y
@@ -294,44 +294,234 @@ Revision: June 13th, 2025`,
   },
   privacy: {
     en: {
-      title: "Privacy policy",
-      body: `${SAMPLE_EN}
+      title: "Privacy Policy",
+      body: `## I. General information
 
-## What we store
+### 1. Responsible body & data protection officer
 
-For your account: user name, email address, language and a password hash (never the password itself). For purchases: what you bought and when.
+Below we explain to you which personal data is collected and processed by us when using our services and offers. We are:
 
-## Proof of your cookie choice
+- GIIKU GAMES GmbH
+- Rehleitenweg 32b
+- 83026 Rosenheim
+- Germany
+- Tel: +49 8031 210 205 70
+- E-Mail: datenschutz (at) giikugames.com
 
-When you accept or reject cookies we store your choice, the date and a random identifier. We do not store your IP address.
+### 2. Legal basis
 
-## Cookies
+As far as a legal basis is mentioned in this Privacy Policy, they relate to the General Data Protection Regulation. This comes into effect from May 25, 2018.
 
-See the [cookie policy](/en/cookies).
+Prior to this, the corresponding provisions of the Federal Data Protection Act apply without us naming them. We collect and process personal data based on the following statutory regulations:
 
-## Your rights
+Consent according to Article 6 paragraph I (a) General Data Protection Regulation (GDPR). Consent is any voluntary expression of intent, in an informed and unequivocal manner, in the form of a statement or other unambiguous confirmatory act, which indicates that the data subject consents to the processing of his personal data.
 
-Under the GDPR you can ask for access to your data, correct it, delete it or receive a copy.`,
-    },
-    es: {
-      title: "Política de privacidad",
-      body: `${SAMPLE_ES}
+Necessity to fulfill the contract or carry out preparatory actions in accordance with Article 6 para. I (b) GDPR,this means that the data is required so that we can fulfill the contractual obligations to you or we need the data to prepare a contract closure with you.
 
-## Qué guardamos
+Processing to fulfill legal obligations under Article 6 para. I (c) GDPR, this means that a processing of the data is required by law or other regulations.
 
-De tu cuenta: nombre de usuario, correo, idioma y un hash de la contraseña (nunca la contraseña). De tus compras: qué compraste y cuándo.
+Processing for the protection of legitimate interests in accordance with Article 6 para. I (f) GDPR, this means that processing is necessary to safeguard legitimate interests on our part or by third parties, unless the interests or fundamental rights and freedoms on your part that require the protection of personal data prevail.
 
-## Prueba de tu elección de cookies
+### 3. Right of affected
 
-Cuando aceptas o rechazas las cookies guardamos tu elección, la fecha y un identificador aleatorio. No guardamos tu dirección IP.
+You are entitled to the following rights with regard to the processing of data by us in accordance with the respectively listed articles of the General Data Protection Regulation:
 
-## Cookies
+- Right of access by the data subject to Art. 15 GDPR
+- Right to rectification according to Art. 16 GDPR
+- Right to erasure ("right to be forgotten") in accordance with Art. 17 GDPR
+- Right to restriction of processing according to Art. 18 GDPR
+- Right to data portability according to Art. 20 GDPR
+- Right to object according to Art. 21 GDPR without prejudice to any other administrative or judicial remedy, you shall have the right to complain to a supervisory authority, in particular in the Member State of your place of residence, employment or the place of the alleged infringement, if you believe that the processing of the personal data is violating the GDPR.
 
-Consulta la [política de cookies](/es/cookies).
+### 4. Data erasure and storage duration
 
-## Tus derechos
+The personal data of the data subject will be deleted or blocked as soon as the purpose of the storage is deleted. In addition, storage may take place if provided for by the European or national legislator in EU regulations, laws or other regulations to which the processor is subject. Blocking or deletion of the data also takes place if a storage period prescribed by the standards mentioned expires unless there is a need for further storage of the data for the conclusion of a contract or fulfilment of the contract.
 
-Según el RGPD puedes pedir acceso a tus datos, corregirlos, borrarlos o recibir una copia.`,
+## II. Concrete data processing
+
+### 1. Data collection when visiting the website
+
+**a) Scope of data processing**
+
+When visiting our website, the following data is collected and stored by our web server:
+
+- Information about the browser type and version used
+- The operating system of the user
+- The Internet service provider of the user
+- The IP address of the user
+- Date and time of access
+- Websites from which the user's system accesses our website
+- Websites accessed by the user's system through our website
+
+The data is stored in the log files of our system. A storage of this data together with other personal data of the user does not take place. The is stored with our hosting provider OVH who processes the data exclusively inside the EU.
+
+**b) Legal Basis**
+
+The legal basis for processing the data is Art. 6 para. I (f) GDPR.
+
+The legitimate interest within the meaning of Art. 6 para. I (f) GDPR therefore lies in the functionality of our website and its availability.
+
+Legal basis for the transfer of data to the hosting provider is Art. 28 GDPR.
+
+**c) Purpose of data processing**
+
+Address by the system is necessary to allow delivery of the website to the computer of the user. To do this, the user's IP address must be kept for the duration of the session.
+
+The data is stored in order to ensure the functionality of the website. In addition, the data is used to optimize the website and to ensure the security of our information technology systems.
+
+An evaluation of the data for marketing purposes does not take place in this context.
+
+**d) Duration of storage**
+
+The log files will be deleted after 30 days at the latest unless there is a need to keep the data for the aforementioned purpose due to specific events ..
+
+Storage beyond that is possible. In this case, the IP addresses of the users are deleted or anonymised, so that an assignment to a specific user is no longer possible.
+
+**e) Objection and removal possibility**
+
+The collection and the storage of the data in log files is essential for the operation of the website. There is consequently no possibility of objection by the user.
+
+### 2. E-mail contact / registration
+
+**a) Scope of data processing**
+
+If you register on our website and deposit your e-mail address, we may subsequently use this information to send you product information by e-mail regarding the booked product or similar products of the processor. In such a case, only direct advertising for our own similar goods or services will be sent by e-mail. We will also send you emails related to your transactions, such as order confirmations, etc.
+
+It is possible to subscribe to a free newsletter on our website or in our app, which contains direct advertising for our products or products of our cooperation partners. When you sign up for the newsletter, the data from the input mask will be transmitted to us or the e-mail address already stored will be used. In this case, the date and time of registration for the newsletter and the IP address used are also stored. As part of the confirmation of the newsletter registration, the date and time at which you click on the confirmation link for the newsletter registration as well as the IP address used will also be saved.
+
+**b) Legal basis**
+
+The legal basis for the processing of the data when sending out the newsletter due to the prior acquisition of goods or services is Article 6 para. I sentence I (f) GDPR in conjunction with § 7 para. 3 UWG.
+
+The legitimate interest within the meaning of Art. 6 para. I (f) GDPR is therefore in direct advertising and the increase in sales to existing customers.
+
+The legal basis for processing the data when registering directly for the newsletter is Art. 6 para. I (a) GDPR.
+
+The legal basis for contacting in connection with current bookings is Article 6 para. I (b) GDPR.
+
+The legal basis for the transfer of the data to the shipping service provider is Article 28 para. 3, 6, and 7, Article 46 para. 2 (c) GDPR. The standard data protection clauses of the EU Commission are used in contractual relations with the provider.
+
+**c) Purpose of data processing**
+
+The purpose of storing the e-mail address is the possibility of electronic contact for advertising purposes. The date and IP address of the registration as well as the confirmation of the registration will be recorded in order to document the consent to the newsletter shipment and to prevent misuse. Furthermore, for information regarding ongoing bookings, the proper execution of the contract is the purpose of the contract.
+
+The transfer to the service provider is done for the purpose of sending the newsletter as a mass mailing.
+
+**d) Duration of storage**
+
+If we have received your e-mail address as part of the purchase of goods or services, it will be used for the delivery of advertising until you object to further use.
+
+As far as you have expressly consented to the receipt of the newsletter, we will only delete or block the e-mail address for the advertising mailing, if you revoke your consent. The data confirming the order of the newsletter will be stored for the same amount of time.
+
+The e-mails sent, as far as business letters are concerned, are stored for the duration of retention periods of the Tax Code or the Commercial Code. The further e-mails are deleted as soon as no further response by the user has to be expected.
+
+**e) Objection and removal possibility**
+
+You may object or revoke your consent to the use of the e-mail address for advertising purposes at any time, without incurring any costs beyond the charges of your communications tariff. You can object to the use of any advertising mail by clicking on a link provided there with effect for the future. You may also opt out of advertising for future use by emailing datenschutz@giikugames.com. In the case of opposition by e-mail, the implementation of the cancellation or blocking can take up to 5 working days; In this period, you may still receive advertising emails. You can not contradict the use of the e-mail address for addressing in the context of the performance of the contract. If you no longer wish this, you would have to delete the account or have it deleted. Otherwise, we would not be able to properly fulfil the contract.
+
+### 3. Google Analytics
+
+**a) Scope of data processing**
+
+The website uses Google Analytics, a web analytics service provided by Google Inc. ("Google"). This software collects information about how you use the website and compiles various statistics. The increased usage data include in particular the concrete selection of links, the length of stay on individual pages and the order of use of the website, the frequency of the page request. This data is collected together with your IP address. The IP address provided by Google Analytics as part of Google Analytics will not be merged with other Google data.
+
+Google Analytics uses so-called "cookies", text files that are stored on your computer and that allow an analysis of the use of the website by you.
+
+The information generated by the cookie about your use of this website is usually transmitted to a Google server in the USA and stored there.
+
+We have activated a so-called IP anonymization on the website, this means that the IP address will be shortened beforehand by Google within member states of the European Union or in other contracting states of the Agreement on the European Economic Area prior to retransmission to the USA.
+
+Only in exceptional cases will the full IP address be sent to a Google server in the US and shortened there. Google itself describes its data processing activity here https://policies.google.com/privacy.
+
+**b) Legal basis**
+
+The legal basis for the processing of data when using the website is Article 6 para. I (f) GDPR.
+
+The legitimate interest within the meaning of Art. 6 para. I (f) GDPR is a customer-oriented design of the website, which meets the requirements of the users and takes their user preferences into account.
+
+The legal basis for the transfer of data to Google are Article 28 para. 3, and Article 45 para. 3 GDPR. The service provider is certified under the Privacy Shield Framework and is therefore subject to the EU Commission's decision on adequacy (Implementing Decision 2016/1250), this means that the data protection level of the service provider is recognized as being equivalent to the GDPR, although it is based in the USA.
+
+**c) Purpose of data processing**
+
+The purpose of the processing is to analyse this website and the usage behaviour of its visitors.
+
+**d) Duration of storage**
+
+The data is already anonymized directly after the survey. Personal data is therefore collected only in the context of the transfer and not permanently stored.
+
+**e) Objection and removal possibility**
+
+You can prevent the storage of cookies, including the generation and transmission of data to Google, by restricting or prohibiting the use of cookies in your browser software.
+
+This may result in the deactivation of non-Google-related cookies as well as the inability to use all functions of this website to the full extent.
+
+You can prevent the collection of the data generated by the cookie and your use (including your IP address) and their transmission to Google as well as the processing of this data by Google by downloading the browser plugin available under the following link and to install: https://tools.google.com/dlpage/gaoptout.
+
+### 4. bunny.net
+
+**a) Scope of data processing**
+
+bunny.net provides, CDN, Storage, Stream and other related services
+
+Giiku Games GmbH ("client") will act as the data controller and bunny.net as the processor of client data. bunny.net will process client data only as a data processor acting at the Client's direction.
+
+Giiku Games GmbH is the one determining the purposes and means of processing. The latter are described in this Data Processing Agreement. The basis for data processing derives from the Client's entitlements. bunny.net shall carry out the following processes: Processing of user information necessary for the provision, improved security, optimization, control and troubleshooting of the service.
+
+The type of data that will be processed includes but is not limited to: network connection data, IP addresses, user agent, URL referrer information.
+
+Processing the data consists of the following: collecting, saving, modifying, using, transferring, distributing or any other form of provision, replication, restricting, deleting, collating or destroying data
+
+**b) Legal basis**
+
+The legal basis for the processing of the data when downloading the file(s) is Article 6 para. I sentence I (f) GDPR
+
+The legitimate interest within the meaning of Art. 6 para. I (f) GDPR is a safe and functioning operation of the technical systems. Data is transmitted: to the data processor Bunny CDN, Cesta Komandanta, Staneta 4a, 1215 Medvode, Slovenia.
+
+**c) Purpose of data processing**
+
+The purpose of the processing is the safe and functioning transfer of the downloadable file(s)
+
+**d) Duration of storage**
+
+Storing all personally identifiable information only for up to 20-30 seconds, so no personal data is kept past that time!
+
+**e) Objection and removal possibility**
+
+You can not contradict the use of necessary data in the context of the contract. If you no longer wish this, you will have to delete the account or have it deleted. Otherwise, we would not be able to properly fulfil the contract.
+
+### 5. Easy-Anti-Cheat
+
+**a) Scope of data processing**
+
+In order to serve its purpose of preventing and detecting the use of cheat software with the goal of ensuring a fair game environment Easy-Anti-Cheat is processing information to allow the game publisher to pursue and protect its legitimate interests of keeping its game free from malicious misuse, abuse or cheating.
+
+When you register or use Florensia Online, the following data about you may be collected and processed:
+
+- Username and account identifier;
+- In-game movements and other gaming behaviour;
+- Technical information about the hardware used to play the game, such as the manufacturer of the motherboard, the CPU identifier, the GPU identifier and general performance indicators;
+- Technical information about the methods, techniques, technologies or similar used by you in the Game that indicate the use of methods that Giiku Games GmbH considers unacceptable; and/or Other equivalent information.
+- In addition, the Service may automatically collect stored data, such as the server's technical log (e.g. your IP address, your session history) during your use of the Game.
+
+**b) Legal basis**
+
+The legal basis for the processing of the data when downloading the file(s) is Article 6 para. I sentence 1 (f) GDPR
+
+The legitimate interest within the meaning of Art. 6 para. I (f) GDPR is a safe and functioning operation of the game.
+
+**c) Purpose of data processing**
+
+Easy-Anti-Cheat is processing information in order to provide its services of preventing and detecting the use of cheat software with the goal of ensuring a fair game environment as intended by the game publisher.
+
+**d) Duration of storage**
+
+Easy-Anti-Cheat may store the information for the entire duration of the provision of its services for a game.
+
+**e) Objection and removal possibility**
+
+You can not contradict the use of necessary data in the context of the contract. If you no longer wish this, you will have to delete the account or have it deleted. Otherwise, we would not be able to properly fulfil the contract.
+
+Munich, June 7th, 2025`,
     },
   },
   cookies: {

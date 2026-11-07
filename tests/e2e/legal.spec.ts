@@ -14,7 +14,7 @@ test("las reglas tienen índice, fecha de vigencia y versión (RF-10)", async ({
   await expect(page.locator("#gameplay-rules")).toBeInViewport();
 });
 
-test("el aviso legal y las reglas son los textos oficiales, sin aviso de ejemplo", async ({
+test("aviso legal, reglas y privacidad son los textos oficiales, sin aviso de ejemplo", async ({
   page,
 }) => {
   await page.goto("/es/imprint");
@@ -23,9 +23,14 @@ test("el aviso legal y las reglas son los textos oficiales, sin aviso de ejemplo
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Imprint");
   await expect(page.getByText("HRB 27763", { exact: false })).toBeVisible();
   await expect(page.getByText(/Sample text|Texto de ejemplo/)).toHaveCount(0);
-  await page.goto("/es/rules");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Code of Conduct");
-  await expect(page.getByText(/Sample text|Texto de ejemplo/)).toHaveCount(0);
+  for (const [path, title] of [
+    ["/es/rules", "Code of Conduct"],
+    ["/es/privacy", "Privacy Policy"],
+  ]) {
+    await page.goto(path!);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(title!);
+    await expect(page.getByText(/Sample text|Texto de ejemplo/)).toHaveCount(0);
+  }
 });
 
 test("sin traducción se ve el inglés con aviso y canónica inglesa", async ({ page }) => {
