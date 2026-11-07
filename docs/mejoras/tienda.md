@@ -112,7 +112,7 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
 - ~~**Compra:** cesta, selección de servidor y personaje, y compra con AP en una transacción.~~ Hecho en M-32.
 - **Entrega en el juego:** el pedido queda `completed` con el servidor y el personaje de cada línea. Mandar el objeto al servidor de Giiku depende de su integración, como los códigos canjeados (M-28).
-- **«Recargar AP»** lleva por ahora al historial de recargas. La compra de AP llega con T-21.
+- ~~**«Recargar AP»** lleva por ahora al historial de recargas.~~ Lleva a `/topup` ([recarga.md](recarga.md), M-33).
 - **Cabecera:** muestra siempre «Iniciar sesión», también con la sesión abierta, porque es estática. Un enlace a la cuenta y a la cesta con sesión es una mejora pendiente.
 - **Datos de la ficha que pide RF-05 y el esquema aún no tiene:** género, tipo, nivel requerido, apilable y opciones de color. Llegarán con la integración del catálogo del juego.
   - Mientras tanto, la ficha muestra solo lo que existe.

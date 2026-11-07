@@ -19,6 +19,7 @@ const PAGES = [
   "/shop",
   "/shop?cat=costumes&sale=1&sort=price-asc",
   "/shop/item/1",
+  "/topup",
   "/support",
   "/register",
   "/sign-in",

@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "AP aufladen",
+    "description": "Kaufe AP für den Florensia-Item-Shop: Pakete, Preise, Bonus-AP und was nach der Zahlung passiert.",
+    "intro": "AP ist die Währung des Item-Shops. Wähle ein Paket, bezahle beim Zahlungsanbieter und die AP landen in deinem Konto.",
+    "packages": "AP-Pakete",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent} % AP",
+    "buy": "Auswählen",
+    "buyOne": "{name} für {price} auswählen",
+    "unavailable": "Aufladungen sind gerade nicht möglich. Bitte versuche es in ein paar Minuten erneut.",
+    "errors": {
+      "unverified": "Bestätige zum Aufladen zuerst deine E-Mail-Adresse über den Link, den wir dir geschickt haben. Du kannst ihn in deinem Konto erneut anfordern.",
+      "package": "Dieses Paket ist nicht mehr verfügbar. Wähle ein anderes."
+    },
+    "how": {
+      "title": "So funktioniert es",
+      "choose": "Wähle ein Paket. Du musst angemeldet sein und deine E-Mail bestätigt haben.",
+      "pay": "Bezahle beim Zahlungsanbieter.",
+      "receive": "Sobald der Zahlungsanbieter die Zahlung bestätigt, werden die AP gutgeschrieben und du erhältst eine Quittung per E-Mail."
+    },
+    "info": {
+      "title": "Gut zu wissen",
+      "methods": "In dieser Demo der Abschlussarbeit ist der Zahlungsanbieter simuliert: Es wird kein Geld abgebucht. Die offizielle Seite nutzt Xsolla mit Karten, PayPal und lokalen Methoden.",
+      "value": "AP haben keinen Geldwert und können nicht zurückgetauscht werden.",
+      "verified": "Jede Aufladung erscheint unter Mein Konto › Aufladungen."
+    },
+    "gateway": {
+      "title": "Zahlung",
+      "demo": "Simulierter Zahlungsanbieter für die Demo der Abschlussarbeit. Es wird kein Geld abgebucht.",
+      "product": "Produkt",
+      "price": "Preis",
+      "pay": "{price} bezahlen",
+      "cancel": "Abbrechen"
+    },
+    "result": {
+      "title": "Deine Aufladung",
+      "paid": "Erledigt: {ap, number} AP wurden gutgeschrieben. Dein Guthaben beträgt jetzt {balance, number} AP. Die Quittung haben wir dir per E-Mail geschickt.",
+      "pending": "Wir warten auf die Bestätigung des Zahlungsanbieters. Die AP kommen, sobald sie da ist: Schau in ein paar Sekunden noch einmal nach.",
+      "failed": "Die Zahlung wurde nicht abgeschlossen. Es wurde nichts abgebucht und dein Guthaben ist unverändert.",
+      "shop": "Zum Shop",
+      "history": "Meine Aufladungen ansehen",
+      "refresh": "Erneut prüfen",
+      "again": "Zurück zum Aufladen"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Kontoname",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "AP-Guthaben",
       "ap": "{amount, number} AP",
-      "topupSoon": "Sobald der Shop öffnet, kannst du hier AP aufladen."
+      "topUp": "AP aufladen"
     },
     "purchases": {
       "title": "Käufe",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "Das war ich nicht: Konto wiederherstellen",
       "note": "Wenn du es warst, musst du nichts tun. Wenn nicht, wähle jetzt ein neues Passwort: Alle Sitzungen werden beendet."
+    },
+    "topupReceipt": {
+      "subject": "Deine Quittung: {ap, number} AP gutgeschrieben",
+      "body": "Deine Aufladung Nr. {id} ist abgeschlossen: {ap, number} AP für {price}. Dein Guthaben beträgt jetzt {balance, number} AP.",
+      "action": "Meine Aufladungen ansehen",
+      "note": "AP haben keinen Geldwert und können nicht zurückgetauscht werden. Wenn du diese Aufladung nicht gemacht hast, antworte auf diese E-Mail."
     }
   }
 }

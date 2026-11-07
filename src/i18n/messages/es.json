@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "Recargar AP",
+    "description": "Compra AP para la tienda de Florensia: paquetes, precios, AP extra y qué pasa después de pagar.",
+    "intro": "Los AP son la moneda de la tienda. Elige un paquete, paga en la pasarela de pago y los AP llegan a tu cuenta.",
+    "packages": "Paquetes de AP",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent} % de AP",
+    "buy": "Elegir",
+    "buyOne": "Elegir {name} por {price}",
+    "unavailable": "La recarga no está disponible ahora mismo. Inténtalo de nuevo en unos minutos.",
+    "errors": {
+      "unverified": "Para recargar, confirma antes tu correo con el enlace que te enviamos. Puedes pedirlo otra vez desde tu cuenta.",
+      "package": "Ese paquete ya no está disponible. Elige otro."
+    },
+    "how": {
+      "title": "Cómo funciona",
+      "choose": "Elige un paquete. Necesitas haber iniciado sesión y tener el correo confirmado.",
+      "pay": "Paga en la pasarela de pago.",
+      "receive": "Cuando la pasarela confirma el pago, los AP se suman a tu saldo y te llega un recibo por correo."
+    },
+    "info": {
+      "title": "Conviene saber",
+      "methods": "En esta demostración de la tesis la pasarela es simulada: no se cobra dinero. La web oficial usa Xsolla, con tarjetas, PayPal y métodos locales.",
+      "value": "Los AP no tienen valor en dinero ni se pueden cambiar de vuelta.",
+      "verified": "Cada recarga aparece en Mi cuenta › Recargas."
+    },
+    "gateway": {
+      "title": "Pago",
+      "demo": "Pasarela de pago simulada para la demostración de la tesis. No se cobra dinero.",
+      "product": "Producto",
+      "price": "Precio",
+      "pay": "Pagar {price}",
+      "cancel": "Cancelar"
+    },
+    "result": {
+      "title": "Tu recarga",
+      "paid": "Hecho: se han añadido {ap, number} AP. Tu saldo ahora es de {balance, number} AP. Te hemos enviado el recibo por correo.",
+      "pending": "Estamos esperando a que la pasarela confirme el pago. Los AP llegan en cuanto lo haga: vuelve a mirar en unos segundos.",
+      "failed": "El pago no se completó. No se ha cobrado nada y tu saldo no ha cambiado.",
+      "shop": "Ir a la tienda",
+      "history": "Ver mis recargas",
+      "refresh": "Volver a comprobar",
+      "again": "Volver a la recarga"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nombre de cuenta",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "Saldo de AP",
       "ap": "{amount, number} AP",
-      "topupSoon": "Podrás recargar AP desde aquí cuando abra la tienda."
+      "topUp": "Recargar AP"
     },
     "purchases": {
       "title": "Compras",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "No he sido yo: recuperar mi cuenta",
       "note": "Si has sido tú, no tienes que hacer nada. Si no, elige una contraseña nueva ahora: se cerrarán todas las sesiones."
+    },
+    "topupReceipt": {
+      "subject": "Tu recibo: {ap, number} AP añadidos",
+      "body": "Tu recarga n.º {id} se ha completado: {ap, number} AP por {price}. Tu saldo ahora es de {balance, number} AP.",
+      "action": "Ver mis recargas",
+      "note": "Los AP no tienen valor en dinero ni se pueden cambiar de vuelta. Si no has hecho tú esta recarga, responde a este correo."
     }
   }
 }

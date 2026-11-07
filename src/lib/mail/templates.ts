@@ -135,3 +135,26 @@ export async function securityNoticeMessage(
     note: t("email.notMe.note"),
   });
 }
+
+/** Recibo de una recarga de AP acreditada (RF-06). */
+export async function topupReceiptMessage(
+  user: Recipient,
+  receipt: { paymentId: number; apAmount: number; price: string; balance: number },
+  url: string,
+): Promise<MailMessage> {
+  const t = await translatorFor(user.locale);
+  return layout({
+    to: user.email,
+    subject: t("email.topupReceipt.subject", { ap: receipt.apAmount }),
+    greeting: t("email.greeting", { name: user.name }),
+    body: t("email.topupReceipt.body", {
+      id: receipt.paymentId,
+      ap: receipt.apAmount,
+      price: receipt.price,
+      balance: receipt.balance,
+    }),
+    action: t("email.topupReceipt.action"),
+    url,
+    note: t("email.topupReceipt.note"),
+  });
+}

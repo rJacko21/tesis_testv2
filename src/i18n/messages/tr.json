@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "AP yükle",
+    "description": "Florensia eşya mağazası için AP satın alın: paketler, fiyatlar, ek AP ve ödemeden sonra olanlar.",
+    "intro": "AP, eşya mağazasının para birimidir. Bir paket seçin, ödeme sayfasında ödeyin; AP hesabınıza gelir.",
+    "packages": "AP paketleri",
+    "amount": "{ap, number} AP",
+    "bonus": "%{percent} fazla AP",
+    "buy": "Seç",
+    "buyOne": "{price} karşılığında {name} seç",
+    "unavailable": "Yükleme şu anda kullanılamıyor. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "errors": {
+      "unverified": "Yükleme yapmak için önce gönderdiğimiz bağlantıyla e-postanızı doğrulayın. Bağlantıyı hesabınızdan yeniden isteyebilirsiniz.",
+      "package": "Bu paket artık mevcut değil. Başka bir paket seçin."
+    },
+    "how": {
+      "title": "Nasıl çalışır",
+      "choose": "Bir paket seçin. Oturum açmış ve e-postanızı doğrulamış olmanız gerekir.",
+      "pay": "Ödeme sayfasında ödeyin.",
+      "receive": "Ödeme sayfası ödemeyi onayladığında AP bakiyenize eklenir ve e-postayla makbuz alırsınız."
+    },
+    "info": {
+      "title": "Bilmeniz gerekenler",
+      "methods": "Bu tez demosunda ödeme sayfası simülasyondur: para alınmaz. Resmî site kartlar, PayPal ve yerel yöntemlerle Xsolla kullanır.",
+      "value": "AP’nin nakit değeri yoktur ve paraya geri çevrilemez.",
+      "verified": "Her yükleme Hesabım › Yüklemeler bölümünde görünür."
+    },
+    "gateway": {
+      "title": "Ödeme",
+      "demo": "Tez demosu için simüle ödeme sayfası. Para alınmaz.",
+      "product": "Ürün",
+      "price": "Fiyat",
+      "pay": "{price} öde",
+      "cancel": "İptal"
+    },
+    "result": {
+      "title": "Yüklemeniz",
+      "paid": "Tamam: {ap, number} AP eklendi. Yeni bakiyeniz {balance, number} AP. Makbuzu e-postayla gönderdik.",
+      "pending": "Ödeme sayfasının onayını bekliyoruz. Onay gelir gelmez AP eklenir: birkaç saniye sonra tekrar bakın.",
+      "failed": "Ödeme tamamlanmadı. Ücret alınmadı ve bakiyeniz değişmedi.",
+      "shop": "Mağazaya git",
+      "history": "Yüklemelerimi gör",
+      "refresh": "Tekrar kontrol et",
+      "again": "Yüklemeye dön"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Hesap adı",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "AP bakiyesi",
       "ap": "{amount, number} AP",
-      "topupSoon": "Mağaza açıldığında buradan AP yükleyebileceksiniz."
+      "topUp": "AP yükle"
     },
     "purchases": {
       "title": "Satın alımlar",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "Bu ben değildim: hesabımı kurtar",
       "note": "Bu sizseniz bir şey yapmanıza gerek yok. Değilse hemen yeni bir şifre belirleyin: tüm oturumlar kapatılacak."
+    },
+    "topupReceipt": {
+      "subject": "Makbuzunuz: {ap, number} AP eklendi",
+      "body": "{id} numaralı yüklemeniz tamamlandı: {price} karşılığında {ap, number} AP. Yeni bakiyeniz {balance, number} AP.",
+      "action": "Yüklemelerimi gör",
+      "note": "AP’nin nakit değeri yoktur ve paraya geri çevrilemez. Bu yüklemeyi siz yapmadıysanız bu e-postayı yanıtlayın."
     }
   }
 }

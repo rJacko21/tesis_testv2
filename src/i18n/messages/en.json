@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "Top up AP",
+    "description": "Buy AP for the Florensia item shop: packages, prices, bonus AP and what happens after you pay.",
+    "intro": "AP is the currency of the item shop. Choose a package, pay in the payment gateway and the AP arrive in your account.",
+    "packages": "AP packages",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent}% AP",
+    "buy": "Choose",
+    "buyOne": "Choose {name} for {price}",
+    "unavailable": "Top-ups are not available right now. Please try again in a few minutes.",
+    "errors": {
+      "unverified": "To top up, first confirm your email with the link we sent you. You can request it again from your account.",
+      "package": "That package is no longer available. Choose another one."
+    },
+    "how": {
+      "title": "How it works",
+      "choose": "Choose a package. You need to be signed in with a confirmed email.",
+      "pay": "Pay in the payment gateway.",
+      "receive": "When the gateway confirms the payment, the AP are added to your balance and you get a receipt by email."
+    },
+    "info": {
+      "title": "Good to know",
+      "methods": "In this thesis demo the gateway is simulated: no money is charged. The official site uses Xsolla, with cards, PayPal and local methods.",
+      "value": "AP have no cash value and cannot be exchanged back for money.",
+      "verified": "Every top-up appears in My account › Top-ups."
+    },
+    "gateway": {
+      "title": "Payment",
+      "demo": "Simulated payment gateway for the thesis demo. No money is charged.",
+      "product": "Product",
+      "price": "Price",
+      "pay": "Pay {price}",
+      "cancel": "Cancel"
+    },
+    "result": {
+      "title": "Your top-up",
+      "paid": "Done: {ap, number} AP have been added. Your balance is now {balance, number} AP. We have sent you the receipt by email.",
+      "pending": "We are waiting for the gateway to confirm the payment. The AP arrive as soon as it does: check again in a few seconds.",
+      "failed": "The payment was not completed. Nothing was charged and your balance has not changed.",
+      "shop": "Go to the shop",
+      "history": "See my top-ups",
+      "refresh": "Check again",
+      "again": "Back to top-up"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Account name",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "AP balance",
       "ap": "{amount, number} AP",
-      "topupSoon": "You will be able to top up AP from here when the shop opens."
+      "topUp": "Top up AP"
     },
     "purchases": {
       "title": "Purchases",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "It was not me: recover my account",
       "note": "If it was you, there is nothing to do. If not, choose a new password now: all sessions will be closed."
+    },
+    "topupReceipt": {
+      "subject": "Your receipt: {ap, number} AP added",
+      "body": "Your top-up no. {id} is complete: {ap, number} AP for {price}. Your balance is now {balance, number} AP.",
+      "action": "See my top-ups",
+      "note": "AP have no cash value and cannot be exchanged back for money. If you did not make this top-up, reply to this email."
     }
   }
 }

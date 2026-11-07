@@ -348,7 +348,7 @@ function Checkout({
   }
   if (total > balance) {
     return blocker(t("shop.cart.missing", { amount: total - balance }), {
-      href: `/${locale}/account/topups`,
+      href: `/${locale}/topup`,
       label: t("shop.cart.topUp"),
     });
   }

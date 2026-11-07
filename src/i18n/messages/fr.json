@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "Recharger des AP",
+    "description": "Achetez des AP pour la boutique de Florensia : packs, prix, AP bonus et ce qui se passe après le paiement.",
+    "intro": "Les AP sont la monnaie de la boutique. Choisissez un pack, payez sur la plateforme de paiement et les AP arrivent sur votre compte.",
+    "packages": "Packs d’AP",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent} % d’AP",
+    "buy": "Choisir",
+    "buyOne": "Choisir {name} pour {price}",
+    "unavailable": "Les recharges ne sont pas disponibles pour le moment. Réessayez dans quelques minutes.",
+    "errors": {
+      "unverified": "Pour recharger, confirmez d’abord votre e-mail avec le lien envoyé. Vous pouvez le redemander depuis votre compte.",
+      "package": "Ce pack n’est plus disponible. Choisissez-en un autre."
+    },
+    "how": {
+      "title": "Comment ça marche",
+      "choose": "Choisissez un pack. Vous devez être connecté avec un e-mail confirmé.",
+      "pay": "Payez sur la plateforme de paiement.",
+      "receive": "Quand la plateforme confirme le paiement, les AP sont ajoutés à votre solde et vous recevez un reçu par e-mail."
+    },
+    "info": {
+      "title": "Bon à savoir",
+      "methods": "Dans cette démo de mémoire, la plateforme est simulée : aucun argent n’est débité. Le site officiel utilise Xsolla, avec cartes, PayPal et moyens locaux.",
+      "value": "Les AP n’ont aucune valeur monétaire et ne peuvent pas être reconvertis.",
+      "verified": "Chaque recharge apparaît dans Mon compte › Recharges."
+    },
+    "gateway": {
+      "title": "Paiement",
+      "demo": "Plateforme de paiement simulée pour la démo du mémoire. Aucun argent n’est débité.",
+      "product": "Produit",
+      "price": "Prix",
+      "pay": "Payer {price}",
+      "cancel": "Annuler"
+    },
+    "result": {
+      "title": "Votre recharge",
+      "paid": "C’est fait : {ap, number} AP ont été ajoutés. Votre solde est de {balance, number} AP. Nous vous avons envoyé le reçu par e-mail.",
+      "pending": "Nous attendons la confirmation de la plateforme. Les AP arrivent dès qu’elle confirme : revérifiez dans quelques secondes.",
+      "failed": "Le paiement n’a pas abouti. Rien n’a été débité et votre solde n’a pas changé.",
+      "shop": "Aller à la boutique",
+      "history": "Voir mes recharges",
+      "refresh": "Revérifier",
+      "again": "Retour à la recharge"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nom de compte",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "Solde d’AP",
       "ap": "{amount, number} AP",
-      "topupSoon": "Vous pourrez recharger des AP ici à l’ouverture de la boutique."
+      "topUp": "Recharger des AP"
     },
     "purchases": {
       "title": "Achats",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "Ce n’était pas moi : récupérer mon compte",
       "note": "Si c’était vous, vous n’avez rien à faire. Sinon, choisissez un nouveau mot de passe maintenant : toutes les sessions seront fermées."
+    },
+    "topupReceipt": {
+      "subject": "Votre reçu : {ap, number} AP ajoutés",
+      "body": "Votre recharge n° {id} est terminée : {ap, number} AP pour {price}. Votre solde est maintenant de {balance, number} AP.",
+      "action": "Voir mes recharges",
+      "note": "Les AP n’ont aucune valeur monétaire et ne peuvent pas être reconvertis. Si vous n’êtes pas à l’origine de cette recharge, répondez à cet e-mail."
     }
   }
 }

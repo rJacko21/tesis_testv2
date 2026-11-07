@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "Recarregar AP",
+    "description": "Compre AP para a loja de itens de Florensia: pacotes, preços, AP extra e o que acontece depois de pagar.",
+    "intro": "AP é a moeda da loja de itens. Escolha um pacote, pague na plataforma de pagamento e os AP chegam à sua conta.",
+    "packages": "Pacotes de AP",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent}% AP",
+    "buy": "Escolher",
+    "buyOne": "Escolher {name} por {price}",
+    "unavailable": "As recargas não estão disponíveis agora. Tente de novo em alguns minutos.",
+    "errors": {
+      "unverified": "Para recarregar, confirme antes o seu e-mail com o link que enviamos. Você pode pedi-lo de novo na sua conta.",
+      "package": "Esse pacote não está mais disponível. Escolha outro."
+    },
+    "how": {
+      "title": "Como funciona",
+      "choose": "Escolha um pacote. É preciso ter sessão iniciada e o e-mail confirmado.",
+      "pay": "Pague na plataforma de pagamento.",
+      "receive": "Quando a plataforma confirma o pagamento, os AP entram no seu saldo e você recebe um recibo por e-mail."
+    },
+    "info": {
+      "title": "Bom saber",
+      "methods": "Nesta demonstração da tese a plataforma é simulada: nenhum dinheiro é cobrado. O site oficial usa Xsolla, com cartões, PayPal e métodos locais.",
+      "value": "AP não têm valor em dinheiro nem podem ser trocados de volta.",
+      "verified": "Cada recarga aparece em Minha conta › Recargas."
+    },
+    "gateway": {
+      "title": "Pagamento",
+      "demo": "Plataforma de pagamento simulada para a demonstração da tese. Nenhum dinheiro é cobrado.",
+      "product": "Produto",
+      "price": "Preço",
+      "pay": "Pagar {price}",
+      "cancel": "Cancelar"
+    },
+    "result": {
+      "title": "Sua recarga",
+      "paid": "Pronto: {ap, number} AP foram adicionados. Seu saldo agora é {balance, number} AP. Enviamos o recibo por e-mail.",
+      "pending": "Estamos aguardando a confirmação da plataforma. Os AP chegam assim que ela confirmar: veja de novo em alguns segundos.",
+      "failed": "O pagamento não foi concluído. Nada foi cobrado e seu saldo não mudou.",
+      "shop": "Ir para a loja",
+      "history": "Ver minhas recargas",
+      "refresh": "Verificar de novo",
+      "again": "Voltar para a recarga"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nome da conta",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "Saldo de AP",
       "ap": "{amount, number} AP",
-      "topupSoon": "Você poderá recarregar AP por aqui quando a loja abrir."
+      "topUp": "Recarregar AP"
     },
     "purchases": {
       "title": "Compras",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "Não fui eu: recuperar minha conta",
       "note": "Se foi você, não precisa fazer nada. Se não, escolha uma nova senha agora: todas as sessões serão encerradas."
+    },
+    "topupReceipt": {
+      "subject": "Seu recibo: {ap, number} AP adicionados",
+      "body": "Sua recarga n.º {id} foi concluída: {ap, number} AP por {price}. Seu saldo agora é {balance, number} AP.",
+      "action": "Ver minhas recargas",
+      "note": "AP não têm valor em dinheiro nem podem ser trocados de volta. Se você não fez esta recarga, responda a este e-mail."
     }
   }
 }

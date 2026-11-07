@@ -27,6 +27,7 @@ const PUBLIC_PATHS = [
   "/news",
   "/rankings",
   "/shop",
+  "/topup",
   "/download",
   "/support",
   "/rules",
