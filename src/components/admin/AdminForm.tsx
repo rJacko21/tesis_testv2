@@ -22,7 +22,7 @@ import type { FormState } from "@/lib/auth/form-state";
 export interface AdminField {
   name: string;
   label: string;
-  type: "text" | "textarea" | "select" | "datetime";
+  type: "text" | "textarea" | "select" | "datetime" | "number" | "checkbox";
   defaultValue?: string;
   options?: readonly { value: string; label: string }[];
   hint?: string;
@@ -31,6 +31,9 @@ export interface AdminField {
   rows?: number;
   /** Idioma del texto del campo (p. ej. el de una traducción), para el lector de pantalla. */
   lang?: string;
+  /** Mínimo y máximo de un campo numérico. */
+  min?: number;
+  max?: number;
   /** Texto en monoespaciada (slug, Markdown). */
   mono?: boolean;
 }
@@ -111,6 +114,31 @@ export function AdminForm({
             lang: field.lang,
           };
           const wide = field.type === "textarea" ? "md:col-span-2" : "";
+          if (field.type === "checkbox") {
+            // Una casilla envía «1» si está marcada; si no, no envía nada.
+            const checked = (values[field.name] ?? field.defaultValue ?? "") === "1";
+            return (
+              <div key={field.name}>
+                <label htmlFor={id} className="inline-flex min-h-11 items-center gap-3 font-bold">
+                  <input
+                    id={id}
+                    name={field.name}
+                    type="checkbox"
+                    value="1"
+                    defaultChecked={checked}
+                    aria-describedby={describedBy}
+                    className="accent-navy-700 size-5"
+                  />
+                  {field.label}
+                </label>
+                {field.hint ? (
+                  <p id={`${id}-hint`} className="text-ink-600 text-sm">
+                    {field.hint}
+                  </p>
+                ) : null}
+              </div>
+            );
+          }
           return (
             <div key={field.name} className={wide}>
               <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
@@ -134,7 +162,16 @@ export function AdminForm({
               ) : (
                 <input
                   {...common}
-                  type={field.type === "datetime" ? "datetime-local" : "text"}
+                  type={
+                    field.type === "datetime"
+                      ? "datetime-local"
+                      : field.type === "number"
+                        ? "number"
+                        : "text"
+                  }
+                  inputMode={field.type === "number" ? "numeric" : undefined}
+                  min={field.min}
+                  max={field.max}
                   maxLength={field.maxLength}
                   className={`${INPUT} min-h-11 ${field.mono ? "font-mono" : ""}`}
                 />

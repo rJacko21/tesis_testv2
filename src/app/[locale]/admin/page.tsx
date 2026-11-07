@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import { AdminShell } from "@/components/admin/AdminShell";
 import { getLocale, getTranslator } from "@/i18n/server";
-import { areasFor, isStaffRole } from "@/lib/admin/permissions";
+import { type AdminArea, areasFor, isStaffRole } from "@/lib/admin/permissions";
 import { adminPath, requireStaff } from "@/lib/admin/staff";
 
 export const instant = false;
@@ -47,11 +47,11 @@ export default async function AdminPage() {
             <li key={area} className="border-parchment-300 rounded-lg border bg-white p-5">
               <h2 className="text-navy-900 text-xl font-bold">
                 <Link href={adminPath(locale, area)} className="underline">
-                  {t(`admin.nav.${area as "news" | "users" | "audit"}`)}
+                  {t(`admin.nav.${area as Exclude<AdminArea, "roles">}`)}
                 </Link>
               </h2>
               <p className="text-ink-600 mt-1">
-                {t(`admin.home.${area as "news" | "users" | "audit"}`)}
+                {t(`admin.home.${area as Exclude<AdminArea, "roles">}`)}
               </p>
             </li>
           ))}

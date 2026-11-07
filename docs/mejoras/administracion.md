@@ -6,7 +6,8 @@ T-23 se entrega por partes, cada una con su PR:
 
 1. Base del panel (acceso por roles y auditoría) y gestión de cuentas: M-35.
 2. Noticias: M-36.
-3. Promociones con imagen (F-16, F-18), tienda, precios, campañas y paquetes de recarga: siguientes partes, sobre la misma base.
+3. Tienda, precios y campañas: M-37.
+4. Promociones con imagen (F-16, F-18), paquetes de recarga y ajustes de AP: siguientes partes, sobre la misma base.
 
 ### M-35 · Panel con roles, gestión de cuentas y auditoría
 
@@ -105,9 +106,53 @@ T-23 se entrega por partes, cada una con su PR:
   - axe sin errores y sin scroll horizontal en el listado, la página nueva y la ficha con vista previa, en los 7 idiomas.
 - **Fecha:** 2026-11-07
 
+### M-37 · Tienda desde el panel: artículos, historia de precios y campañas
+
+- **Fallo original:**
+  - F-16: rebajas y eventos caducados que seguían anunciados, sin fechas de inicio y fin.
+  - En la tienda original, un cambio de precio no deja rastro: no se puede saber qué precio tenía un artículo cuando alguien lo compró.
+- **Requisito:** RF-05 · RF-12 (gestión de la tienda: artículos, precios y campañas, con auditoría)
+- **Cambio** (`/{idioma}/admin/shop` y `/admin/campaigns`, solo `admin`):
+  - **Listado de artículos** con búsqueda por SKU o nombre, filtro por categoría y estado, precio actual (con la rebaja), y los idiomas de cada uno.
+  - **Nuevo artículo:** SKU, categoría, duración, orden y marcas (regalo, limitado, pack). Se crea **inactivo**.
+  - **Ficha del artículo:**
+    - **datos:** los mismos campos y «Activo en la tienda»;
+    - **textos por idioma:** nombre y descripción, una pestaña por idioma con «(falta)», como las noticias;
+    - **precios:** todas las filas, de la más nueva a la más antigua, con su estado (vigente, futuro, solapado o terminado), la campaña y las fechas. Un precio futuro se borra; uno en curso se termina «ya»;
+    - **añadir precio:** precio, rebaja opcional, campaña opcional e inicio y fin;
+    - un aviso si está activo pero sin precio actual, porque entonces no aparece en la tienda.
+  - **Campañas:** código, inicio y fin (obligatorios) y nombre por idioma. El listado dice si está próxima, en curso o terminada, y cuántos precios tiene.
+  - **Auditoría:** artículo creado o cambiado, texto cambiado, precio añadido, borrado o terminado, y campaña creada o cambiada. La auditoría enlaza a cada ficha.
+  - **La tienda pública se actualiza al guardar** (`updateTag("shop")`).
+- **Por qué de esta forma:**
+  - **Los precios no se editan nunca: cada cambio es una fila nueva** (`item_prices`). Manda la fila más reciente que ya empezó, con la misma función que usa la tienda (`currentPrice`). Así:
+    - la historia de precios queda entera, y la auditoría y los pedidos pueden explicarse después;
+    - una rebaja termina sola en su fecha y vuelve el precio anterior, sin que nadie tenga que acordarse (F-16).
+  - **Solo se borra un precio que aún no ha empezado.** Uno en curso se termina poniéndole fin ahora; uno pasado no se toca. Ningún pedido puede quedar apuntando a un precio que ya no existe.
+  - **Rebajas dentro de campañas:** si se elige una campaña y se dejan las fechas vacías, la rebaja toma las de la campaña. Las fechas de una rebaja no pueden salirse de su campaña.
+  - **Mover una campaña mueve sus precios:** las filas que seguían sus fechas cambian con ella en la misma transacción. Si alguna quedara terminando antes de empezar, no se guarda nada. Una campaña terminada ya no cambia de fechas.
+  - **Inactivo al crear, y el inglés es obligatorio para activar:** la tienda usa el inglés cuando falta un idioma, como las noticias (M-36), así que ningún artículo público queda sin nombre.
+  - **Bloqueo optimista** en los datos y textos, como las noticias.
+  - **SKU y código de campaña únicos**, comprobados en la misma transacción.
+  - **Validación en una función pura** (`shop-rules.ts`): enteros de AP sin decimales (1-1 000 000), rebaja menor que el precio, fechas en UTC y sin inicio en el pasado (con 5 minutos de margen para el tiempo de rellenar el formulario).
+  - **Mismo formulario que las noticias** (`AdminForm`), con campos numéricos (`inputMode="numeric"`) y casillas. JS de las páginas con formulario: 142 818 B, por debajo de la página más pesada (`pnpm js:budget`).
+- **Verificación:**
+  - `shop-rules.test.ts` (10 casos): SKU, categoría, duración, orden, precio y rebaja, fechas, campaña (fechas por defecto y fuera de rango) y estado de cada fila.
+  - **Contra MySQL** (`tests/db/shop-admin.test.ts`, 7 casos):
+    - nace inactivo con auditoría, y activarlo exige el inglés; SKU repetido y versión antigua;
+    - un precio futuro se borra, uno en curso se termina y uno terminado no se toca;
+    - el listado enseña el precio vigente, con la rebaja activa;
+    - campañas: nombre en inglés y código únicos; mover sus fechas mueve sus precios, sin dejar ninguno terminando antes de empezar, y una terminada no se mueve.
+  - **e2e** (`tests/e2e/admin-shop.spec.ts`): un admin crea una campaña y un artículo, no puede activarlo sin inglés, escribe el nombre, lo activa (sin precio no se ve en la tienda), le pone precio, no puede poner una rebaja mayor que el precio, añade una rebaja de campaña (la ficha pública enseña la rebaja y el nombre de la campaña), la termina y lo ve en la auditoría.
+    - Cambia la tienda de verdad, así que va en el proyecto `publicacion`, después de los demás, y borra el artículo y la campaña al terminar.
+  - axe sin errores y sin scroll horizontal en las seis páginas nuevas, en los 7 idiomas.
+- **Fecha:** 2026-11-07
+
 ### Pendiente
 
-- **Siguientes partes de T-23:** promociones con fechas e imagen (necesitan subir imágenes, con `media` y su `alt` por idioma), tienda y precios, campañas y paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
+- **Siguientes partes de T-23:** promociones con fechas e imagen (necesitan subir imágenes, con `media` y su `alt` por idioma), paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
+- **Imagen de los artículos** (`image_id`): con la subida de imágenes.
+- **Categorías de la tienda:** se crean con la semilla; editarlas desde el panel es una ampliación.
 - **Imagen de portada de las noticias** (`cover_image_id`): con la subida de imágenes.
 - **Una noticia programada aparece con unos minutos de retraso:** el listado público va en caché (`cacheLife("minutes")`) y nada la invalida a la hora exacta. Se podría invalidar con una tarea programada (T-28b).
 - **Aviso al jugador suspendido:** al iniciar sesión ve el mensaje genérico de credenciales. Un mensaje propio («tu cuenta está suspendida, escribe a soporte») solo debería mostrarse tras comprobar la contraseña, para no revelar el estado de cuentas ajenas.

@@ -12,7 +12,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
 /** Pruebas que cambian contenido público y no pueden ir en paralelo con el resto. */
-const PUBLISHING = /admin-news\.spec\.ts$/;
+const PUBLISHING = /admin-(news|shop)\.spec\.ts$/;
 const executablePath = process.env.CHROMIUM_PATH;
 const launchOptions = executablePath ? { executablePath } : {};
 
@@ -38,8 +38,8 @@ export default defineConfig({
       testIgnore: PUBLISHING,
       use: { ...devices["Desktop Chrome"], launchOptions },
     },
-    // Publica noticias de verdad: va después, para no cambiar lo que cuentan
-    // las pruebas de la web pública (`news.spec.ts`) mientras se ejecutan.
+    // Publica noticias y cambia la tienda de verdad: va después, para no cambiar lo que cuentan
+    // las pruebas de la web pública (`news.spec.ts`, `shop.spec.ts`) mientras se ejecutan.
     {
       name: "publicacion",
       testMatch: PUBLISHING,

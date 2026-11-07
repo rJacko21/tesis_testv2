@@ -701,7 +701,9 @@
       "home": "Ana sayfa",
       "news": "Haberler",
       "users": "Hesaplar",
-      "audit": "Denetim kaydı"
+      "audit": "Denetim kaydı",
+      "shop": "Mağaza",
+      "campaigns": "Kampanyalar"
     },
     "home": {
       "title": "Yönetim paneli",
@@ -709,7 +711,9 @@
       "users": "Hesap arayın, geçmişini görün, askıya alın veya yeniden etkinleştirin.",
       "audit": "Kim neyi ne zaman değiştirdi.",
       "nothing": "Rolünüzün panelde henüz bölümü yok.",
-      "news": "Haber yazın, çevirin, zamanlayın ve yayımlayın."
+      "news": "Haber yazın, çevirin, zamanlayın ve yayımlayın.",
+      "shop": "Ürün oluşturun, adlarını çevirin, fiyat ve indirimleri yönetin.",
+      "campaigns": "İndirim dönemlerini ve tarihlerini planlayın."
     },
     "roles": {
       "admin": "Yönetici",
@@ -814,10 +818,24 @@
           "translationAdd": "Metin eklendi",
           "translationDelete": "Metin kaldırıldı",
           "delete": "Taslak silindi"
+        },
+        "item": {
+          "create": "Ürün oluşturuldu",
+          "update": "Ürün değişti",
+          "translation": "Ürün metni değişti",
+          "priceAdd": "Fiyat eklendi",
+          "priceDelete": "Gelecek fiyat silindi",
+          "priceEnd": "Fiyat bitirildi"
+        },
+        "campaign": {
+          "create": "Kampanya oluşturuldu",
+          "update": "Kampanya değişti"
         }
       },
       "cli": "Komut satırı",
-      "postTarget": "{id} numaralı haber"
+      "postTarget": "{id} numaralı haber",
+      "itemTarget": "{id} numaralı ürün",
+      "campaignTarget": "{id} numaralı kampanya"
     },
     "news": {
       "title": "Haberler",
@@ -901,6 +919,128 @@
         "translation": "Metin kaydedildi.",
         "translationDeleted": "Metin kaldırıldı.",
         "deleted": "Taslak silindi."
+      }
+    },
+    "shop": {
+      "title": "Mağaza",
+      "new": "Yeni ürün",
+      "newIntro": "Pasif olarak oluşturulur. Sonra adlarını yazın, fiyat ekleyin ve etkinleştirin.",
+      "create": "Ürün oluştur",
+      "back": "Mağazaya dön",
+      "search": "Ürün ara",
+      "query": "SKU veya ad",
+      "category": "Kategori",
+      "active": "Etkin",
+      "inactive": "Pasif",
+      "count": "{total, plural, other {# ürün}}",
+      "empty": "Bu aramayla ürün yok.",
+      "caption": "Ürünler, sayfa {page}/{count}",
+      "name": "Ad",
+      "currentPrice": "Güncel fiyat",
+      "noPrice": "Fiyat yok",
+      "editTitle": "{id} numaralı ürün",
+      "notForSale": "Bu ürün etkin ama güncel fiyatı yok, bu yüzden mağazada görünmüyor. Aşağıdan fiyat ekleyin.",
+      "textsHint": "Bir dil eksikse mağaza İngilizce adı gösterir ve bunu belirtir. Ürünü etkinleştirmek için İngilizce gerekir.",
+      "description": "Açıklama",
+      "prices": "Fiyatlar",
+      "pricesHint": "Fiyatlar asla düzenlenmez: her değişiklik yeni bir satırdır, geçmiş satın almalar kendi fiyatlarını korur. Saatler UTC.",
+      "noPrices": "Bu ürünün henüz fiyatı yok.",
+      "priceAp": "Fiyat (AP)",
+      "salePriceAp": "İndirimli fiyat (AP)",
+      "campaign": "Kampanya",
+      "startsAt": "Başlangıç (UTC)",
+      "endsAt": "Bitiş (UTC)",
+      "noEnd": "Bitişsiz",
+      "actions": "İşlemler",
+      "state": {
+        "current": "Güncel",
+        "future": "Gelecek",
+        "active": "Geride kaldı",
+        "ended": "Bitti"
+      },
+      "deletePrice": "{amount} AP gelecek fiyatı sil",
+      "endPrice": "{amount} AP fiyatını şimdi bitir",
+      "addPrice": "Fiyat ekle",
+      "addPriceHint": "Başlamış en yeni satır geçerlidir. Kampanya içindeki indirim, tarihleri boş bırakırsanız kampanyanın tarihlerini alır.",
+      "addPriceSubmit": "Fiyatı ekle",
+      "saleHint": "İsteğe bağlı. Fiyattan düşük olmalı; mağaza ikisini de gösterir.",
+      "campaignHint": "İsteğe bağlı. İndirimi bir kampanyaya bağlar ve onun tarihleriyle sınırlar.",
+      "noCampaign": "Kampanya yok",
+      "startsAtHint": "Boşsa şimdi (veya kampanya başlangıcı).",
+      "endsAtHint": "Boşsa bitişsiz (veya kampanya bitişi).",
+      "sku": "SKU",
+      "skuHint": "Benzersiz iç kod: büyük harf, rakam ve tire, ör. COSTUME-SNOW-01.",
+      "validityDays": "Süre (gün)",
+      "validityHint": "Boşsa kalıcı.",
+      "sortOrder": "Sıra",
+      "sortOrderHint": "Küçük sayılar kategoride önce görünür.",
+      "giftable": "Hediye edilebilir",
+      "limited": "Sınırlı",
+      "bundle": "Paket",
+      "activeField": "Mağazada etkin",
+      "activeHint": "Yalnızca güncel fiyatı da varsa görünür. İngilizce ad gerekir.",
+      "problems": {
+        "sku": "2-40 büyük harf, rakam ve tekli tire kullanın.",
+        "category": "Bir kategori seçin.",
+        "validity": "1 ile 3650 arasında tam gün sayısı girin veya boş bırakın.",
+        "sortOrder": "-32768 ile 32767 arasında tam sayı girin.",
+        "price": "1 ile 1.000.000 arasında tam AP girin.",
+        "sale": "İndirimli fiyat, fiyattan düşük bir tam sayı olmalı.",
+        "campaign": "Bitmemiş bir kampanya seçin.",
+        "date": "Geçerli bir tarih ve saat girin.",
+        "past": "Gelecek bir tarih seçin: geçmiş fiyatlar değiştirilemez.",
+        "endsBeforeStart": "Bitiş, başlangıçtan sonra olmalı.",
+        "outsideCampaign": "Tarihler kampanya içinde olmalı.",
+        "code": "3-60 küçük harf, rakam ve tekli tire kullanın.",
+        "required": "Bu alan zorunludur.",
+        "name": "En fazla 120 karakterlik bir ad yazın.",
+        "description": "En fazla 2.000 karakter.",
+        "campaignName": "En fazla 80 karakter.",
+        "campaignEnglish": "İngilizce ad zorunludur."
+      },
+      "errors": {
+        "notFound": "Bu ürün veya fiyat artık yok.",
+        "changed": "Bu arada biri değişiklik kaydetti. Sayfayı yenileyip tekrar deneyin.",
+        "skuTaken": "Bu SKU başka bir üründe kullanılıyor.",
+        "codeTaken": "Bu kod başka bir kampanyada kullanılıyor.",
+        "english": "Ürünü etkinleştirmek için İngilizce ad gerekir.",
+        "unchanged": "Değiştirilecek bir şey yoktu.",
+        "started": "Bu fiyat başladı, silinemez.",
+        "notActive": "Bu fiyat zaten bitti.",
+        "ended": "Kampanya bitti: tarihleri artık değiştirilemez.",
+        "campaignRows": "Bu tarihlerle bağlı bir fiyat başlamadan biterdi. Önce o fiyatı düzeltin."
+      },
+      "done": {
+        "created": "Ürün oluşturuldu. Şimdi İngilizce adını yazın.",
+        "saved": "Kaydedildi.",
+        "text": "Metin kaydedildi.",
+        "price": "Fiyat eklendi.",
+        "priceEnded": "Fiyat bitirildi."
+      }
+    },
+    "campaigns": {
+      "title": "Kampanyalar",
+      "intro": "Fiyatları gruplayan indirim dönemleri: Noel, yıldönümü… Saatler UTC.",
+      "new": "Yeni kampanya",
+      "create": "Kampanya oluştur",
+      "back": "Kampanyalara dön",
+      "empty": "Henüz kampanya yok.",
+      "name": "Ad",
+      "priceRows": "Fiyatlar",
+      "state": {
+        "upcoming": "Yaklaşan",
+        "running": "Sürüyor",
+        "ended": "Bitti"
+      },
+      "code": "Kod",
+      "codeHint": "Benzersiz: küçük harf, rakam ve tire, ör. xmas-2026.",
+      "endsAtHint": "Tarihleri değiştirmek kampanyayı izleyen fiyatları da kaydırır.",
+      "nameIn": "{language} ad",
+      "editTitle": "{id} numaralı kampanya",
+      "rowsLinked": "{count, plural, other {# bağlı fiyat}}",
+      "done": {
+        "created": "Kampanya oluşturuldu.",
+        "saved": "Kampanya kaydedildi."
       }
     }
   }

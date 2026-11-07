@@ -701,7 +701,9 @@
       "home": "Home",
       "news": "News",
       "users": "Accounts",
-      "audit": "Audit log"
+      "audit": "Audit log",
+      "shop": "Shop",
+      "campaigns": "Campaigns"
     },
     "home": {
       "title": "Admin panel",
@@ -709,7 +711,9 @@
       "users": "Find accounts, see their history, and suspend or reactivate them.",
       "audit": "Who changed what, and when.",
       "nothing": "Your role has no sections in the panel yet.",
-      "news": "Write, translate, schedule and publish news."
+      "news": "Write, translate, schedule and publish news.",
+      "shop": "Create items, translate their names and manage prices and sales.",
+      "campaigns": "Plan sales periods and their dates."
     },
     "roles": {
       "admin": "Administrator",
@@ -814,10 +818,24 @@
           "translationAdd": "Text added",
           "translationDelete": "Text removed",
           "delete": "Draft deleted"
+        },
+        "item": {
+          "create": "Item created",
+          "update": "Item changed",
+          "translation": "Item text changed",
+          "priceAdd": "Price added",
+          "priceDelete": "Future price deleted",
+          "priceEnd": "Price ended"
+        },
+        "campaign": {
+          "create": "Campaign created",
+          "update": "Campaign changed"
         }
       },
       "cli": "Command line",
-      "postTarget": "Article no. {id}"
+      "postTarget": "Article no. {id}",
+      "itemTarget": "Item no. {id}",
+      "campaignTarget": "Campaign no. {id}"
     },
     "news": {
       "title": "News",
@@ -901,6 +919,128 @@
         "translation": "Text saved.",
         "translationDeleted": "Text removed.",
         "deleted": "Draft deleted."
+      }
+    },
+    "shop": {
+      "title": "Shop",
+      "new": "New item",
+      "newIntro": "It is created inactive. Then write its names, add a price and activate it.",
+      "create": "Create item",
+      "back": "Back to the shop",
+      "search": "Search items",
+      "query": "SKU or name",
+      "category": "Category",
+      "active": "Active",
+      "inactive": "Inactive",
+      "count": "{total, plural, one {# item} other {# items}}",
+      "empty": "No items with this search.",
+      "caption": "Items, page {page} of {count}",
+      "name": "Name",
+      "currentPrice": "Current price",
+      "noPrice": "No price",
+      "editTitle": "Item no. {id}",
+      "notForSale": "This item is active but has no current price, so it is not shown in the shop. Add a price below.",
+      "textsHint": "If a language is missing, the shop shows the English name and says so. English is required to activate the item.",
+      "description": "Description",
+      "prices": "Prices",
+      "pricesHint": "Prices are never edited or overwritten: each change is a new row, so past purchases keep the price they had. Times in UTC.",
+      "noPrices": "This item has no prices yet.",
+      "priceAp": "Price (AP)",
+      "salePriceAp": "Sale price (AP)",
+      "campaign": "Campaign",
+      "startsAt": "Starts (UTC)",
+      "endsAt": "Ends (UTC)",
+      "noEnd": "No end",
+      "actions": "Actions",
+      "state": {
+        "current": "Current",
+        "future": "Upcoming",
+        "active": "Overlapped",
+        "ended": "Ended"
+      },
+      "deletePrice": "Delete future price of {amount} AP",
+      "endPrice": "End price of {amount} AP now",
+      "addPrice": "Add a price",
+      "addPriceHint": "The newest row that has started wins. A sale inside a campaign takes the campaign dates if you leave them empty.",
+      "addPriceSubmit": "Add price",
+      "saleHint": "Optional. Lower than the price; the shop shows both.",
+      "campaignHint": "Optional. Groups the sale under a campaign and limits it to its dates.",
+      "noCampaign": "No campaign",
+      "startsAtHint": "Empty means now (or the campaign start).",
+      "endsAtHint": "Empty means no end (or the campaign end).",
+      "sku": "SKU",
+      "skuHint": "Unique internal code: uppercase letters, numbers and hyphens, e.g. COSTUME-SNOW-01.",
+      "validityDays": "Duration (days)",
+      "validityHint": "Empty means permanent.",
+      "sortOrder": "Order",
+      "sortOrderHint": "Lower numbers appear first in their category.",
+      "giftable": "Can be gifted",
+      "limited": "Limited",
+      "bundle": "Pack",
+      "activeField": "Active in the shop",
+      "activeHint": "It is shown only if it also has a current price. Requires the English name.",
+      "problems": {
+        "sku": "Use 2 to 40 uppercase letters, numbers and single hyphens.",
+        "category": "Choose a category.",
+        "validity": "Use a whole number of days between 1 and 3650, or leave it empty.",
+        "sortOrder": "Use a whole number between -32768 and 32767.",
+        "price": "Use a whole number of AP between 1 and 1,000,000.",
+        "sale": "The sale price must be a whole number lower than the price.",
+        "campaign": "Choose a campaign that has not ended.",
+        "date": "Use a valid date and time.",
+        "past": "Choose a future date: past prices cannot be changed.",
+        "endsBeforeStart": "The end must be after the start.",
+        "outsideCampaign": "The dates must fall within the campaign.",
+        "code": "Use 3 to 60 lowercase letters, numbers and single hyphens.",
+        "required": "This field is required.",
+        "name": "Write a name of up to 120 characters.",
+        "description": "Up to 2,000 characters.",
+        "campaignName": "Up to 80 characters.",
+        "campaignEnglish": "The English name is required."
+      },
+      "errors": {
+        "notFound": "That item or price no longer exists.",
+        "changed": "Someone saved changes meanwhile. Reload the page and try again.",
+        "skuTaken": "Another item already uses that SKU.",
+        "codeTaken": "Another campaign already uses that code.",
+        "english": "The English name is required to activate the item.",
+        "unchanged": "There was nothing to change.",
+        "started": "That price has already started and cannot be deleted.",
+        "notActive": "That price has already ended.",
+        "ended": "The campaign has ended: its dates can no longer change.",
+        "campaignRows": "With these dates, a linked price would end before it starts. Adjust that price first."
+      },
+      "done": {
+        "created": "Item created. Now write its English name.",
+        "saved": "Saved.",
+        "text": "Text saved.",
+        "price": "Price added.",
+        "priceEnded": "Price ended."
+      }
+    },
+    "campaigns": {
+      "title": "Campaigns",
+      "intro": "Sales periods that group prices: Christmas, anniversary… Times in UTC.",
+      "new": "New campaign",
+      "create": "Create campaign",
+      "back": "Back to campaigns",
+      "empty": "There are no campaigns yet.",
+      "name": "Name",
+      "priceRows": "Prices",
+      "state": {
+        "upcoming": "Upcoming",
+        "running": "Running",
+        "ended": "Ended"
+      },
+      "code": "Code",
+      "codeHint": "Unique: lowercase letters, numbers and hyphens, e.g. xmas-2026.",
+      "endsAtHint": "Changing the dates also moves the prices that follow the campaign.",
+      "nameIn": "Name in {language}",
+      "editTitle": "Campaign no. {id}",
+      "rowsLinked": "{count, plural, one {# linked price} other {# linked prices}}",
+      "done": {
+        "created": "Campaign created.",
+        "saved": "Campaign saved."
       }
     }
   }

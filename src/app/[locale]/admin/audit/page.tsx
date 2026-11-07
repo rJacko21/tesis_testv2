@@ -14,6 +14,7 @@ import { AdminShell, AdminTable, CELL, HEAD } from "@/components/admin/AdminShel
 import { actionLabel } from "@/components/admin/status";
 import { DateTime } from "@/components/account/DateTime";
 import { Pagination } from "@/components/ui/Pagination";
+import type { MessageKey } from "@/i18n/catalog";
 import { getLocale, getTranslator } from "@/i18n/server";
 import { parsePage } from "@/lib/account/session";
 import { listAudit } from "@/lib/admin/audit";
@@ -21,6 +22,14 @@ import { describeDiff } from "@/lib/admin/diff";
 import { adminPath, requireStaff } from "@/lib/admin/staff";
 
 export const instant = false;
+
+/** Entidades con página propia en el panel: enlace y texto de cada una. */
+const TARGETS = {
+  user: { path: "users", label: "admin.audit.userTarget" },
+  post: { path: "news", label: "admin.audit.postTarget" },
+  item: { path: "shop", label: "admin.audit.itemTarget" },
+  campaign: { path: "campaigns", label: "admin.audit.campaignTarget" },
+} as const satisfies Record<string, { path: string; label: MessageKey }>;
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
@@ -117,19 +126,17 @@ export default async function AdminAuditPage({ searchParams }: PageProps<"/[loca
                   </td>
                   <td className={CELL}>{actionLabel(t, entry.action)}</td>
                   <td className={CELL}>
-                    {entry.entity === "user" && entry.entityId ? (
+                    {entry.entityId && entry.entity in TARGETS ? (
                       <Link
-                        href={adminPath(locale, `users/${entry.entityId}`)}
+                        href={adminPath(
+                          locale,
+                          `${TARGETS[entry.entity as keyof typeof TARGETS].path}/${entry.entityId}`,
+                        )}
                         className="underline"
                       >
-                        {t("admin.audit.userTarget", { id: entry.entityId })}
-                      </Link>
-                    ) : entry.entity === "post" && entry.entityId ? (
-                      <Link
-                        href={adminPath(locale, `news/${entry.entityId}`)}
-                        className="underline"
-                      >
-                        {t("admin.audit.postTarget", { id: entry.entityId })}
+                        {t(TARGETS[entry.entity as keyof typeof TARGETS].label, {
+                          id: entry.entityId,
+                        })}
                       </Link>
                     ) : (
                       `${entry.entity} ${entry.entityId ?? ""}`
