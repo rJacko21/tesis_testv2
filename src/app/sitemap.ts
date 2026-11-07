@@ -28,6 +28,7 @@ const PUBLIC_PATHS = [
   "/rankings",
   "/shop",
   "/topup",
+  "/play-now",
   "/download",
   "/support",
   "/rules",

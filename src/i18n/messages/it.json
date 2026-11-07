@@ -423,6 +423,31 @@
       "again": "Torna alla ricarica"
     }
   },
+  "playNow": {
+    "title": "Gioca gratis a Florensia",
+    "description": "Crea il tuo account gratuito di Florensia in un minuto, scarica il gioco e salpa: battaglie per terra e per mare, gilde e navi.",
+    "heading": "La tua avventura inizia qui",
+    "intro": "Crea il tuo account gratuito, scarica il gioco e solca i mari di Florensia con migliaia di giocatori.",
+    "formTitle": "Crea il tuo account gratuito",
+    "formIntro": "Ci vuole un minuto. Lo stesso account vale nel gioco e su questo sito.",
+    "downloadNow": "Scarica il gioco",
+    "haveAccountDownload": "Scarica il gioco",
+    "steps": {
+      "title": "Tre passi per giocare",
+      "account": {
+        "title": "Crea il tuo account",
+        "body": "Compila il modulo e conferma l’email con il link che ti inviamo."
+      },
+      "download": {
+        "title": "Scarica il gioco",
+        "body": "Installa Florensia da Steam su un PC Windows. È gratis."
+      },
+      "play": {
+        "title": "Accedi e gioca",
+        "body": "Usa nome account e password nel gioco, scegli un server e crea il tuo personaggio."
+      }
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nome dell’account",

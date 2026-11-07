@@ -423,6 +423,31 @@
       "again": "Yüklemeye dön"
     }
   },
+  "playNow": {
+    "title": "Florensia’yı ücretsiz oyna",
+    "description": "Ücretsiz Florensia hesabınızı bir dakikada oluşturun, oyunu indirin ve yelken açın: kara ve deniz savaşları, loncalar ve gemiler.",
+    "heading": "Maceran burada başlıyor",
+    "intro": "Ücretsiz hesabınızı oluşturun, oyunu indirin ve binlerce oyuncuyla Florensia’nın denizlerinde yelken açın.",
+    "formTitle": "Ücretsiz hesabını oluştur",
+    "formIntro": "Bir dakika sürer. Aynı hesap hem oyunda hem bu sitede geçerlidir.",
+    "downloadNow": "Oyunu indir",
+    "haveAccountDownload": "Oyunu indir",
+    "steps": {
+      "title": "Oynamak için üç adım",
+      "account": {
+        "title": "Hesabını oluştur",
+        "body": "Formu doldurun ve gönderdiğimiz bağlantıyla e-postanızı doğrulayın."
+      },
+      "download": {
+        "title": "Oyunu indir",
+        "body": "Florensia’yı Windows bilgisayara Steam’den kurun. Ücretsizdir."
+      },
+      "play": {
+        "title": "Giriş yap ve oyna",
+        "body": "Oyunda hesap adınızı ve şifrenizi kullanın, bir sunucu seçin ve karakterinizi oluşturun."
+      }
+    }
+  },
   "auth": {
     "fields": {
       "username": "Hesap adı",
