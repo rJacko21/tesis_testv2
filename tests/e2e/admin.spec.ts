@@ -162,8 +162,30 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
   const admin = await signedInAccount(page);
   await grant(admin.username, "admin");
   const id = await userId(admin.username);
+  // Un borrador con texto en inglés, para la ficha de noticia (con vista previa).
+  const slug = `a11y-${Date.now().toString(36)}`;
+  const postId = await withDb(async (db) => {
+    const [result] = await db.query("INSERT INTO posts (slug, category) VALUES (?, 'event')", [
+      slug,
+    ]);
+    const insertId = (result as { insertId: number }).insertId;
+    await db.query(
+      "INSERT INTO post_translations (post_id, locale, title, excerpt, body) VALUES (?, 'en', 'A11y', 'Summary', '## Title\n\nText with a [link](https://example.com).')",
+      [insertId],
+    );
+    return insertId;
+  });
+  const pages = [
+    "/admin",
+    "/admin/users",
+    `/admin/users/${id}`,
+    "/admin/audit",
+    "/admin/news",
+    "/admin/news/new",
+    `/admin/news/${postId}?lang=en`,
+  ];
   for (const locale of ["en", "pt-BR", "tr", "it", "de", "fr", "es"]) {
-    for (const path of ["/admin", "/admin/users", `/admin/users/${id}`, "/admin/audit"]) {
+    for (const path of pages) {
       await page.goto(`/${locale}${path}`);
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       await axe(page);
@@ -173,4 +195,5 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
       expect(overflow, `${locale}${path}`).toBeLessThanOrEqual(0);
     }
   }
+  await withDb((db) => db.query("DELETE FROM posts WHERE id = ?", [postId]));
 });

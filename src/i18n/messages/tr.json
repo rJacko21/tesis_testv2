@@ -699,6 +699,7 @@
     "nav": {
       "label": "Panel bölümleri",
       "home": "Ana sayfa",
+      "news": "Haberler",
       "users": "Hesaplar",
       "audit": "Denetim kaydı"
     },
@@ -707,7 +708,8 @@
       "intro": "Merhaba {name}. Rolleriniz: {roles}.",
       "users": "Hesap arayın, geçmişini görün, askıya alın veya yeniden etkinleştirin.",
       "audit": "Kim neyi ne zaman değiştirdi.",
-      "nothing": "Rolünüzün panelin bu sürümünde henüz bölümü yok. Haberler ve promosyonlar sonraki bölümlerde gelecek."
+      "nothing": "Rolünüzün panelde henüz bölümü yok.",
+      "news": "Haber yazın, çevirin, zamanlayın ve yayımlayın."
     },
     "roles": {
       "admin": "Yönetici",
@@ -804,9 +806,102 @@
           "suspend": "Hesap askıya alındı",
           "reactivate": "Hesap yeniden etkinleştirildi",
           "roles": "Roller değişti"
+        },
+        "post": {
+          "create": "Haber oluşturuldu",
+          "update": "Haber değişti",
+          "translation": "Metin değişti",
+          "translationAdd": "Metin eklendi",
+          "translationDelete": "Metin kaldırıldı",
+          "delete": "Taslak silindi"
         }
       },
-      "cli": "Komut satırı"
+      "cli": "Komut satırı",
+      "postTarget": "{id} numaralı haber"
+    },
+    "news": {
+      "title": "Haberler",
+      "filter": "Haberleri filtrele",
+      "apply": "Uygula",
+      "new": "Yeni haber",
+      "newIntro": "Taslak olarak oluşturulur. Sonra metinlerini yazıp ne zaman yayımlanacağını seçin.",
+      "create": "Taslak oluştur",
+      "back": "Haberlere dön",
+      "empty": "Bu filtreyle haber yok.",
+      "caption": "Haberler, sayfa {page}/{count}",
+      "titleField": "Başlık",
+      "status": "Durum",
+      "statuses": {
+        "draft": "Taslak",
+        "scheduled": "Zamanlandı",
+        "published": "Yayımlandı"
+      },
+      "publishedAt": "Yayın (UTC)",
+      "expiresAt": "Etkinlik bitişi (UTC)",
+      "publishedAtHint": "Zamanlamak için gerekli. Tarihsiz yayımlarsanız şimdiki zaman kullanılır.",
+      "expiresAtHint": "İsteğe bağlı. Bu tarihten sonra haber görünür kalır ama bitti olarak işaretlenir.",
+      "statusHint": "Zamanlanan haberler vakti gelince kendiliğinden görünür. Yayımlamak veya zamanlamak için İngilizce metin gerekir.",
+      "languages": "Diller",
+      "languageCount": "{count}/{total}",
+      "missing": "Eksik: {list}",
+      "missingShort": "eksik",
+      "editTitle": "{id} numaralı haber",
+      "scheduledFor": "Yayın zamanı:",
+      "viewPublic": "Sitede gör",
+      "data": "Bilgiler ve yayın",
+      "slug": "URL kısaltması (slug)",
+      "slugHint": "Küçük harf, rakam ve tire; tüm dillerde aynı: /news/kis-festivali.",
+      "category": "Kategori",
+      "save": "Kaydet",
+      "meta": "Yazar: {author}. Son kayıt:",
+      "texts": "Dillere göre metinler",
+      "textsHint": "Bir dil eksikse site İngilizce metni gösterir ve bunu belirtir.",
+      "textIn": "{language} metin",
+      "englishFirst": "İngilizce ile başlayın: eksik diller için yedek dildir ve yayımlamak için gereklidir.",
+      "noText": "Bu dilde henüz metin yok.",
+      "excerpt": "Özet",
+      "excerptHint": "Listede ve ana sayfada görünür. En fazla {max} karakter.",
+      "body": "Gövde (Markdown)",
+      "bodyHint": "Paragraflar arasında boş satır; ## başlıklar; - listeler; **kalın**, *italik* ve [bağlantı](https://…).",
+      "seoTitle": "Arama başlığı (isteğe bağlı)",
+      "seoTitleHint": "En fazla {max} karakter. Boşsa başlık kullanılır.",
+      "seoDescription": "Arama açıklaması (isteğe bağlı)",
+      "seoDescriptionHint": "En fazla {max} karakter. Boşsa özet kullanılır.",
+      "saveText": "Metni kaydet",
+      "deleteText": "{language} metni kaldır",
+      "preview": "Önizleme (kayıtlı metin)",
+      "deleteTitle": "Taslağı sil",
+      "deleteHint": "Yalnızca taslaklar silinebilir. Yayımlanmış bir haberi kaldırmak için taslağa alın.",
+      "delete": "Taslağı sil",
+      "errorSummary": "Kırmızıyla işaretli alanları kontrol edin.",
+      "problems": {
+        "slug": "3-120 küçük harf, rakam ve tekli tire kullanın.",
+        "category": "Bir kategori seçin.",
+        "status": "Bir durum seçin.",
+        "date": "Geçerli bir tarih ve saat yazın.",
+        "scheduledPast": "Zamanlamak için ileri bir tarih seçin.",
+        "publishedFuture": "İleri bir tarih “Yayımlandı” değil “Zamanlandı” demektir.",
+        "expiresBeforePublish": "Bitiş yayından sonra olmalı."
+      },
+      "translationProblems": {
+        "required": "Bu alanı doldurun.",
+        "tooLong": "En fazla {max} karakter."
+      },
+      "errors": {
+        "notFound": "Böyle bir haber yok.",
+        "changed": "Siz düzenlerken başka biri bu haberi kaydetti. Hiçbir şey kaydedilmedi: değişiklikleri görmek için sayfayı yenileyin.",
+        "slugTaken": "Bu slug başka bir haberde kullanılıyor.",
+        "english": "Yayımlamak veya zamanlamak için İngilizce metin gerekir ve kaldırılamaz.",
+        "unchanged": "Değişen bir şey yoktu.",
+        "published": "Yalnızca taslaklar silinebilir. Önce taslağa alın."
+      },
+      "done": {
+        "created": "Taslak oluşturuldu. Şimdi İngilizce metni yazın.",
+        "saved": "Kaydedildi.",
+        "translation": "Metin kaydedildi.",
+        "translationDeleted": "Metin kaldırıldı.",
+        "deleted": "Taslak silindi."
+      }
     }
   }
 }

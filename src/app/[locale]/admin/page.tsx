@@ -47,10 +47,12 @@ export default async function AdminPage() {
             <li key={area} className="border-parchment-300 rounded-lg border bg-white p-5">
               <h2 className="text-navy-900 text-xl font-bold">
                 <Link href={adminPath(locale, area)} className="underline">
-                  {t(`admin.nav.${area as "users" | "audit"}`)}
+                  {t(`admin.nav.${area as "news" | "users" | "audit"}`)}
                 </Link>
               </h2>
-              <p className="text-ink-600 mt-1">{t(`admin.home.${area as "users" | "audit"}`)}</p>
+              <p className="text-ink-600 mt-1">
+                {t(`admin.home.${area as "news" | "users" | "audit"}`)}
+              </p>
             </li>
           ))}
         </ul>

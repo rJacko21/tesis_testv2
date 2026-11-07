@@ -699,6 +699,7 @@
     "nav": {
       "label": "Sezioni del pannello",
       "home": "Inizio",
+      "news": "Notizie",
       "users": "Account",
       "audit": "Registro di audit"
     },
@@ -707,7 +708,8 @@
       "intro": "Ciao, {name}. I tuoi ruoli: {roles}.",
       "users": "Cerca account, consulta la cronologia e sospendili o riattivali.",
       "audit": "Chi ha cambiato cosa, e quando.",
-      "nothing": "Il tuo ruolo non ha ancora sezioni in questa versione del pannello. Notizie e promozioni arriveranno nelle prossime parti."
+      "nothing": "Il tuo ruolo non ha ancora sezioni nel pannello.",
+      "news": "Scrivi, traduci, programma e pubblica notizie."
     },
     "roles": {
       "admin": "Amministratore",
@@ -804,9 +806,102 @@
           "suspend": "Account sospeso",
           "reactivate": "Account riattivato",
           "roles": "Ruoli modificati"
+        },
+        "post": {
+          "create": "Notizia creata",
+          "update": "Notizia modificata",
+          "translation": "Testo modificato",
+          "translationAdd": "Testo aggiunto",
+          "translationDelete": "Testo rimosso",
+          "delete": "Bozza eliminata"
         }
       },
-      "cli": "Riga di comando"
+      "cli": "Riga di comando",
+      "postTarget": "Notizia n. {id}"
+    },
+    "news": {
+      "title": "Notizie",
+      "filter": "Filtra notizie",
+      "apply": "Applica",
+      "new": "Nuova notizia",
+      "newIntro": "Viene creata come bozza. Poi scrivi i testi e scegli quando pubblicarla.",
+      "create": "Crea bozza",
+      "back": "Torna alle notizie",
+      "empty": "Nessuna notizia con questo filtro.",
+      "caption": "Notizie, pagina {page} di {count}",
+      "titleField": "Titolo",
+      "status": "Stato",
+      "statuses": {
+        "draft": "Bozza",
+        "scheduled": "Programmata",
+        "published": "Pubblicata"
+      },
+      "publishedAt": "Pubblicazione (UTC)",
+      "expiresAt": "Fine dell’evento (UTC)",
+      "publishedAtHint": "Obbligatoria per programmare. Se pubblichi senza data, vale adesso.",
+      "expiresAtHint": "Facoltativa. Dopo, la notizia resta visibile ma segnata come terminata.",
+      "statusHint": "Le programmate compaiono da sole all’ora indicata. Per pubblicare o programmare serve il testo in inglese.",
+      "languages": "Lingue",
+      "languageCount": "{count} su {total}",
+      "missing": "Mancano: {list}",
+      "missingShort": "manca",
+      "editTitle": "Notizia n. {id}",
+      "scheduledFor": "Appare il",
+      "viewPublic": "Vedi sul sito",
+      "data": "Dati e pubblicazione",
+      "slug": "Slug dell’URL",
+      "slugHint": "Lettere minuscole, numeri e trattini, uguale in tutte le lingue: /news/festival-inverno.",
+      "category": "Categoria",
+      "save": "Salva",
+      "meta": "Autore: {author}. Ultimo salvataggio:",
+      "texts": "Testi per lingua",
+      "textsHint": "Se manca una lingua, il sito mostra il testo inglese e lo segnala.",
+      "textIn": "Testo in {language}",
+      "englishFirst": "Inizia dall’inglese: è la lingua di riserva ed è obbligatoria per pubblicare.",
+      "noText": "Non c’è ancora testo in questa lingua.",
+      "excerpt": "Riassunto",
+      "excerptHint": "Appare nell’elenco e in home. Fino a {max} caratteri.",
+      "body": "Corpo (Markdown)",
+      "bodyHint": "Riga vuota tra i paragrafi; ## titoli; - elenchi; **grassetto**, *corsivo* e [link](https://…).",
+      "seoTitle": "Titolo per i motori di ricerca (facoltativo)",
+      "seoTitleHint": "Fino a {max} caratteri. Senza, si usa il titolo.",
+      "seoDescription": "Descrizione per i motori di ricerca (facoltativa)",
+      "seoDescriptionHint": "Fino a {max} caratteri. Senza, si usa il riassunto.",
+      "saveText": "Salva testo",
+      "deleteText": "Rimuovi il testo in {language}",
+      "preview": "Anteprima (testo salvato)",
+      "deleteTitle": "Elimina bozza",
+      "deleteHint": "Si possono eliminare solo le bozze. Per ritirare una notizia pubblicata, riportala a bozza.",
+      "delete": "Elimina bozza",
+      "errorSummary": "Controlla i campi segnati in rosso.",
+      "problems": {
+        "slug": "Usa da 3 a 120 lettere minuscole, numeri e trattini singoli.",
+        "category": "Scegli una categoria.",
+        "status": "Scegli uno stato.",
+        "date": "Scrivi una data e un’ora valide.",
+        "scheduledPast": "Per programmare, scegli una data futura.",
+        "publishedFuture": "Una data futura è “Programmata”, non “Pubblicata”.",
+        "expiresBeforePublish": "La fine deve essere dopo la pubblicazione."
+      },
+      "translationProblems": {
+        "required": "Compila questo campo.",
+        "tooLong": "Fino a {max} caratteri."
+      },
+      "errors": {
+        "notFound": "Questa notizia non esiste.",
+        "changed": "Qualcun altro ha salvato questa notizia mentre la modificavi. Non è stato salvato nulla: ricarica la pagina per vedere le modifiche.",
+        "slugTaken": "Un’altra notizia usa già questo slug.",
+        "english": "Il testo inglese è obbligatorio per pubblicare o programmare e non si può rimuovere.",
+        "unchanged": "Non era cambiato nulla.",
+        "published": "Si possono eliminare solo le bozze. Riportala prima a bozza."
+      },
+      "done": {
+        "created": "Bozza creata. Ora scrivi il testo in inglese.",
+        "saved": "Salvato.",
+        "translation": "Testo salvato.",
+        "translationDeleted": "Testo rimosso.",
+        "deleted": "Bozza eliminata."
+      }
     }
   }
 }
