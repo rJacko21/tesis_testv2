@@ -17,50 +17,15 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import { isLocale, type Locale } from "@/config/locales";
-import { catalogLoaders } from "@/i18n/catalog";
-import { createTranslator, type Translate } from "@/i18n/translator";
-
+import { formLocale, limited, passwordError, text } from "./action-helpers";
 import { auth } from "./auth";
 import type { FormState } from "./form-state";
 import { loginLockMinutes, recordLoginAttempt } from "./login-guard";
-import { isPwnedPassword, PASSWORD_MAX, PASSWORD_MIN } from "./password";
+import { isPwnedPassword } from "./password";
 import { consumeRateLimit } from "./rate-limit";
 import { safeNext } from "./redirect";
 import { clientIp } from "./request";
 import { isValidUsername, USERNAME_MAX, USERNAME_MIN } from "./username";
-
-/** Idioma de la página que envió el formulario (campo oculto `locale`). */
-async function formLocale(form: FormData): Promise<{ locale: Locale; t: Translate }> {
-  const value = form.get("locale");
-  const locale: Locale = typeof value === "string" && isLocale(value) ? value : "en";
-  return { locale, t: createTranslator(locale, await catalogLoaders[locale]()) };
-}
-
-const text = (form: FormData, name: string) => {
-  const value = form.get(name);
-  return typeof value === "string" ? value : "";
-};
-
-const minutes = (seconds: number) => Math.max(1, Math.ceil(seconds / 60));
-
-/** Comprueba un límite y, si se supera, devuelve el error para el formulario. */
-async function limited(key: string, windowSeconds: number, max: number, t: Translate) {
-  const result = await consumeRateLimit(key, windowSeconds, max);
-  if (result.allowed) return null;
-  return {
-    status: "error",
-    message: t("auth.errors.rateLimited", { minutes: minutes(result.retryAfter) }),
-  } satisfies FormState;
-}
-
-/** Errores de longitud de la contraseña nueva, o `null`. */
-function passwordError(password: string, t: Translate): string | null {
-  if (password.length < PASSWORD_MIN || password.length > PASSWORD_MAX) {
-    return t("auth.errors.passwordLength", { min: PASSWORD_MIN, max: PASSWORD_MAX });
-  }
-  return null;
-}
 
 // ---------------------------------------------------------------------------
 // Registro

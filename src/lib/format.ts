@@ -38,3 +38,8 @@ export function formatTime(locale: Locale, date: Date): string {
   }
   return formatter.format(date);
 }
+
+/** Importe en céntimos con su moneda (ISO 4217): "4,99 €", "€4.99"… */
+export function formatMoney(locale: Locale, cents: number, currency: string): string {
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(cents / 100);
+}

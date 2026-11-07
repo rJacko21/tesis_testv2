@@ -31,6 +31,7 @@ import { accounts, sessions, users, verifications } from "@/db/schema";
 import { env } from "@/lib/env";
 import { sendMail } from "@/lib/mail/send";
 import {
+  confirmNewEmailMessage,
   existingAccountMessage,
   resetPasswordMessage,
   verifyEmailMessage,
@@ -53,6 +54,21 @@ function recipient(user: { email: string; name: string } & Record<string, unknow
   return { email: user.email, name: display, locale };
 }
 
+/**
+ * Tipo de un token de verificación de Better Auth (un JWT firmado): al
+ * cambiar el correo lleva `requestType: "change-email-verification"`. Solo
+ * se lee para elegir la plantilla; la firma la comprueba Better Auth al
+ * abrir el enlace.
+ */
+function isEmailChangeToken(token: string): boolean {
+  try {
+    const payload = JSON.parse(Buffer.from(token.split(".")[1] ?? "", "base64url").toString());
+    return payload?.requestType === "change-email-verification";
+  } catch {
+    return false;
+  }
+}
+
 export const auth = betterAuth({
   appName: "Florensia",
   baseURL: SITE_URL,
@@ -71,6 +87,9 @@ export const auth = betterAuth({
       // Estado de la cuenta (RF-12): lo cambia el panel, nunca el usuario.
       status: { type: "string", required: false, defaultValue: "active", input: false },
     },
+    // Cambiar el correo (RF-04): el enlace va al correo nuevo y la cuenta no
+    // cambia hasta abrirlo. La Server Action pide antes la contraseña actual.
+    changeEmail: { enabled: true },
   },
   session: {
     modelName: "sessions",
@@ -110,10 +129,12 @@ export const auth = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     expiresIn: VERIFY_TOKEN_HOURS * 60 * 60,
+    // Al cambiar el correo, `user.email` ya es el correo nuevo.
     async sendVerificationEmail({ user, token }) {
       const to = recipient(user);
       const url = `${SITE_URL}/${to.locale}/verify-email?token=${encodeURIComponent(token)}`;
-      await sendMail(await verifyEmailMessage(to, url));
+      const message = isEmailChangeToken(token) ? confirmNewEmailMessage : verifyEmailMessage;
+      await sendMail(await message(to, url));
     },
   },
 

@@ -24,7 +24,9 @@ export interface AuthField {
   name: string;
   /** Texto de la etiqueta; en una casilla puede llevar enlaces. */
   label: ReactNode;
-  type: "text" | "email" | "password" | "checkbox";
+  type: "text" | "email" | "password" | "checkbox" | "select";
+  /** Opciones de un `select`; la primera puede ser la vacía («Elige…»). */
+  options?: readonly { value: string; label: string }[];
   autoComplete?: string;
   hint?: string;
   required?: boolean;
@@ -43,6 +45,8 @@ export interface AuthFormProps {
   successExtra?: ReactNode;
   /** Trampa para bots: añade un campo oculto que una persona no rellena. */
   honeypot?: boolean;
+  /** Prefijo de los `id` de los campos, para poner varios formularios en una página. */
+  idPrefix?: string;
 }
 
 const INPUT =
@@ -69,6 +73,7 @@ export function AuthForm({
   submitLabel,
   successExtra,
   honeypot = false,
+  idPrefix = "field",
 }: AuthFormProps) {
   const [state, formAction] = useActionState(action, { status: "idle" });
 
@@ -110,7 +115,7 @@ export function AuthForm({
       ) : null}
 
       {fields.map((field) => {
-        const id = `field-${field.name}`;
+        const id = `${idPrefix}-${field.name}`;
         const error = errors[field.name];
         const describedBy =
           [field.hint ? `${id}-hint` : null, error ? `${id}-error` : null]
@@ -141,6 +146,44 @@ export function AuthForm({
           );
         }
 
+        const hint = field.hint ? (
+          <p id={`${id}-hint`} className="text-ink-600 mt-1 text-sm">
+            {field.hint}
+          </p>
+        ) : null;
+        const fieldError = error ? (
+          <p id={`${id}-error`} className="text-danger-700 mt-1 text-sm font-bold">
+            {error}
+          </p>
+        ) : null;
+
+        if (field.type === "select") {
+          return (
+            <div key={field.name}>
+              <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+                {field.label}
+              </label>
+              <select
+                id={id}
+                name={field.name}
+                required={field.required}
+                defaultValue={values[field.name] ?? ""}
+                aria-invalid={error ? true : undefined}
+                aria-describedby={describedBy}
+                className={INPUT}
+              >
+                {field.options?.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              {hint}
+              {fieldError}
+            </div>
+          );
+        }
+
         return (
           <div key={field.name}>
             <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
@@ -163,16 +206,8 @@ export function AuthForm({
               autoCapitalize={field.type === "password" ? undefined : "none"}
               className={INPUT}
             />
-            {field.hint ? (
-              <p id={`${id}-hint`} className="text-ink-600 mt-1 text-sm">
-                {field.hint}
-              </p>
-            ) : null}
-            {error ? (
-              <p id={`${id}-error`} className="text-danger-700 mt-1 text-sm font-bold">
-                {error}
-              </p>
-            ) : null}
+            {hint}
+            {fieldError}
           </div>
         );
       })}

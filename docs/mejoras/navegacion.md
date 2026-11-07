@@ -70,7 +70,8 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
     - al navegar, cerrar todo y poner `aria-current="page"` en el enlace de la página actual. Ahora lo llevan también los enlaces de escritorio, que antes no lo tenían.
   - **Selector de idioma:** sigue siendo Client Component, solo para leer la ruta actual con `usePathname`. La cabecera vive en el layout, que Next no vuelve a pintar al navegar, y el enlace a otro idioma debe ser correcto también sin JavaScript.
 - **Resultado** (Lighthouse móvil, local, 3 pasadas):
-  - **JS en `/es/register`:** de 152 868 a 150 435 bytes, unos 2,4 KB menos. Quedan 3,2 KB de margen.
+  - **JS en `/es/register`:** de 152 868 a 152 077 bytes, unos 0,8 KB menos.
+  - **Corrección (T-18):** la primera medida de este PR daba 150 435 bytes, pero esa pasada no había cargado un chunk de 6 KB (`next/image`). Ese chunk llega por la precarga de los enlaces visibles, y Lighthouse a veces lo cuenta y a veces no. Medido de nuevo sobre `main` con el chunk incluido, la cifra es 152 077. Quedan unos 1,5 KB de margen, no 3,2.
   - **TBT:** sin cambio medible. En `/es/register` pasa de 167-200 ms a 172-201 ms, y en `/es` de 200-267 ms a 173-209 ms. Las dos horquillas se solapan: es ruido entre pasadas.
 - **Hallazgo: el TBT no lo causa la cabecera.**
   - El perfil de la carga muestra que la tarea larga (210-290 ms con CPU 4× más lenta) es el arranque de React y de Next: 71 KB de `react-dom` y 46 KB del enrutador.

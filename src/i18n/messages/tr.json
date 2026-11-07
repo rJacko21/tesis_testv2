@@ -350,8 +350,128 @@
       "unverified": "Henüz onaylanmadı. Mağazadan satın almadan önce onaylamanız gerekecek.",
       "resend": "Bağlantıyı tekrar gönder",
       "resent": "Size yeni bir bağlantı gönderdik.",
-      "signOut": "Çıkış yap",
-      "comingSoon": "AP bakiyeniz, satın alımlarınız ve sıralamalarınız yakında burada olacak."
+      "signOut": "Çıkış yap"
+    }
+  },
+  "account": {
+    "nav": {
+      "label": "Hesap bölümleri",
+      "summary": "Özet",
+      "purchases": "Satın alımlar",
+      "topups": "Yüklemeler",
+      "characters": "Karakterler",
+      "redeem": "Kod kullan",
+      "security": "Güvenlik",
+      "privacy": "Gizlilik"
+    },
+    "errors": {
+      "session": "Oturumunuzun süresi doldu. Lütfen tekrar giriş yapın.",
+      "samePassword": "Yeni şifre mevcut şifreden farklı olmalıdır.",
+      "currentPassword": "Mevcut şifre doğru değil.",
+      "sameEmail": "Bu zaten hesabınızın e-posta adresi."
+    },
+    "summary": {
+      "balance": "AP bakiyesi",
+      "ap": "{amount, number} AP",
+      "topupSoon": "Mağaza açıldığında buradan AP yükleyebileceksiniz."
+    },
+    "purchases": {
+      "title": "Satın alımlar",
+      "count": "{total, plural, one {# satın alım} other {# satın alım}}",
+      "empty": "Mağazadan henüz bir şey satın almadınız. Satın aldığınızda her alım, fiyatı ve onu alan karakterle birlikte burada görünecek.",
+      "order": "Sipariş no. {id}",
+      "line": "{quantity} × {name}",
+      "recipient": "Alıcı: {character} ({server})",
+      "total": "Toplam: {amount, number} AP",
+      "status": {
+        "pending": "İşleniyor",
+        "completed": "Teslim edildi",
+        "refunded": "İade edildi",
+        "failed": "Başarısız"
+      }
+    },
+    "topups": {
+      "title": "Yüklemeler",
+      "empty": "Henüz AP yüklemediniz. Yüklediğinizde her yükleme, ödenen tutar ve durumuyla birlikte burada görünecek.",
+      "caption": "AP yüklemeleri. Sayfa {page} / {count}.",
+      "date": "Tarih",
+      "ap": "AP",
+      "paid": "Tutar",
+      "state": "Durum",
+      "status": {
+        "pending": "Beklemede",
+        "paid": "Ödendi",
+        "failed": "Başarısız",
+        "refunded": "İade edildi"
+      }
+    },
+    "characters": {
+      "title": "Karakterler",
+      "empty": "Bu hesapta henüz karakter yok. Oyunda bir karakter oluşturduğunuzda, sıralamadaki yeriyle birlikte burada görünecek.",
+      "noneRanked": "Karakterlerinizden hiçbiri henüz sıralamada yer almıyor.",
+      "ranks": "Sıralamadaki yeri",
+      "rank": "{rank, number}.",
+      "unranked": "Sıralamada değil"
+    },
+    "security": {
+      "title": "Güvenlik",
+      "passwordTitle": "Şifreyi değiştir",
+      "passwordNote": "Şifreyi değiştirdiğinizde diğer cihazlardaki oturumlar kapatılır.",
+      "currentPassword": "Mevcut şifre",
+      "passwordSubmit": "Şifreyi değiştir",
+      "passwordChanged": "Şifreniz değişti ve diğer cihazlardaki oturumları kapattık.",
+      "emailTitle": "E-postayı değiştir",
+      "currentEmail": "Mevcut e-posta: {email}",
+      "newEmail": "Yeni e-posta",
+      "emailHint": "Onaylamanız için bir bağlantı göndereceğiz. O zamana kadar mevcut adresiniz kullanılmaya devam eder.",
+      "emailSubmit": "Onay bağlantısı gönder",
+      "emailSent": "{email} adresine bir bağlantı gönderdik. E-postanız, bağlantıyı açtığınızda değişecek.",
+      "sessionsTitle": "Açık oturumlar",
+      "sessionsIntro": "Giriş yaptığınız cihazlar. Tanımadığınız bir cihaz varsa oturumunu kapatın ve şifrenizi değiştirin.",
+      "thisDevice": "Bu cihaz",
+      "unknownDevice": "Bilinmeyen cihaz",
+      "lastActive": "Son etkinlik:",
+      "close": "Kapat",
+      "closeOne": "Kapat: {device} oturumu",
+      "closeOthers": "Diğer tüm oturumları kapat",
+      "closed": "Oturum kapatıldı.",
+      "onlyThis": "Yalnızca bu cihazda oturumunuz açık."
+    },
+    "redeem": {
+      "title": "Kod kullan",
+      "intro": "Bir etkinlikten ya da Florensia’nın sosyal medya hesaplarından aldığınız kodu yazın. Her kod hesap başına bir kez kullanılabilir.",
+      "code": "Kod",
+      "codeHint": "Büyük ya da küçük harf fark etmez.",
+      "character": "Eşyayı alacak karakter",
+      "characterHint": "Yalnızca kod bir eşya veriyorsa gerekir. AP kodları bakiyenize eklenir.",
+      "noCharacter": "Bir karakter seçin",
+      "submit": "Kullan",
+      "okAp": "{amount, number} AP aldınız. Yeni bakiyeniz {balance, number} AP.",
+      "okItem": "{character}, oyuna bir sonraki girişinizde “{item}” eşyasını alacak.",
+      "another": "Başka bir kod kullan",
+      "errors": {
+        "invalid": "Bu kod yok ya da etkin değil.",
+        "expired": "Bu kodun süresi doldu.",
+        "used": "Bu kodu zaten kullandınız.",
+        "exhausted": "Bu kodun kullanım hakkı tükendi.",
+        "character": "Eşyayı hangi karakterin alacağını seçin.",
+        "noCharacters": "Bu kod bir eşya veriyor ve hesabınızda onu alabilecek bir karakter henüz yok."
+      }
+    },
+    "privacy": {
+      "title": "Gizlilik",
+      "exportTitle": "Verilerimi indir",
+      "exportBody": "Hesabınızla ilgili sakladığımız her şeyi içeren bir JSON dosyası indirin: hesap bilgileri, karakterler, satın alımlar, yüklemeler, AP hareketleri, kullanılan kodlar ve oturumlar.",
+      "exportAction": "Verilerimi indir",
+      "deleteTitle": "Hesabımı sil",
+      "deleteBody": "Hesap adınız, e-postanız ve şifreniz silinir, tüm oturumlarınız kapatılır ve karakterleriniz artık bu hesaba bağlı olmaz. Bu işlem geri alınamaz.",
+      "deleteKept": "Yasal zorunluluk nedeniyle satın alım, yükleme ve AP hareketi kayıtlarını adınız ve e-postanız olmadan saklarız.",
+      "deleteConfirm": "Hesabımın silineceğini ve geri getirilemeyeceğini anlıyorum.",
+      "deleteSubmit": "Hesabımı sil",
+      "deleted": "Hesabınız silindi. Florensia oynadığınız için teşekkürler.",
+      "errors": {
+        "confirm": "Hesabı silmek istediğinizi onaylamak için kutuyu işaretleyin."
+      }
     }
   },
   "email": {
@@ -373,6 +493,24 @@
       "body": "Biri bu e-posta adresiyle bir Florensia hesabı oluşturmaya çalıştı, ancak zaten bir hesabınız var. Bu sizseniz giriş yapmanız yeterli:",
       "action": "Giriş yap",
       "note": "Şifrenizi unuttuysanız giriş sayfasındaki “Şifrenizi mi unuttunuz?” bağlantısını kullanın. Siz değilseniz bu e-postayı yok sayabilirsiniz."
+    },
+    "newEmail": {
+      "subject": "Yeni Florensia e-posta adresinizi onaylayın",
+      "body": "Florensia hesabınızda bu e-posta adresini kullanmak istediniz. Bu bağlantıyı açarak onaylayın:",
+      "action": "Yeni e-postamı onayla",
+      "note": "Bağlantı 24 saat içinde geçerliliğini yitirir. Bağlantıyı açana kadar hesabınız eski e-posta adresini kullanmaya devam eder. Bu isteği siz yapmadıysanız bu e-postayı yok sayın."
+    },
+    "emailChange": {
+      "subject": "Hesabınızın e-posta adresinin değiştirilmesi istendi",
+      "body": "Florensia hesabınızda oturum açmış biri, e-posta adresini {email} olarak değiştirmek istedi. Değişiklik yalnızca o adrese gönderilen bağlantı açılırsa yapılır."
+    },
+    "passwordChanged": {
+      "subject": "Florensia şifreniz değişti",
+      "body": "Florensia hesabınızın şifresi az önce değişti ve diğer cihazlardaki oturumlar kapatıldı."
+    },
+    "notMe": {
+      "action": "Bu ben değildim: hesabımı kurtar",
+      "note": "Bu sizseniz bir şey yapmanıza gerek yok. Değilse hemen yeni bir şifre belirleyin: tüm oturumlar kapatılacak."
     }
   }
 }

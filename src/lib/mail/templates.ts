@@ -95,3 +95,43 @@ export async function existingAccountMessage(user: Recipient, url: string): Prom
     note: t("email.existing.note"),
   });
 }
+
+/**
+ * «Confirma tu correo nuevo»: se envía al correo nuevo al cambiarlo desde
+ * «Mi cuenta». El correo de la cuenta no cambia hasta que se abre el enlace.
+ */
+export async function confirmNewEmailMessage(user: Recipient, url: string): Promise<MailMessage> {
+  const t = await translatorFor(user.locale);
+  return layout({
+    to: user.email,
+    subject: t("email.newEmail.subject"),
+    greeting: t("email.greeting", { name: user.name }),
+    body: t("email.newEmail.body"),
+    action: t("email.newEmail.action"),
+    url,
+    note: t("email.newEmail.note"),
+  });
+}
+
+/**
+ * Aviso al correo actual de que se ha pedido cambiarlo, o de que la
+ * contraseña ha cambiado. Si no fue el dueño, el enlace le lleva a
+ * recuperar la contraseña, que cierra todas las sesiones (OWASP ASVS V2.2.3).
+ */
+export async function securityNoticeMessage(
+  user: Recipient,
+  kind: "emailChange" | "passwordChanged",
+  url: string,
+  newEmail = "",
+): Promise<MailMessage> {
+  const t = await translatorFor(user.locale);
+  return layout({
+    to: user.email,
+    subject: t(`email.${kind}.subject`),
+    greeting: t("email.greeting", { name: user.name }),
+    body: t(`email.${kind}.body`, { email: newEmail }),
+    action: t("email.notMe.action"),
+    url,
+    note: t("email.notMe.note"),
+  });
+}

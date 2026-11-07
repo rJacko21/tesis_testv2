@@ -67,7 +67,7 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
 ### Pendiente
 
-- **«Ir a mi personaje»** (RF-07) necesita sesión: llega con las cuentas (T-17), junto con `/rankings/me`.
+- ~~**«Ir a mi personaje»** (RF-07)~~: hecho en «Mi cuenta › Personajes» ([M-26](mi-cuenta.md)).
 - **Ranking por servidor:** el filtro de servidor muestra los personajes de ese servidor con su puesto en el ranking de todos los servidores. Si Giiku quiere puestos por servidor, `buildRankings` puede generar ese grupo igual que el de especialización.
 
 ### Hallazgo: el 404 de una página con filtros responde 200
