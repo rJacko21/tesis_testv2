@@ -7,8 +7,9 @@
  * - El selector de idioma se ve siempre: en la web original solo había EN y
  *   DE, y no estaba en el login (F-01, F-06).
  *
- * Es un Server Component: traduce aquí los textos y pasa a los Client
- * Components solo cadenas. Así los catálogos de idioma no llegan al navegador.
+ * Es un Server Component, igual que los menús: traduce aquí los textos y
+ * solo el selector de idioma y `HeaderBehavior` llegan al navegador como
+ * JavaScript. Así los catálogos de idioma no llegan al navegador.
  *
  * @see RF-02 Navegación global
  */
@@ -27,6 +28,7 @@ import {
 import { getLocale, getTranslator } from "@/i18n/server";
 
 import { CommunityMenu } from "./CommunityMenu";
+import { HeaderBehavior } from "./HeaderBehavior";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import type { ResolvedLink } from "./nav-types";
@@ -47,7 +49,7 @@ export async function SiteHeader() {
   const externalLabel = t("nav.externalSite");
 
   return (
-    <header className="bg-navy-900 text-white">
+    <header data-site-header className="bg-navy-900 text-white">
       <Container className="flex items-center gap-2 py-2">
         <Link
           href={`/${locale}`}
@@ -63,7 +65,7 @@ export async function SiteHeader() {
                 <NavLinkItem
                   link={link}
                   externalLabel={externalLabel}
-                  className="hover:bg-navy-700 flex min-h-11 items-center rounded px-3 font-semibold"
+                  className="hover:bg-navy-700 aria-[current]:bg-navy-700 flex min-h-11 items-center rounded px-3 font-semibold"
                 />
               </li>
             ))}
@@ -113,6 +115,7 @@ export async function SiteHeader() {
             secondary: buttonStyles({ size: "lg", variant: "onDark" }),
           }}
         />
+        <HeaderBehavior />
       </Container>
     </header>
   );
