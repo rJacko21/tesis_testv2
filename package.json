@@ -20,7 +20,8 @@
     "test:e2e": "playwright test",
     "lighthouse": "lhci autorun",
     "db:seed:demo": "tsx scripts/seed-demo.ts",
-    "db:er": "tsx scripts/generate-er.ts"
+    "db:er": "tsx scripts/generate-er.ts",
+    "js:budget": "tsx scripts/check-js-budget.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "2.0.2",

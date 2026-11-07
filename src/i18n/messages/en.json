@@ -274,6 +274,66 @@
       "go": "Go"
     }
   },
+  "shop": {
+    "title": "Item shop",
+    "description": "Costumes, weapons, experience boosts and ships for Florensia, paid with AP. Search, filter by category and see every offer and its end date.",
+    "intro": "Everything is paid with AP and sent to the character you choose.",
+    "categories": {
+      "label": "Shop categories",
+      "all": "All"
+    },
+    "filters": {
+      "label": "Search and filter the shop",
+      "search": "Search by name",
+      "searchHint": "Any word of the name, with or without accents.",
+      "maxPrice": "Price",
+      "anyPrice": "Any price",
+      "upTo": "Up to {amount, number} AP",
+      "sort": "Sort by",
+      "sorts": {
+        "relevance": "Featured",
+        "price-asc": "Price: low to high",
+        "price-desc": "Price: high to low",
+        "newest": "Newest"
+      },
+      "onSale": "On sale only",
+      "apply": "Apply",
+      "reset": "Clear filters"
+    },
+    "results": "{total, plural, one {# item} other {# items}}",
+    "searchNote": "matching “{query}”",
+    "empty": "No items match these filters.",
+    "emptySearch": "No item name contains “{query}”. Try another word or clear the filters.",
+    "emptyShop": "There are no items for sale yet.",
+    "unavailable": "The shop is not available right now. Please try again in a few minutes.",
+    "price": {
+      "label": "Price",
+      "was": "Was",
+      "now": "Now",
+      "amount": "{amount, number} AP"
+    },
+    "badges": {
+      "sale": "-{percent}%",
+      "limited": "Limited edition",
+      "bundle": "Bundle"
+    },
+    "validity": {
+      "permanent": "Permanent",
+      "days": "{days, plural, one {# day} other {# days}}"
+    },
+    "item": {
+      "breadcrumb": "Breadcrumb",
+      "details": "Details",
+      "validity": "Duration",
+      "giftable": "Can be gifted",
+      "yes": "Yes",
+      "no": "No",
+      "saleUntil": "{campaign} offer until {date}",
+      "saleUntilNoName": "Offer until {date}",
+      "buySoon": "Buying with AP is coming soon. For now you can browse the catalogue.",
+      "back": "Back to {category}"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Account name",

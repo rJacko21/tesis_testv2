@@ -70,6 +70,8 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm db:migrate && pnpm db:seed && pnpm db:seed:demo
       - run: pnpm build
+      # Presupuesto de JS propio de cada página (ADR-15); la precarga es solo aviso en Lighthouse.
+      - run: pnpm js:budget
       # Accesibilidad (axe, WCAG 2.2 AA), i18n y diseño responsive.
       - run: pnpm test:e2e
       # Core Web Vitals de laboratorio contra los presupuestos.

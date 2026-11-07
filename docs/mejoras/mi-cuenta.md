@@ -112,10 +112,12 @@ Lighthouse móvil en `/es/register`, en local, que comparte el formulario con la
 
 Lighthouse cuenta como JS de la página los chunks de las rutas que precargan los enlaces visibles (`<Link>`). Uno de 6 KB (`next/image`) aparece en unas pasadas y en otras no. Por eso M-25 midió primero 150 435 bytes y luego, con el chunk, 152 077 (corregido en [navegacion.md](navegacion.md)).
 
-Hoy quedan unos 1,4 KB de margen hasta 153 600 bytes. Antes de la tienda (T-19) hay que decidir una de dos cosas:
+Con la precarga incluida quedaban unos 1,4 KB de margen hasta 153 600 bytes.
 
-- separar en el presupuesto la precarga de lo que necesita la propia página;
-- o revisar ADR-15 con esta medida.
+**Decisión (2026-11-07):** el límite cuenta solo el JS propio de cada página (revisión de ADR-15).
+
+- `pnpm js:budget` lo comprueba en CI. Sin la precarga, la ruta más pesada se queda unos 6 KB por debajo del límite.
+- La precarga sigue visible en Lighthouse CI como aviso, sin bloquear.
 
 ### Pendiente
 

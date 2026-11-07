@@ -274,6 +274,66 @@
       "go": "OK"
     }
   },
+  "shop": {
+    "title": "Boutique d’objets",
+    "description": "Costumes, armes, bonus d’expérience et navires pour Florensia, payés en AP. Recherchez, filtrez par catégorie et voyez chaque offre et sa date de fin.",
+    "intro": "Tout se paie en AP et est envoyé au personnage de votre choix.",
+    "categories": {
+      "label": "Catégories de la boutique",
+      "all": "Tout"
+    },
+    "filters": {
+      "label": "Rechercher et filtrer la boutique",
+      "search": "Rechercher par nom",
+      "searchHint": "N’importe quel mot du nom, avec ou sans accents.",
+      "maxPrice": "Prix",
+      "anyPrice": "Tous les prix",
+      "upTo": "Jusqu’à {amount, number} AP",
+      "sort": "Trier par",
+      "sorts": {
+        "relevance": "En vedette",
+        "price-asc": "Prix croissant",
+        "price-desc": "Prix décroissant",
+        "newest": "Nouveautés"
+      },
+      "onSale": "Promotions uniquement",
+      "apply": "Appliquer",
+      "reset": "Effacer les filtres"
+    },
+    "results": "{total, plural, one {# objet} other {# objets}}",
+    "searchNote": "contenant « {query} »",
+    "empty": "Aucun objet ne correspond à ces filtres.",
+    "emptySearch": "Aucun nom d’objet ne contient « {query} ». Essayez un autre mot ou effacez les filtres.",
+    "emptyShop": "Aucun objet n’est encore en vente.",
+    "unavailable": "La boutique n’est pas disponible pour le moment. Réessayez dans quelques minutes.",
+    "price": {
+      "label": "Prix",
+      "was": "Avant",
+      "now": "Maintenant",
+      "amount": "{amount, number} AP"
+    },
+    "badges": {
+      "sale": "-{percent} %",
+      "limited": "Édition limitée",
+      "bundle": "Lot"
+    },
+    "validity": {
+      "permanent": "Permanent",
+      "days": "{days, plural, one {# jour} other {# jours}}"
+    },
+    "item": {
+      "breadcrumb": "Fil d’Ariane",
+      "details": "Détails",
+      "validity": "Durée",
+      "giftable": "Peut être offert",
+      "yes": "Oui",
+      "no": "Non",
+      "saleUntil": "Offre {campaign} jusqu’au {date}",
+      "saleUntilNoName": "Offre jusqu’au {date}",
+      "buySoon": "L’achat avec des AP arrive bientôt. Pour l’instant, vous pouvez parcourir le catalogue.",
+      "back": "Retour à {category}"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nom de compte",
