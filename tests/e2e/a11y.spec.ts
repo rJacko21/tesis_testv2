@@ -20,6 +20,7 @@ const PAGES = [
   "/shop?cat=costumes&sale=1&sort=price-asc",
   "/shop/item/1",
   "/topup",
+  "/play-now",
   "/support",
   "/register",
   "/sign-in",
@@ -39,7 +40,7 @@ for (const locale of LOCALES) {
     });
   }
 
-  for (const path of ["", "/rankings", "/shop", "/shop/item/1"]) {
+  for (const path of ["", "/rankings", "/shop", "/shop/item/1", "/play-now"]) {
     test(`${locale}${path || "/"}: sin scroll horizontal`, async ({ page }) => {
       await page.goto(`/${locale}${path}`);
       const overflow = await page.evaluate(

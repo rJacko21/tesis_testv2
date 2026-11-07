@@ -12,7 +12,8 @@
         "http://localhost:3200/es/rules",
         "http://localhost:3200/es/rankings",
         "http://localhost:3200/es/shop",
-        "http://localhost:3200/es/register"
+        "http://localhost:3200/es/register",
+        "http://localhost:3200/es/play-now"
       ],
       "numberOfRuns": 3,
       "settings": {

@@ -423,6 +423,31 @@
       "again": "Back to top-up"
     }
   },
+  "playNow": {
+    "title": "Play Florensia for free",
+    "description": "Create your free Florensia account in one minute, download the game and set sail: land and sea battles, guilds and ships.",
+    "heading": "Your adventure starts here",
+    "intro": "Create your free account, download the game and sail the seas of Florensia with thousands of players.",
+    "formTitle": "Create your free account",
+    "formIntro": "It takes a minute. The same account works in the game and on this website.",
+    "downloadNow": "Download the game",
+    "haveAccountDownload": "Download the game",
+    "steps": {
+      "title": "Three steps to play",
+      "account": {
+        "title": "Create your account",
+        "body": "Fill in the form and confirm your email with the link we send you."
+      },
+      "download": {
+        "title": "Download the game",
+        "body": "Install Florensia from Steam on a Windows PC. It is free."
+      },
+      "play": {
+        "title": "Sign in and play",
+        "body": "Use your account name and password in the game, choose a server and create your character."
+      }
+    }
+  },
   "auth": {
     "fields": {
       "username": "Account name",

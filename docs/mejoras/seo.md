@@ -27,7 +27,7 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
   Si además el idioma es antiguo (`/pt/…`), se corrige en el mismo salto: `/pt/post/x` → `/pt-BR/news/x`. Dos 301 seguidos pierden más señal y tiempo que uno.
 
-- **Pendiente:** las rutas de destino de la tienda y de «Jugar ahora» llegan con T-19 y T-22.
+- ~~**Pendiente:** las rutas de destino de la tienda y de «Jugar ahora» llegan con T-19 y T-22.~~ Hechas en M-30/M-31 ([tienda.md](tienda.md)) y M-34 ([jugar-ahora.md](jugar-ahora.md)).
 - **Verificación:** `routing.test.ts` (incluye que `/es/postal` no se confunda con `/post`) y `seo.spec.ts`.
 - **Fecha:** 2026-11-06
 
