@@ -11,7 +11,8 @@
  *   dura la campaña, con su nombre (F-16).
  * - Migas de pan en la página y en datos estructurados.
  *
- * La compra con AP llega con el carrito (T-20).
+ * - «Añadir a la cesta» con la cantidad. Sin sesión, lleva a iniciar sesión
+ *   y vuelve a la ficha (T-20).
  *
  * Ruta bloqueante (`instant = false`), como el detalle de noticia: un
  * artículo que no existe o no está a la venta responde 404 real.
@@ -25,10 +26,12 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ItemArt } from "@/components/shop/ItemArt";
 import { ItemBadges, validityLabel } from "@/components/shop/ItemBadges";
 import { ItemPrice } from "@/components/shop/ItemPrice";
-import { Container } from "@/components/ui";
+import { buttonStyles, Container } from "@/components/ui";
 import type { Locale } from "@/config/locales";
 import { languageAlternates } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
+import { CART_MAX_QUANTITY } from "@/lib/cart";
+import { addToCartAction } from "@/lib/cart-actions";
 import { formatDate, isoDate } from "@/lib/format";
 import { tryLoad } from "@/lib/safe";
 import { loadShop } from "@/lib/shop";
@@ -179,9 +182,42 @@ export default async function ShopItemPage({ params }: Props) {
               </dl>
             </section>
 
-            <p className="bg-parchment-50 border-parchment-300 rounded-lg border p-4">
-              {t("shop.item.buySoon")}
-            </p>
+            <form
+              action={addToCartAction}
+              className="bg-parchment-50 border-parchment-300 flex flex-wrap items-end gap-3 rounded-lg border p-4"
+            >
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="itemId" value={item.id} />
+              <div>
+                <label
+                  htmlFor="item-quantity"
+                  className="text-navy-900 mb-1 block text-sm font-bold"
+                >
+                  {t("shop.cart.quantity")}
+                </label>
+                <select
+                  id="item-quantity"
+                  name="quantity"
+                  defaultValue="1"
+                  className="border-parchment-300 text-ink-900 focus:border-navy-700 min-h-11 rounded-lg border bg-white px-3"
+                >
+                  {Array.from({ length: CART_MAX_QUANTITY }, (_, i) => i + 1).map((n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button type="submit" className={buttonStyles({ variant: "primary" })}>
+                {t("shop.item.addToCart")}
+              </button>
+              <Link
+                href={`/${locale}/cart`}
+                className="text-navy-700 min-h-11 content-center font-semibold underline underline-offset-2"
+              >
+                {t("shop.cart.view")}
+              </Link>
+            </form>
             <p>
               <Link
                 href={shopHref(locale, { category: category.slug })}

@@ -293,6 +293,7 @@ erDiagram
     bigint cart_id PK,FK
     bigint item_id PK,FK
     smallint quantity
+    datetime created_at
   }
   orders {
     bigint id PK

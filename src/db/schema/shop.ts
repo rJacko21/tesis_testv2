@@ -165,6 +165,8 @@ export const cartItems = mysqlTable(
       .notNull()
       .references(() => shopItems.id, { onDelete: "cascade" }),
     quantity: smallint("quantity", { unsigned: true }).notNull().default(1),
+    /** Para enseñar la cesta en el orden en que se llenó. */
+    addedAt: timestamps.createdAt,
   },
   (t) => [primaryKey({ columns: [t.cartId, t.itemId] })],
 );

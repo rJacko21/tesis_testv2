@@ -58,6 +58,50 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
   - **JS propio** (`pnpm js:budget`): 141 554 bytes, el mismo que las demás páginas sin JS propio. No añade nada al paquete.
 - **Fecha:** 2026-11-07
 
+### M-32 · Cesta y compra con AP en una transacción (T-20)
+
+- **Requisito:** RF-05 (cesta persistente, compra con saldo en una sola transacción, servidor y personaje que reciben el objeto) y RF-03 (comprar exige el correo confirmado)
+- **Cambio:**
+  - **Añadir a la cesta** desde la ficha, con la cantidad (1-10). Sin sesión, lleva a iniciar sesión y vuelve a la ficha.
+  - **Cesta** (`/{idioma}/cart`, `noindex`):
+    - **Contenido:** cada artículo con su precio actual, la cantidad y el subtotal. Se puede cambiar la cantidad o quitarlo.
+    - **Artículos retirados de la venta:** se marcan y hay que quitarlos antes de pagar.
+    - **Resumen:** total, saldo y saldo que queda tras pagar.
+    - **Al pagar:** se elige el personaje que recibe los objetos («Misaja (Bergruen)»). El servidor sale del personaje.
+  - **Si no se puede pagar, se explica por qué y qué hacer:**
+    - falta saldo: «Te faltan 300 AP» y «Recargar AP» (criterio de aceptación);
+    - el correo no está confirmado;
+    - la cuenta no tiene personajes;
+    - hay artículos que ya no se venden.
+  - **Tras pagar:** «Compra completada: pedido n.º N», con enlace a «Mis compras». El pedido aparece en el historial de M-26.
+  - **Sin JavaScript de cliente:** cada botón es un formulario con una Server Action que vuelve a la cesta con el resultado en la URL (patrón PRG). Recargar la página no repite la compra.
+    - `pnpm js:budget`: la cesta queda en 141 554 bytes, igual que las páginas sin JS propio.
+- **Por qué de esta forma** (`purchase.ts`):
+  - **Todo en una transacción:** pedido, líneas con el precio congelado, movimiento en `ap_ledger` (con `applyDelta`), saldo y vaciado de la cesta. Si algo falla, no cambia nada.
+  - **La fila del usuario se bloquea** (`SELECT … FOR UPDATE`) antes de leer el saldo y la cesta:
+    - las compras de una cuenta van en fila;
+    - con compras simultáneas, la segunda ve el saldo que dejó la primera, así que el saldo nunca queda en negativo;
+    - un doble clic encuentra la cesta ya vacía y no cobra dos veces.
+  - **El precio se lee de la base de datos al pagar**, no de la caché ni del formulario.
+    - El formulario solo envía el total que vio el jugador.
+    - Si no coincide (por ejemplo, una rebaja terminó entretanto), no se cobra y la cesta enseña el total nuevo.
+  - **El personaje se comprueba contra la cuenta de la sesión**, porque su id llega del formulario (ASVS V4.2.1).
+  - **La cesta solo guarda artículo y cantidad**, nunca un precio. La nueva columna `cart_items.created_at` (migración `0005`) da su orden.
+- **Pruebas contra MySQL** (`pnpm test:db`, `tests/db/purchase.test.ts`, 8 casos y en CI):
+  - una compra completa: pedido, precio congelado, libro mayor coherente y cesta vacía;
+  - 1000 AP y una cesta de 1200 AP: se rechaza y nada cambia (criterio de aceptación);
+  - dos compras simultáneas que suman más que el saldo: solo una se completa (criterio de aceptación);
+  - ocho compras simultáneas de 300 AP con 1000 AP: se completan tres y quedan 100 AP;
+  - doble envío de la cesta: un solo cobro;
+  - se rechazan un total que cambió, un artículo retirado, el personaje de otra cuenta y una cuenta sin el correo confirmado.
+  - **Base real:** van contra MySQL, no contra una simulación, porque lo que se prueba son los bloqueos y las transacciones.
+- **Pruebas e2e** (`tests/e2e/cart.spec.ts`, 4 pruebas × móvil y escritorio):
+  - sin sesión;
+  - compra completa hasta «Mis compras» y el saldo nuevo, con axe en la cesta llena;
+  - saldo insuficiente;
+  - sin correo confirmado y sin personajes.
+- **Fecha:** 2026-11-07
+
 ### Fallo conocido de la plataforma
 
 - **Respuesta 200 en la página de error:** con `cacheComponents`, `notFound()` dentro de una página responde 200 con `noindex`, no 404. Lo mismo pasa en el ranking y en las noticias.
@@ -66,7 +110,10 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 
 ### Pendiente
 
-- **Compra:** cesta, selección de servidor y personaje, y compra con AP en una transacción. Llegan con T-20.
+- ~~**Compra:** cesta, selección de servidor y personaje, y compra con AP en una transacción.~~ Hecho en M-32.
+- **Entrega en el juego:** el pedido queda `completed` con el servidor y el personaje de cada línea. Mandar el objeto al servidor de Giiku depende de su integración, como los códigos canjeados (M-28).
+- **«Recargar AP»** lleva por ahora al historial de recargas. La compra de AP llega con T-21.
+- **Cabecera:** muestra siempre «Iniciar sesión», también con la sesión abierta, porque es estática. Un enlace a la cuenta y a la cesta con sesión es una mejora pendiente.
 - **Datos de la ficha que pide RF-05 y el esquema aún no tiene:** género, tipo, nivel requerido, apilable y opciones de color. Llegarán con la integración del catálogo del juego.
   - Mientras tanto, la ficha muestra solo lo que existe.
 - **Fotos de los artículos:** con el panel y el almacenamiento de imágenes (T-23).
