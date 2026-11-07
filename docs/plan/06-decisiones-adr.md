@@ -102,6 +102,10 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 **Decisión.** Subir el límite total a 150 KB y añadir un límite más estricto para lo que sí controlamos: ≤ 30 KB de código propio. Lighthouse CI comprueba el total (153 600 bytes); el código propio se vigila revisando el desglose de `network-requests`.
 **Alternativas descartadas.** Preact (rompe compatibilidad con App Router), quitar el selector de idioma del cliente (empeora la experiencia y apenas ahorra 8 KB).
 **Consecuencia.** Aun así la web original carga jQuery + Bootstrap + dos Font Awesome + toastr (F-28), mucho más JS, así que la comparación sigue siendo favorable y honesta.
+**Revisión 2026-11-07 (decidida por Armando).**
+- **Qué se cuenta:** el límite de 150 KiB cuenta solo el JS que cada página necesita para cargarse: los chunks de `firstLoadChunkPaths` en `.next/diagnostics/route-bundle-stats.json`, comprimidos con gzip.
+- **Cómo se comprueba:** `pnpm js:budget` (`scripts/check-js-budget.ts`) lo comprueba en CI para todas las rutas y bloquea si alguna lo supera.
+- **Precarga:** lo que Next precarga para los enlaces visibles se mide aparte, con un aviso de Lighthouse CI a partir de 160 000 bytes, y no bloquea. Llega con la página ya cargada, no afecta a LCP ni a TBT, y Lighthouse lo cuenta unas veces sí y otras no: con el mismo código, `/es/register` daba 150 435 o 152 077 bytes según la pasada (M-25, M-26).
 
 ## ADR-16 Lighthouse CI con limitación aplicada (devtools) — Aceptada 2026-11-06
 **Contexto.** Al añadir la ilustración de la cabecera (T-12), Lighthouse en modo `simulate` (el de PageSpeed) daba un LCP móvil de 2,5 a 3,4 s, con mucha variación entre ejecuciones. El registro de la propia carga mostraba otra cosa: la imagen (16 KB en AVIF) llega a los 60 ms y se pinta a los 0,5 s. El modelo `simulate` (Lantern) suma al LCP todo el trabajo de JavaScript anterior a ese pintado, aunque el navegador ya tenga la imagen. Con el mismo código y limitación aplicada (`devtools`: CPU 4× más lenta y 4G lenta de verdad) el LCP es de 1,66 a 1,70 s, estable.

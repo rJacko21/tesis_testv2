@@ -274,6 +274,66 @@
       "go": "Ir"
     }
   },
+  "shop": {
+    "title": "Loja de itens",
+    "description": "Trajes, armas, bônus de experiência e navios para Florensia, pagos com AP. Busque, filtre por categoria e veja cada oferta e quando termina.",
+    "intro": "Tudo é pago com AP e enviado ao personagem que você escolher.",
+    "categories": {
+      "label": "Categorias da loja",
+      "all": "Tudo"
+    },
+    "filters": {
+      "label": "Buscar e filtrar a loja",
+      "search": "Buscar por nome",
+      "searchHint": "Qualquer palavra do nome, com ou sem acentos.",
+      "maxPrice": "Preço",
+      "anyPrice": "Qualquer preço",
+      "upTo": "Até {amount, number} AP",
+      "sort": "Ordenar por",
+      "sorts": {
+        "relevance": "Destaques",
+        "price-asc": "Preço: menor primeiro",
+        "price-desc": "Preço: maior primeiro",
+        "newest": "Mais recentes"
+      },
+      "onSale": "Só em oferta",
+      "apply": "Aplicar",
+      "reset": "Limpar filtros"
+    },
+    "results": "{total, plural, one {# item} other {# itens}}",
+    "searchNote": "com “{query}”",
+    "empty": "Nenhum item corresponde a estes filtros.",
+    "emptySearch": "Nenhum nome de item contém “{query}”. Tente outra palavra ou limpe os filtros.",
+    "emptyShop": "Ainda não há itens à venda.",
+    "unavailable": "A loja não está disponível agora. Tente de novo em alguns minutos.",
+    "price": {
+      "label": "Preço",
+      "was": "Antes",
+      "now": "Agora",
+      "amount": "{amount, number} AP"
+    },
+    "badges": {
+      "sale": "-{percent}%",
+      "limited": "Edição limitada",
+      "bundle": "Pacote"
+    },
+    "validity": {
+      "permanent": "Permanente",
+      "days": "{days, plural, one {# dia} other {# dias}}"
+    },
+    "item": {
+      "breadcrumb": "Trilha de navegação",
+      "details": "Detalhes",
+      "validity": "Duração",
+      "giftable": "Pode ser presenteado",
+      "yes": "Sim",
+      "no": "Não",
+      "saleUntil": "Oferta de {campaign} até {date}",
+      "saleUntilNoName": "Oferta até {date}",
+      "buySoon": "A compra com AP chega em breve. Por enquanto, você pode ver o catálogo.",
+      "back": "Voltar para {category}"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nome da conta",

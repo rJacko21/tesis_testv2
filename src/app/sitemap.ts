@@ -18,12 +18,15 @@ import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/config/locales";
 import { SITE_URL } from "@/config/site";
 import { listPostsForSitemap } from "@/lib/news";
 import { tryLoad } from "@/lib/safe";
+import { loadShop } from "@/lib/shop";
+import { catalogAt } from "@/lib/shop-catalog";
 
 /** Rutas públicas sin idioma (`""` es la portada). */
 const PUBLIC_PATHS = [
   "",
   "/news",
   "/rankings",
+  "/shop",
   "/download",
   "/support",
   "/rules",
@@ -53,11 +56,17 @@ function entry(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Se genera al pedirlo (lee la base de datos); la consulta está en caché.
   await connection();
-  const posts = await tryLoad("las noticias del sitemap", listPostsForSitemap);
+  const [posts, shop] = await Promise.all([
+    tryLoad("las noticias del sitemap", listPostsForSitemap),
+    tryLoad("la tienda del sitemap", () => loadShop(DEFAULT_LOCALE)),
+  ]);
+  // Los artículos a la venta, en todos los idiomas (el nombre cae al inglés si falta).
+  const items = shop.ok ? catalogAt(shop.data, new Date()).items : [];
   return [
     ...PUBLIC_PATHS.flatMap((path) => entry(path, LOCALES)),
     ...(posts.ok
       ? posts.data.flatMap((post) => entry(`/news/${post.slug}`, post.locales, post.updatedAt))
       : []),
+    ...items.flatMap((item) => entry(`/shop/item/${item.id}`, LOCALES)),
   ];
 }

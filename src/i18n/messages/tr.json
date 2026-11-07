@@ -274,6 +274,66 @@
       "go": "Git"
     }
   },
+  "shop": {
+    "title": "Eşya mağazası",
+    "description": "Florensia için AP ile alınan kostümler, silahlar, deneyim takviyeleri ve gemiler. Arayın, kategoriye göre süzün ve her indirimin bitiş tarihini görün.",
+    "intro": "Her şey AP ile ödenir ve seçtiğiniz karaktere gönderilir.",
+    "categories": {
+      "label": "Mağaza kategorileri",
+      "all": "Tümü"
+    },
+    "filters": {
+      "label": "Mağazada ara ve süz",
+      "search": "Ada göre ara",
+      "searchHint": "Adın herhangi bir kelimesi.",
+      "maxPrice": "Fiyat",
+      "anyPrice": "Tüm fiyatlar",
+      "upTo": "{amount, number} AP’ye kadar",
+      "sort": "Sırala",
+      "sorts": {
+        "relevance": "Öne çıkanlar",
+        "price-asc": "Fiyat: düşükten yükseğe",
+        "price-desc": "Fiyat: yüksekten düşüğe",
+        "newest": "En yeni"
+      },
+      "onSale": "Yalnızca indirimdekiler",
+      "apply": "Uygula",
+      "reset": "Süzgeçleri temizle"
+    },
+    "results": "{total, plural, other {# eşya}}",
+    "searchNote": "“{query}” içeren",
+    "empty": "Bu süzgeçlere uyan eşya yok.",
+    "emptySearch": "Hiçbir eşya adında “{query}” geçmiyor. Başka bir kelime deneyin veya süzgeçleri temizleyin.",
+    "emptyShop": "Henüz satışta eşya yok.",
+    "unavailable": "Mağaza şu anda kullanılamıyor. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "price": {
+      "label": "Fiyat",
+      "was": "Önceki fiyat",
+      "now": "Şimdi",
+      "amount": "{amount, number} AP"
+    },
+    "badges": {
+      "sale": "%{percent} indirim",
+      "limited": "Sınırlı sayıda",
+      "bundle": "Paket"
+    },
+    "validity": {
+      "permanent": "Kalıcı",
+      "days": "{days, plural, other {# gün}}"
+    },
+    "item": {
+      "breadcrumb": "Konum",
+      "details": "Ayrıntılar",
+      "validity": "Süre",
+      "giftable": "Hediye edilebilir",
+      "yes": "Evet",
+      "no": "Hayır",
+      "saleUntil": "{campaign} indirimi {date} tarihine kadar",
+      "saleUntilNoName": "İndirim {date} tarihine kadar",
+      "buySoon": "AP ile satın alma yakında geliyor. Şimdilik kataloğa göz atabilirsiniz.",
+      "back": "{category} bölümüne dön"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Hesap adı",

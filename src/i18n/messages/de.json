@@ -274,6 +274,66 @@
       "go": "Los"
     }
   },
+  "shop": {
+    "title": "Item-Shop",
+    "description": "Kostüme, Waffen, Erfahrungsboni und Schiffe für Florensia, bezahlt mit AP. Suche, filtere nach Kategorie und sieh jedes Angebot mit Enddatum.",
+    "intro": "Alles wird mit AP bezahlt und an den Charakter deiner Wahl geschickt.",
+    "categories": {
+      "label": "Shop-Kategorien",
+      "all": "Alle"
+    },
+    "filters": {
+      "label": "Shop durchsuchen und filtern",
+      "search": "Nach Name suchen",
+      "searchHint": "Ein beliebiges Wort des Namens.",
+      "maxPrice": "Preis",
+      "anyPrice": "Alle Preise",
+      "upTo": "Bis {amount, number} AP",
+      "sort": "Sortieren nach",
+      "sorts": {
+        "relevance": "Empfohlen",
+        "price-asc": "Preis: aufsteigend",
+        "price-desc": "Preis: absteigend",
+        "newest": "Neueste"
+      },
+      "onSale": "Nur Angebote",
+      "apply": "Anwenden",
+      "reset": "Filter zurücksetzen"
+    },
+    "results": "{total, plural, one {# Artikel} other {# Artikel}}",
+    "searchNote": "mit „{query}“",
+    "empty": "Keine Artikel passen zu diesen Filtern.",
+    "emptySearch": "Kein Artikelname enthält „{query}“. Versuche ein anderes Wort oder setze die Filter zurück.",
+    "emptyShop": "Es gibt noch keine Artikel im Angebot.",
+    "unavailable": "Der Shop ist gerade nicht verfügbar. Bitte versuche es in ein paar Minuten erneut.",
+    "price": {
+      "label": "Preis",
+      "was": "Vorher",
+      "now": "Jetzt",
+      "amount": "{amount, number} AP"
+    },
+    "badges": {
+      "sale": "-{percent} %",
+      "limited": "Limitierte Edition",
+      "bundle": "Paket"
+    },
+    "validity": {
+      "permanent": "Dauerhaft",
+      "days": "{days, plural, one {# Tag} other {# Tage}}"
+    },
+    "item": {
+      "breadcrumb": "Brotkrumen",
+      "details": "Details",
+      "validity": "Dauer",
+      "giftable": "Verschenkbar",
+      "yes": "Ja",
+      "no": "Nein",
+      "saleUntil": "Angebot zum {campaign} bis {date}",
+      "saleUntilNoName": "Angebot bis {date}",
+      "buySoon": "Der Kauf mit AP kommt bald. Bis dahin kannst du den Katalog ansehen.",
+      "back": "Zurück zu {category}"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Kontoname",
