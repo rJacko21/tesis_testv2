@@ -1,19 +1,24 @@
 /**
  * Páginas fijas (reglas y legales) de RF-10 y RF-11.
  *
- * **Son textos de ejemplo**, salvo la política de cookies: los textos legales
- * reales los redacta Giiku Games GmbH y se cargarán desde el panel (T-23).
- * Cada texto de ejemplo lo dice en su primera línea, para que la demo no se
- * confunda con la web oficial. La política de cookies sí describe este sitio
- * tal como es: los nombres de las cookies se toman del código (`lib/consent.ts`,
- * `i18n/negotiate.ts` y `lib/auth/constants.ts`), y una prueba e2e comprueba que toda cookie que pone
- * el sitio aparece en la política.
+ * - **Aviso legal y código de conducta:** textos oficiales de Giiku Games GmbH
+ *   tal como están en florensia-online.com (los facilitó Armando el
+ *   2026-11-07), solo en inglés, como en la web original. Solo se les han
+ *   puesto encabezados `##`/`###` y listas para que tengan índice; la
+ *   redacción no se ha tocado.
+ * - **Términos y privacidad:** aún son textos de ejemplo, y lo dicen en su
+ *   primera línea para que la demo no se confunda con la web oficial.
+ * - **Política de cookies:** describe este sitio tal como es. Los nombres de
+ *   las cookies se toman del código (`lib/consent.ts`, `i18n/negotiate.ts` y
+ *   `lib/auth/constants.ts`), y una prueba e2e comprueba que toda cookie que
+ *   pone el sitio aparece en la política.
  *
- * Están en inglés, el idioma de respaldo, y en español. En los otros cinco
- * idiomas se muestra la versión inglesa con el aviso "Disponible solo en
- * inglés", el mismo mecanismo que las noticias (RF-08).
+ * En los idiomas sin texto se muestra la versión inglesa con el aviso
+ * "Disponible solo en inglés", el mismo mecanismo que las noticias (RF-08).
  *
  * `db:seed` las inserta solo si no existen: nunca pisa un texto ya editado.
+ * La excepción son los textos de ejemplo (`SAMPLE_MARKERS`), que se cambian
+ * por el real en cuanto este existe.
  */
 import type { Locale } from "../../config/locales";
 import { LOCALE_COOKIE } from "../../i18n/negotiate";
@@ -39,39 +44,68 @@ const SAMPLE_EN =
 const SAMPLE_ES =
   "> Texto de ejemplo para la demo de la tesis. No es el texto legal de Giiku Games GmbH.";
 
+/** Comienzo de los textos de ejemplo: `db:seed` los sustituye cuando llega el real. */
+export const SAMPLE_MARKERS = ["> Sample text", "> Texto de ejemplo"] as const;
+
 export const PAGE_TEXTS: Record<PageSlug, Partial<Record<Locale, PageText>> & { en: PageText }> = {
   imprint: {
     en: {
       title: "Imprint",
-      body: `${SAMPLE_EN}
+      body: `## Giiku Games GmbH
 
-## Service provider
+Giiku Games GmbH is a company incorporated under German law.
 
-Giiku Games GmbH. The full company details (address, register number, VAT ID and managing directors) will be published here by the company.
+## Address
 
-## Contact
+Mailing Address:
 
-Use the [support page](/en/support) for questions about the game.
+- Giiku Games GmbH
+- Rehleitenweg 32b
+- 83026 Rosenheim
+- Germany
 
-## Responsible for content
+## Corporate Information
 
-The person responsible for the content under applicable law will be named here.`,
-    },
-    es: {
-      title: "Aviso legal",
-      body: `${SAMPLE_ES}
+- Managing Director: Achim Kaspers
+- Court of registry: district court of Traunstein
+- Trade register number: HRB 27763
+- VAT-ID: DE323063583
+- Phone: +49 (0) 8031 / 22273 20
+- E-Mail: info@giikugames.com
 
-## Prestador del servicio
+## Commissioner for Youth Protection
 
-Giiku Games GmbH. La empresa publicará aquí sus datos completos (dirección, número de registro, NIF intracomunitario y administradores).
+Maximilian Gramstat
 
-## Contacto
+E-Mail: datenschutz@giikugames.com
 
-Para dudas sobre el juego, usa la [página de soporte](/es/support).
+**kein Game- oder Payment-Support! / no game or payment support!**
 
-## Responsable del contenido
+## Disclaimer
 
-Aquí figurará la persona responsable del contenido según la ley aplicable.`,
+Although every effort is made to present current and accurate information, we cannot assume responsibility for information from external links. The author of each web page is solely responsible for the content of that page.
+
+### Content
+
+The author reserves the right not to be responsible for the topicality, correctness, completeness or quality of the information provided. Liability claims regarding damage caused by the use of any information provided, including any kind of information which is incomplete or incorrect, will therefore be rejected. All offers are not-binding and without obligation. Parts of the pages or the complete publication including all offers and information might be extended, changed or partly or completely deleted by the author without separate announcement.
+
+### Referrals and links
+
+The author is not responsible for any contents linked or referred to from his pages unless he has full knowledge of illegal contents and would be able to prevent the visitors of his site from viewing those pages. If any damage occurs by the use of information presented there, only the author of the respective pages might be liable, not the one who has linked to these pages. Furthermore the author is not liable for any postings or messages published by users of discussion boards, guestbooks or mailinglists provided on his page.
+
+### Copyright
+
+The author intended not to use any copyrighted material for the publication or, if not possible, to indicate the copyright of the respective object. The copyright for any material created by the author is reserved. Any duplication or use of objects such as diagrams, sounds or texts in other electronic or printed publications is not permitted without the author's agreement.
+
+### Privacy policy
+
+If the opportunity for the input of personal or business data (email addresses, name, addresses) is given, the input of these data takes place voluntarily. The use and payment of all offered services are permitted if and so far technically possible and reasonable without specification of any personal data or under specification of anonymous data or an alias.
+
+### Legal validity of this disclaimer
+
+This disclaimer is to be regarded as part of the internet publication which you were referred from. If sections or individual terms of this statement are not legal or correct, the content or validity of the other parts remain uninfluenced by this fact.
+
+© 2019-2023 Giiku Games GmbH. All rights reserved.`,
     },
   },
   terms: {
@@ -126,60 +160,136 @@ Cuando cambien estos términos, también cambiarán la fecha y la versión indic
   },
   rules: {
     en: {
-      title: "Rules and code of conduct",
-      body: `${SAMPLE_EN}
+      title: "Code of Conduct",
+      body: `We are dedicated to providing and supporting an inclusive, friendly, safe, and welcoming culture for everyone. This Code of Conduct outlines the expectations for behavior within the Florensia community, ensuring a positive experience for all gamers and staff, regardless of gender, sexual orientation, disability, ethnicity, or religion.
 
-## Respect other players
+## General policies
 
-No insults, harassment, discrimination or threats, in chat or in character names.
+### Lawful conduct
 
-## Fair play
+Posting, sharing, or promoting illegal content is strictly prohibited. The same laws that apply offline also apply in our online world. We have a zero-tolerance policy for any illegal activity, including but not limited to stalking, threats of violence, child exploitation, and doxing.
 
-Bots, cheats, exploits and modified clients are forbidden. Report bugs instead of using them.
+### Language
 
-## Trading
+Players are welcome to use any of the supported languages in game chats, including English, German, French, Italian, Turkish, Spanish, and Portuguese. However, we encourage the use of English whenever possible to promote clearer communication and mutual understanding across the community.
 
-Selling items, gold or accounts for real money is forbidden.
+### Respectful behavior
 
-## Names
+Treat other players with respect and kindness. Prohibited actions include, but are not limited:
 
-Character and guild names must not be offensive or impersonate staff.
+- Insults, bullying, hate speech flaming, and toxic behavior
+- Harassment, discrimination, spreading rumour and impersonations.
+- Witch-hunting of players or staff members.
 
-## Reporting
+Avoid spamming, using sexualized language, discussions on political or religious topics. Private disputes or drama between players should remain outside public chats.
 
-Note the character name, the server and the time, take a screenshot and send it through the [support page](/en/support).
+Do not assume that the presence of a chat filter gives you free rein to say anything inappropriate.
 
-## Sanctions
+Dishonest behavior is not tolerated. This includes deceiving, manipulating, scamming, or intentionally misleading other players in any form.
 
-Depending on the severity: warning, temporary ban or permanent ban.`,
-    },
-    es: {
-      title: "Reglas y código de conducta",
-      body: `${SAMPLE_ES}
+### Fairness
 
-## Respeta a los demás jugadores
+All players are expected to play fairly and respect the rules of the game. Exploiting bugs, using cheats or hacks, or engaging in any other unfair behavior to gain an advantage - or to assist others in doing so - is strictly prohibited.
 
-Nada de insultos, acoso, discriminación ni amenazas, ni en el chat ni en los nombres de personaje.
+### Privacy
 
-## Juego limpio
+Always respect the privacy of others. Do not post, share, or distribute any content that reveals personal or private information about another player without their explicit consent.
 
-Están prohibidos los bots, los trucos, el abuso de fallos y los clientes modificados. Si encuentras un fallo, avísalo en lugar de usarlo.
+### No cheating
 
-## Comercio
+Cheating of any kind - whether against other players or the game itself - is strictly prohibited. This includes using fraudulent methods to obtain items, currency, or other in-game benefits.
 
-Está prohibido vender objetos, oro o cuentas por dinero real.
+The use of automation tools such as macros, scripts, bots, or any third-party software or hardware that enables automatic actions (e.g., skill use or attacks) is not allowed. Assisting others who engage in these activities, or storing or transferring items on their behalf, is also forbidden.
 
-## Nombres
+**Exceptions:** Pets purchased from the Cash Shop that automatically loot or attack are permitted, as long as they are used according to their intended functionality.
 
-Los nombres de personajes y gremios no pueden ser ofensivos ni hacerse pasar por el equipo.
+### Responsible communication
 
-## Denuncias
+Use all chat and communication tools responsibly. Do not post or share content that encourages, solicits, or supports illegal, obscene, disruptive, or harmful behavior. Prohibited content includes, but is not limited to:
 
-Apunta el nombre del personaje, el servidor y la hora, haz una captura y envíala desde la [página de soporte](/es/support).
+- Terrorist or extremist propaganda.
+- Misinformation, fraud, or deceptive schemes
+- Scams or content intended to exploit or harm others
+- Sexually explicit material.
+- Commercial advertisements, solicitations, or promotions
 
-## Sanciones
+Attempts to bypass these rules-such as using misspellings, phonetic spellings, homonyms, word combinations, or alternate spellings to mask inappropriate content - are also strictly prohibited.
 
-Según la gravedad: aviso, suspensión temporal o expulsión permanente.`,
+### Account and item security
+
+- Keep your account secure. Never share your account credentials or personal information with others. You are solely responsible for the safety and security of your account.
+- Account transfers are prohibited. Selling, trading, or gifting accounts is strictly forbidden.
+- No real-money trading. The buying or selling of in-game items or currency for real money is not allowed under any circumstances. This includes advertising or expressing intent to engage in such transactions.
+- Item lending is at your own risk. Lending items to other characters is done at your own risk. If an item you lend is not returned as agreed, you may report the incident, and the offender may face disciplinary action. However, Florensia Support may not be able to retrieve or return the lent item to you.
+
+## Naming policy
+
+This policy applies to all player-created names within the game, including but not limited to character names, guild names, shop names, and pet names. By creating and using a name in the game, players agree to abide by the following guidelines.
+
+Player-made names must not:
+
+- Impersonate any individual, entity, or group, including employees or representatives of Giiku Games.
+- Promote illegal substances, actions, or behaviors that violate the law.
+- Advertise or solicit for businesses or services.
+- Violate intellectual property rights, such as trademarked names or other proprietary rights.
+- Use misspellings, alternate spellings, or combinations of words, symbols, and letters to create names that would otherwise violate this policy.
+- Intentionally cause or contribute to disruptive behavior. This includes using names that could be offensive, inappropriate, or hateful toward individuals or groups. Names that reference or glorify discriminatory ideologies, terrorist organizations, violent extremists, criminal groups, or their figureheads are strictly prohibited
+
+Names of public figures may be allowed, provided they are not highly controversial, offensive, or disruptive. The final decision on whether a name is acceptable rests with the Florensia support team.
+
+This is not an exhaustive list of restrictions when creating names. If you are uncertain whether your chosen name violates this policy, it is likely that it does.
+
+Our moderators, through their experience, understand which topics contribute positively to the chat atmosphere and which may be detrimental. If a moderator requests that you avoid discussing a certain topic, we kindly ask for your cooperation. Please know that this is not intended to restrict your freedom of expression but to maintain a welcoming and enjoyable environment for everyone.
+
+## Gameplay rules
+
+### General
+
+Griefing - deliberate actions that disrupt gameplay or violate server rules to hinder the progress of others - is strictly prohibited. All players are expected to support a fair and enjoyable gaming experience for everyone.
+
+Any behavior intentionally designed to interfere with or ruin another player's gameplay will not be tolerated. The game team reserves the right to determine what qualifies as griefing and to take appropriate disciplinary action when necessary.
+
+### Environment
+
+- Boss monsters must be fought near their spawn or pathing area. You may move within a limited radius, but only up to the distance where you would still see the boss if it was standing at its initial spawn or path. Additionally, from your fighting position, the boss's spawn point or path must remain clearly visible.
+- Do not drag or pull monsters, especially bosses, in a way that could endanger or cause the death of other players. Be especially careful when pulling monsters into safe zones. If you choose to do so, you are fully responsible for any harm caused to nearby players.
+- The player or party that deals the most damage will always get the loot and experience points from monsters.
+- Exploiting game features (such as the 100th Floor tower, or PvP mechanics) to gain an unfair advantage is prohibited.
+- Using walls, edges, or other architectural elements to prevent monsters from attacking or reaching you is not allowed.
+
+### Boss quests
+
+As boss monsters exist only once on each on server, completing boss quests can be challenging. To promote fairness, players are encouraged to share boss monsters with others who have accepted the corresponding quest from the NPC.
+
+- Companions (combat pets) are also subject to this rule. Pet owners are responsible for their companions' actions and will be held accountable for any violations.
+- Falsely claiming to have a boss quest in order to gain an unfair advantage will be considered griefing.
+- Please note, this rule applies only to boss monsters and does not extend to regular monsters
+
+## Enforcement and reporting
+
+Any violation of the Code of Conduct will result in penalties, as specified in Sections III.6 and XIII of the General Terms and Conditions.
+
+You are accountable for everything that happens under your account. If you violate the rules, take responsibility - acknowledge your actions, and use the experience as an opportunity to improve.
+
+Do not attempt to evade disciplinary measures by creating new accounts or asking others to act on your behalf. Any effort to circumvent a penalty will result in further enforcement actions, up to and including a permanent ban.
+
+### Reporting
+
+If you notice any rule violations, please report them with proper proof (screenshots from the game or videos) to the support team at support@florensia-online.com.
+
+Each case will be reviewed individually. Staff reserve the right to decline requests under specific circumstances.
+
+**Although we encourage you to report players who engage in a disrespectful or disruptive behavior, submitting false reports with the intent to unfairly restrict another player's gameplay is a serious offense and may result in penalties to your account.**
+
+While this document is representative, it is not exhaustive. To maintain the integrity of our community, we reserve the right to penalize any conduct that violates the spirit of the Code of Conduct or is otherwise deemed harmful. If you are uncertain whether your behavior complies with the Code of Conduct, it is best to act with caution.
+
+This Code of Conduct may be updated as our game and community evolve. Stay informed of updates and adhere to the latest guidelines.
+
+Thank you for being part of our community and helping us maintain a fun, inclusive, and safe environment for all.
+
+The Florensia Team
+
+Revision: June 13th, 2025`,
     },
   },
   privacy: {
