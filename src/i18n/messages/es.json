@@ -350,8 +350,128 @@
       "unverified": "Aún sin confirmar. Tendrás que confirmarlo antes de comprar en la tienda.",
       "resend": "Enviar el enlace otra vez",
       "resent": "Te hemos enviado un enlace nuevo.",
-      "signOut": "Cerrar sesión",
-      "comingSoon": "Pronto verás aquí tu saldo de AP, tus compras y tus rankings."
+      "signOut": "Cerrar sesión"
+    }
+  },
+  "account": {
+    "nav": {
+      "label": "Secciones de tu cuenta",
+      "summary": "Resumen",
+      "purchases": "Compras",
+      "topups": "Recargas",
+      "characters": "Personajes",
+      "redeem": "Canjear código",
+      "security": "Seguridad",
+      "privacy": "Privacidad"
+    },
+    "errors": {
+      "session": "Tu sesión ha caducado. Vuelve a iniciar sesión.",
+      "samePassword": "La contraseña nueva debe ser distinta de la actual.",
+      "currentPassword": "La contraseña actual no es correcta.",
+      "sameEmail": "Ese ya es el correo de tu cuenta."
+    },
+    "summary": {
+      "balance": "Saldo de AP",
+      "ap": "{amount, number} AP",
+      "topupSoon": "Podrás recargar AP desde aquí cuando abra la tienda."
+    },
+    "purchases": {
+      "title": "Compras",
+      "count": "{total, plural, one {# compra} other {# compras}}",
+      "empty": "Aún no has comprado nada en la tienda. Cuando lo hagas, verás aquí cada compra con lo que costó y el personaje que la recibió.",
+      "order": "Pedido n.º {id}",
+      "line": "{quantity} × {name}",
+      "recipient": "Para {character} ({server})",
+      "total": "Total: {amount, number} AP",
+      "status": {
+        "pending": "En proceso",
+        "completed": "Entregado",
+        "refunded": "Reembolsado",
+        "failed": "Fallido"
+      }
+    },
+    "topups": {
+      "title": "Recargas",
+      "empty": "Aún no has recargado AP. Cuando lo hagas, verás aquí cada recarga con lo que pagaste y su estado.",
+      "caption": "Recargas de AP. Página {page} de {count}.",
+      "date": "Fecha",
+      "ap": "AP",
+      "paid": "Importe",
+      "state": "Estado",
+      "status": {
+        "pending": "Pendiente",
+        "paid": "Pagada",
+        "failed": "Fallida",
+        "refunded": "Reembolsada"
+      }
+    },
+    "characters": {
+      "title": "Personajes",
+      "empty": "Esta cuenta aún no tiene personajes. Cuando crees uno en el juego, aparecerá aquí con su puesto en los rankings.",
+      "noneRanked": "Ninguno de tus personajes aparece todavía en los rankings.",
+      "ranks": "Puesto en el ranking",
+      "rank": "n.º {rank, number}",
+      "unranked": "Fuera del ranking"
+    },
+    "security": {
+      "title": "Seguridad",
+      "passwordTitle": "Cambiar la contraseña",
+      "passwordNote": "Al cambiarla se cierran las sesiones abiertas en otros dispositivos.",
+      "currentPassword": "Contraseña actual",
+      "passwordSubmit": "Cambiar la contraseña",
+      "passwordChanged": "Tu contraseña ha cambiado y hemos cerrado las sesiones de otros dispositivos.",
+      "emailTitle": "Cambiar el correo",
+      "currentEmail": "Correo actual: {email}",
+      "newEmail": "Correo nuevo",
+      "emailHint": "Te enviaremos un enlace para confirmarlo. Hasta entonces seguirás usando el actual.",
+      "emailSubmit": "Enviar enlace de confirmación",
+      "emailSent": "Te hemos enviado un enlace a {email}. Tu correo cambiará cuando lo abras.",
+      "sessionsTitle": "Sesiones abiertas",
+      "sessionsIntro": "Dispositivos donde has iniciado sesión. Si no reconoces alguno, ciérralo y cambia tu contraseña.",
+      "thisDevice": "Este dispositivo",
+      "unknownDevice": "Dispositivo desconocido",
+      "lastActive": "Última actividad:",
+      "close": "Cerrar",
+      "closeOne": "Cerrar la sesión de {device}",
+      "closeOthers": "Cerrar las demás sesiones",
+      "closed": "Sesión cerrada.",
+      "onlyThis": "Solo tienes abierta la sesión de este dispositivo."
+    },
+    "redeem": {
+      "title": "Canjear código",
+      "intro": "Escribe un código de un evento o de las redes de Florensia. Cada código se puede canjear una vez por cuenta.",
+      "code": "Código",
+      "codeHint": "Da igual si lo escribes en mayúsculas o minúsculas.",
+      "character": "Personaje que recibe el objeto",
+      "characterHint": "Solo hace falta si el código da un objeto. Los códigos de AP van a tu saldo.",
+      "noCharacter": "Elige un personaje",
+      "submit": "Canjear",
+      "okAp": "Has recibido {amount, number} AP. Tu saldo es ahora de {balance, number} AP.",
+      "okItem": "{character} recibirá «{item}» la próxima vez que entres en el juego.",
+      "another": "Canjear otro código",
+      "errors": {
+        "invalid": "Ese código no existe o no está activo.",
+        "expired": "Ese código ha caducado.",
+        "used": "Ya has usado este código.",
+        "exhausted": "Ese código ya se ha agotado.",
+        "character": "Elige qué personaje recibirá el objeto.",
+        "noCharacters": "Este código da un objeto y tu cuenta aún no tiene personajes que puedan recibirlo."
+      }
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "exportTitle": "Descargar mis datos",
+      "exportBody": "Descarga un archivo JSON con todo lo que guardamos de tu cuenta: datos de la cuenta, personajes, compras, recargas, movimientos de AP, códigos canjeados y sesiones.",
+      "exportAction": "Descargar mis datos",
+      "deleteTitle": "Borrar mi cuenta",
+      "deleteBody": "Se borrarán tu nombre de cuenta, tu correo y tu contraseña, se cerrarán todas tus sesiones y tus personajes dejarán de estar unidos a esta cuenta. No se puede deshacer.",
+      "deleteKept": "Por obligación legal conservamos, sin tu nombre ni tu correo, el registro de compras, recargas y movimientos de AP.",
+      "deleteConfirm": "Entiendo que mi cuenta se borrará y no se puede recuperar.",
+      "deleteSubmit": "Borrar mi cuenta",
+      "deleted": "Tu cuenta se ha borrado. Gracias por haber jugado a Florensia.",
+      "errors": {
+        "confirm": "Marca la casilla para confirmar que quieres borrar la cuenta."
+      }
     }
   },
   "email": {
@@ -373,6 +493,24 @@
       "body": "Alguien ha intentado crear una cuenta de Florensia con este correo, pero ya tienes una. Si has sido tú, solo tienes que iniciar sesión:",
       "action": "Iniciar sesión",
       "note": "Si has olvidado tu contraseña, usa «¿Has olvidado tu contraseña?» en la página de inicio de sesión. Si no has sido tú, puedes ignorar este correo."
+    },
+    "newEmail": {
+      "subject": "Confirma tu nuevo correo de Florensia",
+      "body": "Has pedido usar este correo en tu cuenta de Florensia. Confírmalo abriendo este enlace:",
+      "action": "Confirmar mi correo nuevo",
+      "note": "El enlace caduca en 24 horas. Hasta que lo abras, la cuenta sigue usando el correo anterior. Si no lo has pedido tú, ignora este correo."
+    },
+    "emailChange": {
+      "subject": "Se ha pedido cambiar el correo de tu cuenta",
+      "body": "Alguien que ha iniciado sesión en tu cuenta de Florensia ha pedido cambiar su correo a {email}. Solo cambiará si se abre el enlace enviado a esa dirección."
+    },
+    "passwordChanged": {
+      "subject": "Tu contraseña de Florensia ha cambiado",
+      "body": "La contraseña de tu cuenta de Florensia acaba de cambiar y se han cerrado las sesiones de otros dispositivos."
+    },
+    "notMe": {
+      "action": "No he sido yo: recuperar mi cuenta",
+      "note": "Si has sido tú, no tienes que hacer nada. Si no, elige una contraseña nueva ahora: se cerrarán todas las sesiones."
     }
   }
 }

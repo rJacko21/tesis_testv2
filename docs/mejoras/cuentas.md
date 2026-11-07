@@ -107,5 +107,5 @@ Lighthouse móvil en `/es/register`, en local y en 3 pasadas:
 
 - **Turnstile** (o similar) si aparecen registros automáticos: ver M-23.
 - **SMTP en producción:** hace falta un proveedor con plan gratuito (p. ej. Brevo) al desplegar (T-28a).
-- **Cambiar correo y contraseña desde la cuenta, cerrar otras sesiones, exportar datos y borrar la cuenta:** T-18 (RF-04).
+- ~~**Cambiar correo y contraseña desde la cuenta, cerrar otras sesiones, exportar datos y borrar la cuenta:** T-18 (RF-04).~~ Hecho en [mi-cuenta.md](mi-cuenta.md) (M-27 y M-29).
 - **Tarea de limpieza** que borre los intentos de más de 30 días y las sesiones caducadas: con la monitorización y el mantenimiento (T-28b).

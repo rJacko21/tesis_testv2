@@ -51,6 +51,12 @@ export default async function SignInPage({ searchParams }: PageProps<"/[locale]/
         </>
       }
     >
+      {query.deleted === "1" ? (
+        // Tras borrar la cuenta (RGPD) se llega aquí, ya sin sesión.
+        <p role="status" className="mt-6 rounded-lg bg-teal-100 p-4 text-teal-900">
+          {t("account.privacy.deleted")}
+        </p>
+      ) : null}
       <AuthForm
         action={signInAction}
         hidden={{ locale, next }}

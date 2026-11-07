@@ -350,8 +350,128 @@
       "unverified": "Not confirmed yet. You will need to confirm it before buying in the item shop.",
       "resend": "Send the link again",
       "resent": "We have sent you a new link.",
-      "signOut": "Sign out",
-      "comingSoon": "Your AP balance, purchase history and rankings are coming soon."
+      "signOut": "Sign out"
+    }
+  },
+  "account": {
+    "nav": {
+      "label": "Account sections",
+      "summary": "Overview",
+      "purchases": "Purchases",
+      "topups": "Top-ups",
+      "characters": "Characters",
+      "redeem": "Redeem code",
+      "security": "Security",
+      "privacy": "Privacy"
+    },
+    "errors": {
+      "session": "Your session has expired. Please sign in again.",
+      "samePassword": "The new password must be different from the current one.",
+      "currentPassword": "The current password is not correct.",
+      "sameEmail": "That is already your account email."
+    },
+    "summary": {
+      "balance": "AP balance",
+      "ap": "{amount, number} AP",
+      "topupSoon": "You will be able to top up AP from here when the shop opens."
+    },
+    "purchases": {
+      "title": "Purchases",
+      "count": "{total, plural, one {# purchase} other {# purchases}}",
+      "empty": "You have not bought anything in the shop yet. When you do, each purchase will appear here with its price and the character who received it.",
+      "order": "Order #{id}",
+      "line": "{quantity} × {name}",
+      "recipient": "For {character} ({server})",
+      "total": "Total: {amount, number} AP",
+      "status": {
+        "pending": "Processing",
+        "completed": "Delivered",
+        "refunded": "Refunded",
+        "failed": "Failed"
+      }
+    },
+    "topups": {
+      "title": "Top-ups",
+      "empty": "You have not topped up AP yet. When you do, each top-up will appear here with the amount paid and its status.",
+      "caption": "AP top-ups. Page {page} of {count}.",
+      "date": "Date",
+      "ap": "AP",
+      "paid": "Amount",
+      "state": "Status",
+      "status": {
+        "pending": "Pending",
+        "paid": "Paid",
+        "failed": "Failed",
+        "refunded": "Refunded"
+      }
+    },
+    "characters": {
+      "title": "Characters",
+      "empty": "This account has no characters yet. When you create one in the game, it will appear here with its ranking position.",
+      "noneRanked": "None of your characters appear in the rankings yet.",
+      "ranks": "Ranking position",
+      "rank": "#{rank, number}",
+      "unranked": "Not ranked"
+    },
+    "security": {
+      "title": "Security",
+      "passwordTitle": "Change password",
+      "passwordNote": "Changing it signs you out on your other devices.",
+      "currentPassword": "Current password",
+      "passwordSubmit": "Change password",
+      "passwordChanged": "Your password has changed and we have signed you out on your other devices.",
+      "emailTitle": "Change email",
+      "currentEmail": "Current email: {email}",
+      "newEmail": "New email",
+      "emailHint": "We will send you a link to confirm it. Until then you will keep using the current one.",
+      "emailSubmit": "Send confirmation link",
+      "emailSent": "We have sent a link to {email}. Your email will change when you open it.",
+      "sessionsTitle": "Open sessions",
+      "sessionsIntro": "Devices where you are signed in. If you do not recognise one, close it and change your password.",
+      "thisDevice": "This device",
+      "unknownDevice": "Unknown device",
+      "lastActive": "Last active:",
+      "close": "Close",
+      "closeOne": "Close the session on {device}",
+      "closeOthers": "Close all other sessions",
+      "closed": "Session closed.",
+      "onlyThis": "You are only signed in on this device."
+    },
+    "redeem": {
+      "title": "Redeem code",
+      "intro": "Enter a code from an event or from Florensia’s social channels. Each code can be redeemed once per account.",
+      "code": "Code",
+      "codeHint": "Upper or lower case does not matter.",
+      "character": "Character who receives the item",
+      "characterHint": "Only needed if the code gives an item. AP codes go to your balance.",
+      "noCharacter": "Choose a character",
+      "submit": "Redeem",
+      "okAp": "You have received {amount, number} AP. Your balance is now {balance, number} AP.",
+      "okItem": "{character} will receive “{item}” the next time you enter the game.",
+      "another": "Redeem another code",
+      "errors": {
+        "invalid": "That code does not exist or is not active.",
+        "expired": "That code has expired.",
+        "used": "You have already used this code.",
+        "exhausted": "That code has run out.",
+        "character": "Choose which character will receive the item.",
+        "noCharacters": "This code gives an item, and your account has no characters to receive it yet."
+      }
+    },
+    "privacy": {
+      "title": "Privacy",
+      "exportTitle": "Download my data",
+      "exportBody": "Download a JSON file with everything we store about your account: account data, characters, purchases, top-ups, AP movements, redeemed codes and sessions.",
+      "exportAction": "Download my data",
+      "deleteTitle": "Delete my account",
+      "deleteBody": "Your account name, email and password will be deleted, all your sessions will be closed and your characters will no longer be linked to this account. This cannot be undone.",
+      "deleteKept": "By law we keep the record of purchases, top-ups and AP movements, without your name or email.",
+      "deleteConfirm": "I understand that my account will be deleted and cannot be recovered.",
+      "deleteSubmit": "Delete my account",
+      "deleted": "Your account has been deleted. Thank you for playing Florensia.",
+      "errors": {
+        "confirm": "Tick the box to confirm that you want to delete your account."
+      }
     }
   },
   "email": {
@@ -373,6 +493,24 @@
       "body": "Someone tried to create a Florensia account with this email address, but you already have one. If it was you, simply sign in:",
       "action": "Sign in",
       "note": "If you have forgotten your password, use “Forgot your password?” on the sign-in page. If it was not you, you can ignore this email."
+    },
+    "newEmail": {
+      "subject": "Confirm your new Florensia email",
+      "body": "You asked to use this email for your Florensia account. Confirm it by opening this link:",
+      "action": "Confirm my new email",
+      "note": "The link expires in 24 hours. Until you open it, your account keeps using the previous email. If you did not ask for this, ignore this email."
+    },
+    "emailChange": {
+      "subject": "A change of your account email was requested",
+      "body": "Someone signed in to your Florensia account asked to change its email to {email}. It will only change if the link sent to that address is opened."
+    },
+    "passwordChanged": {
+      "subject": "Your Florensia password has changed",
+      "body": "The password of your Florensia account has just changed, and your sessions on other devices have been closed."
+    },
+    "notMe": {
+      "action": "It was not me: recover my account",
+      "note": "If it was you, there is nothing to do. If not, choose a new password now: all sessions will be closed."
     }
   }
 }

@@ -350,8 +350,128 @@
       "unverified": "Non ancora confermata. Dovrai confermarla prima di acquistare nello shop.",
       "resend": "Invia di nuovo il link",
       "resent": "Ti abbiamo inviato un nuovo link.",
-      "signOut": "Esci",
-      "comingSoon": "Presto qui vedrai il tuo saldo AP, i tuoi acquisti e le tue classifiche."
+      "signOut": "Esci"
+    }
+  },
+  "account": {
+    "nav": {
+      "label": "Sezioni del tuo account",
+      "summary": "Riepilogo",
+      "purchases": "Acquisti",
+      "topups": "Ricariche",
+      "characters": "Personaggi",
+      "redeem": "Riscatta codice",
+      "security": "Sicurezza",
+      "privacy": "Privacy"
+    },
+    "errors": {
+      "session": "La sessione è scaduta. Accedi di nuovo.",
+      "samePassword": "La nuova password deve essere diversa da quella attuale.",
+      "currentPassword": "La password attuale non è corretta.",
+      "sameEmail": "Questa è già l’e-mail del tuo account."
+    },
+    "summary": {
+      "balance": "Saldo AP",
+      "ap": "{amount, number} AP",
+      "topupSoon": "Potrai ricaricare AP da qui quando aprirà lo shop."
+    },
+    "purchases": {
+      "title": "Acquisti",
+      "count": "{total, plural, one {# acquisto} other {# acquisti}}",
+      "empty": "Non hai ancora acquistato nulla nello shop. Quando lo farai, qui vedrai ogni acquisto con il prezzo e il personaggio che l’ha ricevuto.",
+      "order": "Ordine n. {id}",
+      "line": "{quantity} × {name}",
+      "recipient": "Per {character} ({server})",
+      "total": "Totale: {amount, number} AP",
+      "status": {
+        "pending": "In elaborazione",
+        "completed": "Consegnato",
+        "refunded": "Rimborsato",
+        "failed": "Non riuscito"
+      }
+    },
+    "topups": {
+      "title": "Ricariche",
+      "empty": "Non hai ancora ricaricato AP. Quando lo farai, qui vedrai ogni ricarica con l’importo pagato e il suo stato.",
+      "caption": "Ricariche AP. Pagina {page} di {count}.",
+      "date": "Data",
+      "ap": "AP",
+      "paid": "Importo",
+      "state": "Stato",
+      "status": {
+        "pending": "In attesa",
+        "paid": "Pagata",
+        "failed": "Non riuscita",
+        "refunded": "Rimborsata"
+      }
+    },
+    "characters": {
+      "title": "Personaggi",
+      "empty": "Questo account non ha ancora personaggi. Quando ne creerai uno nel gioco, apparirà qui con la sua posizione in classifica.",
+      "noneRanked": "Nessuno dei tuoi personaggi compare ancora in classifica.",
+      "ranks": "Posizione in classifica",
+      "rank": "n. {rank, number}",
+      "unranked": "Fuori classifica"
+    },
+    "security": {
+      "title": "Sicurezza",
+      "passwordTitle": "Cambia la password",
+      "passwordNote": "Cambiandola, le sessioni aperte su altri dispositivi vengono chiuse.",
+      "currentPassword": "Password attuale",
+      "passwordSubmit": "Cambia la password",
+      "passwordChanged": "La password è cambiata e abbiamo chiuso le sessioni degli altri dispositivi.",
+      "emailTitle": "Cambia l’e-mail",
+      "currentEmail": "E-mail attuale: {email}",
+      "newEmail": "Nuova e-mail",
+      "emailHint": "Ti invieremo un link per confermarla. Fino ad allora continuerai a usare quella attuale.",
+      "emailSubmit": "Invia il link di conferma",
+      "emailSent": "Abbiamo inviato un link a {email}. L’e-mail cambierà quando lo aprirai.",
+      "sessionsTitle": "Sessioni aperte",
+      "sessionsIntro": "Dispositivi su cui hai effettuato l’accesso. Se non ne riconosci uno, chiudilo e cambia la password.",
+      "thisDevice": "Questo dispositivo",
+      "unknownDevice": "Dispositivo sconosciuto",
+      "lastActive": "Ultima attività:",
+      "close": "Chiudi",
+      "closeOne": "Chiudi la sessione su {device}",
+      "closeOthers": "Chiudi tutte le altre sessioni",
+      "closed": "Sessione chiusa.",
+      "onlyThis": "Hai una sessione aperta solo su questo dispositivo."
+    },
+    "redeem": {
+      "title": "Riscatta codice",
+      "intro": "Inserisci un codice di un evento o dei canali social di Florensia. Ogni codice si può riscattare una volta per account.",
+      "code": "Codice",
+      "codeHint": "Maiuscole o minuscole non fa differenza.",
+      "character": "Personaggio che riceve l’oggetto",
+      "characterHint": "Serve solo se il codice dà un oggetto. I codici AP vanno al tuo saldo.",
+      "noCharacter": "Scegli un personaggio",
+      "submit": "Riscatta",
+      "okAp": "Hai ricevuto {amount, number} AP. Il tuo saldo ora è di {balance, number} AP.",
+      "okItem": "{character} riceverà «{item}» la prossima volta che entri nel gioco.",
+      "another": "Riscatta un altro codice",
+      "errors": {
+        "invalid": "Questo codice non esiste o non è attivo.",
+        "expired": "Questo codice è scaduto.",
+        "used": "Hai già usato questo codice.",
+        "exhausted": "Questo codice è esaurito.",
+        "character": "Scegli quale personaggio riceverà l’oggetto.",
+        "noCharacters": "Questo codice dà un oggetto e il tuo account non ha ancora personaggi che possano riceverlo."
+      }
+    },
+    "privacy": {
+      "title": "Privacy",
+      "exportTitle": "Scarica i miei dati",
+      "exportBody": "Scarica un file JSON con tutto ciò che conserviamo del tuo account: dati dell’account, personaggi, acquisti, ricariche, movimenti di AP, codici riscattati e sessioni.",
+      "exportAction": "Scarica i miei dati",
+      "deleteTitle": "Elimina il mio account",
+      "deleteBody": "Il nome dell’account, l’e-mail e la password verranno eliminati, tutte le sessioni verranno chiuse e i tuoi personaggi non saranno più collegati a questo account. Non si può annullare.",
+      "deleteKept": "Per obbligo di legge conserviamo, senza il tuo nome né la tua e-mail, il registro di acquisti, ricariche e movimenti di AP.",
+      "deleteConfirm": "Capisco che il mio account verrà eliminato e non potrà essere recuperato.",
+      "deleteSubmit": "Elimina il mio account",
+      "deleted": "Il tuo account è stato eliminato. Grazie per aver giocato a Florensia.",
+      "errors": {
+        "confirm": "Seleziona la casella per confermare che vuoi eliminare l’account."
+      }
     }
   },
   "email": {
@@ -373,6 +493,24 @@
       "body": "Qualcuno ha provato a creare un account di Florensia con questo indirizzo e-mail, ma ne hai già uno. Se sei stato tu, accedi semplicemente:",
       "action": "Accedi",
       "note": "Se hai dimenticato la password, usa «Hai dimenticato la password?» nella pagina di accesso. Se non sei stato tu, puoi ignorare questa e-mail."
+    },
+    "newEmail": {
+      "subject": "Conferma la tua nuova e-mail di Florensia",
+      "body": "Hai chiesto di usare questa e-mail per il tuo account Florensia. Confermala aprendo questo link:",
+      "action": "Conferma la mia nuova e-mail",
+      "note": "Il link scade tra 24 ore. Finché non lo apri, l’account continua a usare l’e-mail precedente. Se non l’hai chiesto tu, ignora questa e-mail."
+    },
+    "emailChange": {
+      "subject": "È stata richiesta la modifica dell’e-mail del tuo account",
+      "body": "Qualcuno che ha effettuato l’accesso al tuo account Florensia ha chiesto di cambiarne l’e-mail in {email}. Cambierà solo se viene aperto il link inviato a quell’indirizzo."
+    },
+    "passwordChanged": {
+      "subject": "La tua password di Florensia è cambiata",
+      "body": "La password del tuo account Florensia è appena cambiata e le sessioni sugli altri dispositivi sono state chiuse."
+    },
+    "notMe": {
+      "action": "Non sono stato io: recupera il mio account",
+      "note": "Se sei stato tu, non devi fare nulla. Altrimenti scegli subito una nuova password: tutte le sessioni verranno chiuse."
     }
   }
 }

@@ -55,3 +55,26 @@ export async function consumeRateLimit(
     retryAfter: count <= max ? 0 : Number(row?.remaining ?? windowSeconds),
   };
 }
+
+/**
+ * Comprueba un límite sin sumar un intento. Sirve cuando solo cuentan los
+ * fallos (canjear códigos, RF-13): se mira antes y se suma tras fallar.
+ */
+export async function peekRateLimit(
+  key: string,
+  windowSeconds: number,
+  max: number,
+): Promise<RateLimitResult> {
+  const { db } = await import("@/db/client");
+  const [row] = await db
+    .select({
+      count: rateLimits.count,
+      remaining: sql<number>`greatest(0, ${windowSeconds} - timestampdiff(second, ${rateLimits.windowStart}, now(3)))`,
+    })
+    .from(rateLimits)
+    .where(eq(rateLimits.key, key));
+  if (!row || Number(row.remaining) <= 0 || row.count < max) {
+    return { allowed: true, retryAfter: 0 };
+  }
+  return { allowed: false, retryAfter: Number(row.remaining) };
+}

@@ -4,66 +4,14 @@
  *
  * Los correos se leen de Mailpit (`docker compose up -d mail`), que los
  * recoge sin enviarlos. Cada prueba usa datos únicos y una IP propia
- * (`X-Forwarded-For`), para que los límites por IP de una prueba no
- * afecten a otra.
+ * (`helpers.ts`), para que los límites por IP de una prueba no afecten a
+ * otra.
  */
-import { expect, type Page, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-const MAILPIT = process.env.MAILPIT_URL ?? "http://localhost:8025";
+import { isolateEachTest, linkFromMail, newAccount, register, signIn } from "./helpers";
 
-let counter = 0;
-/** Datos de una cuenta nueva, distintos en cada llamada. */
-function newAccount() {
-  const id = `${Date.now().toString(36)}${(counter++).toString(36)}${Math.floor(Math.random() * 1e4)}`;
-  return {
-    username: `e2e_${id}`.slice(0, 16),
-    email: `e2e-${id}@example.test`,
-    // Frases largas y únicas: no aparecen en filtraciones.
-    password: `farolillo verde ${id} navega`,
-  };
-}
-
-test.beforeEach(async ({ page }) => {
-  const ip = `10.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 254) + 1}`;
-  await page.setExtraHTTPHeaders({ "x-forwarded-for": ip });
-  // Sin banner de cookies tapando los botones en móvil.
-  await page
-    .context()
-    .addCookies([{ name: "consent", value: "1.analytics:0", domain: "localhost", path: "/" }]);
-});
-
-/** Espera el correo con ese asunto y devuelve el enlace que contiene, como ruta local. */
-async function linkFromMail(page: Page, to: string, subject: RegExp): Promise<string> {
-  let text = "";
-  await expect(async () => {
-    const search = await page.request.get(`${MAILPIT}/api/v1/search`, {
-      params: { query: `to:"${to}"` },
-    });
-    const { messages } = (await search.json()) as { messages: { ID: string; Subject: string }[] };
-    const message = messages.find((m) => subject.test(m.Subject));
-    expect(message).toBeDefined();
-    const detail = await page.request.get(`${MAILPIT}/api/v1/message/${message!.ID}`);
-    text = ((await detail.json()) as { Text: string }).Text;
-  }).toPass({ timeout: 10_000 });
-  const url = new URL(text.match(/https?:\/\/\S+/)![0]);
-  return `${url.pathname}${url.search}`;
-}
-
-async function register(page: Page, account: ReturnType<typeof newAccount>) {
-  await page.goto("/es/register");
-  await page.getByLabel("Nombre de cuenta").fill(account.username);
-  await page.getByLabel("Correo electrónico").fill(account.email);
-  await page.getByLabel("Contraseña", { exact: true }).fill(account.password);
-  await page.getByRole("checkbox").check();
-  await page.getByRole("button", { name: "Crear cuenta" }).click();
-}
-
-async function signIn(page: Page, identifier: string, password: string) {
-  await page.goto("/es/sign-in");
-  await page.getByLabel("Nombre de cuenta o correo").fill(identifier);
-  await page.getByLabel("Contraseña", { exact: true }).fill(password);
-  await page.getByRole("button", { name: "Iniciar sesión" }).click();
-}
+isolateEachTest();
 
 test("registro, verificación del correo, inicio y cierre de sesión", async ({ page }) => {
   const account = newAccount();
