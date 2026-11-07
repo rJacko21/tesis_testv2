@@ -33,6 +33,12 @@ const envSchema = z.object({
    * `off` solo para entornos sin salida a Internet.
    */
   PWNED_CHECK: z.enum(["on", "off"]).default("on"),
+  /**
+   * Clave con la que se firman y comprueban los avisos de pago (webhooks).
+   * Sin ella se deriva de `BETTER_AUTH_SECRET`; en un despliegue real,
+   * la del proveedor de pago (ADR-09).
+   */
+  PAYMENT_WEBHOOK_SECRET: z.string().min(32).optional(),
 });
 
 /** Configuración validada del servidor. */

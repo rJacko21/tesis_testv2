@@ -6,6 +6,7 @@
  * navegación de `AccountShell`.
  */
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { AccountShell } from "@/components/account/AccountShell";
 import { ResendVerification } from "@/components/account/ResendVerification";
@@ -72,7 +73,12 @@ export default async function AccountPage() {
           <p className="font-display text-gold-300 text-4xl font-bold">
             {t("account.summary.ap", { amount: balance })}
           </p>
-          <p className="text-sm">{t("account.summary.topupSoon")}</p>
+          <Link
+            href={`/${locale}/topup`}
+            className={buttonStyles({ variant: "primary", className: "mt-2 w-fit" })}
+          >
+            {t("account.summary.topUp")}
+          </Link>
         </section>
       </div>
 

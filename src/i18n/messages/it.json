@@ -378,6 +378,51 @@
       }
     }
   },
+  "topup": {
+    "title": "Ricarica AP",
+    "description": "Acquista AP per il negozio di Florensia: pacchetti, prezzi, AP extra e cosa succede dopo il pagamento.",
+    "intro": "Gli AP sono la valuta del negozio. Scegli un pacchetto, paga sulla piattaforma di pagamento e gli AP arrivano sul tuo account.",
+    "packages": "Pacchetti di AP",
+    "amount": "{ap, number} AP",
+    "bonus": "+{percent} % di AP",
+    "buy": "Scegli",
+    "buyOne": "Scegli {name} per {price}",
+    "unavailable": "Le ricariche non sono disponibili al momento. Riprova tra qualche minuto.",
+    "errors": {
+      "unverified": "Per ricaricare, conferma prima la tua email con il link che ti abbiamo inviato. Puoi richiederlo di nuovo dal tuo account.",
+      "package": "Quel pacchetto non è più disponibile. Scegline un altro."
+    },
+    "how": {
+      "title": "Come funziona",
+      "choose": "Scegli un pacchetto. Devi aver effettuato l’accesso e confermato l’email.",
+      "pay": "Paga sulla piattaforma di pagamento.",
+      "receive": "Quando la piattaforma conferma il pagamento, gli AP vengono aggiunti al saldo e ricevi una ricevuta via email."
+    },
+    "info": {
+      "title": "Da sapere",
+      "methods": "In questa demo della tesi la piattaforma è simulata: non si addebita denaro. Il sito ufficiale usa Xsolla, con carte, PayPal e metodi locali.",
+      "value": "Gli AP non hanno valore in denaro e non si possono riconvertire.",
+      "verified": "Ogni ricarica compare in Il mio account › Ricariche."
+    },
+    "gateway": {
+      "title": "Pagamento",
+      "demo": "Piattaforma di pagamento simulata per la demo della tesi. Non si addebita denaro.",
+      "product": "Prodotto",
+      "price": "Prezzo",
+      "pay": "Paga {price}",
+      "cancel": "Annulla"
+    },
+    "result": {
+      "title": "La tua ricarica",
+      "paid": "Fatto: sono stati aggiunti {ap, number} AP. Il tuo saldo ora è di {balance, number} AP. Ti abbiamo inviato la ricevuta via email.",
+      "pending": "Stiamo aspettando la conferma della piattaforma. Gli AP arrivano appena conferma: ricontrolla tra qualche secondo.",
+      "failed": "Il pagamento non è stato completato. Non è stato addebitato nulla e il saldo non è cambiato.",
+      "shop": "Vai al negozio",
+      "history": "Vedi le mie ricariche",
+      "refresh": "Ricontrolla",
+      "again": "Torna alla ricarica"
+    }
+  },
   "auth": {
     "fields": {
       "username": "Nome dell’account",
@@ -477,7 +522,7 @@
     "summary": {
       "balance": "Saldo AP",
       "ap": "{amount, number} AP",
-      "topupSoon": "Potrai ricaricare AP da qui quando aprirà lo shop."
+      "topUp": "Ricarica AP"
     },
     "purchases": {
       "title": "Acquisti",
@@ -615,6 +660,12 @@
     "notMe": {
       "action": "Non sono stato io: recupera il mio account",
       "note": "Se sei stato tu, non devi fare nulla. Altrimenti scegli subito una nuova password: tutte le sessioni verranno chiuse."
+    },
+    "topupReceipt": {
+      "subject": "La tua ricevuta: {ap, number} AP aggiunti",
+      "body": "La ricarica n. {id} è completata: {ap, number} AP per {price}. Il tuo saldo ora è di {balance, number} AP.",
+      "action": "Vedi le mie ricariche",
+      "note": "Gli AP non hanno valore in denaro e non si possono riconvertire. Se non hai fatto tu questa ricarica, rispondi a questa email."
     }
   }
 }

@@ -121,7 +121,7 @@ Con la precarga incluida quedaban unos 1,4 KB de margen hasta 153 600 bytes.
 
 ### Pendiente
 
-- **Recargar AP desde el resumen:** con la recarga (T-21).
+- ~~**Recargar AP desde el resumen:** con la recarga (T-21).~~ Hecho en [recarga.md](recarga.md) (M-33).
 - **Entrega en el juego** de los objetos de los códigos: con la integración de compras (T-20).
 - **Aviso por correo al borrar la cuenta:** no lo exige el RGPD. Se puede añadir con las demás plantillas si se quiere.
 - **Sesiones caducadas e intentos antiguos:** su limpieza periódica sigue en T-28b.

@@ -115,9 +115,11 @@ test("con datos: compras, recargas y el puesto de cada personaje en el ranking",
   // «Ir a mi personaje» (RF-07): el ranking muestra su fila con el puesto real.
   await rankLink.click();
   await expect(page).toHaveURL(/\/es\/rankings\?q=/);
-  await expect(page.getByRole("row", { name: new RegExp(character.name) }).first()).toContainText(
-    String(character.rank),
-  );
+  // Fila con ese nombre exacto: otro personaje puede empezar igual («Zudorliak», «Zudorliakai»).
+  const row = page
+    .locator("tbody tr")
+    .filter({ has: page.getByText(character.name, { exact: true }) });
+  await expect(row).toContainText(String(character.rank));
 });
 
 test("cambiar la contraseña pide la actual y cierra las demás sesiones", async ({
