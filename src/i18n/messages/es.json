@@ -547,7 +547,8 @@
     "summary": {
       "balance": "Saldo de AP",
       "ap": "{amount, number} AP",
-      "topUp": "Recargar AP"
+      "topUp": "Recargar AP",
+      "admin": "Panel de administración"
     },
     "purchases": {
       "title": "Compras",
@@ -691,6 +692,121 @@
       "body": "Tu recarga n.º {id} se ha completado: {ap, number} AP por {price}. Tu saldo ahora es de {balance, number} AP.",
       "action": "Ver mis recargas",
       "note": "Los AP no tienen valor en dinero ni se pueden cambiar de vuelta. Si no has hecho tú esta recarga, responde a este correo."
+    }
+  },
+  "admin": {
+    "title": "Panel de administración",
+    "nav": {
+      "label": "Secciones del panel",
+      "home": "Inicio",
+      "users": "Cuentas",
+      "audit": "Auditoría"
+    },
+    "home": {
+      "title": "Panel de administración",
+      "intro": "Hola, {name}. Tus roles: {roles}.",
+      "users": "Busca cuentas, mira su historial y suspéndelas o reactívalas.",
+      "audit": "Quién cambió qué y cuándo.",
+      "nothing": "Tu rol aún no tiene secciones en esta versión del panel. Noticias y promociones llegan en las siguientes partes."
+    },
+    "roles": {
+      "admin": "Administrador",
+      "editor": "Editor",
+      "support": "Soporte",
+      "none": "Sin roles del equipo"
+    },
+    "status": {
+      "active": "Activa",
+      "suspended": "Suspendida",
+      "deleted": "Borrada"
+    },
+    "users": {
+      "title": "Cuentas",
+      "search": "Buscar",
+      "query": "Nombre, correo o n.º de cuenta",
+      "status": "Estado",
+      "anyStatus": "Todos",
+      "count": "{total, plural, one {# cuenta} other {# cuentas}}",
+      "caption": "Cuentas, página {page} de {count}",
+      "empty": "Ninguna cuenta coincide con la búsqueda.",
+      "id": "N.º",
+      "name": "Cuenta",
+      "email": "Correo",
+      "verified": "confirmado",
+      "unverified": "sin confirmar",
+      "balance": "Saldo",
+      "created": "Alta"
+    },
+    "user": {
+      "title": "Cuenta {name}",
+      "back": "Volver a cuentas",
+      "data": "Datos",
+      "locale": "Idioma",
+      "sessions": "Sesiones abiertas",
+      "statusTitle": "Estado de la cuenta",
+      "suspendHint": "Suspender cierra todas sus sesiones y no podrá volver a entrar hasta que se reactive.",
+      "reason": "Motivo (queda en la auditoría)",
+      "reasonHint": "Entre {min} y {max} caracteres.",
+      "suspend": "Suspender cuenta",
+      "reactivateHint": "La cuenta podrá volver a entrar en cuanto se reactive.",
+      "reactivate": "Reactivar cuenta",
+      "statusLocked": "No puedes cambiar el estado de esta cuenta: es la tuya o es del equipo, y solo un administrador puede suspenderla.",
+      "deletedHint": "Cuenta borrada a petición de su dueño (RGPD): no se puede reactivar.",
+      "rolesTitle": "Roles del equipo",
+      "rolesHint": "Elige los roles de esta cuenta. No puedes quitarte tu propio rol de administrador.",
+      "saveRoles": "Guardar roles",
+      "characters": "Personajes",
+      "noCharacters": "Sin personajes.",
+      "character": "{name} · {server} · nivel {level}",
+      "ledger": "Últimos movimientos de AP",
+      "noLedger": "Sin movimientos de AP.",
+      "reasonCol": "Tipo",
+      "delta": "Cambio",
+      "ledgerReason": {
+        "topup": "Recarga",
+        "purchase": "Compra",
+        "refund": "Reembolso",
+        "admin": "Ajuste",
+        "redeem": "Código canjeado"
+      },
+      "history": "Cambios desde el panel",
+      "noHistory": "Sin cambios desde el panel.",
+      "seeAudit": "Ver todo en la auditoría",
+      "done": {
+        "suspended": "Cuenta suspendida y sesiones cerradas.",
+        "active": "Cuenta reactivada.",
+        "roles": "Roles guardados."
+      },
+      "errors": {
+        "forbidden": "No tienes permiso para este cambio. No ha cambiado nada.",
+        "notFound": "La cuenta no existe.",
+        "unchanged": "La cuenta ya estaba así: no ha cambiado nada.",
+        "reason": "Escribe el motivo de la suspensión (entre {min} y {max} caracteres)."
+      }
+    },
+    "audit": {
+      "title": "Auditoría",
+      "intro": "Cada cambio hecho desde el panel, del más reciente al más antiguo. No se puede editar ni borrar.",
+      "caption": "Auditoría, página {page} de {count}",
+      "date": "Fecha",
+      "actor": "Quién",
+      "action": "Acción",
+      "target": "Sobre",
+      "changes": "Cambios",
+      "ip": "IP",
+      "empty": "Aún no hay cambios registrados.",
+      "unknownActor": "Cuenta borrada",
+      "userTarget": "Cuenta n.º {id}",
+      "filtered": "Mostrando solo la cuenta n.º {id}.",
+      "showAll": "Ver todo",
+      "actions": {
+        "user": {
+          "suspend": "Cuenta suspendida",
+          "reactivate": "Cuenta reactivada",
+          "roles": "Roles cambiados"
+        }
+      },
+      "cli": "Terminal"
     }
   }
 }

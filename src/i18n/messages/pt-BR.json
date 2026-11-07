@@ -547,7 +547,8 @@
     "summary": {
       "balance": "Saldo de AP",
       "ap": "{amount, number} AP",
-      "topUp": "Recarregar AP"
+      "topUp": "Recarregar AP",
+      "admin": "Painel de administração"
     },
     "purchases": {
       "title": "Compras",
@@ -691,6 +692,121 @@
       "body": "Sua recarga n.º {id} foi concluída: {ap, number} AP por {price}. Seu saldo agora é {balance, number} AP.",
       "action": "Ver minhas recargas",
       "note": "AP não têm valor em dinheiro nem podem ser trocados de volta. Se você não fez esta recarga, responda a este e-mail."
+    }
+  },
+  "admin": {
+    "title": "Painel de administração",
+    "nav": {
+      "label": "Seções do painel",
+      "home": "Início",
+      "users": "Contas",
+      "audit": "Auditoria"
+    },
+    "home": {
+      "title": "Painel de administração",
+      "intro": "Olá, {name}. Seus papéis: {roles}.",
+      "users": "Busque contas, veja o histórico e suspenda ou reative.",
+      "audit": "Quem mudou o quê, e quando.",
+      "nothing": "Seu papel ainda não tem seções nesta versão do painel. Notícias e promoções chegam nas próximas partes."
+    },
+    "roles": {
+      "admin": "Administrador",
+      "editor": "Editor",
+      "support": "Suporte",
+      "none": "Sem papéis da equipe"
+    },
+    "status": {
+      "active": "Ativa",
+      "suspended": "Suspensa",
+      "deleted": "Excluída"
+    },
+    "users": {
+      "title": "Contas",
+      "search": "Buscar",
+      "query": "Nome, e-mail ou número da conta",
+      "status": "Estado",
+      "anyStatus": "Todos",
+      "count": "{total, plural, one {# conta} other {# contas}}",
+      "caption": "Contas, página {page} de {count}",
+      "empty": "Nenhuma conta corresponde à busca.",
+      "id": "N.º",
+      "name": "Conta",
+      "email": "E-mail",
+      "verified": "confirmado",
+      "unverified": "não confirmado",
+      "balance": "Saldo",
+      "created": "Criada"
+    },
+    "user": {
+      "title": "Conta {name}",
+      "back": "Voltar às contas",
+      "data": "Dados",
+      "locale": "Idioma",
+      "sessions": "Sessões abertas",
+      "statusTitle": "Estado da conta",
+      "suspendHint": "Suspender encerra todas as sessões, e a conta não poderá entrar até ser reativada.",
+      "reason": "Motivo (fica na auditoria)",
+      "reasonHint": "Entre {min} e {max} caracteres.",
+      "suspend": "Suspender conta",
+      "reactivateHint": "A conta poderá entrar de novo assim que for reativada.",
+      "reactivate": "Reativar conta",
+      "statusLocked": "Você não pode mudar o estado desta conta: é a sua ou é da equipe, e só um administrador pode suspendê-la.",
+      "deletedHint": "Esta conta foi excluída a pedido do titular (LGPD/RGPD) e não pode ser reativada.",
+      "rolesTitle": "Papéis da equipe",
+      "rolesHint": "Escolha os papéis desta conta. Você não pode remover o seu próprio papel de administrador.",
+      "saveRoles": "Salvar papéis",
+      "characters": "Personagens",
+      "noCharacters": "Sem personagens.",
+      "character": "{name} · {server} · nível {level}",
+      "ledger": "Últimos movimentos de AP",
+      "noLedger": "Sem movimentos de AP.",
+      "reasonCol": "Tipo",
+      "delta": "Variação",
+      "ledgerReason": {
+        "topup": "Recarga",
+        "purchase": "Compra",
+        "refund": "Reembolso",
+        "admin": "Ajuste",
+        "redeem": "Código resgatado"
+      },
+      "history": "Mudanças pelo painel",
+      "noHistory": "Nenhuma mudança pelo painel.",
+      "seeAudit": "Ver tudo na auditoria",
+      "done": {
+        "suspended": "Conta suspensa e todas as sessões encerradas.",
+        "active": "Conta reativada.",
+        "roles": "Papéis salvos."
+      },
+      "errors": {
+        "forbidden": "Você não tem permissão para esta mudança. Nada foi alterado.",
+        "notFound": "Essa conta não existe.",
+        "unchanged": "A conta já estava assim. Nada foi alterado.",
+        "reason": "Escreva o motivo da suspensão ({min} a {max} caracteres)."
+      }
+    },
+    "audit": {
+      "title": "Auditoria",
+      "intro": "Cada mudança feita pelo painel, da mais recente à mais antiga. Não pode ser editada nem excluída.",
+      "caption": "Auditoria, página {page} de {count}",
+      "date": "Data",
+      "actor": "Quem",
+      "action": "Ação",
+      "target": "Sobre",
+      "changes": "Mudanças",
+      "ip": "IP",
+      "empty": "Nenhuma mudança registrada ainda.",
+      "unknownActor": "Conta excluída",
+      "userTarget": "Conta n.º {id}",
+      "filtered": "Mostrando só a conta n.º {id}.",
+      "showAll": "Ver tudo",
+      "actions": {
+        "user": {
+          "suspend": "Conta suspensa",
+          "reactivate": "Conta reativada",
+          "roles": "Papéis alterados"
+        }
+      },
+      "cli": "Linha de comando"
     }
   }
 }

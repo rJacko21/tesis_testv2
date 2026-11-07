@@ -547,7 +547,8 @@
     "summary": {
       "balance": "AP-Guthaben",
       "ap": "{amount, number} AP",
-      "topUp": "AP aufladen"
+      "topUp": "AP aufladen",
+      "admin": "Verwaltung"
     },
     "purchases": {
       "title": "Käufe",
@@ -691,6 +692,121 @@
       "body": "Deine Aufladung Nr. {id} ist abgeschlossen: {ap, number} AP für {price}. Dein Guthaben beträgt jetzt {balance, number} AP.",
       "action": "Meine Aufladungen ansehen",
       "note": "AP haben keinen Geldwert und können nicht zurückgetauscht werden. Wenn du diese Aufladung nicht gemacht hast, antworte auf diese E-Mail."
+    }
+  },
+  "admin": {
+    "title": "Verwaltung",
+    "nav": {
+      "label": "Bereiche der Verwaltung",
+      "home": "Start",
+      "users": "Konten",
+      "audit": "Prüfprotokoll"
+    },
+    "home": {
+      "title": "Verwaltung",
+      "intro": "Hallo {name}. Deine Rollen: {roles}.",
+      "users": "Konten suchen, Verlauf ansehen und sperren oder entsperren.",
+      "audit": "Wer hat was wann geändert.",
+      "nothing": "Deine Rolle hat in dieser Version der Verwaltung noch keine Bereiche. Neuigkeiten und Aktionen folgen in den nächsten Teilen."
+    },
+    "roles": {
+      "admin": "Administrator",
+      "editor": "Redaktion",
+      "support": "Support",
+      "none": "Keine Teamrollen"
+    },
+    "status": {
+      "active": "Aktiv",
+      "suspended": "Gesperrt",
+      "deleted": "Gelöscht"
+    },
+    "users": {
+      "title": "Konten",
+      "search": "Suchen",
+      "query": "Name, E-Mail oder Kontonummer",
+      "status": "Status",
+      "anyStatus": "Alle",
+      "count": "{total, plural, one {# Konto} other {# Konten}}",
+      "caption": "Konten, Seite {page} von {count}",
+      "empty": "Kein Konto entspricht der Suche.",
+      "id": "Nr.",
+      "name": "Konto",
+      "email": "E-Mail",
+      "verified": "bestätigt",
+      "unverified": "nicht bestätigt",
+      "balance": "Guthaben",
+      "created": "Erstellt"
+    },
+    "user": {
+      "title": "Konto {name}",
+      "back": "Zurück zu den Konten",
+      "data": "Daten",
+      "locale": "Sprache",
+      "sessions": "Offene Sitzungen",
+      "statusTitle": "Kontostatus",
+      "suspendHint": "Sperren beendet alle Sitzungen; das Konto kann sich erst nach dem Entsperren wieder anmelden.",
+      "reason": "Grund (bleibt im Prüfprotokoll)",
+      "reasonHint": "Zwischen {min} und {max} Zeichen.",
+      "suspend": "Konto sperren",
+      "reactivateHint": "Das Konto kann sich sofort nach dem Entsperren wieder anmelden.",
+      "reactivate": "Konto entsperren",
+      "statusLocked": "Du kannst den Status dieses Kontos nicht ändern: Es ist dein eigenes oder ein Teamkonto, das nur die Administration sperren kann.",
+      "deletedHint": "Dieses Konto wurde auf Wunsch der Person gelöscht (DSGVO) und kann nicht entsperrt werden.",
+      "rolesTitle": "Teamrollen",
+      "rolesHint": "Wähle die Rollen dieses Kontos. Deine eigene Administratorrolle kannst du nicht entfernen.",
+      "saveRoles": "Rollen speichern",
+      "characters": "Charaktere",
+      "noCharacters": "Keine Charaktere.",
+      "character": "{name} · {server} · Stufe {level}",
+      "ledger": "Letzte AP-Bewegungen",
+      "noLedger": "Keine AP-Bewegungen.",
+      "reasonCol": "Art",
+      "delta": "Änderung",
+      "ledgerReason": {
+        "topup": "Aufladung",
+        "purchase": "Kauf",
+        "refund": "Erstattung",
+        "admin": "Korrektur",
+        "redeem": "Eingelöster Code"
+      },
+      "history": "Änderungen über die Verwaltung",
+      "noHistory": "Keine Änderungen über die Verwaltung.",
+      "seeAudit": "Alles im Prüfprotokoll ansehen",
+      "done": {
+        "suspended": "Konto gesperrt und überall abgemeldet.",
+        "active": "Konto entsperrt.",
+        "roles": "Rollen gespeichert."
+      },
+      "errors": {
+        "forbidden": "Dafür fehlt dir die Berechtigung. Es wurde nichts geändert.",
+        "notFound": "Dieses Konto gibt es nicht.",
+        "unchanged": "Das Konto war bereits so. Es wurde nichts geändert.",
+        "reason": "Gib den Grund für die Sperre an ({min} bis {max} Zeichen)."
+      }
+    },
+    "audit": {
+      "title": "Prüfprotokoll",
+      "intro": "Jede Änderung über die Verwaltung, die neueste zuerst. Sie kann weder bearbeitet noch gelöscht werden.",
+      "caption": "Prüfprotokoll, Seite {page} von {count}",
+      "date": "Datum",
+      "actor": "Wer",
+      "action": "Aktion",
+      "target": "Betrifft",
+      "changes": "Änderungen",
+      "ip": "IP",
+      "empty": "Noch keine Änderungen erfasst.",
+      "unknownActor": "Gelöschtes Konto",
+      "userTarget": "Konto Nr. {id}",
+      "filtered": "Nur Konto Nr. {id}.",
+      "showAll": "Alle anzeigen",
+      "actions": {
+        "user": {
+          "suspend": "Konto gesperrt",
+          "reactivate": "Konto entsperrt",
+          "roles": "Rollen geändert"
+        }
+      },
+      "cli": "Kommandozeile"
     }
   }
 }

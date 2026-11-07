@@ -547,7 +547,8 @@
     "summary": {
       "balance": "Solde d’AP",
       "ap": "{amount, number} AP",
-      "topUp": "Recharger des AP"
+      "topUp": "Recharger des AP",
+      "admin": "Panneau d’administration"
     },
     "purchases": {
       "title": "Achats",
@@ -691,6 +692,121 @@
       "body": "Votre recharge n° {id} est terminée : {ap, number} AP pour {price}. Votre solde est maintenant de {balance, number} AP.",
       "action": "Voir mes recharges",
       "note": "Les AP n’ont aucune valeur monétaire et ne peuvent pas être reconvertis. Si vous n’êtes pas à l’origine de cette recharge, répondez à cet e-mail."
+    }
+  },
+  "admin": {
+    "title": "Panneau d’administration",
+    "nav": {
+      "label": "Sections du panneau",
+      "home": "Accueil",
+      "users": "Comptes",
+      "audit": "Journal d’audit"
+    },
+    "home": {
+      "title": "Panneau d’administration",
+      "intro": "Bonjour, {name}. Vos rôles : {roles}.",
+      "users": "Recherchez des comptes, consultez leur historique, suspendez-les ou réactivez-les.",
+      "audit": "Qui a modifié quoi, et quand.",
+      "nothing": "Votre rôle n’a encore aucune section dans cette version du panneau. Les actualités et promotions arrivent dans les prochaines parties."
+    },
+    "roles": {
+      "admin": "Administrateur",
+      "editor": "Éditeur",
+      "support": "Support",
+      "none": "Aucun rôle d’équipe"
+    },
+    "status": {
+      "active": "Actif",
+      "suspended": "Suspendu",
+      "deleted": "Supprimé"
+    },
+    "users": {
+      "title": "Comptes",
+      "search": "Rechercher",
+      "query": "Nom, e-mail ou numéro de compte",
+      "status": "Statut",
+      "anyStatus": "Tous",
+      "count": "{total, plural, one {# compte} other {# comptes}}",
+      "caption": "Comptes, page {page} sur {count}",
+      "empty": "Aucun compte ne correspond à la recherche.",
+      "id": "N°",
+      "name": "Compte",
+      "email": "E-mail",
+      "verified": "confirmé",
+      "unverified": "non confirmé",
+      "balance": "Solde",
+      "created": "Créé"
+    },
+    "user": {
+      "title": "Compte {name}",
+      "back": "Retour aux comptes",
+      "data": "Informations",
+      "locale": "Langue",
+      "sessions": "Sessions ouvertes",
+      "statusTitle": "Statut du compte",
+      "suspendHint": "Suspendre ferme toutes les sessions, et le compte ne pourra plus se connecter avant sa réactivation.",
+      "reason": "Motif (conservé dans le journal d’audit)",
+      "reasonHint": "Entre {min} et {max} caractères.",
+      "suspend": "Suspendre le compte",
+      "reactivateHint": "Le compte pourra se reconnecter dès sa réactivation.",
+      "reactivate": "Réactiver le compte",
+      "statusLocked": "Vous ne pouvez pas modifier le statut de ce compte : c’est le vôtre ou un compte d’équipe, que seul un administrateur peut suspendre.",
+      "deletedHint": "Ce compte a été supprimé à la demande de son titulaire (RGPD) et ne peut pas être réactivé.",
+      "rolesTitle": "Rôles d’équipe",
+      "rolesHint": "Choisissez les rôles de ce compte. Vous ne pouvez pas retirer votre propre rôle d’administrateur.",
+      "saveRoles": "Enregistrer les rôles",
+      "characters": "Personnages",
+      "noCharacters": "Aucun personnage.",
+      "character": "{name} · {server} · niveau {level}",
+      "ledger": "Derniers mouvements d’AP",
+      "noLedger": "Aucun mouvement d’AP.",
+      "reasonCol": "Type",
+      "delta": "Variation",
+      "ledgerReason": {
+        "topup": "Recharge",
+        "purchase": "Achat",
+        "refund": "Remboursement",
+        "admin": "Ajustement",
+        "redeem": "Code utilisé"
+      },
+      "history": "Modifications depuis le panneau",
+      "noHistory": "Aucune modification depuis le panneau.",
+      "seeAudit": "Tout voir dans le journal d’audit",
+      "done": {
+        "suspended": "Compte suspendu et déconnecté partout.",
+        "active": "Compte réactivé.",
+        "roles": "Rôles enregistrés."
+      },
+      "errors": {
+        "forbidden": "Vous n’avez pas l’autorisation pour cette modification. Rien n’a changé.",
+        "notFound": "Ce compte n’existe pas.",
+        "unchanged": "Le compte était déjà ainsi. Rien n’a changé.",
+        "reason": "Indiquez le motif de la suspension ({min} à {max} caractères)."
+      }
+    },
+    "audit": {
+      "title": "Journal d’audit",
+      "intro": "Chaque modification faite depuis le panneau, de la plus récente à la plus ancienne. Elle ne peut être ni modifiée ni supprimée.",
+      "caption": "Journal d’audit, page {page} sur {count}",
+      "date": "Date",
+      "actor": "Qui",
+      "action": "Action",
+      "target": "Sur",
+      "changes": "Modifications",
+      "ip": "IP",
+      "empty": "Aucune modification enregistrée.",
+      "unknownActor": "Compte supprimé",
+      "userTarget": "Compte n° {id}",
+      "filtered": "Seul le compte n° {id} est affiché.",
+      "showAll": "Tout afficher",
+      "actions": {
+        "user": {
+          "suspend": "Compte suspendu",
+          "reactivate": "Compte réactivé",
+          "roles": "Rôles modifiés"
+        }
+      },
+      "cli": "Ligne de commande"
     }
   }
 }

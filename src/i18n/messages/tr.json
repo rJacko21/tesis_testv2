@@ -547,7 +547,8 @@
     "summary": {
       "balance": "AP bakiyesi",
       "ap": "{amount, number} AP",
-      "topUp": "AP yükle"
+      "topUp": "AP yükle",
+      "admin": "Yönetim paneli"
     },
     "purchases": {
       "title": "Satın alımlar",
@@ -691,6 +692,121 @@
       "body": "{id} numaralı yüklemeniz tamamlandı: {price} karşılığında {ap, number} AP. Yeni bakiyeniz {balance, number} AP.",
       "action": "Yüklemelerimi gör",
       "note": "AP’nin nakit değeri yoktur ve paraya geri çevrilemez. Bu yüklemeyi siz yapmadıysanız bu e-postayı yanıtlayın."
+    }
+  },
+  "admin": {
+    "title": "Yönetim paneli",
+    "nav": {
+      "label": "Panel bölümleri",
+      "home": "Ana sayfa",
+      "users": "Hesaplar",
+      "audit": "Denetim kaydı"
+    },
+    "home": {
+      "title": "Yönetim paneli",
+      "intro": "Merhaba {name}. Rolleriniz: {roles}.",
+      "users": "Hesap arayın, geçmişini görün, askıya alın veya yeniden etkinleştirin.",
+      "audit": "Kim neyi ne zaman değiştirdi.",
+      "nothing": "Rolünüzün panelin bu sürümünde henüz bölümü yok. Haberler ve promosyonlar sonraki bölümlerde gelecek."
+    },
+    "roles": {
+      "admin": "Yönetici",
+      "editor": "Editör",
+      "support": "Destek",
+      "none": "Ekip rolü yok"
+    },
+    "status": {
+      "active": "Etkin",
+      "suspended": "Askıda",
+      "deleted": "Silindi"
+    },
+    "users": {
+      "title": "Hesaplar",
+      "search": "Ara",
+      "query": "Ad, e-posta veya hesap numarası",
+      "status": "Durum",
+      "anyStatus": "Tümü",
+      "count": "{total, plural, other {# hesap}}",
+      "caption": "Hesaplar, sayfa {page}/{count}",
+      "empty": "Aramayla eşleşen hesap yok.",
+      "id": "No.",
+      "name": "Hesap",
+      "email": "E-posta",
+      "verified": "doğrulandı",
+      "unverified": "doğrulanmadı",
+      "balance": "Bakiye",
+      "created": "Oluşturulma"
+    },
+    "user": {
+      "title": "{name} hesabı",
+      "back": "Hesaplara dön",
+      "data": "Bilgiler",
+      "locale": "Dil",
+      "sessions": "Açık oturumlar",
+      "statusTitle": "Hesap durumu",
+      "suspendHint": "Askıya almak tüm oturumları kapatır; hesap yeniden etkinleştirilene kadar giriş yapamaz.",
+      "reason": "Neden (denetim kaydında saklanır)",
+      "reasonHint": "{min} ile {max} karakter arası.",
+      "suspend": "Hesabı askıya al",
+      "reactivateHint": "Hesap yeniden etkinleştirildiği anda tekrar giriş yapabilir.",
+      "reactivate": "Hesabı yeniden etkinleştir",
+      "statusLocked": "Bu hesabın durumunu değiştiremezsiniz: sizin hesabınız ya da yalnızca bir yöneticinin askıya alabileceği bir ekip hesabı.",
+      "deletedHint": "Bu hesap sahibinin isteğiyle silindi (KVKK/GDPR) ve yeniden etkinleştirilemez.",
+      "rolesTitle": "Ekip rolleri",
+      "rolesHint": "Bu hesabın rollerini seçin. Kendi yönetici rolünüzü kaldıramazsınız.",
+      "saveRoles": "Rolleri kaydet",
+      "characters": "Karakterler",
+      "noCharacters": "Karakter yok.",
+      "character": "{name} · {server} · seviye {level}",
+      "ledger": "Son AP hareketleri",
+      "noLedger": "AP hareketi yok.",
+      "reasonCol": "Tür",
+      "delta": "Değişim",
+      "ledgerReason": {
+        "topup": "Yükleme",
+        "purchase": "Satın alma",
+        "refund": "İade",
+        "admin": "Düzeltme",
+        "redeem": "Kullanılan kod"
+      },
+      "history": "Panelden yapılan değişiklikler",
+      "noHistory": "Panelden değişiklik yok.",
+      "seeAudit": "Tümünü denetim kaydında gör",
+      "done": {
+        "suspended": "Hesap askıya alındı ve tüm oturumlar kapatıldı.",
+        "active": "Hesap yeniden etkinleştirildi.",
+        "roles": "Roller kaydedildi."
+      },
+      "errors": {
+        "forbidden": "Bu değişiklik için yetkiniz yok. Hiçbir şey değişmedi.",
+        "notFound": "Böyle bir hesap yok.",
+        "unchanged": "Hesap zaten böyleydi. Hiçbir şey değişmedi.",
+        "reason": "Askıya alma nedenini yazın ({min}-{max} karakter)."
+      }
+    },
+    "audit": {
+      "title": "Denetim kaydı",
+      "intro": "Panelden yapılan her değişiklik, en yeniden eskiye. Düzenlenemez ve silinemez.",
+      "caption": "Denetim kaydı, sayfa {page}/{count}",
+      "date": "Tarih",
+      "actor": "Kim",
+      "action": "İşlem",
+      "target": "Hedef",
+      "changes": "Değişiklikler",
+      "ip": "IP",
+      "empty": "Henüz kayıtlı değişiklik yok.",
+      "unknownActor": "Silinmiş hesap",
+      "userTarget": "{id} numaralı hesap",
+      "filtered": "Yalnızca {id} numaralı hesap gösteriliyor.",
+      "showAll": "Tümünü göster",
+      "actions": {
+        "user": {
+          "suspend": "Hesap askıya alındı",
+          "reactivate": "Hesap yeniden etkinleştirildi",
+          "roles": "Roller değişti"
+        }
+      },
+      "cli": "Komut satırı"
     }
   }
 }
