@@ -547,7 +547,8 @@
     "summary": {
       "balance": "Saldo AP",
       "ap": "{amount, number} AP",
-      "topUp": "Ricarica AP"
+      "topUp": "Ricarica AP",
+      "admin": "Pannello di amministrazione"
     },
     "purchases": {
       "title": "Acquisti",
@@ -691,6 +692,121 @@
       "body": "La ricarica n. {id} è completata: {ap, number} AP per {price}. Il tuo saldo ora è di {balance, number} AP.",
       "action": "Vedi le mie ricariche",
       "note": "Gli AP non hanno valore in denaro e non si possono riconvertire. Se non hai fatto tu questa ricarica, rispondi a questa email."
+    }
+  },
+  "admin": {
+    "title": "Pannello di amministrazione",
+    "nav": {
+      "label": "Sezioni del pannello",
+      "home": "Inizio",
+      "users": "Account",
+      "audit": "Registro di audit"
+    },
+    "home": {
+      "title": "Pannello di amministrazione",
+      "intro": "Ciao, {name}. I tuoi ruoli: {roles}.",
+      "users": "Cerca account, consulta la cronologia e sospendili o riattivali.",
+      "audit": "Chi ha cambiato cosa, e quando.",
+      "nothing": "Il tuo ruolo non ha ancora sezioni in questa versione del pannello. Notizie e promozioni arriveranno nelle prossime parti."
+    },
+    "roles": {
+      "admin": "Amministratore",
+      "editor": "Editor",
+      "support": "Assistenza",
+      "none": "Nessun ruolo del team"
+    },
+    "status": {
+      "active": "Attivo",
+      "suspended": "Sospeso",
+      "deleted": "Eliminato"
+    },
+    "users": {
+      "title": "Account",
+      "search": "Cerca",
+      "query": "Nome, email o numero di account",
+      "status": "Stato",
+      "anyStatus": "Tutti",
+      "count": "{total, plural, one {# account} other {# account}}",
+      "caption": "Account, pagina {page} di {count}",
+      "empty": "Nessun account corrisponde alla ricerca.",
+      "id": "N.",
+      "name": "Account",
+      "email": "Email",
+      "verified": "confermata",
+      "unverified": "non confermata",
+      "balance": "Saldo",
+      "created": "Creato"
+    },
+    "user": {
+      "title": "Account {name}",
+      "back": "Torna agli account",
+      "data": "Dati",
+      "locale": "Lingua",
+      "sessions": "Sessioni aperte",
+      "statusTitle": "Stato dell’account",
+      "suspendHint": "Sospendere chiude tutte le sessioni e l’account non potrà accedere finché non viene riattivato.",
+      "reason": "Motivo (resta nel registro di audit)",
+      "reasonHint": "Tra {min} e {max} caratteri.",
+      "suspend": "Sospendi account",
+      "reactivateHint": "L’account potrà accedere di nuovo appena riattivato.",
+      "reactivate": "Riattiva account",
+      "statusLocked": "Non puoi cambiare lo stato di questo account: è il tuo o è del team, e solo un amministratore può sospenderlo.",
+      "deletedHint": "Questo account è stato eliminato su richiesta del titolare (GDPR) e non può essere riattivato.",
+      "rolesTitle": "Ruoli del team",
+      "rolesHint": "Scegli i ruoli di questo account. Non puoi togliere il tuo ruolo di amministratore.",
+      "saveRoles": "Salva ruoli",
+      "characters": "Personaggi",
+      "noCharacters": "Nessun personaggio.",
+      "character": "{name} · {server} · livello {level}",
+      "ledger": "Ultimi movimenti di AP",
+      "noLedger": "Nessun movimento di AP.",
+      "reasonCol": "Tipo",
+      "delta": "Variazione",
+      "ledgerReason": {
+        "topup": "Ricarica",
+        "purchase": "Acquisto",
+        "refund": "Rimborso",
+        "admin": "Rettifica",
+        "redeem": "Codice riscattato"
+      },
+      "history": "Modifiche dal pannello",
+      "noHistory": "Nessuna modifica dal pannello.",
+      "seeAudit": "Vedi tutto nel registro di audit",
+      "done": {
+        "suspended": "Account sospeso e tutte le sessioni chiuse.",
+        "active": "Account riattivato.",
+        "roles": "Ruoli salvati."
+      },
+      "errors": {
+        "forbidden": "Non hai il permesso per questa modifica. Non è cambiato nulla.",
+        "notFound": "Questo account non esiste.",
+        "unchanged": "L’account era già così. Non è cambiato nulla.",
+        "reason": "Scrivi il motivo della sospensione (da {min} a {max} caratteri)."
+      }
+    },
+    "audit": {
+      "title": "Registro di audit",
+      "intro": "Ogni modifica fatta dal pannello, dalla più recente. Non si può modificare né eliminare.",
+      "caption": "Registro di audit, pagina {page} di {count}",
+      "date": "Data",
+      "actor": "Chi",
+      "action": "Azione",
+      "target": "Su",
+      "changes": "Modifiche",
+      "ip": "IP",
+      "empty": "Nessuna modifica registrata.",
+      "unknownActor": "Account eliminato",
+      "userTarget": "Account n. {id}",
+      "filtered": "Solo l’account n. {id}.",
+      "showAll": "Mostra tutto",
+      "actions": {
+        "user": {
+          "suspend": "Account sospeso",
+          "reactivate": "Account riattivato",
+          "roles": "Ruoli modificati"
+        }
+      },
+      "cli": "Riga di comando"
     }
   }
 }

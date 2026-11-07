@@ -14,6 +14,8 @@ import { buttonStyles } from "@/components/ui";
 import { getLocale, getTranslator } from "@/i18n/server";
 import { getApBalance } from "@/lib/account/queries";
 import { requireSession } from "@/lib/account/session";
+import { isStaff } from "@/lib/admin/permissions";
+import { adminPath, getRoles } from "@/lib/admin/staff";
 import { signOutAction } from "@/lib/auth/actions";
 
 export const instant = false;
@@ -28,7 +30,10 @@ export default async function AccountPage() {
   const session = await requireSession(locale, "");
   const { user } = session;
   const name = (user as { displayUsername?: string | null }).displayUsername ?? user.name;
-  const balance = await getApBalance(session.userId);
+  const [balance, roles] = await Promise.all([
+    getApBalance(session.userId),
+    getRoles(session.userId),
+  ]);
 
   return (
     <AccountShell
@@ -81,6 +86,15 @@ export default async function AccountPage() {
           </Link>
         </section>
       </div>
+
+      {/* Solo las cuentas del equipo ven el enlace al panel (RF-12). */}
+      {isStaff(roles) ? (
+        <p className="mt-8">
+          <Link href={adminPath(locale)} className={buttonStyles({ variant: "secondary" })}>
+            {t("account.summary.admin")}
+          </Link>
+        </p>
+      ) : null}
 
       <form action={signOutAction} className="mt-8">
         <input type="hidden" name="locale" value={locale} />

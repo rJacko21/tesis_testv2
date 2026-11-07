@@ -547,7 +547,8 @@
     "summary": {
       "balance": "AP balance",
       "ap": "{amount, number} AP",
-      "topUp": "Top up AP"
+      "topUp": "Top up AP",
+      "admin": "Admin panel"
     },
     "purchases": {
       "title": "Purchases",
@@ -691,6 +692,121 @@
       "body": "Your top-up no. {id} is complete: {ap, number} AP for {price}. Your balance is now {balance, number} AP.",
       "action": "See my top-ups",
       "note": "AP have no cash value and cannot be exchanged back for money. If you did not make this top-up, reply to this email."
+    }
+  },
+  "admin": {
+    "title": "Admin panel",
+    "nav": {
+      "label": "Admin panel sections",
+      "home": "Home",
+      "users": "Accounts",
+      "audit": "Audit log"
+    },
+    "home": {
+      "title": "Admin panel",
+      "intro": "Hello, {name}. Your roles: {roles}.",
+      "users": "Find accounts, see their history, and suspend or reactivate them.",
+      "audit": "Who changed what, and when.",
+      "nothing": "Your role has no sections in this version of the panel yet. News and promotions will arrive in the next parts."
+    },
+    "roles": {
+      "admin": "Administrator",
+      "editor": "Editor",
+      "support": "Support",
+      "none": "No staff roles"
+    },
+    "status": {
+      "active": "Active",
+      "suspended": "Suspended",
+      "deleted": "Deleted"
+    },
+    "users": {
+      "title": "Accounts",
+      "search": "Search",
+      "query": "Name, email or account number",
+      "status": "Status",
+      "anyStatus": "Any",
+      "count": "{total, plural, one {# account} other {# accounts}}",
+      "caption": "Accounts, page {page} of {count}",
+      "empty": "No account matches the search.",
+      "id": "No.",
+      "name": "Account",
+      "email": "Email",
+      "verified": "confirmed",
+      "unverified": "not confirmed",
+      "balance": "Balance",
+      "created": "Created"
+    },
+    "user": {
+      "title": "Account {name}",
+      "back": "Back to accounts",
+      "data": "Details",
+      "locale": "Language",
+      "sessions": "Open sessions",
+      "statusTitle": "Account status",
+      "suspendHint": "Suspending signs the account out everywhere, and it cannot sign in again until it is reactivated.",
+      "reason": "Reason (kept in the audit log)",
+      "reasonHint": "Between {min} and {max} characters.",
+      "suspend": "Suspend account",
+      "reactivateHint": "The account can sign in again as soon as it is reactivated.",
+      "reactivate": "Reactivate account",
+      "statusLocked": "You cannot change this account’s status: it is yours or a staff account, which only an administrator can suspend.",
+      "deletedHint": "This account was deleted at its owner’s request (GDPR) and cannot be reactivated.",
+      "rolesTitle": "Staff roles",
+      "rolesHint": "Choose the roles for this account. You cannot remove your own administrator role.",
+      "saveRoles": "Save roles",
+      "characters": "Characters",
+      "noCharacters": "No characters.",
+      "character": "{name} · {server} · level {level}",
+      "ledger": "Latest AP movements",
+      "noLedger": "No AP movements.",
+      "reasonCol": "Type",
+      "delta": "Change",
+      "ledgerReason": {
+        "topup": "Top-up",
+        "purchase": "Purchase",
+        "refund": "Refund",
+        "admin": "Adjustment",
+        "redeem": "Redeemed code"
+      },
+      "history": "Changes from the panel",
+      "noHistory": "No changes from the panel.",
+      "seeAudit": "See all in the audit log",
+      "done": {
+        "suspended": "Account suspended and signed out everywhere.",
+        "active": "Account reactivated.",
+        "roles": "Roles saved."
+      },
+      "errors": {
+        "forbidden": "You do not have permission for this change. Nothing was changed.",
+        "notFound": "That account does not exist.",
+        "unchanged": "The account was already like that. Nothing was changed.",
+        "reason": "Write the reason for the suspension ({min} to {max} characters)."
+      }
+    },
+    "audit": {
+      "title": "Audit log",
+      "intro": "Every change made from the panel, newest first. It cannot be edited or deleted.",
+      "caption": "Audit log, page {page} of {count}",
+      "date": "Date",
+      "actor": "Who",
+      "action": "Action",
+      "target": "On",
+      "changes": "Changes",
+      "ip": "IP",
+      "empty": "No changes recorded yet.",
+      "unknownActor": "Deleted account",
+      "userTarget": "Account no. {id}",
+      "filtered": "Showing only account no. {id}.",
+      "showAll": "Show all",
+      "actions": {
+        "user": {
+          "suspend": "Account suspended",
+          "reactivate": "Account reactivated",
+          "roles": "Roles changed"
+        }
+      },
+      "cli": "Command line"
     }
   }
 }

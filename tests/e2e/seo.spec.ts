@@ -7,6 +7,7 @@ import { expect, test } from "@playwright/test";
 test("robots.txt permite rastrear y declara el sitemap (F-10)", async ({ request }) => {
   const body = await (await request.get("/robots.txt")).text();
   expect(body).toContain("Disallow: /api/");
+  expect(body).toContain("Disallow: /*/admin");
   expect(body).toMatch(/Sitemap: https?:\/\/.+\/sitemap\.xml/);
 });
 
