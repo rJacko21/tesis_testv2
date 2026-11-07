@@ -18,13 +18,14 @@
  * canónica, el `noindex` y el 404 de un filtro no válido dependen de la URL.
  */
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 
 import { CategoryNav } from "@/components/shop/CategoryNav";
 import { ItemCard } from "@/components/shop/ItemCard";
 import { ShopFilters } from "@/components/shop/ShopFilters";
-import { Container } from "@/components/ui";
+import { buttonStyles, Container } from "@/components/ui";
 import { Pagination } from "@/components/ui/Pagination";
 import type { Locale } from "@/config/locales";
 import { languageAlternates } from "@/config/site";
@@ -66,7 +67,12 @@ export default async function ShopPage({ searchParams }: Props) {
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container>
-        <h1 className="font-display text-navy-900 text-4xl font-bold">{t("shop.title")}</h1>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h1 className="font-display text-navy-900 text-4xl font-bold">{t("shop.title")}</h1>
+          <Link href={`/${locale}/cart`} className={buttonStyles({ variant: "secondary" })}>
+            {t("shop.cart.view")}
+          </Link>
+        </div>
         <p className="text-ink-600 mt-2 max-w-2xl text-lg">{t("shop.intro")}</p>
         <ShopResults locale={locale} searchParams={searchParams} />
       </Container>

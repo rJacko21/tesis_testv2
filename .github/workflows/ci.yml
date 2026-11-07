@@ -117,5 +117,9 @@ jobs:
       # Dos veces: la carga de referencia debe ser idempotente.
       - run: pnpm db:seed && pnpm db:seed
       - run: pnpm db:seed:demo
+      - name: Compras con AP contra MySQL (transacciones y concurrencia)
+        run: pnpm test:db
+        env:
+          BETTER_AUTH_SECRET: ci-only-secret-not-used-anywhere-else-0123456789
       - name: El diagrama ER coincide con el esquema
         run: pnpm db:er && pnpm exec prettier --write docs/db/modelo-er.md && git diff --exit-code docs/db/modelo-er.md
