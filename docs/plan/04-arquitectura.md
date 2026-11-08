@@ -76,7 +76,7 @@ Convenciones: claves `BIGINT UNSIGNED`, `created_at`/`updated_at` `DATETIME(3)` 
 - `posts` (id, slug, category, status: draft/scheduled/published, published_at, expires_at, author_id, cover_image_id)
 - `post_translations` (post_id, locale, title, excerpt, body, seo_title, seo_description)
 - `promotions` (id, image_id, target_url, starts_at, ends_at, sort_order) + `promotion_translations`
-- `media` (id, path, width, height, alt por idioma en `media_translations`)
+- `media` (id, path, width, height, mime_type, data `MEDIUMBLOB` con la imagen en WebP, alt por idioma en `media_translations`). Las imágenes subidas se guardan en MySQL (ADR-17)
 - `pages` + `page_translations` (legales, reglas, FAQ)
 
 **Juego**

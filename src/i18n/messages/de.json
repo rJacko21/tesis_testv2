@@ -54,6 +54,10 @@
       "intro": "Vier Klassen, acht Wege. Ab Level {level} wählt jede Klasse eine von zwei Spezialisierungen.",
       "specializations": "Spezialisierungen ab Level {level}",
       "artAlt": "Illustration der Klasse {name}"
+    },
+    "promotions": {
+      "title": "Aktionen",
+      "until": "Bis"
     }
   },
   "classes": {
@@ -700,6 +704,7 @@
       "label": "Bereiche der Verwaltung",
       "home": "Start",
       "news": "Neuigkeiten",
+      "promotions": "Aktionsbanner",
       "users": "Konten",
       "audit": "Prüfprotokoll",
       "shop": "Shop",
@@ -713,7 +718,8 @@
       "nothing": "Deine Rolle hat noch keine Bereiche in der Verwaltung.",
       "news": "Neuigkeiten schreiben, übersetzen, planen und veröffentlichen.",
       "shop": "Artikel anlegen, Namen übersetzen, Preise und Angebote verwalten.",
-      "campaigns": "Angebotszeiträume und ihre Daten planen."
+      "campaigns": "Angebotszeiträume und ihre Daten planen.",
+      "promotions": "Banner der Startseite mit Bild, Daten und Texten."
     },
     "roles": {
       "admin": "Administrator",
@@ -830,12 +836,18 @@
         "campaign": {
           "create": "Aktion angelegt",
           "update": "Aktion geändert"
+        },
+        "promotion": {
+          "create": "Banner angelegt",
+          "update": "Banner geändert",
+          "delete": "Banner gelöscht"
         }
       },
       "cli": "Kommandozeile",
       "postTarget": "Beitrag Nr. {id}",
       "itemTarget": "Artikel Nr. {id}",
-      "campaignTarget": "Aktion Nr. {id}"
+      "campaignTarget": "Aktion Nr. {id}",
+      "promotionTarget": "Banner Nr. {id}"
     },
     "news": {
       "title": "Neuigkeiten",
@@ -1041,6 +1053,59 @@
       "done": {
         "created": "Aktion angelegt.",
         "saved": "Aktion gespeichert."
+      }
+    },
+    "promotions": {
+      "title": "Aktionsbanner",
+      "intro": "Banner auf der Startseite. Jeder zeigt sein Enddatum und verschwindet von selbst, wenn er endet. Zeiten in UTC.",
+      "new": "Neues Banner",
+      "newIntro": "Lade das Bild hoch, wähle das Linkziel und bis wann es erscheint, und schreibe Titel und Bildbeschreibung.",
+      "create": "Banner anlegen",
+      "back": "Zurück zu den Bannern",
+      "empty": "Es gibt noch keine Banner.",
+      "image": "Bild",
+      "imageHint": "JPEG, PNG, WebP oder AVIF, bis {max} MB und mindestens 320 × 160 px. Es wird als WebP gespeichert, ohne Metadaten (etwa den GPS-Standort).",
+      "imageReplaceHint": "Optional: Wähle nur eine Datei, um das aktuelle Bild zu ersetzen (bis {max} MB).",
+      "imageSize": "Gespeichertes Bild: {width} × {height} px, WebP.",
+      "targetUrl": "Link",
+      "targetUrlHint": "Ein Pfad dieser Website ohne Sprache (/shop?cat=costumes) oder eine https://-Adresse.",
+      "startsAtHint": "Leer heißt jetzt.",
+      "endsAtHint": "Pflicht: Danach wird das Banner nicht mehr angezeigt.",
+      "sortOrderHint": "Kleinere Zahlen erscheinen zuerst. Es werden bis zu vier Banner gezeigt.",
+      "titleField": "Titel",
+      "titleIn": "Titel auf {language}",
+      "altIn": "Bildbeschreibung auf {language}",
+      "altHint": "Was das Bild zeigt, für Menschen, die es nicht sehen. Pflicht auf Englisch, der Ersatzsprache.",
+      "editTitle": "Banner Nr. {id}",
+      "until": "Bis",
+      "deleteTitle": "Banner löschen",
+      "deleteHint": "Es verschwindet sofort von der Startseite. Das Bild wird mitgelöscht, wenn es sonst nicht verwendet wird.",
+      "delete": "Banner löschen",
+      "problems": {
+        "targetUrl": "Verwende einen Pfad, der mit / beginnt, oder eine https://-Adresse.",
+        "date": "Gib ein gültiges Datum mit Uhrzeit ein.",
+        "required": "Dieses Feld ist erforderlich.",
+        "endsBeforeStart": "Das Ende muss nach dem Beginn liegen.",
+        "past": "Ein neues Banner kann nicht in der Vergangenheit beginnen.",
+        "sortOrder": "Gib eine ganze Zahl von -32768 bis 32767 ein.",
+        "title": "Bis zu 120 Zeichen.",
+        "alt": "Bis zu 255 Zeichen.",
+        "english": "Auf Englisch erforderlich.",
+        "missing": "Wähle ein Bild.",
+        "tooLarge": "Die Datei ist größer als 5 MB.",
+        "type": "Verwende ein JPEG-, PNG-, WebP- oder AVIF-Bild.",
+        "tooSmall": "Das Bild muss mindestens 320 × 160 px groß sein."
+      },
+      "errors": {
+        "notFound": "Dieses Banner existiert nicht mehr.",
+        "changed": "Inzwischen hat jemand Änderungen gespeichert. Lade die Seite neu und versuche es erneut.",
+        "unchanged": "Es gab nichts zu ändern.",
+        "image": "Das Bild konnte nicht gespeichert werden. Versuche es erneut."
+      },
+      "done": {
+        "created": "Banner angelegt.",
+        "saved": "Gespeichert.",
+        "deleted": "Banner gelöscht."
       }
     }
   }

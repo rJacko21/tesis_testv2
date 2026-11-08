@@ -119,3 +119,18 @@ Formato: contexto → decisión → alternativas → consecuencias. Estado: Prop
 - Subir el LCP permitido: escondería el problema en lugar de medirlo bien.
 **Consecuencia.** Las cifras de laboratorio de la tesis indican siempre el método. PageSpeed Insights (`simulate`) puede dar un LCP algo peor que el de CI, y se explica en la memoria con este ADR.
 
+
+## ADR-17 Imágenes subidas desde el panel guardadas en MySQL — Aceptada 2026-11-07 (decidida por Armando)
+**Contexto.** Las promociones de la portada (y, más adelante, las portadas de noticias y las imágenes de artículos) necesitan imágenes que se suben desde el panel. Hacía falta decidir dónde guardar los ficheros sin coste y sin tarjeta (ADR-12).
+**Decisión.**
+- Los bytes van en la tabla `media`, en una columna `MEDIUMBLOB`, junto con su ancho, alto y tipo.
+- Al subirla, `sharp` comprueba que de verdad es una imagen (por su contenido, no por su nombre), la gira según su EXIF, le quita los metadatos (incluida la ubicación GPS), la limita a 1600 px de ancho y la guarda en WebP. Admite hasta 5 MB.
+- La ruta `/media/uploads/{hash}.webp` la sirve con `Cache-Control: immutable` de un año. El nombre lleva el hash del contenido, así que nunca cambia de contenido y la misma imagen subida dos veces se guarda una sola vez.
+- `next/image` la sirve después en AVIF o WebP al tamaño de cada pantalla, igual que las imágenes del repositorio.
+**Alternativas descartadas.**
+- **Vercel Blob:** otro servicio y otra cuenta para la demo, y su plan gratuito tiene límites de transferencia.
+- **Carpeta en el servidor:** Vercel no tiene disco persistente.
+**Consecuencias.**
+- Las imágenes entran en las copias de la base y la demo solo depende de MySQL.
+- La base crece con cada imagen. Son pocas y pesan unos cientos de KB tras pasar a WebP, y una imagen que deja de usarse se borra en la misma transacción (`dropIfOrphan`).
+- Cada imagen se lee de la base una vez por tamaño: después la sirven la caché de `next/image` y la del navegador.

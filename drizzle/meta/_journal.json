@@ -43,6 +43,13 @@
       "when": 1794065630204,
       "tag": "0005_cesta_orden",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1794098997061,
+      "tag": "0006_imagenes_en_mysql",
+      "breakpoints": true
     }
   ]
 }

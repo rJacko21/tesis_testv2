@@ -54,6 +54,10 @@
       "intro": "Quattro classi, otto percorsi. Al livello {level} ogni classe sceglie una di due specializzazioni.",
       "specializations": "Specializzazioni dal livello {level}",
       "artAlt": "Illustrazione della classe {name}"
+    },
+    "promotions": {
+      "title": "Promozioni",
+      "until": "Fino al"
     }
   },
   "classes": {
@@ -700,6 +704,7 @@
       "label": "Sezioni del pannello",
       "home": "Inizio",
       "news": "Notizie",
+      "promotions": "Promozioni",
       "users": "Account",
       "audit": "Registro di audit",
       "shop": "Negozio",
@@ -713,7 +718,8 @@
       "nothing": "Il tuo ruolo non ha ancora sezioni nel pannello.",
       "news": "Scrivi, traduci, programma e pubblica notizie.",
       "shop": "Crea articoli, traduci i nomi e gestisci prezzi e sconti.",
-      "campaigns": "Pianifica i periodi di sconto e le loro date."
+      "campaigns": "Pianifica i periodi di sconto e le loro date.",
+      "promotions": "Banner della home, con immagine, date e testi."
     },
     "roles": {
       "admin": "Amministratore",
@@ -830,12 +836,18 @@
         "campaign": {
           "create": "Campagna creata",
           "update": "Campagna modificata"
+        },
+        "promotion": {
+          "create": "Promozione creata",
+          "update": "Promozione modificata",
+          "delete": "Promozione eliminata"
         }
       },
       "cli": "Riga di comando",
       "postTarget": "Notizia n. {id}",
       "itemTarget": "Articolo n. {id}",
-      "campaignTarget": "Campagna n. {id}"
+      "campaignTarget": "Campagna n. {id}",
+      "promotionTarget": "Promozione n. {id}"
     },
     "news": {
       "title": "Notizie",
@@ -1041,6 +1053,59 @@
       "done": {
         "created": "Campagna creata.",
         "saved": "Campagna salvata."
+      }
+    },
+    "promotions": {
+      "title": "Promozioni",
+      "intro": "Banner della home. Ognuno mostra la data di fine e sparisce da solo quando termina. Orari in UTC.",
+      "new": "Nuova promozione",
+      "newIntro": "Carica l’immagine, scegli dove porta e fino a quando si vede, e scrivi titolo e descrizione dell’immagine.",
+      "create": "Crea promozione",
+      "back": "Torna alle promozioni",
+      "empty": "Non ci sono ancora promozioni.",
+      "image": "Immagine",
+      "imageHint": "JPEG, PNG, WebP o AVIF, fino a {max} MB e almeno 320 × 160 px. Viene salvata in WebP, senza metadati (come la posizione GPS).",
+      "imageReplaceHint": "Facoltativo: scegli un file solo per sostituire l’immagine attuale (fino a {max} MB).",
+      "imageSize": "Immagine salvata: {width} × {height} px, WebP.",
+      "targetUrl": "Link",
+      "targetUrlHint": "Un percorso di questo sito senza la lingua (/shop?cat=costumes) o un indirizzo https://.",
+      "startsAtHint": "Vuoto significa adesso.",
+      "endsAtHint": "Obbligatoria: dopo, il banner non si vede più.",
+      "sortOrderHint": "I numeri più bassi compaiono prima. Si mostrano fino a quattro banner.",
+      "titleField": "Titolo",
+      "titleIn": "Titolo in {language}",
+      "altIn": "Descrizione dell’immagine in {language}",
+      "altHint": "Cosa mostra l’immagine, per chi non può vederla. Obbligatoria in inglese, la lingua di riserva.",
+      "editTitle": "Promozione n. {id}",
+      "until": "Fino al",
+      "deleteTitle": "Elimina promozione",
+      "deleteHint": "Sparisce subito dalla home. Anche l’immagine viene eliminata se nient’altro la usa.",
+      "delete": "Elimina promozione",
+      "problems": {
+        "targetUrl": "Usa un percorso che inizi con / o un indirizzo https://.",
+        "date": "Usa una data e un’ora valide.",
+        "required": "Questo campo è obbligatorio.",
+        "endsBeforeStart": "La fine deve essere dopo l’inizio.",
+        "past": "Una nuova promozione non può iniziare nel passato.",
+        "sortOrder": "Usa un numero intero tra -32768 e 32767.",
+        "title": "Fino a 120 caratteri.",
+        "alt": "Fino a 255 caratteri.",
+        "english": "Obbligatorio in inglese.",
+        "missing": "Scegli un’immagine.",
+        "tooLarge": "Il file supera i 5 MB.",
+        "type": "Usa un’immagine JPEG, PNG, WebP o AVIF.",
+        "tooSmall": "L’immagine deve essere almeno 320 × 160 px."
+      },
+      "errors": {
+        "notFound": "Quella promozione non esiste più.",
+        "changed": "Nel frattempo qualcuno ha salvato modifiche. Ricarica la pagina e riprova.",
+        "unchanged": "Non c’era nulla da cambiare.",
+        "image": "Impossibile salvare l’immagine. Riprova."
+      },
+      "done": {
+        "created": "Promozione creata.",
+        "saved": "Salvato.",
+        "deleted": "Promozione eliminata."
       }
     }
   }

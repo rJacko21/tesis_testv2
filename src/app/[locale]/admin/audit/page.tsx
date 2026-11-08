@@ -29,6 +29,7 @@ const TARGETS = {
   post: { path: "news", label: "admin.audit.postTarget" },
   item: { path: "shop", label: "admin.audit.itemTarget" },
   campaign: { path: "campaigns", label: "admin.audit.campaignTarget" },
+  promotion: { path: "promotions", label: "admin.audit.promotionTarget" },
 } as const satisfies Record<string, { path: string; label: MessageKey }>;
 
 export async function generateMetadata(): Promise<Metadata> {

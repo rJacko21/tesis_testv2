@@ -9,7 +9,7 @@
  * - Importes en enteros (AP, céntimos): nunca coma flotante con dinero.
  */
 import { sql } from "drizzle-orm";
-import { bigint, datetime, varchar } from "drizzle-orm/mysql-core";
+import { bigint, customType, datetime, varchar } from "drizzle-orm/mysql-core";
 
 /** Clave primaria numérica autoincremental. */
 export const id = () =>
@@ -34,3 +34,11 @@ export const timestamps = {
 
 /** Código de idioma, referencia a `locales.code`. */
 export const localeCode = (name = "locale") => varchar(name, { length: 8 });
+
+/**
+ * `MEDIUMBLOB` (hasta 16 MB) leído como `Buffer`. Drizzle no trae un tipo
+ * BLOB para MySQL; `mysql2` ya devuelve `Buffer` para estas columnas.
+ */
+export const mediumBlob = customType<{ data: Buffer; driverData: Buffer }>({
+  dataType: () => "mediumblob",
+});

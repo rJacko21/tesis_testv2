@@ -97,6 +97,8 @@ erDiagram
     varchar path
     smallint width
     smallint height
+    varchar mime_type
+    mediumblob data
     datetime created_at
     datetime updated_at
   }

@@ -12,7 +12,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
 /** Pruebas que cambian contenido público y no pueden ir en paralelo con el resto. */
-const PUBLISHING = /admin-(news|shop)\.spec\.ts$/;
+const PUBLISHING = /admin-(news|shop|promotions)\.spec\.ts$/;
 const executablePath = process.env.CHROMIUM_PATH;
 const launchOptions = executablePath ? { executablePath } : {};
 

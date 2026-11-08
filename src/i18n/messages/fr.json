@@ -54,6 +54,10 @@
       "intro": "Quatre classes, huit voies. Au niveau {level}, chaque classe choisit l’une de deux spécialisations.",
       "specializations": "Spécialisations dès le niveau {level}",
       "artAlt": "Illustration de la classe {name}"
+    },
+    "promotions": {
+      "title": "Promotions",
+      "until": "Jusqu’au"
     }
   },
   "classes": {
@@ -700,6 +704,7 @@
       "label": "Sections du panneau",
       "home": "Accueil",
       "news": "Actualités",
+      "promotions": "Promotions",
       "users": "Comptes",
       "audit": "Journal d’audit",
       "shop": "Boutique",
@@ -713,7 +718,8 @@
       "nothing": "Votre rôle n’a encore aucune section dans le panneau.",
       "news": "Rédigez, traduisez, programmez et publiez les actualités.",
       "shop": "Créez des articles, traduisez leurs noms et gérez prix et promos.",
-      "campaigns": "Planifiez les périodes de promo et leurs dates."
+      "campaigns": "Planifiez les périodes de promo et leurs dates.",
+      "promotions": "Bannières de l’accueil, avec image, dates et textes."
     },
     "roles": {
       "admin": "Administrateur",
@@ -830,12 +836,18 @@
         "campaign": {
           "create": "Campagne créée",
           "update": "Campagne modifiée"
+        },
+        "promotion": {
+          "create": "Promotion créée",
+          "update": "Promotion modifiée",
+          "delete": "Promotion supprimée"
         }
       },
       "cli": "Ligne de commande",
       "postTarget": "Actualité n° {id}",
       "itemTarget": "Article n° {id}",
-      "campaignTarget": "Campagne n° {id}"
+      "campaignTarget": "Campagne n° {id}",
+      "promotionTarget": "Promotion n° {id}"
     },
     "news": {
       "title": "Actualités",
@@ -1041,6 +1053,59 @@
       "done": {
         "created": "Campagne créée.",
         "saved": "Campagne enregistrée."
+      }
+    },
+    "promotions": {
+      "title": "Promotions",
+      "intro": "Bannières de l’accueil. Chacune affiche sa date de fin et disparaît seule quand elle se termine. Heures en UTC.",
+      "new": "Nouvelle promotion",
+      "newIntro": "Téléversez l’image, choisissez où elle mène et jusqu’à quand elle s’affiche, puis rédigez son titre et la description de l’image.",
+      "create": "Créer la promotion",
+      "back": "Retour aux promotions",
+      "empty": "Il n’y a pas encore de promotions.",
+      "image": "Image",
+      "imageHint": "JPEG, PNG, WebP ou AVIF, jusqu’à {max} Mo et au moins 320 × 160 px. Elle est enregistrée en WebP, sans métadonnées (comme la position GPS).",
+      "imageReplaceHint": "Facultatif : choisissez un fichier seulement pour remplacer l’image actuelle (jusqu’à {max} Mo).",
+      "imageSize": "Image enregistrée : {width} × {height} px, WebP.",
+      "targetUrl": "Lien",
+      "targetUrlHint": "Un chemin de ce site sans la langue (/shop?cat=costumes) ou une adresse https://.",
+      "startsAtHint": "Vide signifie maintenant.",
+      "endsAtHint": "Obligatoire : ensuite, la bannière n’est plus affichée.",
+      "sortOrderHint": "Les plus petits nombres apparaissent en premier. Quatre bannières au plus sont affichées.",
+      "titleField": "Titre",
+      "titleIn": "Titre en {language}",
+      "altIn": "Description de l’image en {language}",
+      "altHint": "Ce que montre l’image, pour qui ne peut pas la voir. Obligatoire en anglais, la langue de secours.",
+      "editTitle": "Promotion n° {id}",
+      "until": "Jusqu’au",
+      "deleteTitle": "Supprimer la promotion",
+      "deleteHint": "Elle disparaît de l’accueil immédiatement. Son image est aussi supprimée si rien d’autre ne l’utilise.",
+      "delete": "Supprimer la promotion",
+      "problems": {
+        "targetUrl": "Utilisez un chemin commençant par / ou une adresse https://.",
+        "date": "Indiquez une date et une heure valides.",
+        "required": "Ce champ est obligatoire.",
+        "endsBeforeStart": "La fin doit suivre le début.",
+        "past": "Une nouvelle promotion ne peut pas commencer dans le passé.",
+        "sortOrder": "Indiquez un nombre entier entre -32768 et 32767.",
+        "title": "Jusqu’à 120 caractères.",
+        "alt": "Jusqu’à 255 caractères.",
+        "english": "Obligatoire en anglais.",
+        "missing": "Choisissez une image.",
+        "tooLarge": "Le fichier dépasse 5 Mo.",
+        "type": "Utilisez une image JPEG, PNG, WebP ou AVIF.",
+        "tooSmall": "L’image doit faire au moins 320 × 160 px."
+      },
+      "errors": {
+        "notFound": "Cette promotion n’existe plus.",
+        "changed": "Quelqu’un a enregistré des modifications entre-temps. Rechargez la page et réessayez.",
+        "unchanged": "Il n’y avait rien à modifier.",
+        "image": "L’image n’a pas pu être enregistrée. Réessayez."
+      },
+      "done": {
+        "created": "Promotion créée.",
+        "saved": "Enregistré.",
+        "deleted": "Promotion supprimée."
       }
     }
   }

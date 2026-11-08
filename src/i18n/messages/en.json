@@ -54,6 +54,10 @@
       "intro": "Four classes, eight paths. At level {level}, each class picks one of two specializations.",
       "specializations": "Specializations from level {level}",
       "artAlt": "{name} class illustration"
+    },
+    "promotions": {
+      "title": "Promotions",
+      "until": "Until"
     }
   },
   "classes": {
@@ -700,6 +704,7 @@
       "label": "Admin panel sections",
       "home": "Home",
       "news": "News",
+      "promotions": "Promotions",
       "users": "Accounts",
       "audit": "Audit log",
       "shop": "Shop",
@@ -713,7 +718,8 @@
       "nothing": "Your role has no sections in the panel yet.",
       "news": "Write, translate, schedule and publish news.",
       "shop": "Create items, translate their names and manage prices and sales.",
-      "campaigns": "Plan sales periods and their dates."
+      "campaigns": "Plan sales periods and their dates.",
+      "promotions": "Banners on the home page, with image, dates and texts."
     },
     "roles": {
       "admin": "Administrator",
@@ -830,12 +836,18 @@
         "campaign": {
           "create": "Campaign created",
           "update": "Campaign changed"
+        },
+        "promotion": {
+          "create": "Promotion created",
+          "update": "Promotion changed",
+          "delete": "Promotion deleted"
         }
       },
       "cli": "Command line",
       "postTarget": "Article no. {id}",
       "itemTarget": "Item no. {id}",
-      "campaignTarget": "Campaign no. {id}"
+      "campaignTarget": "Campaign no. {id}",
+      "promotionTarget": "Promotion no. {id}"
     },
     "news": {
       "title": "News",
@@ -1041,6 +1053,59 @@
       "done": {
         "created": "Campaign created.",
         "saved": "Campaign saved."
+      }
+    },
+    "promotions": {
+      "title": "Promotions",
+      "intro": "Banners on the home page. Each one shows its end date and disappears on its own when it ends. Times in UTC.",
+      "new": "New promotion",
+      "newIntro": "Upload the image, choose where it links to and until when it is shown, and write its title and image description.",
+      "create": "Create promotion",
+      "back": "Back to promotions",
+      "empty": "There are no promotions yet.",
+      "image": "Image",
+      "imageHint": "JPEG, PNG, WebP or AVIF, up to {max} MB and at least 320 × 160 px. It is saved as WebP, without its metadata (such as GPS location).",
+      "imageReplaceHint": "Optional: choose a file only to replace the current image (up to {max} MB).",
+      "imageSize": "Saved image: {width} × {height} px, WebP.",
+      "targetUrl": "Link",
+      "targetUrlHint": "A path on this site without the language (/shop?cat=costumes) or an https:// address.",
+      "startsAtHint": "Empty means now.",
+      "endsAtHint": "Required: after it, the banner is no longer shown.",
+      "sortOrderHint": "Lower numbers appear first. Up to four banners are shown.",
+      "titleField": "Title",
+      "titleIn": "Title in {language}",
+      "altIn": "Image description in {language}",
+      "altHint": "What the image shows, for people who cannot see it. Required in English, the fallback language.",
+      "editTitle": "Promotion no. {id}",
+      "until": "Until",
+      "deleteTitle": "Delete promotion",
+      "deleteHint": "It disappears from the home page now. Its image is deleted too if nothing else uses it.",
+      "delete": "Delete promotion",
+      "problems": {
+        "targetUrl": "Use a path that starts with / or an https:// address.",
+        "date": "Use a valid date and time.",
+        "required": "This field is required.",
+        "endsBeforeStart": "The end must be after the start.",
+        "past": "A new promotion cannot start in the past.",
+        "sortOrder": "Use a whole number between -32768 and 32767.",
+        "title": "Up to 120 characters.",
+        "alt": "Up to 255 characters.",
+        "english": "Required in English.",
+        "missing": "Choose an image.",
+        "tooLarge": "The file is larger than 5 MB.",
+        "type": "Use a JPEG, PNG, WebP or AVIF image.",
+        "tooSmall": "The image must be at least 320 × 160 px."
+      },
+      "errors": {
+        "notFound": "That promotion no longer exists.",
+        "changed": "Someone saved changes meanwhile. Reload the page and try again.",
+        "unchanged": "There was nothing to change.",
+        "image": "The image could not be saved. Try again."
+      },
+      "done": {
+        "created": "Promotion created.",
+        "saved": "Saved.",
+        "deleted": "Promotion deleted."
       }
     }
   }
