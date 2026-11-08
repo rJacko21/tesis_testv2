@@ -7,9 +7,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import noble from "@/assets/characters/noble.webp";
 import { AuthPage } from "@/components/auth/AuthPage";
 import { getLocale, getTranslator } from "@/i18n/server";
 import { auth } from "@/lib/auth/auth";
+import { notifyEmailChanged } from "@/lib/auth/email-change";
 
 export const instant = false;
 
@@ -29,10 +31,12 @@ async function verify(token: string): Promise<boolean> {
   if (!token) return false;
   try {
     await auth.api.verifyEmail({ query: { token } });
-    return true;
   } catch {
     return false;
   }
+  // Si era un cambio de correo, avisa al anterior y al nuevo.
+  await notifyEmailChanged(token);
+  return true;
 }
 
 export default async function VerifyEmailPage({
@@ -42,7 +46,7 @@ export default async function VerifyEmailPage({
   const ok = await verify(typeof query.token === "string" ? query.token : "");
 
   return (
-    <AuthPage title={t("auth.verify.title")}>
+    <AuthPage art={noble} title={t("auth.verify.title")}>
       <p role={ok ? "status" : "alert"}>{ok ? t("auth.verify.ok") : t("auth.verify.invalid")}</p>
       <p className="mt-4">
         <Link href={`/${locale}/account`} className={LINK}>

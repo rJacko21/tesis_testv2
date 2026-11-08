@@ -23,7 +23,6 @@ const PAGES = [
   "/play-now",
   "/support",
   "/support/contact",
-  "/register",
   "/sign-in",
   "/forgot-password",
   "/rules",

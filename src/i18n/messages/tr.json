@@ -12,6 +12,7 @@
     "download": "İndir",
     "shop": "Mağaza",
     "playNow": "Hemen oyna",
+    "topUp": "AP yükle",
     "community": "Topluluk",
     "support": "Destek",
     "rules": "Kurallar",
@@ -462,7 +463,8 @@
       "history": "Yüklemelerimi gör",
       "refresh": "Tekrar kontrol et",
       "again": "Yüklemeye dön"
-    }
+    },
+    "bestValue": "Paranıza en çok AP"
   },
   "playNow": {
     "title": "Florensia’yı ücretsiz oyna",
@@ -495,9 +497,11 @@
       "usernameHint": "{min} ile {max} karakter arası: harf, rakam ve _.",
       "email": "E-posta",
       "password": "Şifre",
+      "passwordConfirm": "Şifreyi tekrar girin",
       "passwordHint": "En az {min} karakter. Tek bir kelime yerine bir cümle daha iyidir.",
       "identifier": "Hesap adı veya e-posta",
-      "newPassword": "Yeni şifre"
+      "newPassword": "Yeni şifre",
+      "newPasswordConfirm": "Yeni şifreyi tekrar girin"
     },
     "errorSummary": "Lütfen işaretli alanları kontrol edin.",
     "errors": {
@@ -507,6 +511,7 @@
       "usernameTaken": "Bu hesap adı zaten kullanılıyor.",
       "email": "Geçerli bir e-posta adresi girin.",
       "passwordLength": "Şifre {min} ile {max} karakter arasında olmalıdır.",
+      "passwordMismatch": "Şifreler eşleşmiyor.",
       "pwned": "Bu şifre bilinen veri sızıntılarında yer alıyor. Lütfen başka bir şifre seçin.",
       "terms": "Hizmet şartlarını ve gizlilik politikasını kabul etmelisiniz.",
       "credentials": "Hesap adı, e-posta veya şifre hatalı.",
@@ -515,9 +520,6 @@
       "generic": "Bir şeyler ters gitti. Lütfen birkaç dakika sonra tekrar deneyin."
     },
     "register": {
-      "title": "Hesap oluştur",
-      "description": "Oynamak, mağazayı kullanmak ve kod kullanmak için ücretsiz Florensia hesabınızı oluşturun.",
-      "intro": "Ücretsizdir. Yalnızca bir e-posta adresine ihtiyacınız var.",
       "accept": "{terms} ve {privacy} kabul ediyorum.",
       "termsLink": "Hizmet şartlarını",
       "privacyLink": "gizlilik politikasını",
@@ -533,7 +535,11 @@
       "submit": "Giriş yap",
       "forgot": "Şifrenizi mi unuttunuz?",
       "noAccount": "Henüz hesabınız yok mu?",
-      "registerLink": "Ücretsiz oluşturun"
+      "registerLink": "Ücretsiz oluşturun",
+      "asideTitle": "Florensia hesabınız",
+      "asideCharacters": "Karakterleriniz ve sıralamadaki yerleri",
+      "asideShop": "AP yükleyin ve mağazadan alışveriş yapın",
+      "asideSecurity": "Şifrenizi değiştirin ve diğer cihazlardaki oturumları kapatın"
     },
     "forgot": {
       "title": "Şifreyi sıfırla",
@@ -583,7 +589,8 @@
       "session": "Oturumunuzun süresi doldu. Lütfen tekrar giriş yapın.",
       "samePassword": "Yeni şifre mevcut şifreden farklı olmalıdır.",
       "currentPassword": "Mevcut şifre doğru değil.",
-      "sameEmail": "Bu zaten hesabınızın e-posta adresi."
+      "sameEmail": "Bu zaten hesabınızın e-posta adresi.",
+      "emailMismatch": "E-posta adresleri eşleşmiyor."
     },
     "summary": {
       "balance": "AP bakiyesi",
@@ -639,6 +646,7 @@
       "emailTitle": "E-postayı değiştir",
       "currentEmail": "Mevcut e-posta: {email}",
       "newEmail": "Yeni e-posta",
+      "confirmEmail": "Yeni e-postayı tekrar girin",
       "emailHint": "Onaylamanız için bir bağlantı göndereceğiz. O zamana kadar mevcut adresiniz kullanılmaya devam eder.",
       "emailSubmit": "Onay bağlantısı gönder",
       "emailSent": "{email} adresine bir bağlantı gönderdik. E-postanız, bağlantıyı açtığınızda değişecek.",
@@ -688,6 +696,13 @@
       "errors": {
         "confirm": "Hesabı silmek istediğinizi onaylamak için kutuyu işaretleyin."
       }
+    },
+    "shortcuts": {
+      "title": "Ne yapmak istiyorsunuz?",
+      "characters": "Karakterleriniz ve sıralamadaki yerleri.",
+      "topups": "Her AP yüklemesi, makbuzuyla.",
+      "purchases": "Satın aldıklarınız ve hangi karakterin aldığı.",
+      "security": "Şifrenizi veya e-postanızı değiştirin, diğer oturumları kapatın."
     }
   },
   "email": {
@@ -719,6 +734,15 @@
     "emailChange": {
       "subject": "Hesabınızın e-posta adresinin değiştirilmesi istendi",
       "body": "Florensia hesabınızda oturum açmış biri, e-posta adresini {email} olarak değiştirmek istedi. Değişiklik yalnızca o adrese gönderilen bağlantı açılırsa yapılır."
+    },
+    "emailChanged": {
+      "subject": "Florensia hesabınızın e-postası değişti",
+      "previous": "Florensia hesabınızın e-postası {previous} adresinden {current} adresine değişti. Bundan sonra bildirimler ve şifre kurtarma yeni adrese gider.",
+      "previousAction": "Ben değildim: destekle iletişime geç",
+      "previousNote": "Siz yaptıysanız bir şey yapmanıza gerek yok. Değilse hemen desteğe yazın: bu adres artık hesabı kurtaramaz.",
+      "current": "Bu artık Florensia hesabınızın e-postası (önceki: {previous}). Bildirimler ve şifre kurtarma buraya gelecek.",
+      "currentAction": "Hesabıma git",
+      "currentNote": "Bu değişikliği siz yapmadıysanız, giriş sayfasından şifrenizi kurtarın ve desteğe yazın."
     },
     "passwordChanged": {
       "subject": "Florensia şifreniz değişti",

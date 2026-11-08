@@ -14,6 +14,8 @@
  *
  * @see RF-02
  */
+import type { ReactNode } from "react";
+
 import { MOBILE_MENU_ID, type ResolvedLink } from "./nav-types";
 import { NavLinkItem } from "./NavLinkItem";
 
@@ -26,10 +28,11 @@ export interface MobileMenuProps {
   communityLabel: string;
   community: readonly ResolvedLink[];
   playNow: ResolvedLink;
-  signIn: ResolvedLink;
+  /** Recargar AP e Iniciar sesión o Mi cuenta (`SessionLinks`). */
+  session: ReactNode;
   externalLabel: string;
-  /** Clases de los botones Jugar ahora e Iniciar sesión. */
-  buttonClasses: { primary: string; secondary: string };
+  /** Clases del botón Jugar ahora. */
+  buttonClasses: { primary: string };
 }
 
 /**
@@ -118,11 +121,7 @@ export function MobileMenu(props: MobileMenuProps) {
               externalLabel={props.externalLabel}
               className={props.buttonClasses.primary}
             />
-            <NavLinkItem
-              link={props.signIn}
-              externalLabel={props.externalLabel}
-              className={props.buttonClasses.secondary}
-            />
+            {props.session}
           </div>
         </nav>
       </dialog>

@@ -22,7 +22,7 @@ import { z } from "zod";
 import { SITE_URL } from "@/config/site";
 import { accounts, sessions } from "@/db/schema";
 import type { Locale } from "@/config/locales";
-import { formLocale, limited, passwordError, text } from "@/lib/auth/action-helpers";
+import { formLocale, limited, mismatch, passwordError, text } from "@/lib/auth/action-helpers";
 import { auth } from "@/lib/auth/auth";
 import type { FormState } from "@/lib/auth/form-state";
 import { isPwnedPassword, PASSWORD_MAX, verifyPassword } from "@/lib/auth/password";
@@ -90,6 +90,8 @@ export async function changePasswordAction(_prev: FormState, form: FormData): Pr
   const problem = passwordError(next, t);
   if (problem) fields.newPassword = problem;
   else if (next === current) fields.newPassword = t("account.errors.samePassword");
+  const repeated = mismatch(next, text(form, "confirmPassword"), t("auth.errors.passwordMismatch"));
+  if (repeated) fields.confirmPassword = repeated;
   if (Object.keys(fields).length > 0) {
     return { status: "error", message: t("auth.errorSummary"), fields };
   }
@@ -146,10 +148,16 @@ export async function changeEmailAction(_prev: FormState, form: FormData): Promi
 
   const newEmail = text(form, "newEmail").trim().toLowerCase();
   const password = text(form, "password");
-  const values = { newEmail };
+  const values = { newEmail, confirmEmail: text(form, "confirmEmail") };
   const fields: Record<string, string> = {};
   if (!z.email().safeParse(newEmail).success) fields.newEmail = t("auth.errors.email");
   else if (newEmail === session.user.email) fields.newEmail = t("account.errors.sameEmail");
+  const repeated = mismatch(
+    newEmail,
+    text(form, "confirmEmail").trim().toLowerCase(),
+    t("account.errors.emailMismatch"),
+  );
+  if (repeated) fields.confirmEmail = repeated;
   if (password === "") fields.password = t("auth.errors.required");
   if (Object.keys(fields).length > 0) {
     return { status: "error", message: t("auth.errorSummary"), fields, values };

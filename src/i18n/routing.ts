@@ -42,6 +42,9 @@ export const LEGACY_PATHS: readonly { prefix: string; to: (rest: string[]) => st
   { prefix: "/post", to: (rest) => (rest.length > 0 ? `/news/${rest.join("/")}` : "/news") },
   // Landing de "Jugar ahora".
   { prefix: "/lp/style1/PlayNow", to: () => "/play-now" },
+  // `/register` de esta web: desde el 2026-11-08 el registro está solo en
+  // «Jugar ahora», el mismo formulario con el contexto del juego (M-40).
+  { prefix: "/register", to: () => "/play-now" },
   // Ficha de la tienda: `/en/shop/detail/index/{id}` → `/shop/item/{id}` (T-19).
   { prefix: "/shop/detail/index", to: (rest) => `/shop/item/${rest.join("/")}` },
   // Rankings: el área y la clase pasan de la ruta a la URL de filtros (RF-07).

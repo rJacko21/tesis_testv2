@@ -7,8 +7,9 @@
  * - **sin vídeo:** una ilustración del juego y degradados CSS. El vídeo de
  *   fondo pesaba varios MB, retrasaba el LCP y se movía sin poder pararlo
  *   (WCAG 2.2.2);
- * - **el mismo formulario y las mismas reglas que `/register`**
- *   (`RegisterForm`), como pide RF-03;
+ * - **es el único formulario de registro** (`RegisterForm`): `/register`
+ *   redirige aquí desde el 2026-11-08, para no tener dos páginas que hacen lo
+ *   mismo con aspecto distinto (M-40);
  * - **los tres pasos** (crear la cuenta, descargar y jugar) y tres razones
  *   para jugar, en texto;
  * - **en móvil el formulario va justo tras el título**, sin desplazarse.
@@ -97,13 +98,22 @@ export default async function PlayNowPage() {
               t={t}
               idPrefix="play"
               successExtra={
-                <Link href={`/${locale}/download`} className={LINK}>
-                  {t("playNow.downloadNow")}
-                </Link>
+                <p className="flex flex-wrap gap-x-4 gap-y-2">
+                  <Link href={`/${locale}/download`} className={LINK}>
+                    {t("playNow.downloadNow")}
+                  </Link>
+                  <Link href={`/${locale}/sign-in`} className={LINK}>
+                    {t("auth.register.signInLink")}
+                  </Link>
+                </p>
               }
             />
             <p className="mt-4 text-center text-sm">
               {t("auth.register.haveAccount")}{" "}
+              <Link href={`/${locale}/sign-in`} className={LINK}>
+                {t("auth.register.signInLink")}
+              </Link>{" "}
+              ·{" "}
               <Link href={`/${locale}/download`} className={LINK}>
                 {t("playNow.haveAccountDownload")}
               </Link>

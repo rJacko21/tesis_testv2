@@ -112,7 +112,7 @@ test("sin saldo suficiente dice cuánto falta y ofrece recargar (CA de RF-05)", 
 
   const missing = new Intl.NumberFormat("es").format(price - 100);
   await expect(page.getByText(`Te faltan ${missing} AP para pagar esta cesta.`)).toBeVisible();
-  await expect(page.getByRole("link", { name: "Recargar AP" })).toBeVisible();
+  await expect(page.getByRole("main").getByRole("link", { name: "Recargar AP" })).toBeVisible();
   await expect(page.getByRole("button", { name: /^Pagar/ })).toHaveCount(0);
 });
 

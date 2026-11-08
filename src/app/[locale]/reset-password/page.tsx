@@ -9,6 +9,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import priest from "@/assets/characters/priest.webp";
 import { AuthForm } from "@/components/auth/AuthForm";
 import { AuthPage } from "@/components/auth/AuthPage";
 import { getLocale, getTranslator } from "@/i18n/server";
@@ -38,6 +39,7 @@ export default async function ResetPasswordPage({
 
   return (
     <AuthPage
+      art={priest}
       title={t("auth.reset.title")}
       footer={
         <p>
@@ -64,6 +66,15 @@ export default async function ResetPasswordPage({
               type: "password",
               autoComplete: "new-password",
               hint: t("auth.fields.passwordHint", { min: PASSWORD_MIN }),
+              required: true,
+              minLength: PASSWORD_MIN,
+              maxLength: PASSWORD_MAX,
+            },
+            {
+              name: "passwordConfirm",
+              label: t("auth.fields.newPasswordConfirm"),
+              type: "password",
+              autoComplete: "new-password",
               required: true,
               minLength: PASSWORD_MIN,
               maxLength: PASSWORD_MAX,

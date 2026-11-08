@@ -35,6 +35,14 @@ export default async function SignInPage({ searchParams }: PageProps<"/[locale]/
   return (
     <AuthPage
       title={t("auth.signIn.title")}
+      aside={{
+        title: t("auth.signIn.asideTitle"),
+        points: [
+          t("auth.signIn.asideCharacters"),
+          t("auth.signIn.asideShop"),
+          t("auth.signIn.asideSecurity"),
+        ],
+      }}
       footer={
         <>
           <p>
@@ -44,7 +52,7 @@ export default async function SignInPage({ searchParams }: PageProps<"/[locale]/
           </p>
           <p>
             {t("auth.signIn.noAccount")}{" "}
-            <Link href={`/${locale}/register`} className={LINK}>
+            <Link href={`/${locale}/play-now`} className={LINK}>
               {t("auth.signIn.registerLink")}
             </Link>
           </p>

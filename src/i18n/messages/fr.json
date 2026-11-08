@@ -12,6 +12,7 @@
     "download": "Télécharger",
     "shop": "Boutique",
     "playNow": "Jouer maintenant",
+    "topUp": "Recharger des AP",
     "community": "Communauté",
     "support": "Assistance",
     "rules": "Règles",
@@ -462,7 +463,8 @@
       "history": "Voir mes recharges",
       "refresh": "Revérifier",
       "again": "Retour à la recharge"
-    }
+    },
+    "bestValue": "Le plus d’AP pour votre argent"
   },
   "playNow": {
     "title": "Jouez gratuitement à Florensia",
@@ -495,9 +497,11 @@
       "usernameHint": "De {min} à {max} caractères : lettres, chiffres et _.",
       "email": "Adresse e-mail",
       "password": "Mot de passe",
+      "passwordConfirm": "Répétez le mot de passe",
       "passwordHint": "Au moins {min} caractères. Une phrase vaut mieux qu’un mot.",
       "identifier": "Nom de compte ou e-mail",
-      "newPassword": "Nouveau mot de passe"
+      "newPassword": "Nouveau mot de passe",
+      "newPasswordConfirm": "Répétez le nouveau mot de passe"
     },
     "errorSummary": "Vérifiez les champs signalés.",
     "errors": {
@@ -507,6 +511,7 @@
       "usernameTaken": "Ce nom de compte est déjà pris.",
       "email": "Saisissez une adresse e-mail valide.",
       "passwordLength": "Le mot de passe doit contenir de {min} à {max} caractères.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
       "pwned": "Ce mot de passe figure dans des fuites de données connues. Choisissez-en un autre.",
       "terms": "Vous devez accepter les conditions d’utilisation et la politique de confidentialité.",
       "credentials": "Le nom de compte, l’e-mail ou le mot de passe est incorrect.",
@@ -515,9 +520,6 @@
       "generic": "Une erreur s’est produite. Réessayez dans quelques minutes."
     },
     "register": {
-      "title": "Créer un compte",
-      "description": "Créez votre compte Florensia gratuit pour jouer, utiliser la boutique et utiliser des codes.",
-      "intro": "C’est gratuit. Il vous suffit d’une adresse e-mail.",
       "accept": "J’accepte les {terms} et la {privacy}.",
       "termsLink": "conditions d’utilisation",
       "privacyLink": "politique de confidentialité",
@@ -533,7 +535,11 @@
       "submit": "Se connecter",
       "forgot": "Mot de passe oublié ?",
       "noAccount": "Pas encore de compte ?",
-      "registerLink": "Créez-en un gratuitement"
+      "registerLink": "Créez-en un gratuitement",
+      "asideTitle": "Votre compte Florensia",
+      "asideCharacters": "Vos personnages et leur place dans les classements",
+      "asideShop": "Rechargez des AP et achetez dans la boutique",
+      "asideSecurity": "Changez votre mot de passe et fermez les sessions sur d’autres appareils"
     },
     "forgot": {
       "title": "Réinitialiser le mot de passe",
@@ -583,7 +589,8 @@
       "session": "Votre session a expiré. Reconnectez-vous.",
       "samePassword": "Le nouveau mot de passe doit être différent de l’actuel.",
       "currentPassword": "Le mot de passe actuel est incorrect.",
-      "sameEmail": "C’est déjà l’adresse e-mail de votre compte."
+      "sameEmail": "C’est déjà l’adresse e-mail de votre compte.",
+      "emailMismatch": "Les adresses e-mail ne correspondent pas."
     },
     "summary": {
       "balance": "Solde d’AP",
@@ -639,6 +646,7 @@
       "emailTitle": "Changer l’adresse e-mail",
       "currentEmail": "Adresse actuelle : {email}",
       "newEmail": "Nouvelle adresse e-mail",
+      "confirmEmail": "Répétez la nouvelle adresse e-mail",
       "emailHint": "Nous vous enverrons un lien pour la confirmer. D’ici là, l’adresse actuelle reste active.",
       "emailSubmit": "Envoyer le lien de confirmation",
       "emailSent": "Nous avons envoyé un lien à {email}. Votre adresse changera quand vous l’ouvrirez.",
@@ -688,6 +696,13 @@
       "errors": {
         "confirm": "Cochez la case pour confirmer que vous voulez supprimer votre compte."
       }
+    },
+    "shortcuts": {
+      "title": "Que voulez-vous faire ?",
+      "characters": "Vos personnages et leur place dans les classements.",
+      "topups": "Chaque recharge d’AP, avec son reçu.",
+      "purchases": "Ce que vous avez acheté et quel personnage l’a reçu.",
+      "security": "Changez votre mot de passe ou votre e-mail et fermez les autres sessions."
     }
   },
   "email": {
@@ -719,6 +734,15 @@
     "emailChange": {
       "subject": "Un changement d’adresse e-mail a été demandé",
       "body": "Une personne connectée à votre compte Florensia a demandé à changer son adresse en {email}. Elle ne changera que si le lien envoyé à cette adresse est ouvert."
+    },
+    "emailChanged": {
+      "subject": "L’adresse e-mail de votre compte Florensia a changé",
+      "previous": "L’adresse e-mail de votre compte Florensia est passée de {previous} à {current}. Désormais, les avis et la récupération du mot de passe sont envoyés à la nouvelle adresse.",
+      "previousAction": "Ce n’était pas moi : contacter l’assistance",
+      "previousNote": "Si c’était vous, vous n’avez rien à faire. Sinon, écrivez tout de suite à l’assistance : cette adresse ne permet plus de récupérer le compte.",
+      "current": "C’est désormais l’adresse e-mail de votre compte Florensia (avant : {previous}). Les avis et la récupération du mot de passe arriveront ici.",
+      "currentAction": "Aller à mon compte",
+      "currentNote": "Si vous n’avez pas fait ce changement, récupérez votre mot de passe depuis la page de connexion et écrivez à l’assistance."
     },
     "passwordChanged": {
       "subject": "Votre mot de passe Florensia a changé",

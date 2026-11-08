@@ -82,6 +82,15 @@ export function RegisterForm({ locale, t, successExtra, idPrefix }: RegisterForm
           minLength: PASSWORD_MIN,
           maxLength: PASSWORD_MAX,
         },
+        {
+          name: "passwordConfirm",
+          label: t("auth.fields.passwordConfirm"),
+          type: "password",
+          autoComplete: "new-password",
+          required: true,
+          minLength: PASSWORD_MIN,
+          maxLength: PASSWORD_MAX,
+        },
         { name: "terms", label: accept, type: "checkbox", required: true },
       ]}
     />

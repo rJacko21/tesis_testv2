@@ -20,6 +20,9 @@ import { signOutAction } from "@/lib/auth/actions";
 
 export const instant = false;
 
+/** Accesos a las secciones que más se buscan desde el resumen. */
+const SHORTCUTS = ["characters", "topups", "purchases", "security"] as const;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
   return { title: t("auth.account.title"), robots: { index: false, follow: false } };
@@ -86,6 +89,27 @@ export default async function AccountPage() {
           </Link>
         </section>
       </div>
+
+      <section aria-labelledby="shortcuts-title" className="mt-8">
+        <h2 id="shortcuts-title" className="font-display text-navy-900 text-2xl font-bold">
+          {t("account.shortcuts.title")}
+        </h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {SHORTCUTS.map((key) => (
+            <li key={key}>
+              <Link
+                href={`/${locale}/account/${key}`}
+                className="group border-parchment-300 hover:border-navy-700 flex h-full flex-col gap-1 rounded-lg border bg-white p-4"
+              >
+                <span className="text-navy-900 font-bold group-hover:underline">
+                  {t(`account.nav.${key}`)}
+                </span>
+                <span className="text-ink-600">{t(`account.shortcuts.${key}`)}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* Solo las cuentas del equipo ven el enlace al panel (RF-12). */}
       {isStaff(roles) ? (

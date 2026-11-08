@@ -80,6 +80,15 @@ export default async function SecurityPage({
                 minLength: PASSWORD_MIN,
                 maxLength: PASSWORD_MAX,
               },
+              {
+                name: "confirmPassword",
+                label: t("auth.fields.newPasswordConfirm"),
+                type: "password",
+                autoComplete: "new-password",
+                required: true,
+                minLength: PASSWORD_MIN,
+                maxLength: PASSWORD_MAX,
+              },
             ]}
           />
         </section>
@@ -103,6 +112,14 @@ export default async function SecurityPage({
                 type: "email",
                 autoComplete: "email",
                 hint: t("account.security.emailHint"),
+                required: true,
+                maxLength: 254,
+              },
+              {
+                name: "confirmEmail",
+                label: t("account.security.confirmEmail"),
+                type: "email",
+                autoComplete: "email",
                 required: true,
                 maxLength: 254,
               },

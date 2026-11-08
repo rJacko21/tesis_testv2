@@ -12,6 +12,7 @@
     "download": "Download",
     "shop": "Shop",
     "playNow": "Jetzt spielen",
+    "topUp": "AP aufladen",
     "community": "Community",
     "support": "Support",
     "rules": "Regeln",
@@ -462,7 +463,8 @@
       "history": "Meine Aufladungen ansehen",
       "refresh": "Erneut prüfen",
       "again": "Zurück zum Aufladen"
-    }
+    },
+    "bestValue": "Die meisten AP fürs Geld"
   },
   "playNow": {
     "title": "Florensia kostenlos spielen",
@@ -495,9 +497,11 @@
       "usernameHint": "{min} bis {max} Zeichen: Buchstaben, Zahlen und _.",
       "email": "E-Mail",
       "password": "Passwort",
+      "passwordConfirm": "Passwort wiederholen",
       "passwordHint": "Mindestens {min} Zeichen. Ein Satz ist besser als ein Wort.",
       "identifier": "Kontoname oder E-Mail",
-      "newPassword": "Neues Passwort"
+      "newPassword": "Neues Passwort",
+      "newPasswordConfirm": "Neues Passwort wiederholen"
     },
     "errorSummary": "Bitte prüfe die markierten Felder.",
     "errors": {
@@ -507,6 +511,7 @@
       "usernameTaken": "Dieser Kontoname ist bereits vergeben.",
       "email": "Gib eine gültige E-Mail-Adresse ein.",
       "passwordLength": "Das Passwort muss {min} bis {max} Zeichen lang sein.",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein.",
       "pwned": "Dieses Passwort taucht in bekannten Datenlecks auf. Bitte wähle ein anderes.",
       "terms": "Du musst die Nutzungsbedingungen und die Datenschutzerklärung akzeptieren.",
       "credentials": "Kontoname, E-Mail oder Passwort sind nicht korrekt.",
@@ -515,9 +520,6 @@
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es in ein paar Minuten erneut."
     },
     "register": {
-      "title": "Konto erstellen",
-      "description": "Erstelle dein kostenloses Florensia-Konto, um zu spielen, den Item-Shop zu nutzen und Codes einzulösen.",
-      "intro": "Kostenlos. Du brauchst nur eine E-Mail-Adresse.",
       "accept": "Ich akzeptiere die {terms} und die {privacy}.",
       "termsLink": "Nutzungsbedingungen",
       "privacyLink": "Datenschutzerklärung",
@@ -533,7 +535,11 @@
       "submit": "Anmelden",
       "forgot": "Passwort vergessen?",
       "noAccount": "Noch kein Konto?",
-      "registerLink": "Kostenlos erstellen"
+      "registerLink": "Kostenlos erstellen",
+      "asideTitle": "Dein Florensia-Konto",
+      "asideCharacters": "Deine Charaktere und ihr Platz in den Ranglisten",
+      "asideShop": "AP aufladen und im Shop einkaufen",
+      "asideSecurity": "Ändere dein Passwort und beende Sitzungen auf anderen Geräten"
     },
     "forgot": {
       "title": "Passwort zurücksetzen",
@@ -583,7 +589,8 @@
       "session": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.",
       "samePassword": "Das neue Passwort muss sich vom aktuellen unterscheiden.",
       "currentPassword": "Das aktuelle Passwort ist nicht korrekt.",
-      "sameEmail": "Das ist bereits die E-Mail-Adresse deines Kontos."
+      "sameEmail": "Das ist bereits die E-Mail-Adresse deines Kontos.",
+      "emailMismatch": "Die E-Mail-Adressen stimmen nicht überein."
     },
     "summary": {
       "balance": "AP-Guthaben",
@@ -639,6 +646,7 @@
       "emailTitle": "E-Mail-Adresse ändern",
       "currentEmail": "Aktuelle E-Mail-Adresse: {email}",
       "newEmail": "Neue E-Mail-Adresse",
+      "confirmEmail": "Neue E-Mail-Adresse wiederholen",
       "emailHint": "Wir schicken dir einen Link zur Bestätigung. Bis dahin bleibt die aktuelle Adresse aktiv.",
       "emailSubmit": "Bestätigungslink senden",
       "emailSent": "Wir haben einen Link an {email} geschickt. Deine E-Mail-Adresse ändert sich, sobald du ihn öffnest.",
@@ -688,6 +696,13 @@
       "errors": {
         "confirm": "Setze das Häkchen, um zu bestätigen, dass du dein Konto löschen möchtest."
       }
+    },
+    "shortcuts": {
+      "title": "Was möchtest du tun?",
+      "characters": "Deine Charaktere und ihr Platz in den Ranglisten.",
+      "topups": "Jede AP-Aufladung mit Beleg.",
+      "purchases": "Was du gekauft hast und welcher Charakter es erhielt.",
+      "security": "Passwort oder E-Mail ändern und andere Sitzungen beenden."
     }
   },
   "email": {
@@ -719,6 +734,15 @@
     "emailChange": {
       "subject": "Änderung der E-Mail-Adresse deines Kontos angefordert",
       "body": "Jemand, der in deinem Florensia-Konto angemeldet ist, möchte die E-Mail-Adresse in {email} ändern. Sie ändert sich nur, wenn der an diese Adresse gesendete Link geöffnet wird."
+    },
+    "emailChanged": {
+      "subject": "Die E-Mail-Adresse deines Florensia-Kontos wurde geändert",
+      "previous": "Die E-Mail-Adresse deines Florensia-Kontos wurde von {previous} zu {current} geändert. Ab jetzt gehen Hinweise und die Passwort-Wiederherstellung an die neue Adresse.",
+      "previousAction": "Das war ich nicht: Support kontaktieren",
+      "previousNote": "Wenn du es warst, musst du nichts tun. Wenn nicht, schreib sofort dem Support: Mit dieser Adresse lässt sich das Konto nicht mehr wiederherstellen.",
+      "current": "Das ist jetzt die E-Mail-Adresse deines Florensia-Kontos (vorher: {previous}). Hinweise und die Passwort-Wiederherstellung kommen hier an.",
+      "currentAction": "Zu meinem Konto",
+      "currentNote": "Wenn du diese Änderung nicht vorgenommen hast, stelle dein Passwort über die Anmeldeseite wieder her und schreib dem Support."
     },
     "passwordChanged": {
       "subject": "Dein Florensia-Passwort wurde geändert",

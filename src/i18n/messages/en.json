@@ -12,6 +12,7 @@
     "download": "Download",
     "shop": "Shop",
     "playNow": "Play now",
+    "topUp": "Top up AP",
     "community": "Community",
     "support": "Support",
     "rules": "Rules",
@@ -462,7 +463,8 @@
       "history": "See my top-ups",
       "refresh": "Check again",
       "again": "Back to top-up"
-    }
+    },
+    "bestValue": "Most AP for your money"
   },
   "playNow": {
     "title": "Play Florensia for free",
@@ -495,9 +497,11 @@
       "usernameHint": "{min} to {max} characters: letters, numbers and _.",
       "email": "Email",
       "password": "Password",
+      "passwordConfirm": "Repeat the password",
       "passwordHint": "At least {min} characters. A phrase works better than a word.",
       "identifier": "Account name or email",
-      "newPassword": "New password"
+      "newPassword": "New password",
+      "newPasswordConfirm": "Repeat the new password"
     },
     "errorSummary": "Please check the highlighted fields.",
     "errors": {
@@ -507,6 +511,7 @@
       "usernameTaken": "That account name is already taken.",
       "email": "Enter a valid email address.",
       "passwordLength": "The password must be {min} to {max} characters long.",
+      "passwordMismatch": "The passwords do not match.",
       "pwned": "This password appears in known data breaches. Please choose another one.",
       "terms": "You must accept the terms of service and the privacy policy.",
       "credentials": "The account name, email or password is incorrect.",
@@ -515,9 +520,6 @@
       "generic": "Something went wrong. Please try again in a few minutes."
     },
     "register": {
-      "title": "Create account",
-      "description": "Create your free Florensia account to play, use the item shop and redeem codes.",
-      "intro": "Free to play. You only need an email address.",
       "accept": "I accept the {terms} and the {privacy}.",
       "termsLink": "terms of service",
       "privacyLink": "privacy policy",
@@ -533,7 +535,11 @@
       "submit": "Sign in",
       "forgot": "Forgot your password?",
       "noAccount": "No account yet?",
-      "registerLink": "Create one for free"
+      "registerLink": "Create one for free",
+      "asideTitle": "Your Florensia account",
+      "asideCharacters": "Your characters and their place in the rankings",
+      "asideShop": "Top up AP and buy in the item shop",
+      "asideSecurity": "Change your password and close sessions on other devices"
     },
     "forgot": {
       "title": "Reset your password",
@@ -583,7 +589,8 @@
       "session": "Your session has expired. Please sign in again.",
       "samePassword": "The new password must be different from the current one.",
       "currentPassword": "The current password is not correct.",
-      "sameEmail": "That is already your account email."
+      "sameEmail": "That is already your account email.",
+      "emailMismatch": "The email addresses do not match."
     },
     "summary": {
       "balance": "AP balance",
@@ -639,6 +646,7 @@
       "emailTitle": "Change email",
       "currentEmail": "Current email: {email}",
       "newEmail": "New email",
+      "confirmEmail": "Repeat the new email",
       "emailHint": "We will send you a link to confirm it. Until then you will keep using the current one.",
       "emailSubmit": "Send confirmation link",
       "emailSent": "We have sent a link to {email}. Your email will change when you open it.",
@@ -688,6 +696,13 @@
       "errors": {
         "confirm": "Tick the box to confirm that you want to delete your account."
       }
+    },
+    "shortcuts": {
+      "title": "What do you want to do?",
+      "characters": "Your characters and their place in the rankings.",
+      "topups": "Every AP top-up, with its receipt.",
+      "purchases": "What you bought and which character received it.",
+      "security": "Change your password or email and close other sessions."
     }
   },
   "email": {
@@ -719,6 +734,15 @@
     "emailChange": {
       "subject": "A change of your account email was requested",
       "body": "Someone signed in to your Florensia account asked to change its email to {email}. It will only change if the link sent to that address is opened."
+    },
+    "emailChanged": {
+      "subject": "The email of your Florensia account has changed",
+      "previous": "The email of your Florensia account has changed from {previous} to {current}. From now on, notices and password recovery go to the new address.",
+      "previousAction": "It wasn’t me: contact support",
+      "previousNote": "If it was you, you don’t need to do anything. If not, write to support right away: this address can no longer recover the account.",
+      "current": "This is now the email of your Florensia account (before: {previous}). Notices and password recovery will arrive here.",
+      "currentAction": "Go to my account",
+      "currentNote": "If you did not make this change, recover your password from the sign-in page and write to support."
     },
     "passwordChanged": {
       "subject": "Your Florensia password has changed",

@@ -34,10 +34,12 @@ import {
   confirmNewEmailMessage,
   existingAccountMessage,
   resetPasswordMessage,
+  securityNoticeMessage,
   verifyEmailMessage,
 } from "@/lib/mail/templates";
 
 import { COOKIE_PREFIX } from "./constants";
+import { isEmailChangeToken } from "./email-change";
 import { hashPassword, PASSWORD_MAX, PASSWORD_MIN, verifyPassword } from "./password";
 import { USERNAME_MAX, USERNAME_MIN, isValidUsername } from "./username";
 
@@ -52,21 +54,6 @@ function recipient(user: { email: string; name: string } & Record<string, unknow
     typeof user.locale === "string" && isLocale(user.locale) ? user.locale : "en";
   const display = typeof user.displayUsername === "string" ? user.displayUsername : user.name;
   return { email: user.email, name: display, locale };
-}
-
-/**
- * Tipo de un token de verificación de Better Auth (un JWT firmado): al
- * cambiar el correo lleva `requestType: "change-email-verification"`. Solo
- * se lee para elegir la plantilla; la firma la comprueba Better Auth al
- * abrir el enlace.
- */
-function isEmailChangeToken(token: string): boolean {
-  try {
-    const payload = JSON.parse(Buffer.from(token.split(".")[1] ?? "", "base64url").toString());
-    return payload?.requestType === "change-email-verification";
-  } catch {
-    return false;
-  }
 }
 
 export const auth = betterAuth({
@@ -120,6 +107,16 @@ export const auth = betterAuth({
     resetPasswordTokenExpiresIn: RESET_TOKEN_MINUTES * 60,
     // Al cambiar la contraseña se cierran todas las sesiones abiertas.
     revokeSessionsOnPasswordReset: true,
+    // Aviso al correo de la cuenta, como al cambiarla desde «Mi cuenta».
+    async onPasswordReset({ user }) {
+      const to = recipient(user);
+      const url = `${SITE_URL}/${to.locale}/forgot-password`;
+      try {
+        await sendMail(await securityNoticeMessage(to, "passwordChanged", url));
+      } catch (error) {
+        console.error("[auth] No se pudo avisar del cambio de contraseña:", error);
+      }
+    },
     async sendResetPassword({ user, token }) {
       const to = recipient(user);
       const url = `${SITE_URL}/${to.locale}/reset-password?token=${encodeURIComponent(token)}`;

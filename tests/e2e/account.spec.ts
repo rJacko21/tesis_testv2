@@ -11,6 +11,7 @@ import { expect, test } from "@playwright/test";
 import {
   isolateEachTest,
   linkFromMail,
+  newAccount,
   register,
   signIn,
   signedInAccount,
@@ -142,12 +143,19 @@ test("cambiar la contraseña pide la actual y cierra las demás sesiones", async
 
   const form = page.getByRole("region", { name: "Cambiar la contraseña" });
   await form.getByLabel("Contraseña actual").fill("no es la contraseña");
-  await form.getByLabel("Contraseña nueva").fill(`${account.password} nueva`);
+  await form.getByLabel("Contraseña nueva", { exact: true }).fill(`${account.password} nueva`);
+  await form.getByLabel("Repite la contraseña nueva").fill(`${account.password} nuevo`);
+  await form.getByRole("button", { name: "Cambiar la contraseña" }).click();
+  await expect(form.getByText("Las contraseñas no coinciden.")).toBeVisible();
+  await form.getByLabel("Contraseña actual").fill("no es la contraseña");
+  await form.getByLabel("Contraseña nueva", { exact: true }).fill(`${account.password} nueva`);
+  await form.getByLabel("Repite la contraseña nueva").fill(`${account.password} nueva`);
   await form.getByRole("button", { name: "Cambiar la contraseña" }).click();
   await expect(form.getByText("La contraseña actual no es correcta.")).toBeVisible();
 
   await form.getByLabel("Contraseña actual").fill(account.password);
-  await form.getByLabel("Contraseña nueva").fill(`${account.password} nueva`);
+  await form.getByLabel("Contraseña nueva", { exact: true }).fill(`${account.password} nueva`);
+  await form.getByLabel("Repite la contraseña nueva").fill(`${account.password} nueva`);
   await form.getByRole("button", { name: "Cambiar la contraseña" }).click();
   await expect(form.getByRole("status")).toContainText("Tu contraseña ha cambiado");
   await linkFromMail(page, account.email, /Tu contraseña de Florensia ha cambiado/);
@@ -178,15 +186,20 @@ test("cerrar las demás sesiones desde la lista", async ({ page, browser }) => {
   await other.close();
 });
 
-test("cambiar el correo: enlace al nuevo, aviso al actual y cambio al abrirlo", async ({
+test("cambiar el correo: enlace al nuevo, aviso al actual, cambio al abrirlo y aviso a los dos", async ({
   page,
 }) => {
   const account = await signedInAccount(page);
-  const newEmail = `nuevo-${account.email}`;
+  const newEmail = account.email.replace("@", ".nuevo@");
 
   await page.goto("/es/account/security");
   const form = page.getByRole("region", { name: "Cambiar el correo" });
-  await form.getByLabel("Correo nuevo").fill(newEmail);
+  await form.getByLabel("Correo nuevo", { exact: true }).fill(newEmail);
+  await form.getByLabel("Repite el correo nuevo").fill(`otro-${newEmail}`);
+  await form.getByLabel("Contraseña actual").fill(account.password);
+  await form.getByRole("button", { name: "Enviar enlace de confirmación" }).click();
+  await expect(form.getByText("Los correos no coinciden.")).toBeVisible();
+  await form.getByLabel("Repite el correo nuevo").fill(newEmail);
   await form.getByLabel("Contraseña actual").fill(account.password);
   await form.getByRole("button", { name: "Enviar enlace de confirmación" }).click();
   await expect(form.getByRole("status")).toContainText(`Te hemos enviado un enlace a ${newEmail}`);
@@ -201,6 +214,11 @@ test("cambiar el correo: enlace al nuevo, aviso al actual y cambio al abrirlo", 
   await expect(page.getByText("Tu correo está confirmado.")).toBeVisible();
   await page.goto("/es/account");
   await expect(page.getByText(newEmail, { exact: false })).toBeVisible();
+
+  // Aviso a los dos correos: el anterior lleva a soporte, el nuevo a la cuenta.
+  const changed = /El correo de tu cuenta de Florensia ha cambiado/;
+  expect(await linkFromMail(page, account.email, changed)).toBe("/es/support/contact");
+  expect(await linkFromMail(page, newEmail, changed)).toBe("/es/account/security");
 });
 
 test("canjear códigos: AP al saldo, ya usado, caducado y objeto para un personaje (RF-13)", async ({
@@ -323,4 +341,30 @@ test("todas las secciones, en los 7 idiomas: sin infracciones de axe ni scroll h
       expect(overflow, `${locale}${section}`).toBeLessThanOrEqual(0);
     }
   }
+});
+
+test("cabecera: «Recargar AP» siempre visible; sin sesión pasa por iniciar sesión", async ({
+  page,
+}) => {
+  const account = newAccount();
+  await register(page, account);
+  await expect(page.getByRole("main").getByRole("status")).toBeVisible();
+
+  await page.goto("/es/shop");
+  const header = page.getByRole("banner");
+  // En móvil, «Iniciar sesión» y «Mi cuenta» están en el menú cerrado: se mira el HTML.
+  await expect(header.locator('a[href="/es/sign-in"]').first()).toBeAttached();
+  await header.getByRole("link", { name: "Recargar AP" }).filter({ visible: true }).click();
+  await expect(page).toHaveURL(/\/es\/sign-in\?next=\/es\/topup$/);
+  await page.getByLabel("Nombre de cuenta o correo").fill(account.username);
+  await page.getByLabel("Contraseña", { exact: true }).fill(account.password);
+  await page.getByRole("button", { name: "Iniciar sesión" }).click();
+  await expect(page).toHaveURL(/\/es\/topup$/);
+
+  // Con sesión: «Mi cuenta» en lugar de «Iniciar sesión», y la recarga va directa.
+  await expect(header.locator('a[href="/es/account"]').first()).toHaveText("Mi cuenta");
+  await expect(header.locator('a[href^="/es/sign-in"]')).toHaveCount(0);
+  await expect(
+    header.getByRole("link", { name: "Recargar AP" }).filter({ visible: true }),
+  ).toHaveAttribute("href", "/es/topup");
 });

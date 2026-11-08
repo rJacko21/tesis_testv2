@@ -2,7 +2,7 @@
  * Cabecera del sitio con la navegación completa.
  *
  * - Escritorio (≥ 1024 px): enlaces en línea, submenú Comunidad, Jugar ahora
- *   destacado e Iniciar sesión.
+ *   destacado, Recargar AP e Iniciar sesión o Mi cuenta (`SessionLinks`).
  * - Móvil: botón de menú que abre un `<dialog>` modal (`MobileMenu`).
  * - El selector de idioma se ve siempre: en la web original solo había EN y
  *   DE, y no estaba en el login (F-01, F-06).
@@ -21,7 +21,6 @@ import {
   COMMUNITY_LINKS,
   PLAY_NOW,
   PRIMARY_LINKS,
-  SIGN_IN,
   localizedHref,
   type NavLink,
 } from "@/config/navigation";
@@ -33,6 +32,7 @@ import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import type { ResolvedLink } from "./nav-types";
 import { NavLinkItem } from "./NavLinkItem";
+import { SessionLinks } from "./SessionLinks";
 
 export async function SiteHeader() {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
@@ -45,7 +45,11 @@ export async function SiteHeader() {
   const primary = PRIMARY_LINKS.map(resolve);
   const community = COMMUNITY_LINKS.map(resolve);
   const playNow = resolve(PLAY_NOW);
-  const signIn = resolve(SIGN_IN);
+  const sessionLabels = {
+    topUp: t("nav.topUp"),
+    signIn: t("nav.login"),
+    account: t("nav.account"),
+  };
   const externalLabel = t("nav.externalSite");
 
   return (
@@ -85,16 +89,32 @@ export async function SiteHeader() {
                 className={buttonStyles({})}
               />
             </li>
-            <li>
-              <NavLinkItem
-                link={signIn}
-                externalLabel={externalLabel}
-                className={buttonStyles({ variant: "onDark" })}
-              />
-            </li>
+            <SessionLinks
+              locale={locale}
+              labels={sessionLabels}
+              listItems
+              classes={{
+                topUp:
+                  "text-gold-300 hover:bg-navy-700 aria-[current]:bg-navy-700 flex min-h-11 items-center gap-1.5 rounded px-3 font-semibold",
+                session: buttonStyles({ variant: "onDark" }),
+              }}
+            />
           </ul>
         </nav>
 
+        {/* «Recargar AP» siempre a la vista: en móvil, abreviado junto al menú. */}
+        <div className="lg:hidden">
+          <SessionLinks
+            locale={locale}
+            labels={sessionLabels}
+            compactTopUp
+            classes={{
+              topUp:
+                "text-gold-300 hover:bg-navy-700 aria-[current]:bg-navy-700 flex min-h-11 items-center gap-1 rounded px-2 font-bold",
+              session: "",
+            }}
+          />
+        </div>
         <LocaleSwitcher
           current={locale}
           label={t("localeSwitcher.label")}
@@ -108,11 +128,19 @@ export async function SiteHeader() {
           communityLabel={t("nav.community")}
           community={community}
           playNow={playNow}
-          signIn={signIn}
+          session={
+            <SessionLinks
+              locale={locale}
+              labels={sessionLabels}
+              classes={{
+                topUp: buttonStyles({ size: "lg", variant: "onDark" }),
+                session: buttonStyles({ size: "lg", variant: "onDark" }),
+              }}
+            />
+          }
           externalLabel={externalLabel}
           buttonClasses={{
             primary: buttonStyles({ size: "lg" }),
-            secondary: buttonStyles({ size: "lg", variant: "onDark" }),
           }}
         />
         <HeaderBehavior />
