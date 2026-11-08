@@ -180,7 +180,7 @@
   "support": {
     "title": "Support",
     "description": "Answers to frequent questions about Florensia: account, payments, installation and rules.",
-    "intro": "Find quick answers here. If your question is not listed, ask the community on Discord.",
+    "intro": "Find quick answers here. If your question is not listed, write to the support team or ask the community on Discord.",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "free": {
@@ -208,9 +208,46 @@
         "answer": "Character migration is handled by support. Include your account name, the character and the target server in your request."
       }
     },
+    "contactTitle": "Contact support",
+    "contactBody": "For problems with your account, payments, character migration, bugs or reports, write to the team. We reply to your email.",
+    "contactLink": "Write to support",
     "communityTitle": "Still need help?",
     "communityBody": "The Florensia community and team answer questions on the official Discord server.",
-    "discord": "Open Discord"
+    "discord": "Open Discord",
+    "contact": {
+      "title": "Contact support",
+      "description": "Write to the Florensia support team about your account, payments, character migration, bugs or player reports.",
+      "intro": "Tell us what happened. The team replies to the email address you enter.",
+      "noPassword": "Never include your password. The support team will never ask for it.",
+      "back": "Back to frequently asked questions",
+      "submit": "Send message",
+      "sent": "Message sent. The support team will reply to {email}.",
+      "fields": {
+        "name": "Your name",
+        "emailHint": "We reply here. Use the one of your game account if you have one.",
+        "category": "Topic",
+        "choose": "Choose a topic…",
+        "subject": "Subject",
+        "message": "Message",
+        "messageHint": "Between {min} and {max} characters. Include your account name and, if relevant, the character, server and time."
+      },
+      "categories": {
+        "account": "Account",
+        "payment": "Payments and AP",
+        "migration": "Character migration",
+        "bug": "Bug",
+        "report": "Player report",
+        "other": "Other"
+      },
+      "errors": {
+        "required": "This field is required.",
+        "category": "Choose a topic.",
+        "nameLength": "Up to {max} characters.",
+        "subjectLength": "Between {min} and {max} characters.",
+        "messageLength": "Between {min} and {max} characters.",
+        "send": "The message could not be sent. Try again in a few minutes."
+      }
+    }
   },
   "legal": {
     "toc": "Contents",

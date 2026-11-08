@@ -180,7 +180,7 @@
   "support": {
     "title": "Support",
     "description": "Antworten auf häufige Fragen zu Florensia: Konto, Zahlungen, Installation und Regeln.",
-    "intro": "Hier findest du schnelle Antworten. Steht deine Frage nicht dabei, frag die Community auf Discord.",
+    "intro": "Hier findest du schnelle Antworten. Steht deine Frage nicht dabei, schreib dem Support-Team oder frag die Community auf Discord.",
     "faqTitle": "Häufige Fragen",
     "faq": {
       "free": {
@@ -208,9 +208,46 @@
         "answer": "Charakter-Transfers übernimmt der Support. Gib in deiner Anfrage Kontoname, Charakter und Zielserver an."
       }
     },
+    "contactTitle": "Support kontaktieren",
+    "contactBody": "Bei Problemen mit Konto, Zahlungen, Charaktertransfer, Fehlern oder Meldungen schreib dem Team. Wir antworten an deine E-Mail-Adresse.",
+    "contactLink": "An den Support schreiben",
     "communityTitle": "Brauchst du noch Hilfe?",
     "communityBody": "Die Florensia-Community und das Team beantworten Fragen auf dem offiziellen Discord-Server.",
-    "discord": "Discord öffnen"
+    "discord": "Discord öffnen",
+    "contact": {
+      "title": "Support kontaktieren",
+      "description": "Schreib dem Florensia-Support zu Konto, Zahlungen, Charaktertransfer, Fehlern oder Spielermeldungen.",
+      "intro": "Erzähl uns, was passiert ist. Das Team antwortet an die E-Mail-Adresse, die du angibst.",
+      "noPassword": "Gib niemals dein Passwort an. Das Support-Team fragt nie danach.",
+      "back": "Zurück zu den häufigen Fragen",
+      "submit": "Nachricht senden",
+      "sent": "Nachricht gesendet. Das Support-Team antwortet an {email}.",
+      "fields": {
+        "name": "Dein Name",
+        "emailHint": "Wir antworten hierhin. Nutze die deines Spielkontos, falls du eines hast.",
+        "category": "Thema",
+        "choose": "Wähle ein Thema…",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "messageHint": "Zwischen {min} und {max} Zeichen. Gib deinen Kontonamen an und, falls wichtig, Charakter, Server und Uhrzeit."
+      },
+      "categories": {
+        "account": "Konto",
+        "payment": "Zahlungen und AP",
+        "migration": "Charaktertransfer",
+        "bug": "Fehler",
+        "report": "Spieler melden",
+        "other": "Sonstiges"
+      },
+      "errors": {
+        "required": "Dieses Feld ist erforderlich.",
+        "category": "Wähle ein Thema.",
+        "nameLength": "Bis zu {max} Zeichen.",
+        "subjectLength": "Zwischen {min} und {max} Zeichen.",
+        "messageLength": "Zwischen {min} und {max} Zeichen.",
+        "send": "Die Nachricht konnte nicht gesendet werden. Versuche es in ein paar Minuten erneut."
+      }
+    }
   },
   "legal": {
     "toc": "Inhalt",

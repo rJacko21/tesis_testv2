@@ -7,12 +7,13 @@
  *   y lector de pantalla sin JavaScript, y el texto está en el HTML (los
  *   buscadores lo indexan aunque esté plegado);
  * - las categorías cubren las del formulario de contacto de RF-10 (cuenta,
- *   pagos, migración de personaje, denuncia). El formulario llegará con los
- *   tickets de soporte, cuando exista la cuenta de usuario (T-17).
+ *   pagos, migración de personaje, denuncia), que está en `/support/contact`
+ *   y se enlaza debajo de las preguntas (M-39).
  *
  * Es estática: se prerenderiza en los 7 idiomas.
  */
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui";
@@ -36,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SupportPage() {
-  const t = await getTranslator();
+  const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
   return (
     <main className="flex-1 py-8 sm:py-12">
       <JsonLd
@@ -76,6 +77,22 @@ export default async function SupportPage() {
               </details>
             ))}
           </div>
+        </section>
+
+        <section
+          aria-labelledby="contact-title"
+          className="rounded-panel shadow-panel bg-white p-6"
+        >
+          <h2 id="contact-title" className="font-display text-navy-900 text-2xl font-bold">
+            {t("support.contactTitle")}
+          </h2>
+          <p className="text-ink-900 mt-2">{t("support.contactBody")}</p>
+          <Link
+            href={`/${locale}/support/contact`}
+            className="bg-navy-700 hover:bg-navy-900 mt-4 inline-flex min-h-11 items-center rounded-lg px-5 font-bold text-white"
+          >
+            {t("support.contactLink")}
+          </Link>
         </section>
 
         <section

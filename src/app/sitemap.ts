@@ -31,6 +31,7 @@ const PUBLIC_PATHS = [
   "/play-now",
   "/download",
   "/support",
+  "/support/contact",
   "/rules",
   "/terms",
   "/privacy",

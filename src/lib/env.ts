@@ -29,6 +29,11 @@ const envSchema = z.object({
   /** Remitente de los correos. */
   MAIL_FROM: z.string().default("Florensia <no-reply@florensia.local>"),
   /**
+   * Buzón del equipo de soporte, al que llegan los mensajes del formulario
+   * de contacto (RF-10). En local, con Mailpit, no sale de la máquina.
+   */
+  SUPPORT_EMAIL: z.email().default("tigremorado4@gmail.com"),
+  /**
    * Comprobar las contraseñas contra las filtradas (Have I Been Pwned).
    * `off` solo para entornos sin salida a Internet.
    */

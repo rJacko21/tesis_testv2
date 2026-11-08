@@ -180,7 +180,7 @@
   "support": {
     "title": "Destek",
     "description": "Florensia hakkında sık sorulan sorular: hesap, ödemeler, kurulum ve kurallar.",
-    "intro": "Hızlı yanıtları burada bulabilirsin. Sorun listede yoksa Discord'da topluluğa sor.",
+    "intro": "Hızlı yanıtlar burada. Sorunuz listede yoksa destek ekibine yazın veya Discord'da topluluğa sorun.",
     "faqTitle": "Sık sorulan sorular",
     "faq": {
       "free": {
@@ -208,9 +208,46 @@
         "answer": "Karakter taşıma işlemini destek ekibi yapar. Talebinde hesap adını, karakteri ve hedef sunucuyu belirt."
       }
     },
+    "contactTitle": "Destekle iletişim",
+    "contactBody": "Hesap, ödeme, karakter taşıma, hata veya şikâyet sorunları için ekibe yazın. E-postanıza yanıt veririz.",
+    "contactLink": "Desteğe yaz",
     "communityTitle": "Hâlâ yardıma mı ihtiyacın var?",
     "communityBody": "Florensia topluluğu ve ekibi resmî Discord sunucusunda soruları yanıtlıyor.",
-    "discord": "Discord'u aç"
+    "discord": "Discord'u aç",
+    "contact": {
+      "title": "Destekle iletişim",
+      "description": "Hesabınız, ödemeler, karakter taşıma, hatalar veya oyuncu şikâyetleri için Florensia destek ekibine yazın.",
+      "intro": "Ne olduğunu anlatın. Ekip, girdiğiniz e-posta adresine yanıt verir.",
+      "noPassword": "Şifrenizi asla yazmayın. Destek ekibi şifrenizi asla istemez.",
+      "back": "Sık sorulan sorulara dön",
+      "submit": "Mesajı gönder",
+      "sent": "Mesaj gönderildi. Destek ekibi {email} adresine yanıt verecek.",
+      "fields": {
+        "name": "Adınız",
+        "emailHint": "Yanıtı buraya göndeririz. Varsa oyun hesabınızın e-postasını kullanın.",
+        "category": "Konu",
+        "choose": "Bir konu seçin…",
+        "subject": "Başlık",
+        "message": "Mesaj",
+        "messageHint": "{min} ile {max} karakter arası. Hesap adınızı ve gerekiyorsa karakteri, sunucuyu ve saati yazın."
+      },
+      "categories": {
+        "account": "Hesap",
+        "payment": "Ödemeler ve AP",
+        "migration": "Karakter taşıma",
+        "bug": "Hata",
+        "report": "Oyuncu şikâyeti",
+        "other": "Diğer"
+      },
+      "errors": {
+        "required": "Bu alan zorunludur.",
+        "category": "Bir konu seçin.",
+        "nameLength": "En fazla {max} karakter.",
+        "subjectLength": "{min} ile {max} karakter arası.",
+        "messageLength": "{min} ile {max} karakter arası.",
+        "send": "Mesaj gönderilemedi. Birkaç dakika sonra tekrar deneyin."
+      }
+    }
   },
   "legal": {
     "toc": "İçindekiler",
