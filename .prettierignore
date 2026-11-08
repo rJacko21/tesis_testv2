@@ -3,3 +3,5 @@ drizzle/
 .next/
 coverage/
 docs/plan/
+# Skills de terceros: se instalan con `npx skills add` y no se reformatean
+.claude/skills/
