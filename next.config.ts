@@ -4,7 +4,14 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    // Las imágenes del panel se suben con una Server Action (`lib/media.ts`
+    // admite hasta 5 MB); el límite por defecto es 1 MB.
+    serverActions: { bodySizeLimit: "6mb" },
+  },
   images: {
+    // Imágenes subidas desde el panel, guardadas en MySQL (`app/media`).
+    localPatterns: [{ pathname: "/media/uploads/**" }, { pathname: "/_next/static/**" }],
     // AVIF primero (≈30 % menos que WebP); WebP para navegadores antiguos.
     formats: ["image/avif", "image/webp"],
     qualities: [75],

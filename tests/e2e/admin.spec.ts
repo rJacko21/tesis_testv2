@@ -7,6 +7,7 @@
  */
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
+import sharp from "sharp";
 
 import { isolateEachTest, signedInAccount, signIn, withDb } from "./helpers";
 
@@ -190,6 +191,34 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
     );
     return [(items as { id: number }[])[0]!.id, insertId];
   });
+  // Una promoción que aún no ha empezado: sale en el panel, no en la portada.
+  const banner = await sharp({
+    create: { width: 640, height: 240, channels: 3, background: { r: 30, g: 60, b: 90 } },
+  })
+    .webp()
+    .toBuffer();
+  const promotionId = await withDb(async (db) => {
+    const path = `uploads/${Date.now().toString(16).padStart(32, "0")}.webp`;
+    const [image] = await db.query(
+      "INSERT INTO media (path, width, height, mime_type, data) VALUES (?, 640, 240, 'image/webp', ?)",
+      [path, banner],
+    );
+    const mediaId = (image as { insertId: number }).insertId;
+    await db.query(
+      "INSERT INTO media_translations (media_id, locale, alt) VALUES (?, 'en', 'A11y banner')",
+      [mediaId],
+    );
+    const [result] = await db.query(
+      "INSERT INTO promotions (image_id, target_url, starts_at, ends_at) VALUES (?, '/shop', NOW(3) + INTERVAL 30 DAY, NOW(3) + INTERVAL 60 DAY)",
+      [mediaId],
+    );
+    const insertId = (result as { insertId: number }).insertId;
+    await db.query(
+      "INSERT INTO promotion_translations (promotion_id, locale, title) VALUES (?, 'en', 'A11y promotion')",
+      [insertId],
+    );
+    return insertId;
+  });
   const pages = [
     "/admin",
     "/admin/users",
@@ -204,6 +233,9 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
     "/admin/campaigns",
     "/admin/campaigns/new",
     `/admin/campaigns/${campaignId}`,
+    "/admin/promotions",
+    "/admin/promotions/new",
+    `/admin/promotions/${promotionId}`,
   ];
   for (const locale of ["en", "pt-BR", "tr", "it", "de", "fr", "es"]) {
     for (const path of pages) {
@@ -219,5 +251,10 @@ test("el panel cumple WCAG 2.2 AA y no tiene scroll horizontal en los 7 idiomas"
   await withDb(async (db) => {
     await db.query("DELETE FROM posts WHERE id = ?", [postId]);
     await db.query("DELETE FROM campaigns WHERE id = ?", [campaignId]);
+    const [rows] = await db.query("SELECT image_id FROM promotions WHERE id = ?", [promotionId]);
+    await db.query("DELETE FROM promotions WHERE id = ?", [promotionId]);
+    await db.query("DELETE FROM media WHERE id = ?", [
+      (rows as { image_id: number }[])[0]!.image_id,
+    ]);
   });
 });

@@ -54,6 +54,10 @@
       "intro": "Dört sınıf, sekiz yol. Her sınıf {level}. seviyede iki uzmanlıktan birini seçer.",
       "specializations": "{level}. seviyeden itibaren uzmanlıklar",
       "artAlt": "{name} sınıfı illüstrasyonu"
+    },
+    "promotions": {
+      "title": "Promosyonlar",
+      "until": "Bitiş:"
     }
   },
   "classes": {
@@ -700,6 +704,7 @@
       "label": "Panel bölümleri",
       "home": "Ana sayfa",
       "news": "Haberler",
+      "promotions": "Promosyonlar",
       "users": "Hesaplar",
       "audit": "Denetim kaydı",
       "shop": "Mağaza",
@@ -713,7 +718,8 @@
       "nothing": "Rolünüzün panelde henüz bölümü yok.",
       "news": "Haber yazın, çevirin, zamanlayın ve yayımlayın.",
       "shop": "Ürün oluşturun, adlarını çevirin, fiyat ve indirimleri yönetin.",
-      "campaigns": "İndirim dönemlerini ve tarihlerini planlayın."
+      "campaigns": "İndirim dönemlerini ve tarihlerini planlayın.",
+      "promotions": "Ana sayfa bannerları: görsel, tarihler ve metinler."
     },
     "roles": {
       "admin": "Yönetici",
@@ -830,12 +836,18 @@
         "campaign": {
           "create": "Kampanya oluşturuldu",
           "update": "Kampanya değişti"
+        },
+        "promotion": {
+          "create": "Promosyon oluşturuldu",
+          "update": "Promosyon değişti",
+          "delete": "Promosyon silindi"
         }
       },
       "cli": "Komut satırı",
       "postTarget": "{id} numaralı haber",
       "itemTarget": "{id} numaralı ürün",
-      "campaignTarget": "{id} numaralı kampanya"
+      "campaignTarget": "{id} numaralı kampanya",
+      "promotionTarget": "{id} numaralı promosyon"
     },
     "news": {
       "title": "Haberler",
@@ -1041,6 +1053,59 @@
       "done": {
         "created": "Kampanya oluşturuldu.",
         "saved": "Kampanya kaydedildi."
+      }
+    },
+    "promotions": {
+      "title": "Promosyonlar",
+      "intro": "Ana sayfadaki bannerlar. Her biri bitiş tarihini gösterir ve bitince kendiliğinden kaybolur. Saatler UTC.",
+      "new": "Yeni promosyon",
+      "newIntro": "Görseli yükleyin, nereye bağlanacağını ve ne zamana kadar görüneceğini seçin, başlığını ve görsel açıklamasını yazın.",
+      "create": "Promosyon oluştur",
+      "back": "Promosyonlara dön",
+      "empty": "Henüz promosyon yok.",
+      "image": "Görsel",
+      "imageHint": "JPEG, PNG, WebP veya AVIF; en fazla {max} MB ve en az 320 × 160 px. WebP olarak, meta verileri (GPS konumu gibi) olmadan kaydedilir.",
+      "imageReplaceHint": "İsteğe bağlı: yalnızca mevcut görseli değiştirmek için dosya seçin (en fazla {max} MB).",
+      "imageSize": "Kayıtlı görsel: {width} × {height} px, WebP.",
+      "targetUrl": "Bağlantı",
+      "targetUrlHint": "Bu sitede dil olmadan bir yol (/shop?cat=costumes) veya https:// adresi.",
+      "startsAtHint": "Boşsa şimdi.",
+      "endsAtHint": "Zorunlu: bu tarihten sonra banner gösterilmez.",
+      "sortOrderHint": "Küçük sayılar önce görünür. En fazla dört banner gösterilir.",
+      "titleField": "Başlık",
+      "titleIn": "{language} başlık",
+      "altIn": "{language} görsel açıklaması",
+      "altHint": "Göremeyenler için görselin ne gösterdiği. Yedek dil olan İngilizcede zorunludur.",
+      "editTitle": "{id} numaralı promosyon",
+      "until": "Bitiş:",
+      "deleteTitle": "Promosyonu sil",
+      "deleteHint": "Ana sayfadan hemen kalkar. Görseli başka bir yerde kullanılmıyorsa o da silinir.",
+      "delete": "Promosyonu sil",
+      "problems": {
+        "targetUrl": "/ ile başlayan bir yol veya https:// adresi kullanın.",
+        "date": "Geçerli bir tarih ve saat girin.",
+        "required": "Bu alan zorunludur.",
+        "endsBeforeStart": "Bitiş, başlangıçtan sonra olmalı.",
+        "past": "Yeni bir promosyon geçmişte başlayamaz.",
+        "sortOrder": "-32768 ile 32767 arasında tam sayı girin.",
+        "title": "En fazla 120 karakter.",
+        "alt": "En fazla 255 karakter.",
+        "english": "İngilizce zorunludur.",
+        "missing": "Bir görsel seçin.",
+        "tooLarge": "Dosya 5 MB’tan büyük.",
+        "type": "JPEG, PNG, WebP veya AVIF görsel kullanın.",
+        "tooSmall": "Görsel en az 320 × 160 px olmalı."
+      },
+      "errors": {
+        "notFound": "Bu promosyon artık yok.",
+        "changed": "Bu arada biri değişiklik kaydetti. Sayfayı yenileyip tekrar deneyin.",
+        "unchanged": "Değiştirilecek bir şey yoktu.",
+        "image": "Görsel kaydedilemedi. Tekrar deneyin."
+      },
+      "done": {
+        "created": "Promosyon oluşturuldu.",
+        "saved": "Kaydedildi.",
+        "deleted": "Promosyon silindi."
       }
     }
   }

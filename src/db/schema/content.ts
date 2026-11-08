@@ -24,18 +24,30 @@ import {
   varchar,
 } from "drizzle-orm/mysql-core";
 
-import { dt, fk, id, localeCode, timestamps } from "./_columns";
+import { dt, fk, id, localeCode, mediumBlob, timestamps } from "./_columns";
 import { users } from "./identity";
 import { locales } from "./locales";
 
-/** Imagen subida desde el panel. El fichero vive fuera de la BD (almacenamiento de objetos). */
+/** Imagen subida desde el panel, con sus bytes en la propia base (`data`). */
 export const media = mysqlTable("media", {
   id: id(),
-  /** Ruta relativa en el almacenamiento (`news/2026/halloween.avif`). */
+  /**
+   * Nombre público del fichero (`uploads/3f9a…c2.webp`): incluye el hash del
+   * contenido, así la URL cambia si cambia la imagen y se puede cachear para
+   * siempre.
+   */
   path: varchar("path", { length: 255 }).notNull().unique(),
   /** Ancho y alto: necesarios para reservar espacio y evitar CLS (F-42). */
   width: smallint("width", { unsigned: true }).notNull(),
   height: smallint("height", { unsigned: true }).notNull(),
+  /** Tipo MIME de `data` (siempre `image/webp` en las subidas del panel). */
+  mimeType: varchar("mime_type", { length: 32 }).notNull().default("image/webp"),
+  /**
+   * La imagen en sí, guardada en MySQL (decisión de Armando, 2026-11-07):
+   * sin servicio externo ni carpeta en el servidor, y entra en las copias de
+   * la base. `null` en imágenes que viven en el repositorio (`public/`).
+   */
+  data: mediumBlob("data"),
   ...timestamps,
 });
 

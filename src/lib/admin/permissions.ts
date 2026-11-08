@@ -5,7 +5,7 @@
  * zona del panel dice qué roles la abren:
  * - **admin:** todo, incluidos la tienda y sus precios, los roles de otras
  *   cuentas y la auditoría.
- * - **editor:** contenido (noticias; promociones en la siguiente parte).
+ * - **editor:** contenido (noticias y promociones de la portada).
  * - **support:** atender a los jugadores (buscar cuentas, ver su historial,
  *   suspenderlas o reactivarlas).
  *
@@ -20,11 +20,20 @@ export const STAFF_ROLES = ["admin", "editor", "support"] as const;
 export type StaffRole = (typeof STAFF_ROLES)[number];
 
 /** Zonas del panel, en el orden del menú. */
-export const ADMIN_AREAS = ["news", "shop", "campaigns", "users", "roles", "audit"] as const;
+export const ADMIN_AREAS = [
+  "news",
+  "promotions",
+  "shop",
+  "campaigns",
+  "users",
+  "roles",
+  "audit",
+] as const;
 export type AdminArea = (typeof ADMIN_AREAS)[number];
 
 const ACCESS: Record<AdminArea, readonly StaffRole[]> = {
   news: ["admin", "editor"],
+  promotions: ["admin", "editor"],
   // Precios y rebajas mueven dinero: solo administración.
   shop: ["admin"],
   campaigns: ["admin"],

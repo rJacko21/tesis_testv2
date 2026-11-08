@@ -22,7 +22,7 @@ import type { FormState } from "@/lib/auth/form-state";
 export interface AdminField {
   name: string;
   label: string;
-  type: "text" | "textarea" | "select" | "datetime" | "number" | "checkbox";
+  type: "text" | "textarea" | "select" | "datetime" | "number" | "checkbox" | "file";
   defaultValue?: string;
   options?: readonly { value: string; label: string }[];
   hint?: string;
@@ -36,6 +36,8 @@ export interface AdminField {
   max?: number;
   /** Texto en monoespaciada (slug, Markdown). */
   mono?: boolean;
+  /** Tipos aceptados de un campo de fichero (`image/png,image/jpeg`). */
+  accept?: string;
 }
 
 export interface AdminFormProps {
@@ -159,6 +161,18 @@ export function AdminForm({
                     </option>
                   ))}
                 </select>
+              ) : field.type === "file" ? (
+                // Un fichero no se puede volver a rellenar tras un error: hay que elegirlo otra vez.
+                <input
+                  id={id}
+                  name={field.name}
+                  type="file"
+                  accept={field.accept}
+                  required={field.required}
+                  aria-invalid={error ? true : undefined}
+                  aria-describedby={describedBy}
+                  className={`${INPUT} file:bg-parchment-100 file:text-navy-900 min-h-11 py-2 file:mr-3 file:rounded file:border-0 file:px-3 file:py-1 file:font-semibold`}
+                />
               ) : (
                 <input
                   {...common}

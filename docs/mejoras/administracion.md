@@ -7,7 +7,8 @@ T-23 se entrega por partes, cada una con su PR:
 1. Base del panel (acceso por roles y auditoría) y gestión de cuentas: M-35.
 2. Noticias: M-36.
 3. Tienda, precios y campañas: M-37.
-4. Promociones con imagen (F-16, F-18), paquetes de recarga y ajustes de AP: siguientes partes, sobre la misma base.
+4. Promociones con imagen: M-38.
+5. Paquetes de recarga y ajustes de AP: siguiente parte, sobre la misma base.
 
 ### M-35 · Panel con roles, gestión de cuentas y auditoría
 
@@ -148,12 +149,48 @@ T-23 se entrega por partes, cada una con su PR:
   - axe sin errores y sin scroll horizontal en las seis páginas nuevas, en los 7 idiomas.
 - **Fecha:** 2026-11-07
 
+### M-38 · Promociones de la portada con imagen, fechas y texto alternativo
+
+- **Fallo original:**
+  - F-16: promociones caducadas que seguían anunciadas, sin fecha de fin.
+  - F-18: varios banners apuntaban a la portada de la tienda en lugar del producto o la categoría.
+  - F-42: 42 de 43 imágenes sin texto alternativo y ninguna con ancho y alto (riesgo de CLS).
+- **Requisito:** RF-01 · RF-12 (promociones con fechas de inicio y fin, gestionadas desde el panel)
+- **Cambio:**
+  - **Panel** (`/{idioma}/admin/promotions`, roles `admin` y `editor`):
+    - listado con miniatura, título, enlace, fechas, estado (próxima, en curso o terminada) e idiomas;
+    - **nueva y ficha:** imagen, enlace, inicio, fin (obligatorio), orden, y título y descripción de la imagen en los 7 idiomas (el inglés, obligatorio);
+    - borrar, con la imagen si nada más la usa.
+  - **Portada:** sección «Promociones» con las que están en curso (hasta 4), con su imagen, su título enlazado y «Hasta el…». Va después de las noticias y llega en streaming; sin promociones en curso, no aparece.
+  - **Imágenes guardadas en MySQL** (decisión de Armando, ADR-17): `lib/media.ts` las comprueba y normaliza con `sharp`, y `/media/uploads/{hash}.webp` las sirve.
+  - **Auditoría:** promoción creada, cambiada (con los campos antes y después) y borrada. La auditoría enlaza a la ficha.
+- **Por qué de esta forma:**
+  - **La fecha de fin es obligatoria y se muestra.** Una promoción terminada desaparece sola de la portada, sin que nadie tenga que acordarse (F-16).
+  - **El texto alternativo es obligatorio en inglés.** Es el idioma de respaldo: ninguna imagen de la portada queda sin descripción. Si falta en el idioma de la página, se usa el inglés marcado con `lang="en"`, para que el lector de pantalla lo pronuncie bien.
+  - **El tipo de la imagen se decide por su contenido**, no por su nombre ni por lo que diga el navegador. Un fichero de texto llamado `.png` se rechaza (OWASP ASVS V12.2.1). `limitInputPixels` corta imágenes trampa de millones de píxeles.
+  - **Sin metadatos:** la ubicación GPS de una foto no debe acabar publicada.
+  - **Ancho y alto guardados:** la imagen reserva su hueco antes de cargar y no mueve la página (CLS, F-42).
+  - **Un enlace por promoción** (F-18): cada banner lleva a su propio destino, con la pista de usar la ruta de la categoría (`/shop?cat=…`) en lugar de la portada de la tienda.
+  - **Enlaces seguros:** solo rutas de esta web o URLs `https://`. `javascript:`, `data:`, `http://` y `//otro-sitio` se rechazan.
+  - **Imágenes huérfanas:** al cambiar o borrar una promoción, su imagen se borra en la misma transacción si nada más la usa (otras promociones, noticias o artículos). Si dos promociones usan la misma imagen, se guarda una sola vez.
+  - **El campo de fichero no se puede volver a rellenar tras un error** (el navegador no lo permite), pero el resto de lo escrito sí se conserva.
+- **Verificación:**
+  - `promotion-rules.test.ts` (6 casos): destinos seguros y peligrosos, fechas por defecto, fin obligatorio y posterior, inicio en el pasado solo al editar, textos en inglés y longitudes.
+  - **Contra MySQL** (`tests/db/promotions.test.ts`, 7 casos):
+    - la imagen se pasa a WebP, se limita a 1600 px y se nombra con su hash; se rechazan ficheros vacíos, que no son imágenes o demasiado pequeños;
+    - crear guarda la imagen en la base, con textos y auditoría; sin imagen no se crea;
+    - editar exige la versión vista y rechaza guardar sin cambios;
+    - cambiar de imagen borra la anterior; dos promociones con la misma imagen la guardan una vez y solo se borra con la última;
+    - el listado usa el título del idioma o el inglés.
+  - **e2e** (`tests/e2e/admin-promotions.spec.ts`, proyecto `publicacion`): un editor sube una imagen demasiado pequeña (error sin perder lo escrito), sube una válida, la ve en la ficha, comprueba que `/media` la sirve en WebP e inmutable, la ve en la portada con el título en español y la descripción en inglés marcada como tal, sin errores de axe, sigue el enlace a la tienda y la borra (desaparece de la portada y su imagen da 404).
+  - axe sin errores y sin scroll horizontal en las tres páginas del panel, en los 7 idiomas.
+- **Fecha:** 2026-11-08
+
 ### Pendiente
 
-- **Siguientes partes de T-23:** promociones con fechas e imagen (necesitan subir imágenes, con `media` y su `alt` por idioma), paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
-- **Imagen de los artículos** (`image_id`): con la subida de imágenes.
+- **Siguientes partes de T-23:** paquetes de recarga, y ajustes de AP con su movimiento en el libro mayor. Cada una añade sus acciones a la misma auditoría.
+- **Imagen de los artículos** (`image_id`) **y portada de las noticias** (`cover_image_id`): la subida de imágenes ya existe (M-38); falta el campo en sus formularios.
 - **Categorías de la tienda:** se crean con la semilla; editarlas desde el panel es una ampliación.
-- **Imagen de portada de las noticias** (`cover_image_id`): con la subida de imágenes.
 - **Una noticia programada aparece con unos minutos de retraso:** el listado público va en caché (`cacheLife("minutes")`) y nada la invalida a la hora exacta. Se podría invalidar con una tarea programada (T-28b).
 - **Aviso al jugador suspendido:** al iniciar sesión ve el mensaje genérico de credenciales. Un mensaje propio («tu cuenta está suspendida, escribe a soporte») solo debería mostrarse tras comprobar la contraseña, para no revelar el estado de cuentas ajenas.
 - **Reembolsos de recargas:** en la parte de tienda y recargas del panel ([recarga.md](recarga.md)). **Tickets de soporte:** con T-24.
