@@ -1,7 +1,8 @@
 /**
  * Estructura de la navegación global, la misma que en la web original:
  * Descargar, Tienda, Jugar ahora, Comunidad (Soporte, Reglas, Rankings,
- * Flandria, Liga PvP) e Iniciar sesión.
+ * Flandria, Liga PvP) e Iniciar sesión (con «Recargar AP» al lado, ver
+ * `SessionLinks`).
  *
  * Cambios respecto a la original:
  * - Enlace a Noticias (RF-08, F-14).
@@ -46,8 +47,6 @@ export const COMMUNITY_LINKS: readonly NavLink[] = [
 
 /** Llamada a la acción principal, destacada en dorado. */
 export const PLAY_NOW: NavLink = { label: "nav.playNow", href: "/play-now" };
-
-export const SIGN_IN: NavLink = { label: "nav.login", href: "/sign-in" };
 
 /** Redes oficiales enlazadas desde la web original (pie). */
 export const SOCIAL_LINKS = [

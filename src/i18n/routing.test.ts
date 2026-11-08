@@ -44,6 +44,7 @@ describe("URLs de la web original (RNF-05)", () => {
     ["/es/post/halloween-2026", "/es/news/halloween-2026"],
     ["/pt/post/halloween-2026", "/pt-BR/news/halloween-2026"],
     ["/de/lp/style1/PlayNow", "/de/play-now"],
+    ["/es/register", "/es/play-now"],
     ["/en/shop/detail/index/412", "/en/shop/item/412"],
     ["/en/rankings/global/all", "/en/rankings"],
     ["/en/rankings/global/sea/Sniper", "/en/rankings?area=sea&class=sniper"],

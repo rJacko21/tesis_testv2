@@ -90,3 +90,25 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
   Siguen pasando las pruebas de Escape, del foco atrapado y de cerrar al navegar. axe sin errores en los 7 idiomas.
 
 - **Fecha:** 2026-11-06
+
+### M-41 · «Mi cuenta» y «Recargar AP» en la cabecera
+
+- **Fallo encontrado por Armando (2026-11-08):** con la sesión iniciada, la cabecera seguía mostrando «Iniciar sesión» y no había forma visible de llegar a «Mi cuenta». La cabecera se prerenderiza con cada página y no sabía nada de la sesión.
+- **Requisito:** RF-02, RF-03, RF-06
+- **Cambio:**
+  - `SessionLinks` pinta «Recargar AP» e «Iniciar sesión» o «Mi cuenta» dentro de un `<Suspense>`. El HTML estático trae la versión sin sesión y el servidor envía la buena en la misma respuesta (Partial Prerendering). La página sigue saliendo de la caché y no se añade JavaScript propio.
+  - Solo se mira si existe la cookie de sesión, sin consultar la base de datos. Si la sesión ya no vale, «Mi cuenta» lleva a iniciar sesión, porque las páginas de cuenta sí la comprueban.
+  - **«Recargar AP» siempre a la vista**, también en móvil (abreviado a «AP» junto al menú, con el nombre accesible completo). Sin sesión lleva a `/sign-in?next=/{idioma}/topup` y, al entrar, de vuelta a la recarga.
+- **Coste:** las páginas pasan de estáticas a prerender parcial (◐ en `next build`). El HTML estático sigue sirviéndose al instante; el servidor solo resuelve el hueco de la cabecera, leyendo una cookie.
+- **Verificación:** `account.spec.ts` (sin sesión, «Recargar AP» pasa por iniciar sesión y vuelve a la recarga; con sesión, «Mi cuenta» y la recarga directa, en móvil y escritorio).
+- **Fecha:** 2026-11-08
+
+### M-42 · Retoques visuales en cuenta y recarga
+
+- **Petición de Armando (2026-11-08):** mejorar el frontend.
+- **Cambio:**
+  - **Páginas de cuenta** (iniciar sesión, recuperar la contraseña, contacto con soporte, verificación): en escritorio, el formulario comparte marco con un panel azul con un personaje del juego y las olas de la portada. Al iniciar sesión, el panel dice qué da la cuenta. En móvil el panel no se muestra y la imagen no se descarga.
+  - **Recarga:** el paquete con más AP extra lleva un borde dorado y la etiqueta «Más AP por tu dinero».
+  - **Mi cuenta:** accesos directos a personajes y rankings, recargas, compras y seguridad, con una línea que dice qué hay en cada uno.
+- **Por qué así:** se mantiene la estética del juego (azul marino, dorado, pergamino y la ilustración de los personajes) y se cambia solo lo que se veía vacío o sin jerarquía.
+- **Fecha:** 2026-11-08

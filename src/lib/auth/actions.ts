@@ -17,7 +17,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import { formLocale, limited, passwordError, text } from "./action-helpers";
+import { formLocale, limited, mismatch, passwordError, text } from "./action-helpers";
 import { auth } from "./auth";
 import type { FormState } from "./form-state";
 import { loginLockMinutes, recordLoginAttempt } from "./login-guard";
@@ -58,6 +58,12 @@ export async function signUpAction(_prev: FormState, form: FormData): Promise<Fo
   if (!z.email().safeParse(email).success) fields.email = t("auth.errors.email");
   const passwordProblem = passwordError(password, t);
   if (passwordProblem) fields.password = passwordProblem;
+  const repeated = mismatch(
+    password,
+    text(form, "passwordConfirm"),
+    t("auth.errors.passwordMismatch"),
+  );
+  if (repeated) fields.passwordConfirm = repeated;
   if (form.get("terms") !== "on") fields.terms = t("auth.errors.terms");
   if (Object.keys(fields).length > 0) {
     return { status: "error", message: t("auth.errorSummary"), fields, values };
@@ -207,9 +213,12 @@ export async function resetPasswordAction(_prev: FormState, form: FormData): Pro
   const token = text(form, "token");
   const password = text(form, "password");
 
-  const problem = passwordError(password, t);
+  const problem =
+    passwordError(password, t) ??
+    mismatch(password, text(form, "passwordConfirm"), t("auth.errors.passwordMismatch"));
   if (problem) {
-    return { status: "error", message: t("auth.errorSummary"), fields: { password: problem } };
+    const field = passwordError(password, t) ? "password" : "passwordConfirm";
+    return { status: "error", message: t("auth.errorSummary"), fields: { [field]: problem } };
   }
   const ip = await clientIp();
   const blocked = await limited(`reset-confirm:ip:${ip}`, 15 * 60, 10, t);

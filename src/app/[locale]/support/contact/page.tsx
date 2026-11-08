@@ -14,6 +14,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import saint from "@/assets/characters/saint.webp";
 import { AuthForm } from "@/components/auth/AuthForm";
 import { AuthPage } from "@/components/auth/AuthPage";
 import { languageAlternates } from "@/config/site";
@@ -39,6 +40,7 @@ export default async function SupportContactPage() {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
   return (
     <AuthPage
+      art={saint}
       title={t("support.contact.title")}
       intro={t("support.contact.intro")}
       footer={

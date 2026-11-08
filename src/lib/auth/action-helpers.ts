@@ -38,6 +38,14 @@ export async function limited(key: string, windowSeconds: number, max: number, t
   } satisfies FormState;
 }
 
+/**
+ * Comprueba que el campo de confirmación repite el valor (contraseña o correo
+ * nuevos). Si no coinciden, devuelve el error para ese campo.
+ */
+export function mismatch(value: string, repeated: string, message: string): string | null {
+  return value === repeated ? null : message;
+}
+
 /** Errores de longitud de la contraseña nueva, o `null`. */
 export function passwordError(password: string, t: Translate): string | null {
   if (password.length < PASSWORD_MIN || password.length > PASSWORD_MAX) {

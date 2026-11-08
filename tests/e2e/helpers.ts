@@ -54,10 +54,11 @@ export async function linkFromMail(page: Page, to: string, subject: RegExp): Pro
 }
 
 export async function register(page: Page, account: TestAccount) {
-  await page.goto("/es/register");
+  await page.goto("/es/play-now");
   await page.getByLabel("Nombre de cuenta").fill(account.username);
   await page.getByLabel("Correo electrónico").fill(account.email);
   await page.getByLabel("Contraseña", { exact: true }).fill(account.password);
+  await page.getByLabel("Repite la contraseña").fill(account.password);
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Crear cuenta" }).click();
 }

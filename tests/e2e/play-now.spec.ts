@@ -1,6 +1,6 @@
 /**
- * Landing «Jugar ahora» (RF-03): el mismo formulario y las mismas reglas
- * que `/register`, sin vídeo de fondo, y la URL antigua redirige aquí.
+ * Landing «Jugar ahora» (RF-03): el único formulario de registro, sin vídeo
+ * de fondo. La URL antigua y `/register` redirigen aquí (M-40).
  */
 import { expect, test } from "@playwright/test";
 
@@ -20,6 +20,7 @@ test("registra desde la landing y ofrece descargar el juego", async ({ page }) =
   await form.getByLabel("Nombre de cuenta").fill(account.username);
   await form.getByLabel("Correo electrónico").fill(account.email);
   await form.getByLabel("Contraseña", { exact: true }).fill(account.password);
+  await form.getByLabel("Repite la contraseña").fill(account.password);
   await form.getByRole("checkbox").check();
   await form.getByRole("button", { name: "Crear cuenta" }).click();
 
@@ -32,8 +33,9 @@ test("registra desde la landing y ofrece descargar el juego", async ({ page }) =
   await linkFromMail(page, account.email, /Confirma tu cuenta de Florensia/);
 });
 
-test("aplica las mismas reglas que /register", async ({ page }) => {
-  await page.goto("/es/play-now");
+test("/register lleva aquí: hay un solo formulario de registro", async ({ page }) => {
+  await page.goto("/es/register");
+  await expect(page).toHaveURL(/\/es\/play-now$/);
   const form = page.getByRole("main").locator("form");
   await expect(form.getByLabel("Contraseña", { exact: true })).toHaveAttribute("minlength", "10");
   await expect(form.getByLabel("Nombre de cuenta")).toHaveAttribute("maxlength", "16");

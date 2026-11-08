@@ -117,15 +117,23 @@ test("recuperar la contraseña: mismo mensaje exista o no el correo (CA de RF-03
   expect(resetLink).toMatch(/^\/es\/reset-password\?token=/);
   await page.goto(resetLink);
   const newPassword = `${account.password} renovada`;
-  await page.getByLabel("Contraseña nueva").fill(newPassword);
+  await page.getByLabel("Contraseña nueva", { exact: true }).fill(newPassword);
+  await page.getByLabel("Repite la contraseña nueva").fill(`${newPassword} distinta`);
+  await page.getByRole("button", { name: "Guardar contraseña" }).click();
+  await expect(page.getByText("Las contraseñas no coinciden.")).toBeVisible();
+  await page.getByLabel("Contraseña nueva", { exact: true }).fill(newPassword);
+  await page.getByLabel("Repite la contraseña nueva").fill(newPassword);
   await page.getByRole("button", { name: "Guardar contraseña" }).click();
   await expect(page.getByRole("main").getByRole("status")).toContainText(
     "Tu contraseña ha cambiado.",
   );
+  // También al recuperarla llega el aviso al correo de la cuenta.
+  await linkFromMail(page, account.email, /Tu contraseña de Florensia ha cambiado/);
 
   // El enlace solo sirve una vez.
   await page.goto(resetLink);
-  await page.getByLabel("Contraseña nueva").fill(`${newPassword} otra vez`);
+  await page.getByLabel("Contraseña nueva", { exact: true }).fill(`${newPassword} otra vez`);
+  await page.getByLabel("Repite la contraseña nueva").fill(`${newPassword} otra vez`);
   await page.getByRole("button", { name: "Guardar contraseña" }).click();
   await expect(page.getByRole("main").getByRole("alert")).toHaveText(
     "El enlace no es válido o ha caducado.",

@@ -46,6 +46,13 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
   const loaded = await tryLoad("los paquetes de AP", listPackages);
   const packages = loaded.ok ? loaded.data : [];
   const base = packages[0];
+  // El paquete con más AP extra se destaca: es la información que decide la compra.
+  const best = base
+    ? packages.reduce<(typeof packages)[number] | undefined>((top, pack) => {
+        const bonus = bonusPercent(pack, base) ?? 0;
+        return bonus > 0 && bonus > (top ? (bonusPercent(top, base) ?? 0) : 0) ? pack : top;
+      }, undefined)
+    : undefined;
   const error = ERRORS.find((code) => code === query.error);
 
   return (
@@ -72,7 +79,7 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
               {t("topup.unavailable")}
             </p>
           ) : (
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {packages.map((pack) => {
                 const bonus = base ? bonusPercent(pack, base) : null;
                 const price = formatMoney(locale, pack.priceCents, pack.currency);
@@ -81,8 +88,15 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
                   <li key={pack.id}>
                     <article
                       aria-labelledby={`pack-${pack.id}`}
-                      className="rounded-panel shadow-panel flex h-full flex-col gap-3 bg-white p-5"
+                      className={`rounded-panel shadow-panel relative flex h-full flex-col gap-3 bg-white p-5 ${
+                        pack === best ? "ring-gold-500 ring-2" : ""
+                      }`}
                     >
+                      {pack === best ? (
+                        <p className="bg-gold-500 text-navy-950 absolute -top-3 right-4 rounded-full px-3 py-0.5 text-xs font-bold">
+                          {t("topup.bestValue")}
+                        </p>
+                      ) : null}
                       <div className="min-h-6">
                         {bonus ? (
                           <Badge tone="success">{t("topup.bonus", { percent: bonus })}</Badge>

@@ -158,3 +158,28 @@ export async function topupReceiptMessage(
     note: t("email.topupReceipt.note"),
   });
 }
+
+/**
+ * Aviso de que el correo de la cuenta ya ha cambiado (al abrir el enlace de
+ * confirmación). Va a los dos correos:
+ * - al **anterior**, por si no fue el dueño. Ese correo ya no sirve para
+ *   recuperar la cuenta, así que el enlace lleva al formulario de soporte;
+ * - al **nuevo**, como confirmación de que desde ahora es el de la cuenta.
+ */
+export async function emailChangedMessage(
+  user: Recipient,
+  kind: "previous" | "current",
+  change: { previous: string; current: string },
+  url: string,
+): Promise<MailMessage> {
+  const t = await translatorFor(user.locale);
+  return layout({
+    to: kind === "previous" ? change.previous : change.current,
+    subject: t("email.emailChanged.subject"),
+    greeting: t("email.greeting", { name: user.name }),
+    body: t(`email.emailChanged.${kind}`, change),
+    action: t(`email.emailChanged.${kind}Action`),
+    url,
+    note: t(`email.emailChanged.${kind}Note`),
+  });
+}

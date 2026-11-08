@@ -109,3 +109,17 @@ Lighthouse móvil en `/es/register`, en local y en 3 pasadas:
 - **SMTP en producción:** hace falta un proveedor con plan gratuito (p. ej. Brevo) al desplegar (T-28a).
 - ~~**Cambiar correo y contraseña desde la cuenta, cerrar otras sesiones, exportar datos y borrar la cuenta:** T-18 (RF-04).~~ Hecho en [mi-cuenta.md](mi-cuenta.md) (M-27 y M-29).
 - **Tarea de limpieza** que borre los intentos de más de 30 días y las sesiones caducadas: con la monitorización y el mantenimiento (T-28b).
+
+### M-40 · Confirmar contraseña y correo, avisos a los dos correos y un solo registro
+
+- **Petición de Armando (2026-11-08)** al probar la web en local.
+- **Requisito:** RF-03, RF-04
+- **Cambio:**
+  - **Repetir la contraseña** al registrarse, al recuperarla y al cambiarla desde «Mi cuenta», y **repetir el correo nuevo** al cambiarlo. Si no coinciden, el servidor marca el segundo campo («Las contraseñas no coinciden.»), además de lo que valide el navegador. Al cambiar el correo se sigue pidiendo la contraseña actual una sola vez: repetirla no protege de nada, porque ya se comprueba contra la guardada.
+  - **Avisos por correo:**
+    - Al pedir el cambio de correo ya se avisaba al actual y se enviaba el enlace al nuevo (M-27).
+    - **Nuevo:** al abrir el enlace, cuando el cambio se hace de verdad, llega un aviso **al correo anterior y al nuevo**. El anterior lleva al formulario de soporte, porque esa dirección ya no sirve para recuperar la cuenta; el nuevo lleva a «Seguridad». Los dos correos salen del propio token de Better Auth, que solo se lee después de comprobar su firma (`lib/auth/email-change.ts`).
+    - **Nuevo:** al recuperar la contraseña con el enlace también llega el aviso «Tu contraseña ha cambiado» (`onPasswordReset`), igual que al cambiarla desde «Mi cuenta».
+  - **Un solo formulario de registro.** `/register` y «Jugar ahora» ya usaban el mismo componente (`RegisterForm`), pero eran dos páginas con aspecto distinto para lo mismo. Ahora `/register` redirige con 301 a `/play-now`, que tiene además los pasos para empezar a jugar. Tras registrarse ofrece descargar el juego o iniciar sesión.
+- **Verificación:** `auth.spec.ts` (contraseñas distintas al recuperarla y aviso), `account.spec.ts` (contraseñas y correos distintos; avisos al correo anterior y al nuevo, comprobados en Mailpit), `play-now.spec.ts` (`/register` lleva a «Jugar ahora») y `routing.test.ts`.
+- **Fecha:** 2026-11-08
