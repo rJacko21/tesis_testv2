@@ -176,7 +176,7 @@
   "support": {
     "title": "Assistance",
     "description": "Réponses aux questions fréquentes sur Florensia : compte, paiements, installation et règles.",
-    "intro": "Trouvez ici des réponses rapides. Si votre question n’y est pas, demandez à la communauté sur Discord.",
+    "intro": "Vous trouverez ici des réponses rapides. Si votre question n’y figure pas, écrivez à l’équipe d’assistance ou demandez à la communauté sur Discord.",
     "faqTitle": "Questions fréquentes",
     "faq": {
       "free": {
@@ -204,9 +204,46 @@
         "answer": "Le transfert de personnages est géré par l’assistance. Indiquez dans votre demande le nom du compte, le personnage et le serveur de destination."
       }
     },
+    "contactTitle": "Contacter l’assistance",
+    "contactBody": "Pour un problème de compte, de paiement, de migration de personnage, un bug ou un signalement, écrivez à l’équipe. Nous répondons à votre e-mail.",
+    "contactLink": "Écrire à l’assistance",
     "communityTitle": "Besoin d’aide supplémentaire ?",
     "communityBody": "La communauté et l’équipe de Florensia répondent aux questions sur le serveur Discord officiel.",
-    "discord": "Ouvrir Discord"
+    "discord": "Ouvrir Discord",
+    "contact": {
+      "title": "Contacter l’assistance",
+      "description": "Écrivez à l’équipe d’assistance de Florensia au sujet de votre compte, des paiements, d’une migration de personnage, d’un bug ou d’un signalement.",
+      "intro": "Expliquez-nous ce qui s’est passé. L’équipe répond à l’adresse e-mail que vous indiquez.",
+      "noPassword": "N’indiquez jamais votre mot de passe. L’équipe d’assistance ne vous le demandera jamais.",
+      "back": "Retour aux questions fréquentes",
+      "submit": "Envoyer le message",
+      "sent": "Message envoyé. L’équipe d’assistance répondra à {email}.",
+      "fields": {
+        "name": "Votre nom",
+        "emailHint": "Nous répondons à cette adresse. Utilisez celle de votre compte de jeu si vous en avez un.",
+        "category": "Sujet",
+        "choose": "Choisissez un sujet…",
+        "subject": "Objet",
+        "message": "Message",
+        "messageHint": "Entre {min} et {max} caractères. Indiquez le nom de votre compte et, si besoin, le personnage, le serveur et l’heure."
+      },
+      "categories": {
+        "account": "Compte",
+        "payment": "Paiements et AP",
+        "migration": "Migration de personnage",
+        "bug": "Bug",
+        "report": "Signalement d’un joueur",
+        "other": "Autre"
+      },
+      "errors": {
+        "required": "Ce champ est obligatoire.",
+        "category": "Choisissez un sujet.",
+        "nameLength": "Jusqu’à {max} caractères.",
+        "subjectLength": "Entre {min} et {max} caractères.",
+        "messageLength": "Entre {min} et {max} caractères.",
+        "send": "Le message n’a pas pu être envoyé. Réessayez dans quelques minutes."
+      }
+    }
   },
   "legal": {
     "toc": "Sommaire",

@@ -1,6 +1,7 @@
 "use client";
 /**
- * Formulario de cuenta genérico (registro, inicio de sesión, recuperación).
+ * Formulario público genérico: cuenta (registro, inicio de sesión,
+ * recuperación) y contacto con soporte.
  *
  * Recibe una Server Action y la descripción de sus campos con los textos ya
  * traducidos. Funciona sin JavaScript (el navegador envía el formulario y
@@ -24,7 +25,7 @@ export interface AuthField {
   name: string;
   /** Texto de la etiqueta; en una casilla puede llevar enlaces. */
   label: ReactNode;
-  type: "text" | "email" | "password" | "checkbox" | "select";
+  type: "text" | "email" | "password" | "checkbox" | "select" | "textarea";
   /** Opciones de un `select`; la primera puede ser la vacía («Elige…»). */
   options?: readonly { value: string; label: string }[];
   autoComplete?: string;
@@ -33,6 +34,8 @@ export interface AuthField {
   minLength?: number;
   maxLength?: number;
   pattern?: string;
+  /** Alto de un `textarea`, en líneas. */
+  rows?: number;
 }
 
 export interface AuthFormProps {
@@ -178,6 +181,30 @@ export function AuthForm({
                   </option>
                 ))}
               </select>
+              {hint}
+              {fieldError}
+            </div>
+          );
+        }
+
+        if (field.type === "textarea") {
+          return (
+            <div key={field.name}>
+              <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+                {field.label}
+              </label>
+              <textarea
+                id={id}
+                name={field.name}
+                required={field.required}
+                minLength={field.minLength}
+                maxLength={field.maxLength}
+                rows={field.rows ?? 6}
+                defaultValue={values[field.name]}
+                aria-invalid={error ? true : undefined}
+                aria-describedby={describedBy}
+                className={`${INPUT} py-2`}
+              />
               {hint}
               {fieldError}
             </div>

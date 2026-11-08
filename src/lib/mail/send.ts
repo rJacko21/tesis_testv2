@@ -1,5 +1,6 @@
 /**
- * Envío de correos (verificación y recuperación de contraseña, RF-03).
+ * Envío de correos (verificación y recuperación de contraseña, RF-03;
+ * contacto con soporte, RF-10).
  *
  * Con `SMTP_URL` se envía por SMTP: en local, a Mailpit (docker-compose), que
  * los recoge sin enviarlos a nadie. Sin `SMTP_URL`, el correo se escribe en
@@ -16,6 +17,8 @@ export interface MailMessage {
   subject: string;
   text: string;
   html: string;
+  /** Dirección a la que se responde (la del jugador, en un mensaje a soporte). */
+  replyTo?: string;
 }
 
 let transporter: Transporter | undefined;
