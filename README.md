@@ -26,6 +26,8 @@ pnpm db:seed                  # carga los datos base (idiomas)
 pnpm dev                      # http://localhost:3000
 ```
 
+Para probar todo en local (panel, compras con AP, correo de soporte), sigue la [guía local](docs/guia-local.md).
+
 ## Scripts
 
 | Script                              | Qué hace                                         |
@@ -39,6 +41,9 @@ pnpm dev                      # http://localhost:3000
 | `pnpm db:generate`                  | Crea una migración a partir de `src/db/schema`   |
 | `pnpm db:migrate`                   | Aplica las migraciones pendientes                |
 | `pnpm db:seed`                      | Carga datos base (idempotente)                   |
+| `pnpm db:seed:demo`                 | Datos de demo (solo base local)                  |
+| `pnpm staff:roles <cuenta> [roles]` | Roles del equipo de una cuenta                   |
+| `pnpm demo:characters <cuenta> [n]` | Da personajes de la demo a una cuenta (local)    |
 
 ## Estructura
 
