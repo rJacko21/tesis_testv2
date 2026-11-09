@@ -39,11 +39,11 @@ export function ClassShowcase({ t }: { t: Translate }) {
       <Container>
         <h2
           id="classes-title"
-          className="font-display text-navy-900 text-center text-3xl font-bold sm:text-4xl"
+          className="font-display text-navy-900 text-3xl font-bold sm:text-4xl"
         >
           {t("home.classes.title")}
         </h2>
-        <p className="text-ink-600 mx-auto mt-3 max-w-2xl text-center text-lg">
+        <p className="text-ink-600 mt-3 max-w-2xl text-lg">
           {t("home.classes.intro", { level: JOB_CHANGE_LEVEL })}
         </p>
 

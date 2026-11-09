@@ -25,7 +25,7 @@ export default async function HomePage() {
       <Hero locale={locale} t={t} />
       <LatestNews locale={locale} t={t} />
       <Promotions locale={locale} t={t} />
-      <FeatureList t={t} />
+      <FeatureList locale={locale} t={t} />
       <ClassShowcase t={t} />
     </main>
   );

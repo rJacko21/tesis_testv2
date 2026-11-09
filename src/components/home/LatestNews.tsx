@@ -41,10 +41,9 @@ export function LatestNews({ locale, t }: LatestNewsProps) {
           </h2>
           <Link
             href={`/${locale}/news`}
-            className="text-navy-700 inline-flex min-h-11 items-center font-bold hover:underline"
+            className="text-navy-700 inline-flex min-h-11 items-center font-bold underline underline-offset-4 hover:no-underline"
           >
             {t("news.viewAll")}
-            <span aria-hidden="true">&nbsp;→</span>
           </Link>
         </div>
         <Suspense fallback={<NewsGridSkeleton />}>
