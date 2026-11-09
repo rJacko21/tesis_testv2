@@ -8,7 +8,9 @@
  * - una sola ilustración recortada (35 KB en WebP, menos en AVIF), con
  *   `fetchPriority="high"` porque es el elemento LCP en móvil;
  * - el fondo es un degradado CSS y la ola es un SVG en línea: 0 peticiones;
- * - el título es un `h1` real; la portada original no tenía (F-42).
+ * - el título es un `h1` real; la portada original no tenía (F-42);
+ * - sin etiqueta sobre el título: repetía el lema y es un recurso de
+ *   plantilla. El nombre del juego es el titular, grande, como un logotipo.
  *
  * @see RF-01 Portada.
  */
@@ -30,23 +32,25 @@ export function Hero({ locale, t }: HeroProps) {
       aria-labelledby="hero-title"
       className="from-navy-700 via-navy-900 to-navy-950 relative isolate overflow-hidden bg-linear-to-b text-white"
     >
-      {/* Halo de luz detrás del personaje, solo decorativo. */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/3 right-[-20%] -z-10 size-[28rem] rounded-full bg-sky-300/25 blur-3xl lg:right-[5%] lg:size-[36rem]"
-      />
-      <Container className="grid gap-2 pt-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:pt-12">
-        <div className="flex flex-col gap-5 pb-4 lg:pb-16">
-          <p className="border-gold-500/60 text-gold-300 w-fit rounded-full border px-3 py-1 text-sm font-bold tracking-wide uppercase">
-            {t("home.hero.eyebrow")}
-          </p>
+      {/*
+       * Horizonte al atardecer, solo con CSS (0 peticiones): una luna baja
+       * detrás del personaje y una línea dorada donde el cielo toca el mar.
+       * Es el único adorno de la página; el resto queda sobrio a propósito.
+       */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <div className="from-gold-300/35 via-gold-500/10 absolute top-[18%] right-[6%] size-56 rounded-full bg-radial to-transparent to-70% sm:size-80 lg:right-[12%] lg:size-[30rem]" />
+        <div className="from-navy-950/0 to-navy-950 absolute inset-x-0 top-[72%] bottom-0 bg-linear-to-b lg:top-[80%]" />
+        <div className="via-gold-300/60 absolute inset-x-0 top-[72%] h-px bg-linear-to-r from-transparent to-transparent lg:top-[80%]" />
+      </div>
+      <Container className="grid gap-2 pt-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:pt-14">
+        <div className="flex flex-col gap-6 pb-4 lg:pb-24">
           <h1
             id="hero-title"
-            className="font-display text-gold-300 text-5xl font-extrabold tracking-wide drop-shadow-[0_2px_0_rgb(7_29_51)] sm:text-7xl"
+            className="font-display text-gold-300 text-6xl leading-none font-extrabold tracking-tight drop-shadow-[0_3px_0_rgb(7_29_51)] sm:text-8xl lg:text-9xl"
           >
             Florensia
           </h1>
-          <p className="max-w-xl text-lg text-sky-100 sm:text-xl">{t("home.tagline")}</p>
+          <p className="max-w-md text-lg text-sky-100 sm:text-xl">{t("home.tagline")}</p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={`/${locale}/play-now`} size="lg">
               {t("nav.playNow")}
@@ -56,13 +60,14 @@ export function Hero({ locale, t }: HeroProps) {
             </ButtonLink>
           </div>
         </div>
+        {/* Por encima de la ola (`z-10`): el personaje sale del mar hacia la página. */}
         <Image
           src={heroArt}
           alt={t("home.hero.artAlt")}
           fetchPriority="high"
           loading="eager"
           sizes="(min-width: 1024px) 400px, 176px"
-          className="mx-auto h-auto w-44 self-end drop-shadow-[0_10px_24px_rgb(0_0_0/0.45)] sm:w-60 lg:w-[25rem]"
+          className="relative z-10 mx-auto h-auto w-44 self-end drop-shadow-[0_10px_24px_rgb(0_0_0/0.45)] sm:w-60 lg:w-[25rem]"
         />
       </Container>
       {/* Ola que une la cabecera con el fondo de pergamino de la página. */}

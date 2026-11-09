@@ -2,16 +2,19 @@
  * Imagen de un artículo mientras no tenga foto propia.
  *
  * Los artículos de demo no tienen imagen (las fotos llegan con el panel,
- * T-23). En lugar de un hueco, un degradado por categoría y un icono en SVG
- * dentro del HTML: no pide ningún archivo ni añade JavaScript. Es
- * decorativa (`aria-hidden`): el nombre ya está en texto.
+ * T-23). En lugar de un hueco, un fondo claro teñido por categoría y un
+ * icono en SVG dentro del HTML: no pide ningún archivo ni añade JavaScript.
+ * Es decorativa (`aria-hidden`): el nombre ya está en texto.
+ *
+ * Tono suave a propósito: con 16 artículos por página, bloques saturados
+ * iguales pesaban más que los nombres y los precios, que es lo que se busca.
  *
  * Proporción fija (`aspect-square`): el hueco se reserva desde el principio
  * y no hay saltos de diseño (CLS).
  */
 const BACKGROUNDS: Record<string, string> = {
-  costumes: "from-gold-500 to-gold-700",
-  boosts: "from-teal-700 to-navy-900",
+  costumes: "bg-parchment-50 text-gold-700",
+  boosts: "bg-teal-100 text-teal-700",
 };
 
 /** Icono por subcategoría (trazos de 24 × 24); el cofre si no hay uno propio. */
@@ -33,7 +36,7 @@ export function ItemArt({ category, subcategory, className = "" }: ItemArtProps)
   return (
     <div
       aria-hidden="true"
-      className={`flex aspect-square items-center justify-center bg-linear-to-br ${BACKGROUNDS[category] ?? "from-navy-500 to-navy-900"} ${className}`}
+      className={`flex aspect-square items-center justify-center ${BACKGROUNDS[category] ?? "text-navy-700 bg-sky-100"} ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
@@ -42,7 +45,7 @@ export function ItemArt({ category, subcategory, className = "" }: ItemArtProps)
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="size-1/2 text-white/85"
+        className="size-2/5 opacity-80"
       >
         <path d={(subcategory && ICONS[subcategory]) || CHEST} />
       </svg>
