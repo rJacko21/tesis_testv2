@@ -1,6 +1,13 @@
 {
   "version": 1,
   "skills": {
+    "diagram-design": {
+      "source": "cathrynlavery/diagram-design",
+      "sourceType": "github",
+      "skillPath": "skills/diagram-design/SKILL.md",
+      "computedHash": "e3f7133da564a2954b99e7d98e37cd52ed5abad0854e67e194d0e84decbe7dd3",
+      "installMode": "copy"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
