@@ -52,11 +52,11 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
   - **Fuentes variables:** un fichero por alfabeto cubre todos los grosores. Las fuentes de la web pesan 99 KB en total, frente a 302 KB con Alegreya y Nunito.
   - **Cinzel se precarga** (15 KB). Sin precarga, el titular cambiaba de número de líneas al llegar la fuente y empujaba el contenido (CLS 0,037 medido); con ella, CLS 0.
   - **Las escenas** son pantallas de carga del cliente del juego (`Data/UI/SplashImage`), recortadas y pasadas a WebP (30 a 108 KB). Solo la de la cabecera se carga con prioridad.
-- **Verificación** (Lighthouse móvil, mediana de 3, en local; antes → después):
-  - Portada: LCP 1,64 s → 1,71 s · CLS 0,001 → 0,000 · rendimiento 0,97 → 0,96 · accesibilidad 1,00 → 1,00 · peso 390 KB → 399 KB.
-  - Tienda: LCP 1,58 s → 1,72 s · CLS 0 → 0 · rendimiento 0,96 → 0,95 · accesibilidad 1,00 → 1,00.
-  - El LCP sube unos 0,1 s porque la cabecera ahora es una escena a todo el ancho; sigue por debajo del límite de 2,0 s.
-  - `pnpm js:budget`: la ruta más pesada sigue siendo la del panel de promociones; portada y tienda quedan en 147 773 B de 153 600 B.
+- **Verificación** (Lighthouse móvil, mediana de 3, en local, con la versión final que incluye las capturas de M-45; antes → después):
+  - Portada: LCP 1,64 s → 1,74 s · TBT 168 → 215 ms · CLS 0,001 → 0 · rendimiento 0,97 → 0,95 · accesibilidad 1,00 → 1,00 · peso 390 KB → 395 KB.
+  - Tienda: LCP 1,58 s → 1,59 s · TBT 209 → 183 ms · CLS 0 → 0 · rendimiento 0,96 → 0,96 · accesibilidad 1,00 → 1,00 · peso 297 KB → 279 KB.
+  - El LCP de la portada sube unos 0,1 s porque la cabecera ahora es una escena a todo el ancho (la imagen se sirve en 15 KB); sigue por debajo del límite de 2,0 s.
+  - `pnpm js:budget`: portada, tienda y ficha de artículo quedan en 147 793 B de 153 600 B. La ruta más pesada sigue siendo la del panel de promociones (148 894 B, margen de 4706 B).
   - `contrast.test.ts` comprueba ahora cada par texto/fondo en los dos temas (72 comprobaciones, mínimo 4.5:1).
   - e2e nuevos: cambio de tema y recuerdo al recargar, tema según el sistema, pestañas de clases.
 - **Fecha:** 2026-11-13

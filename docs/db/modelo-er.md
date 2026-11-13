@@ -2,7 +2,7 @@
 
 > Generado por `pnpm db:er` a partir de `src/db/schema`. No se edita a mano.
 
-43 tablas en 5 dominios. Cada diagrama muestra las tablas de su dominio y sus claves ajenas, también las que apuntan a tablas de otros dominios (por ejemplo, `users`). Convenciones: ver [04-arquitectura §4](../plan/04-arquitectura.md).
+44 tablas en 5 dominios. Cada diagrama muestra las tablas de su dominio y sus claves ajenas, también las que apuntan a tablas de otros dominios (por ejemplo, `users`). Convenciones: ver [04-arquitectura §4](../plan/04-arquitectura.md).
 
 ## Identidad
 
@@ -276,6 +276,11 @@ erDiagram
     varchar name
     text description
   }
+  shop_item_previews {
+    bigint item_id PK,FK
+    bigint media_id PK,FK
+    tinyint sort_order
+  }
   item_prices {
     bigint id PK
     bigint item_id FK
@@ -351,6 +356,8 @@ erDiagram
   media |o--o{ shop_items : "image_id"
   shop_items ||--o{ shop_item_translations : "item_id"
   locales ||--o{ shop_item_translations : "locale"
+  shop_items ||--o{ shop_item_previews : "item_id"
+  media ||--o{ shop_item_previews : "media_id"
   shop_items ||--o{ item_prices : "item_id"
   campaigns |o--o{ item_prices : "campaign_id"
   users ||--o{ carts : "user_id"
