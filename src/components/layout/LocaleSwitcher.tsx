@@ -46,7 +46,7 @@ export function LocaleSwitcher({ current, label, currentLabel }: LocaleSwitcherP
   return (
     <details className="group relative">
       <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded px-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-3 [&::-webkit-details-marker]:hidden">
-        <span className="lg:max-2xl:sr-only">{label}</span>
+        <span className="max-sm:sr-only lg:max-2xl:sr-only">{label}</span>
         <span aria-hidden="true" className="uppercase">
           {current}
         </span>
