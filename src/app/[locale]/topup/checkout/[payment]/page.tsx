@@ -41,14 +41,14 @@ export default async function MockCheckoutPage({
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container className="max-w-xl">
-        <p className="bg-gold-300 text-ink-900 rounded-lg p-3 text-sm font-semibold">
+        <p className="bg-gold-300 text-navy-950 rounded-lg p-3 text-sm font-semibold">
           {t("topup.gateway.demo")}
         </p>
         <section
           aria-labelledby="gateway-title"
-          className="border-navy-700 mt-6 rounded-lg border-2 border-dashed bg-white p-6"
+          className="border-strong bg-surface mt-6 rounded-lg border-2 border-dashed p-6"
         >
-          <h1 id="gateway-title" className="font-display text-navy-900 text-3xl font-bold">
+          <h1 id="gateway-title" className="font-display text-heading text-3xl font-bold">
             {t("topup.gateway.title")}
           </h1>
           <dl className="mt-4 grid grid-cols-[1fr_auto] gap-x-4 gap-y-2">
@@ -57,7 +57,7 @@ export default async function MockCheckoutPage({
               {t("topup.amount", { ap: payment.apAmount })}
             </dd>
             <dt>{t("topup.gateway.price")}</dt>
-            <dd className="text-navy-900 text-right text-xl font-bold">{price}</dd>
+            <dd className="text-heading text-right text-xl font-bold">{price}</dd>
           </dl>
           <form action={mockGatewayAction} className="mt-6 flex flex-wrap gap-3">
             <input type="hidden" name="locale" value={locale} />

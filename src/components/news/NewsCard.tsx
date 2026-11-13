@@ -35,7 +35,7 @@ export function NewsCard({ post, locale, t, headingLevel = 2, priority = false }
   const fallback = post.contentLocale !== locale;
 
   return (
-    <article className="rounded-panel shadow-panel focus-within:outline-gold-500 relative flex h-full flex-col overflow-hidden bg-white focus-within:outline-3 focus-within:outline-offset-2 hover:shadow-lg">
+    <article className="rim lift rounded-panel shadow-panel focus-within:outline-gold-500 bg-surface relative flex h-full flex-col overflow-hidden focus-within:outline-3 focus-within:outline-offset-2">
       <NewsCover
         category={post.category}
         priority={priority}
@@ -52,7 +52,7 @@ export function NewsCard({ post, locale, t, headingLevel = 2, priority = false }
           {fallback ? <Badge tone="neutral">{t("news.englishOnly")}</Badge> : null}
         </div>
         <Heading
-          className="font-display text-navy-900 text-xl leading-tight font-bold"
+          className="font-display text-heading text-xl leading-tight font-bold"
           lang={fallback ? post.contentLocale : undefined}
         >
           {/* `focus:outline-none`: el foco se dibuja en toda la tarjeta (focus-within). */}

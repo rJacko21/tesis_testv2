@@ -82,7 +82,7 @@ export default async function NewsDetailPage({ params }: Props) {
       <Container className="max-w-3xl">
         <Link
           href={`/${locale}/news`}
-          className="text-navy-700 inline-flex min-h-11 items-center font-bold hover:underline"
+          className="text-link inline-flex min-h-11 items-center font-bold hover:underline"
         >
           <span aria-hidden="true">←&nbsp;</span>
           {t("news.back")}
@@ -137,7 +137,7 @@ function PostArticle({ post, locale, t }: { post: PostDetail; locale: Locale; t:
         </div>
         <h1
           lang={contentLang}
-          className="font-display text-navy-900 text-3xl leading-tight font-bold sm:text-4xl"
+          className="font-display text-heading text-3xl leading-tight font-bold sm:text-4xl"
         >
           {post.title}
         </h1>

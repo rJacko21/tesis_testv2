@@ -35,9 +35,9 @@ import { itemHref, parseItemId } from "@/lib/shop-filters";
 
 export const instant = false;
 
-const PANEL = "border-parchment-300 rounded-lg border bg-white p-4 sm:p-6";
+const PANEL = "border-parchment-300 rounded-lg border bg-surface p-4 sm:p-6";
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 rounded-lg border bg-white px-3 focus:border-navy-700";
+  "border-parchment-300 text-ink-900 min-h-11 rounded-lg border bg-surface px-3 focus:border-navy-700";
 
 /** Errores que la cesta sabe explicar. */
 const ERRORS = [
@@ -85,12 +85,12 @@ export default async function CartPage({ searchParams }: PageProps<"/[locale]/ca
     <main className="flex-1 py-8 sm:py-12">
       <Container>
         <p className="text-sm">
-          <Link href={`/${locale}/shop`} className="text-navy-700 font-semibold underline">
+          <Link href={`/${locale}/shop`} className="text-link font-semibold underline">
             <span aria-hidden="true">←&nbsp;</span>
             {t("shop.cart.continue")}
           </Link>
         </p>
-        <h1 className="font-display text-navy-900 mt-4 text-4xl font-bold">
+        <h1 className="font-display text-heading mt-4 text-4xl font-bold">
           {t("shop.cart.title")}
         </h1>
 
@@ -107,7 +107,7 @@ export default async function CartPage({ searchParams }: PageProps<"/[locale]/ca
         {rows.length === 0 ? (
           <p className="bg-parchment-50 border-parchment-300 mt-6 max-w-2xl rounded-lg border p-4">
             {t("shop.cart.empty")}{" "}
-            <Link href={`/${locale}/shop`} className="text-navy-700 font-semibold underline">
+            <Link href={`/${locale}/shop`} className="text-link font-semibold underline">
               {t("shop.cart.browse")}
             </Link>
           </p>
@@ -133,12 +133,12 @@ export default async function CartPage({ searchParams }: PageProps<"/[locale]/ca
             </section>
 
             <section aria-labelledby="cart-summary" className={PANEL}>
-              <h2 id="cart-summary" className="font-display text-navy-900 text-2xl font-bold">
+              <h2 id="cart-summary" className="font-display text-heading text-2xl font-bold">
                 {t("shop.cart.summary")}
               </h2>
               <dl className="mt-4 grid grid-cols-[1fr_auto] gap-x-4 gap-y-2">
                 <dt>{t("shop.cart.total")}</dt>
-                <dd className="text-navy-900 text-right text-lg font-bold">
+                <dd className="text-heading text-right text-lg font-bold">
                   {t("shop.price.amount", { amount: total })}
                 </dd>
                 <dt>{t("shop.cart.balance")}</dt>
@@ -192,7 +192,7 @@ function Notice({
     return (
       <p
         role="alert"
-        className="border-danger-700 mt-6 max-w-2xl rounded-lg border-l-4 bg-white p-4"
+        className="border-danger-700 bg-surface mt-6 max-w-2xl rounded-lg border-l-4 p-4"
       >
         {t(`shop.cart.errors.${error}`)}
       </p>
@@ -243,12 +243,18 @@ function CartRow({
       className={`${PANEL} grid grid-cols-[4rem_minmax(0,1fr)] gap-x-4 gap-y-3 sm:grid-cols-[5rem_minmax(0,1fr)_auto]`}
     >
       {item ? (
-        <ItemArt category={item.category} subcategory={item.subcategory} className="rounded-md" />
+        <ItemArt
+          category={item.category}
+          subcategory={item.subcategory}
+          image={item.image}
+          scale={1}
+          className="rounded-md"
+        />
       ) : (
         <div aria-hidden="true" className="bg-parchment-300 aspect-square rounded-md" />
       )}
       <div className="min-w-0">
-        <h3 id={`item-${itemId}`} className="text-navy-900 font-bold">
+        <h3 id={`item-${itemId}`} className="text-heading font-bold">
           {item ? (
             <Link href={itemHref(locale, itemId)} className="hover:underline">
               {item.name}
@@ -260,7 +266,7 @@ function CartRow({
         {item ? (
           <ItemPrice item={item} t={t} />
         ) : (
-          <p className="text-danger-700 font-semibold">{t("shop.cart.unavailable")}</p>
+          <p className="text-danger font-semibold">{t("shop.cart.unavailable")}</p>
         )}
       </div>
 
@@ -271,7 +277,7 @@ function CartRow({
               <input type="hidden" name="locale" value={locale} />
               <input type="hidden" name="itemId" value={itemId} />
               <div>
-                <label htmlFor={quantityId} className="text-navy-900 block text-sm font-bold">
+                <label htmlFor={quantityId} className="text-heading block text-sm font-bold">
                   {t("shop.cart.quantity")}
                 </label>
                 <select id={quantityId} name="quantity" defaultValue={quantity} className={FIELD}>
@@ -359,7 +365,7 @@ function Checkout({
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="expectedTotal" value={total} />
       <div>
-        <label htmlFor="cart-character" className="text-navy-900 mb-1 block text-sm font-bold">
+        <label htmlFor="cart-character" className="text-heading mb-1 block text-sm font-bold">
           {t("shop.cart.character")}
         </label>
         <select

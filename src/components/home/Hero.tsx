@@ -1,23 +1,32 @@
 /**
  * Cabecera visual de la portada.
  *
- * Mantiene la línea de la web original (cielo y mar azul marino, dorado en
- * los adornos y un personaje en primer plano), pero sin el carrusel de
- * 1,27 MB que retrasaba el LCP a 4,3 s (F-35, F-39) ni texto dentro de
- * imágenes (F-27):
- * - una sola ilustración recortada (35 KB en WebP, menos en AVIF), con
- *   `fetchPriority="high"` porque es el elemento LCP en móvil;
- * - el fondo es un degradado CSS y la ola es un SVG en línea: 0 peticiones;
- * - el título es un `h1` real; la portada original no tenía (F-42);
- * - sin etiqueta sobre el título: repetía el lema y es un recurso de
- *   plantilla. El nombre del juego es el titular, grande, como un logotipo.
+ * Sigue la distribución del rediseño (M-44), que a su vez sigue al launcher
+ * oficial: una escena del juego a todo el ancho, oscurecida hacia la
+ * izquierda para que el texto se lea, el titular, dos llamadas a la acción
+ * y cuatro datos del juego.
  *
- * @see RF-01 Portada.
+ * Rendimiento (la web original tardaba 4,3 s en pintar su carrusel de
+ * 1,27 MB, F-35 y F-39):
+ * - la escena es una sola imagen (44 KB en WebP, menos en AVIF) con
+ *   `fetchPriority="high"`: es el elemento LCP;
+ * - el personaje solo se muestra en escritorio y con carga diferida, así
+ *   que en móvil ni se descarga;
+ * - nada de lo que hay aquí se anima al entrar: animar el LCP lo retrasa;
+ * - el título es un `h1` real y no hay texto dentro de imágenes (F-27, F-42).
+ *
+ * La escena es la pantalla de carga del puerto, del propio cliente del
+ * juego (arte de Giiku Games, cedido para la tesis).
+ *
+ * @see RF-01 Portada · M-44
  */
 import Image from "next/image";
 
 import heroArt from "@/assets/characters/hero-noble.webp";
+import portScene from "@/assets/scenes/port.webp";
 import { ButtonLink, Container } from "@/components/ui";
+import { GAME_CLASSES } from "@/config/classes";
+import { CLIENT_VERSION } from "@/config/download";
 import type { Locale } from "@/config/locales";
 import type { Translate } from "@/i18n/translator";
 
@@ -26,62 +35,90 @@ export interface HeroProps {
   t: Translate;
 }
 
+/** Clases jugables: las 4 base y sus 8 especializaciones. */
+const PLAYABLE_CLASSES = GAME_CLASSES.length * 3;
+
+function Check() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" className="text-azure-300 size-5 shrink-0">
+      <path
+        fill="currentColor"
+        d="M10 1.7a8.3 8.3 0 1 0 0 16.6 8.3 8.3 0 0 0 0-16.6Zm-1.2 11.9L5.3 10l1.2-1.2 2.3 2.3 4.7-4.7 1.2 1.2-5.9 6Z"
+      />
+    </svg>
+  );
+}
+
 export function Hero({ locale, t }: HeroProps) {
+  const facts = [
+    t("home.hero.facts.free"),
+    t("home.hero.facts.dual"),
+    t("home.hero.facts.classes", { count: String(PLAYABLE_CLASSES) }),
+    t("home.hero.facts.windows"),
+  ];
+
   return (
     <section
       aria-labelledby="hero-title"
-      className="from-navy-700 via-navy-900 to-navy-950 relative isolate overflow-hidden bg-linear-to-b text-white"
+      className="bg-navy-950 relative isolate overflow-hidden text-white"
     >
-      {/*
-       * Horizonte al atardecer, solo con CSS (0 peticiones): una luna baja
-       * detrás del personaje y una línea dorada donde el cielo toca el mar.
-       * Es el único adorno de la página; el resto queda sobrio a propósito.
-       */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div className="from-gold-300/35 via-gold-500/10 absolute top-[18%] right-[6%] size-56 rounded-full bg-radial to-transparent to-70% sm:size-80 lg:right-[12%] lg:size-[30rem]" />
-        <div className="from-navy-950/0 to-navy-950 absolute inset-x-0 top-[72%] bottom-0 bg-linear-to-b lg:top-[80%]" />
-        <div className="via-gold-300/60 absolute inset-x-0 top-[72%] h-px bg-linear-to-r from-transparent to-transparent lg:top-[80%]" />
-      </div>
-      <Container className="grid gap-2 pt-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:pt-14">
-        <div className="flex flex-col gap-6 pb-4 lg:pb-24">
+      <Image
+        src={portScene}
+        alt=""
+        fill
+        fetchPriority="high"
+        loading="eager"
+        sizes="100vw"
+        className="-z-20 object-cover object-[70%_30%]"
+      />
+      {/* Velo marino: más denso a la izquierda (texto) y abajo (unión con la página). */}
+      <div
+        aria-hidden="true"
+        className="from-navy-950/95 via-navy-950/70 to-navy-950/10 absolute inset-0 -z-10 bg-linear-to-r"
+      />
+      <div
+        aria-hidden="true"
+        className="to-navy-950 absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-b from-transparent"
+      />
+      <Container className="grid gap-6 py-12 sm:py-16 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-10 lg:py-20">
+        <div className="flex max-w-2xl flex-col gap-6">
+          <p className="font-display text-gold-300 text-2xl font-bold tracking-widest uppercase sm:text-3xl">
+            Florensia
+          </p>
           <h1
             id="hero-title"
-            className="font-display text-gold-300 text-6xl leading-none font-extrabold tracking-tight drop-shadow-[0_3px_0_rgb(7_29_51)] sm:text-8xl lg:text-9xl"
+            className="font-display text-3xl leading-tight font-bold text-balance sm:text-5xl"
           >
-            Florensia
+            {t("home.hero.title")}
           </h1>
-          <p className="max-w-md text-lg text-sky-100 sm:text-xl">{t("home.tagline")}</p>
+          <p className="text-on-dark max-w-xl text-lg">{t("home.hero.body")}</p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={`/${locale}/play-now`} size="lg">
-              {t("nav.playNow")}
+              {t("home.hero.playFree")}
             </ButtonLink>
             <ButtonLink href={`/${locale}/download`} size="lg" variant="onDark">
-              {t("nav.download")}
+              {CLIENT_VERSION
+                ? t("home.hero.downloadClient", { version: CLIENT_VERSION })
+                : t("nav.download")}
             </ButtonLink>
           </div>
+          <ul className="border-azure-400/25 text-on-dark grid gap-x-6 gap-y-2 border-t pt-5 text-sm font-semibold sm:grid-cols-2">
+            {facts.map((fact) => (
+              <li key={fact} className="flex items-center gap-2">
+                <Check />
+                {fact}
+              </li>
+            ))}
+          </ul>
         </div>
-        {/* Por encima de la ola (`z-10`): el personaje sale del mar hacia la página. */}
         <Image
           src={heroArt}
           alt={t("home.hero.artAlt")}
-          fetchPriority="high"
-          loading="eager"
-          sizes="(min-width: 1024px) 400px, 176px"
-          className="relative z-10 mx-auto h-auto w-44 self-end drop-shadow-[0_10px_24px_rgb(0_0_0/0.45)] sm:w-60 lg:w-[25rem]"
+          loading="lazy"
+          sizes="288px"
+          className="hidden h-auto w-72 self-end drop-shadow-[0_10px_24px_rgb(0_0_0/0.55)] lg:block"
         />
       </Container>
-      {/* Ola que une la cabecera con el fondo de pergamino de la página. */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 80"
-        preserveAspectRatio="none"
-        className="text-parchment-100 absolute bottom-0 left-0 h-10 w-full sm:h-16"
-      >
-        <path
-          fill="currentColor"
-          d="M0 48c120-26 240-26 360 0s240 26 360 0 240-26 360 0 240 26 360 0v32H0Z"
-        />
-      </svg>
     </section>
   );
 }

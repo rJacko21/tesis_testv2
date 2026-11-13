@@ -17,7 +17,7 @@ const PAGES = [
   "/rankings",
   "/rankings?area=sea&class=sniper&q=a",
   "/shop",
-  "/shop?cat=costumes&sale=1&sort=price-asc",
+  "/shop?cat=outfits&sale=1&sort=price-asc",
   "/shop/item/1",
   "/topup",
   "/play-now",

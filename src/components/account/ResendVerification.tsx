@@ -13,7 +13,7 @@ export function ResendVerification({ locale, label }: { locale: string; label: s
         <button
           type="submit"
           disabled={pending}
-          className="text-navy-700 font-bold underline disabled:opacity-60"
+          className="text-link font-bold underline disabled:opacity-60"
         >
           {label}
         </button>

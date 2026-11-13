@@ -28,13 +28,13 @@ export function ItemPrice({ item, t, size = "md" }: ItemPriceProps) {
             <span className="sr-only">{t("shop.price.was")} </span>
             {amount(item.priceAp)}
           </del>
-          <strong className={`text-danger-700 font-display ${final} font-bold`}>
+          <strong className={`text-danger font-display ${final} font-bold`}>
             <span className="sr-only">{t("shop.price.now")} </span>
             {amount(item.salePriceAp)}
           </strong>
         </>
       ) : (
-        <strong className={`text-navy-900 font-display ${final} font-bold`}>
+        <strong className={`text-heading font-display ${final} font-bold`}>
           {amount(item.priceAp)}
         </strong>
       )}

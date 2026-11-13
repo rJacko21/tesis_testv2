@@ -44,8 +44,8 @@ export default async function AdminPage() {
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2">
           {areas.map((area) => (
-            <li key={area} className="border-parchment-300 rounded-lg border bg-white p-5">
-              <h2 className="text-navy-900 text-xl font-bold">
+            <li key={area} className="border-parchment-300 bg-surface rounded-lg border p-5">
+              <h2 className="text-heading text-xl font-bold">
                 <Link href={adminPath(locale, area)} className="underline">
                   {t(`admin.nav.${area as Exclude<AdminArea, "roles">}`)}
                 </Link>

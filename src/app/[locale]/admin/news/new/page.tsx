@@ -41,7 +41,7 @@ export default async function NewPostPage() {
         </>
       }
     >
-      <div className="border-parchment-300 max-w-2xl rounded-lg border bg-white p-5">
+      <div className="border-parchment-300 bg-surface max-w-2xl rounded-lg border p-5">
         <AdminForm
           action={savePostAction}
           idPrefix="new-post"

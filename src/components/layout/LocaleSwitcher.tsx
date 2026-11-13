@@ -45,13 +45,13 @@ export function LocaleSwitcher({ current, label, currentLabel }: LocaleSwitcherP
 
   return (
     <details className="group relative">
-      <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded px-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [&::-webkit-details-marker]:hidden">
-        <span>{label}</span>
+      <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded px-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-3 [&::-webkit-details-marker]:hidden">
+        <span className="max-sm:sr-only lg:max-2xl:sr-only">{label}</span>
         <span aria-hidden="true" className="uppercase">
           {current}
         </span>
       </summary>
-      <ul className="text-ink-900 absolute right-0 z-10 mt-1 min-w-52 rounded-md bg-white py-1 shadow-lg">
+      <ul className="text-ink-900 bg-surface absolute right-0 z-10 mt-1 min-w-52 rounded-md py-1 shadow-lg">
         {LOCALES.map((locale) => (
           <li key={locale}>
             <a
@@ -59,7 +59,7 @@ export function LocaleSwitcher({ current, label, currentLabel }: LocaleSwitcherP
               hrefLang={locale}
               lang={locale}
               aria-current={locale === current ? "true" : undefined}
-              className="aria-[current]:text-navy-700 block px-4 py-2.5 hover:bg-sky-100 aria-[current]:font-bold"
+              className="aria-[current]:text-link block px-4 py-2.5 hover:bg-sky-100 aria-[current]:font-bold"
             >
               {locale === current ? currentLabel : LOCALE_NAMES[locale]}
             </a>

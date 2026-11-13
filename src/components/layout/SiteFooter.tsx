@@ -38,8 +38,8 @@ export async function SiteFooter() {
   const [locale, t, year] = await Promise.all([getLocale(), getTranslator(), getCopyrightYear()]);
 
   return (
-    <footer className="bg-navy-900 mt-auto text-sm text-white">
-      <Container className="border-navy-700 flex flex-col gap-2 border-b py-4 sm:flex-row sm:items-center">
+    <footer className="border-azure-400/25 bg-navy-950 mt-auto border-t text-sm text-white">
+      <Container className="border-strong flex flex-col gap-2 border-b py-4 sm:flex-row sm:items-center">
         <h2 className="font-bold text-sky-300">{t("footer.social")}</h2>
         <ul className="flex flex-wrap gap-x-4 gap-y-1">
           {SOCIAL_LINKS.map(({ name, href }) => (

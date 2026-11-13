@@ -71,7 +71,7 @@ export async function renderStaticPage(slug: PageSlug) {
     <main className="flex-1 py-8 sm:py-12">
       <Container className="max-w-3xl">
         <header className="flex flex-col gap-2">
-          <h1 lang={lang} className="font-display text-navy-900 text-4xl font-bold">
+          <h1 lang={lang} className="font-display text-heading text-4xl font-bold">
             {page.title}
           </h1>
           <p className="text-ink-600 text-sm">
@@ -92,8 +92,11 @@ export async function renderStaticPage(slug: PageSlug) {
         ) : null}
 
         {toc.length > 1 ? (
-          <nav aria-labelledby="toc-title" className="rounded-panel shadow-panel mt-6 bg-white p-4">
-            <h2 id="toc-title" className="font-display text-navy-900 text-lg font-bold">
+          <nav
+            aria-labelledby="toc-title"
+            className="rounded-panel shadow-panel bg-surface mt-6 p-4"
+          >
+            <h2 id="toc-title" className="font-display text-heading text-lg font-bold">
               {t("legal.toc")}
             </h2>
             <ol lang={lang} className="mt-2 list-decimal pl-6">
@@ -101,7 +104,7 @@ export async function renderStaticPage(slug: PageSlug) {
                 <li key={entry.id}>
                   <a
                     href={`#${entry.id}`}
-                    className="text-navy-700 inline-flex min-h-11 items-center font-semibold underline-offset-2 hover:underline sm:min-h-8"
+                    className="text-link inline-flex min-h-11 items-center font-semibold underline-offset-2 hover:underline sm:min-h-8"
                   >
                     {entry.title}
                   </a>

@@ -29,8 +29,8 @@ export const instant = false;
 
 const DONE = ["suspended", "active", "roles"] as const;
 const ERRORS: readonly AdminProblem[] = ["forbidden", "notFound", "unchanged", "reason"];
-const LABEL = "text-navy-900 mb-1 block font-bold";
-const SECTION = "border-parchment-300 rounded-lg border bg-white p-5";
+const LABEL = "text-heading mb-1 block font-bold";
+const SECTION = "border-parchment-300 rounded-lg border bg-surface p-5";
 
 const parseId = (value: string) => (/^[1-9]\d{0,9}$/.test(value) ? Number(value) : null);
 
@@ -89,7 +89,7 @@ export default async function AdminUserPage({
 
       <div className="grid gap-6 lg:grid-cols-2">
         <section aria-labelledby="user-data" className={SECTION}>
-          <h2 id="user-data" className="text-navy-900 text-xl font-bold">
+          <h2 id="user-data" className="text-heading text-xl font-bold">
             {t("admin.user.data")}
           </h2>
           <dl className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -132,7 +132,7 @@ export default async function AdminUserPage({
         </section>
 
         <section aria-labelledby="user-status" className={SECTION}>
-          <h2 id="user-status" className="text-navy-900 text-xl font-bold">
+          <h2 id="user-status" className="text-heading text-xl font-bold">
             {t("admin.user.statusTitle")}
           </h2>
           {user.status === "deleted" ? (
@@ -157,7 +157,7 @@ export default async function AdminUserPage({
                   maxLength={REASON_MAX}
                   rows={3}
                   aria-describedby="suspend-reason-hint"
-                  className="border-parchment-300 focus:border-navy-700 w-full rounded-lg border bg-white p-3"
+                  className="border-parchment-300 focus:border-navy-700 bg-surface w-full rounded-lg border p-3"
                 />
                 <p id="suspend-reason-hint" className="text-ink-600 mt-1 text-sm">
                   {t("admin.user.reasonHint", { min: REASON_MIN, max: REASON_MAX })}
@@ -187,7 +187,7 @@ export default async function AdminUserPage({
         </section>
 
         <section aria-labelledby="user-roles" className={SECTION}>
-          <h2 id="user-roles" className="text-navy-900 text-xl font-bold">
+          <h2 id="user-roles" className="text-heading text-xl font-bold">
             {t("admin.user.rolesTitle")}
           </h2>
           {mayChangeRoles ? (
@@ -230,7 +230,7 @@ export default async function AdminUserPage({
         </section>
 
         <section aria-labelledby="user-characters" className={SECTION}>
-          <h2 id="user-characters" className="text-navy-900 text-xl font-bold">
+          <h2 id="user-characters" className="text-heading text-xl font-bold">
             {t("admin.user.characters")}
           </h2>
           {user.characters.length === 0 ? (
@@ -252,7 +252,7 @@ export default async function AdminUserPage({
       </div>
 
       <section aria-labelledby="user-ledger" className="mt-8">
-        <h2 id="user-ledger" className="text-navy-900 text-2xl font-bold">
+        <h2 id="user-ledger" className="text-heading text-2xl font-bold">
           {t("admin.user.ledger")}
         </h2>
         {user.ledger.length === 0 ? (
@@ -302,7 +302,7 @@ export default async function AdminUserPage({
 
       {history ? (
         <section aria-labelledby="user-history" className="mt-8">
-          <h2 id="user-history" className="text-navy-900 text-2xl font-bold">
+          <h2 id="user-history" className="text-heading text-2xl font-bold">
             {t("admin.user.history")}
           </h2>
           {history.rows.length === 0 ? (
@@ -313,7 +313,7 @@ export default async function AdminUserPage({
                 {history.rows.map((entry) => (
                   <li
                     key={entry.id}
-                    className="border-parchment-300 rounded-lg border bg-white p-4"
+                    className="border-parchment-300 bg-surface rounded-lg border p-4"
                   >
                     <p className="font-semibold">
                       {actionLabel(t, entry.action)} ·{" "}

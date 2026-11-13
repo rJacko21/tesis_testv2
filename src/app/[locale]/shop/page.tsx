@@ -68,7 +68,7 @@ export default async function ShopPage({ searchParams }: Props) {
     <main className="flex-1 py-8 sm:py-12">
       <Container>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h1 className="font-display text-navy-900 text-4xl font-bold">{t("shop.title")}</h1>
+          <h1 className="font-display text-heading text-4xl font-bold">{t("shop.title")}</h1>
           <Link href={`/${locale}/cart`} className={buttonStyles({ variant: "secondary" })}>
             {t("shop.cart.view")}
           </Link>
@@ -120,7 +120,7 @@ async function ShopResults({
       <ShopFilters locale={locale} filter={filter} t={t} />
 
       <p role="status" className="text-ink-600 mt-6 text-sm">
-        <strong className="text-navy-900">{t("shop.results", { total: result.total })}</strong>
+        <strong className="text-heading">{t("shop.results", { total: result.total })}</strong>
         {filter.query ? <> · {t("shop.searchNote", { query: filter.query })}</> : null}
       </p>
 

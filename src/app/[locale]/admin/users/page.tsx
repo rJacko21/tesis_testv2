@@ -21,8 +21,8 @@ import { STATUS_TONE } from "@/components/admin/status";
 export const instant = false;
 
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 focus:border-navy-700";
-const LABEL = "text-navy-900 mb-1 block text-sm font-bold";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 focus:border-navy-700";
+const LABEL = "text-heading mb-1 block text-sm font-bold";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
@@ -142,7 +142,7 @@ export default async function AdminUsersPage({ searchParams }: PageProps<"/[loca
                   <td className={`${CELL} break-all`}>
                     {user.email}
                     {user.emailVerified ? null : (
-                      <span className="text-danger-700 block text-xs font-bold">
+                      <span className="text-danger block text-xs font-bold">
                         {t("admin.users.unverified")}
                       </span>
                     )}

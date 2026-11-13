@@ -22,7 +22,7 @@ import { adminPath, requireStaff } from "@/lib/admin/staff";
 export const instant = false;
 
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 focus:border-navy-700";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 focus:border-navy-700";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
@@ -64,7 +64,7 @@ export default async function AdminNewsPage({ searchParams }: PageProps<"/[local
           className="flex flex-wrap items-end gap-3"
         >
           <div>
-            <label htmlFor="news-status" className="text-navy-900 mb-1 block text-sm font-bold">
+            <label htmlFor="news-status" className="text-heading mb-1 block text-sm font-bold">
               {t("admin.news.status")}
             </label>
             <select id="news-status" name="status" defaultValue={status ?? ""} className={FIELD}>

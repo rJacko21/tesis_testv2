@@ -47,7 +47,7 @@ export default async function TopupReturnPage({
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container className="max-w-2xl">
-        <h1 className="font-display text-navy-900 text-4xl font-bold">{t("topup.result.title")}</h1>
+        <h1 className="font-display text-heading text-4xl font-bold">{t("topup.result.title")}</h1>
         <p
           role="status"
           className={`mt-6 rounded-lg p-4 ${payment.status === "paid" ? "bg-teal-100 text-teal-900" : "bg-parchment-50 border-parchment-300 border"}`}

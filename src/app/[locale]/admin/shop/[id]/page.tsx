@@ -40,7 +40,7 @@ export const instant = false;
 
 const DONE = ["created", "saved", "text", "price", "priceEnded"] as const;
 const ERRORS: readonly ShopProblem[] = ["notFound", "notActive"];
-const SECTION = "border-parchment-300 rounded-lg border bg-white p-5";
+const SECTION = "border-parchment-300 rounded-lg border bg-surface p-5";
 const STATE_TONE: Record<ReturnType<typeof priceState>, BadgeTone> = {
   future: "info",
   active: "success",
@@ -122,13 +122,13 @@ export default async function AdminItemPage({
         <AdminNotice tone="done">{t(`admin.shop.done.${done}`)}</AdminNotice>
       ) : null}
       {item.isActive && !current ? (
-        <p className="border-danger-700 mb-6 max-w-2xl rounded-lg border-l-4 bg-white p-4">
+        <p className="border-danger-700 bg-surface mb-6 max-w-2xl rounded-lg border-l-4 p-4">
           {t("admin.shop.notForSale")}
         </p>
       ) : null}
 
       <section aria-labelledby="item-data" className={SECTION}>
-        <h2 id="item-data" className="text-navy-900 mb-4 text-xl font-bold">
+        <h2 id="item-data" className="text-heading mb-4 text-xl font-bold">
           {t("admin.news.data")}
         </h2>
         <AdminForm
@@ -142,7 +142,7 @@ export default async function AdminItemPage({
       </section>
 
       <section aria-labelledby="item-texts" className={`${SECTION} mt-6`}>
-        <h2 id="item-texts" className="text-navy-900 text-xl font-bold">
+        <h2 id="item-texts" className="text-heading text-xl font-bold">
           {t("admin.news.texts")}
         </h2>
         <p className="text-ink-600 mt-1">{t("admin.shop.textsHint")}</p>
@@ -157,7 +157,7 @@ export default async function AdminItemPage({
                   href={`${adminPath(locale, `shop/${item.id}`)}?lang=${code}`}
                   aria-current={code === lang ? "page" : undefined}
                   lang={code}
-                  className="border-parchment-300 text-navy-900 hover:border-navy-700 aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center gap-2 rounded-full border bg-white px-4 font-semibold aria-[current]:text-white"
+                  className="border-parchment-300 text-heading hover:border-strong aria-[current]:bg-navy-900 aria-[current]:border-navy-900 bg-surface inline-flex min-h-11 items-center gap-2 rounded-full border px-4 font-semibold aria-[current]:text-white"
                 >
                   {LOCALE_NAMES[code]}
                   {item.translations[code] ? null : (
@@ -170,7 +170,7 @@ export default async function AdminItemPage({
             ))}
           </ul>
         </nav>
-        <h3 className="text-navy-900 mt-6 text-lg font-bold">
+        <h3 className="text-heading mt-6 text-lg font-bold">
           {t("admin.news.textIn", { language: LOCALE_NAMES[lang] })}
         </h3>
         <div className="mt-4">
@@ -205,7 +205,7 @@ export default async function AdminItemPage({
       </section>
 
       <section aria-labelledby="item-prices" className={`${SECTION} mt-6`}>
-        <h2 id="item-prices" className="text-navy-900 text-xl font-bold">
+        <h2 id="item-prices" className="text-heading text-xl font-bold">
           {t("admin.shop.prices")}
         </h2>
         <p className="text-ink-600 mt-1">{t("admin.shop.pricesHint")}</p>
@@ -300,7 +300,7 @@ export default async function AdminItemPage({
           </div>
         )}
 
-        <h3 className="text-navy-900 mt-6 text-lg font-bold">{t("admin.shop.addPrice")}</h3>
+        <h3 className="text-heading mt-6 text-lg font-bold">{t("admin.shop.addPrice")}</h3>
         <p className="text-ink-600 mt-1">{t("admin.shop.addPriceHint")}</p>
         <div className="mt-4">
           <AdminForm

@@ -61,7 +61,7 @@ export default async function RankingsPage({ searchParams }: Props) {
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container>
-        <h1 className="font-display text-navy-900 text-4xl font-bold">{t("rankings.title")}</h1>
+        <h1 className="font-display text-heading text-4xl font-bold">{t("rankings.title")}</h1>
         <p className="text-ink-600 mt-2 text-lg">{t("rankings.intro")}</p>
         <RankingResults locale={locale} searchParams={searchParams} />
       </Container>
@@ -146,9 +146,7 @@ function RankingResultsBody({
     <>
       <div className="text-ink-600 mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm">
         <p role="status">
-          <strong className="text-navy-900">
-            {t("rankings.results", { total: result.total })}
-          </strong>
+          <strong className="text-heading">{t("rankings.results", { total: result.total })}</strong>
           {filter.query ? <> · {t("rankings.searchNote", { query: filter.query })}</> : null}
         </p>
         <p>

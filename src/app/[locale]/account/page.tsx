@@ -47,19 +47,19 @@ export default async function AccountPage() {
       intro={t("auth.account.greeting", { name })}
     >
       <div className="grid gap-6 lg:grid-cols-2">
-        <dl className="border-parchment-300 grid gap-4 rounded-lg border bg-white p-5">
+        <dl className="border-parchment-300 bg-surface grid gap-4 rounded-lg border p-5">
           <div>
-            <dt className="text-navy-900 font-bold">{t("auth.fields.username")}</dt>
+            <dt className="text-heading font-bold">{t("auth.fields.username")}</dt>
             <dd>{name}</dd>
           </div>
           <div>
-            <dt className="text-navy-900 font-bold">{t("auth.account.email")}</dt>
+            <dt className="text-heading font-bold">{t("auth.account.email")}</dt>
             <dd className="break-words">
               {user.email} ·{" "}
               {user.emailVerified ? (
-                <span className="text-success-700 font-bold">{t("auth.account.verified")}</span>
+                <span className="text-success font-bold">{t("auth.account.verified")}</span>
               ) : (
-                <span className="text-danger-700 font-bold">{t("auth.account.unverified")}</span>
+                <span className="text-danger font-bold">{t("auth.account.unverified")}</span>
               )}
             </dd>
             {user.emailVerified ? null : (
@@ -91,7 +91,7 @@ export default async function AccountPage() {
       </div>
 
       <section aria-labelledby="shortcuts-title" className="mt-8">
-        <h2 id="shortcuts-title" className="font-display text-navy-900 text-2xl font-bold">
+        <h2 id="shortcuts-title" className="font-display text-heading text-2xl font-bold">
           {t("account.shortcuts.title")}
         </h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -99,9 +99,9 @@ export default async function AccountPage() {
             <li key={key}>
               <Link
                 href={`/${locale}/account/${key}`}
-                className="group border-parchment-300 hover:border-navy-700 flex h-full flex-col gap-1 rounded-lg border bg-white p-4"
+                className="group border-parchment-300 hover:border-strong bg-surface flex h-full flex-col gap-1 rounded-lg border p-4"
               >
-                <span className="text-navy-900 font-bold group-hover:underline">
+                <span className="text-heading font-bold group-hover:underline">
                   {t(`account.nav.${key}`)}
                 </span>
                 <span className="text-ink-600">{t(`account.shortcuts.${key}`)}</span>

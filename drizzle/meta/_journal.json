@@ -50,6 +50,13 @@
       "when": 1794098997061,
       "tag": "0006_imagenes_en_mysql",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1794536882867,
+      "tag": "0007_vistas_previas_tienda",
+      "breakpoints": true
     }
   ]
 }

@@ -15,7 +15,7 @@ import { notifyEmailChanged } from "@/lib/auth/email-change";
 
 export const instant = false;
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();

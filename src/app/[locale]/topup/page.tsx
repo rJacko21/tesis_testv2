@@ -58,20 +58,20 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container>
-        <h1 className="font-display text-navy-900 text-4xl font-bold">{t("topup.title")}</h1>
+        <h1 className="font-display text-heading text-4xl font-bold">{t("topup.title")}</h1>
         <p className="text-ink-600 mt-2 max-w-2xl text-lg">{t("topup.intro")}</p>
 
         {error ? (
           <p
             role="alert"
-            className="border-danger-700 mt-6 max-w-2xl rounded-lg border-l-4 bg-white p-4"
+            className="border-danger-700 bg-surface mt-6 max-w-2xl rounded-lg border-l-4 p-4"
           >
             {t(`topup.errors.${error}`)}
           </p>
         ) : null}
 
         <section aria-labelledby="topup-packages" className="mt-8">
-          <h2 id="topup-packages" className="font-display text-navy-900 text-2xl font-bold">
+          <h2 id="topup-packages" className="font-display text-heading text-2xl font-bold">
             {t("topup.packages")}
           </h2>
           {!loaded.ok ? (
@@ -88,7 +88,7 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
                   <li key={pack.id}>
                     <article
                       aria-labelledby={`pack-${pack.id}`}
-                      className={`rounded-panel shadow-panel relative flex h-full flex-col gap-3 bg-white p-5 ${
+                      className={`rounded-panel shadow-panel bg-surface relative flex h-full flex-col gap-3 p-5 ${
                         pack === best ? "ring-gold-500 ring-2" : ""
                       }`}
                     >
@@ -104,7 +104,7 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
                       </div>
                       <h3
                         id={`pack-${pack.id}`}
-                        className="font-display text-navy-900 text-3xl font-bold"
+                        className="font-display text-heading text-3xl font-bold"
                       >
                         {name}
                       </h3>
@@ -130,7 +130,7 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
           <section aria-labelledby="topup-how">
-            <h2 id="topup-how" className="font-display text-navy-900 text-2xl font-bold">
+            <h2 id="topup-how" className="font-display text-heading text-2xl font-bold">
               {t("topup.how.title")}
             </h2>
             <ol className="mt-4 grid list-decimal gap-3 pl-6">
@@ -140,7 +140,7 @@ export default async function TopupPage({ searchParams }: PageProps<"/[locale]/t
             </ol>
           </section>
           <section aria-labelledby="topup-info">
-            <h2 id="topup-info" className="font-display text-navy-900 text-2xl font-bold">
+            <h2 id="topup-info" className="font-display text-heading text-2xl font-bold">
               {t("topup.info.title")}
             </h2>
             <ul className="mt-4 grid list-disc gap-3 pl-6">

@@ -29,7 +29,7 @@ export function RequirementsTable({ t }: { t: Translate }) {
   ];
 
   return (
-    <div className="rounded-panel shadow-panel overflow-hidden bg-white">
+    <div className="rounded-panel shadow-panel bg-surface overflow-hidden">
       <table className="w-full text-left text-sm sm:text-base">
         <caption className="sr-only">{t("download.requirements.title")}</caption>
         <thead className="bg-navy-900 text-white">
@@ -48,7 +48,7 @@ export function RequirementsTable({ t }: { t: Translate }) {
         <tbody>
           {rows.map((row) => (
             <tr key={row.label} className="border-parchment-300 even:bg-parchment-50 border-t">
-              <th scope="row" className="text-navy-900 p-3 font-bold">
+              <th scope="row" className="text-heading p-3 font-bold">
                 {row.label}
               </th>
               <td className="p-3 break-words">{row.value(MINIMUM)}</td>

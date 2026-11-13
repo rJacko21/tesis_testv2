@@ -33,7 +33,17 @@
     "tagline": "MMORPG anime gratuit. Combattez sur terre, naviguez sur les mers et bâtissez votre guilde.",
     "hero": {
       "eyebrow": "MMORPG anime gratuit",
-      "artAlt": "Une héroïne Magic Knight en robe orange et noire"
+      "artAlt": "Une héroïne Magic Knight en robe orange et noire",
+      "title": "Prenez la mer dans un MMORPG anime fantasy en 3D",
+      "body": "Maîtrisez le double système de combat, sur terre et en mer. Explorez des îles mystérieuses, plongez dans de sinistres donjons et commandez votre propre navire.",
+      "playFree": "Jouer gratuitement",
+      "downloadClient": "Télécharger le client ({version})",
+      "facts": {
+        "free": "100 % gratuit",
+        "dual": "Niveaux de terre et de mer",
+        "classes": "{count} classes jouables",
+        "windows": "Windows : launcher ou Steam"
+      }
     },
     "features": {
       "title": "L’aventure sur terre et sur mer",
@@ -48,17 +58,32 @@
       "guild": {
         "title": "Rejoignez une guilde",
         "body": "Alliez-vous à d’autres joueurs, conquérez des territoires et grimpez ensemble dans les classements."
+      },
+      "dual": {
+        "title": "Double système de combat : terre et mer",
+        "body": "Votre personnage progresse de deux façons : un niveau de terre, en combattant les monstres à pied, et un niveau de mer, comme capitaine de votre propre navire. Chacun a ses compétences et son classement.",
+        "artAlt": "Un guerrier au bouclier face à un dragon des mers"
+      },
+      "dungeons": {
+        "title": "Donjons sinistres",
+        "body": "Formez un groupe et affrontez serpents de mer, créatures des cryptes et boss légendaires."
       }
     },
     "classes": {
       "title": "Choisissez votre classe",
       "intro": "Quatre classes, huit voies. Au niveau {level}, chaque classe choisit l’une de deux spécialisations.",
       "specializations": "Spécialisations dès le niveau {level}",
-      "artAlt": "Illustration de la classe {name}"
+      "artAlt": "Illustration de la classe {name}",
+      "base": "Classe de base",
+      "evolution": "Évolution de niveau {level}"
     },
     "promotions": {
       "title": "Promotions",
       "until": "Jusqu’au"
+    },
+    "download": {
+      "title": "Prêt à prendre la mer ?",
+      "body": "Téléchargez le launcher officiel ou installez le jeu depuis Steam, choisissez votre classe et commencez votre aventure sur terre et en mer."
     }
   },
   "classes": {
@@ -373,7 +398,8 @@
       "saleUntil": "Offre {campaign} jusqu’au {date}",
       "saleUntilNoName": "Offre jusqu’au {date}",
       "back": "Retour à {category}",
-      "addToCart": "Ajouter au panier"
+      "addToCart": "Ajouter au panier",
+      "previewAlt": "{name} porté en jeu, vue {n}"
     },
     "cart": {
       "title": "Panier",
@@ -1169,5 +1195,8 @@
         "deleted": "Promotion supprimée."
       }
     }
+  },
+  "theme": {
+    "dark": "Thème sombre"
   }
 }

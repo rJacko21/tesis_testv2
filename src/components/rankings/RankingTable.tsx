@@ -39,7 +39,7 @@ export function RankingTable({ rows, caption, t }: RankingTableProps) {
       role="region"
       aria-labelledby="ranking-caption"
       tabIndex={0}
-      className="border-parchment-300 mt-4 overflow-x-auto rounded-lg border bg-white"
+      className="border-parchment-300 bg-surface mt-4 overflow-x-auto rounded-lg border"
     >
       <table className="w-full min-w-[46rem] border-collapse text-sm tabular-nums [&_td]:px-3 [&_td]:py-2 [&_th]:px-3">
         <caption id="ranking-caption" className="sr-only">
@@ -79,14 +79,14 @@ export function RankingTable({ rows, caption, t }: RankingTableProps) {
             return (
               <tr
                 key={row.rank}
-                className="border-parchment-300 even:bg-parchment-50 border-t bg-white"
+                className="border-parchment-300 even:bg-parchment-50 bg-surface border-t"
               >
-                <td className="text-navy-900 text-right font-bold">{row.rank}</td>
+                <td className="text-heading text-right font-bold">{row.rank}</td>
                 <TrendCell rank={row.rank} previousRank={row.previousRank} t={t} />
                 {/* Cabecera de la fila: el lector de pantalla la lee con cada celda. */}
                 <th
                   scope="row"
-                  className="text-navy-900 sticky left-0 bg-inherit py-2 text-left font-bold"
+                  className="text-heading sticky left-0 bg-inherit py-2 text-left font-bold"
                 >
                   {row.name}
                 </th>

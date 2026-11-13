@@ -117,3 +117,31 @@ Formato del [registro de mejoras](../plan/08-plantilla-registro-de-mejoras.md).
 - **Datos de la ficha que pide RF-05 y el esquema aún no tiene:** género, tipo, nivel requerido, apilable y opciones de color. Llegarán con la integración del catálogo del juego.
   - Mientras tanto, la ficha muestra solo lo que existe.
 - **Fotos de los artículos:** con el panel y el almacenamiento de imágenes (T-23).
+
+### M-45 · Artículos reales con el icono del juego
+
+- **Requisito:** RF-05 · **Decisión:** imágenes en MySQL (tabla `media`, decisión de Armando del 2026-11-07)
+- **Motivo:** la demo vendía 64 artículos inventados («Ghost Steel Sword»…) con un dibujo provisional. Armando pidió cambiarlos por objetos de la tienda oficial y de Flandria, con su imagen.
+- **Antes:** nombres generados, precios al azar y ninguna imagen.
+- **Cambio:**
+  - **28 artículos reales:** 10 gorros, 8 trajes, 4 armas de apariencia y 6 pociones, con las categorías de la tienda oficial (Atuendos › Gorros y cascos, Trajes, Accesorios; Consumibles › Pociones).
+  - Cada uno lleva su código de objeto como SKU, el precio oficial en AP, la rebaja de su campaña (Headgear Havoc, Angels & Devils, Potion Commotion), la duración y los efectos.
+  - **Icono del juego** en la tarjeta, la ficha y la cesta.
+  - `pnpm db:seed:demo` guarda los iconos en `media` y enlaza cada artículo con el suyo (`shop_items.image_id`, que ya existía y no se usaba).
+- **De dónde sale cada dato:**
+  - **Qué objetos:** los que están a la vez en la tienda oficial y en flandria.wiki. Las dos usan el mismo código de objeto (`ahacash12` es «Pirate Hat» en ambas), así que el cruce no depende del nombre.
+  - **Precio, rebaja, duración, efectos y descripción:** tienda oficial, consultada el 2026-11-12.
+  - **Icono:** hojas de iconos del cliente del juego (`Data/UI/Icon`), en la casilla que indica Flandria (`aha_120` es la casilla 120 de `aha.png`). Son los mismos 32 × 32 px que sirven las dos webs.
+- **Por qué de esta forma:**
+  - **El icono se amplía a un múltiplo exacto** (×2 en el listado, ×3 en la ficha) con `image-rendering: pixelated`. Ampliado con suavizado se vería borroso.
+  - **WebP sin pérdida** en `media`: con 32 px, cualquier compresión con pérdida estropea el dibujo. Cada icono pesa menos de 3 KB y se sirve tal cual, con caché para siempre.
+  - **Las pociones comparten icono** y la imagen se guarda una sola vez (la ruta lleva el hash del contenido).
+  - **Los nombres y los efectos no se traducen:** son los del juego. La primera línea de la descripción (tipo de objeto y quién puede usarlo) sí está en los 7 idiomas; la frase de la descripción oficial solo se muestra en inglés.
+  - **Derechos:** el arte y los textos son de Giiku Games, que los cede para la tesis. Flandria solo se usa para cruzar códigos; su propia página de copyright atribuye todo a Giiku.
+- **Capturas del juego en la ficha (pedido de Armando, 2026-11-13):** un cosmético no se elige por su icono. La ficha de los 22 cosméticos enseña las dos capturas de la tienda oficial con un personaje que lleva el objeto (213 × 170 px), y el icono queda en una esquina. Las pociones siguen con su icono.
+  - Tabla nueva `shop_item_previews` (artículo, imagen, orden; migración `0007`). Las capturas están en `src/db/seed/shop-previews/<código>-<vista>.jpg` y `pnpm db:seed:demo` las guarda en `media`.
+  - Se recogieron de la tienda oficial con el navegador de Armando (la tienda no es accesible desde el entorno de desarrollo), a partir de la ficha oficial de cada código.
+  - Se muestran como mucho al doble de su tamaño; más grandes se verían borrosas. La primera se carga con prioridad porque es la imagen principal de la ficha.
+  - El listado y la cesta siguen con el icono, igual que el listado oficial.
+- **Verificación:** `shop.spec.ts` actualizado a los 28 artículos (categorías, búsqueda, rebajas, paginación, capturas en cosméticos e icono en consumibles) y axe en los 7 idiomas.
+- **Fecha:** 2026-11-13

@@ -11,7 +11,7 @@ import { AuthPage } from "@/components/auth/AuthPage";
 import { getLocale, getTranslator } from "@/i18n/server";
 import { requestPasswordResetAction } from "@/lib/auth/actions";
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();

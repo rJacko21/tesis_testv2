@@ -18,7 +18,7 @@ const TONES: Record<PanelTone, { frame: string; header: string }> = {
   sky: { frame: "border-sky-300 bg-sky-100", header: "bg-navy-700 text-white" },
   teal: { frame: "border-teal-700 bg-teal-100", header: "bg-teal-700 text-white" },
   parchment: { frame: "border-gold-500 bg-parchment-50", header: "bg-parchment-300 text-ink-900" },
-  plain: { frame: "border-parchment-300 bg-white", header: "bg-parchment-50 text-ink-900" },
+  plain: { frame: "border-parchment-300 bg-surface", header: "bg-parchment-50 text-ink-900" },
 };
 
 export interface PanelProps extends Omit<ComponentProps<"section">, "title"> {

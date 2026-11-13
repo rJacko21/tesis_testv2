@@ -51,7 +51,7 @@ export interface AdminFormProps {
 }
 
 const INPUT =
-  "border-parchment-300 text-ink-900 focus:border-navy-700 aria-[invalid=true]:border-danger-700 w-full rounded-lg border bg-white px-3";
+  "border-parchment-300 text-ink-900 focus:border-navy-700 aria-[invalid=true]:border-danger-700 w-full rounded-lg border bg-surface px-3";
 
 function Submit({ label }: { label: string }) {
   const { pending } = useFormStatus();
@@ -84,7 +84,7 @@ export function AdminForm({
       {state.status === "error" ? (
         <p
           role="alert"
-          className="border-danger-700 text-danger-700 rounded-lg border-2 bg-white p-3 font-bold"
+          className="border-danger-700 text-danger bg-surface rounded-lg border-2 p-3 font-bold"
         >
           {state.message}
         </p>
@@ -143,7 +143,7 @@ export function AdminForm({
           }
           return (
             <div key={field.name} className={wide}>
-              <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+              <label htmlFor={id} className="text-heading mb-1 block font-bold">
                 {field.label}
               </label>
               {field.type === "textarea" ? (
@@ -171,7 +171,7 @@ export function AdminForm({
                   required={field.required}
                   aria-invalid={error ? true : undefined}
                   aria-describedby={describedBy}
-                  className={`${INPUT} file:bg-parchment-100 file:text-navy-900 min-h-11 py-2 file:mr-3 file:rounded file:border-0 file:px-3 file:py-1 file:font-semibold`}
+                  className={`${INPUT} file:bg-parchment-100 file:text-heading min-h-11 py-2 file:mr-3 file:rounded file:border-0 file:px-3 file:py-1 file:font-semibold`}
                 />
               ) : (
                 <input
@@ -196,7 +196,7 @@ export function AdminForm({
                 </p>
               ) : null}
               {error ? (
-                <p id={`${id}-error`} className="text-danger-700 mt-1 text-sm font-bold">
+                <p id={`${id}-error`} className="text-danger mt-1 text-sm font-bold">
                   {error}
                 </p>
               ) : null}

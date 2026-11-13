@@ -19,7 +19,7 @@ import { PASSWORD_MAX, PASSWORD_MIN } from "@/lib/auth/password";
 // Lee `searchParams` (el token o el destino): se renderiza al pedirla.
 export const instant = false;
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();

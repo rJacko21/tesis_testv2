@@ -42,7 +42,7 @@ export default async function NewsPage({ searchParams }: PageProps<"/[locale]/ne
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container>
-        <h1 className="font-display text-navy-900 text-4xl font-bold">{t("news.title")}</h1>
+        <h1 className="font-display text-heading text-4xl font-bold">{t("news.title")}</h1>
         <p className="text-ink-600 mt-2 text-lg">{t("news.intro")}</p>
         <Suspense fallback={<NewsGridSkeleton withFilter />}>
           <NewsResults locale={locale} searchParams={searchParams} />

@@ -15,7 +15,7 @@ import { POST_CATEGORIES } from "./categories";
 const BASE =
   "inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-bold whitespace-nowrap";
 const ACTIVE = `${BASE} border-navy-900 bg-navy-900 text-white`;
-const IDLE = `${BASE} border-parchment-300 bg-white text-navy-900 hover:border-navy-700`;
+const IDLE = `${BASE} border-parchment-300 bg-surface text-heading hover:border-strong`;
 
 export interface CategoryFilterProps {
   locale: string;

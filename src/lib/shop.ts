@@ -24,12 +24,15 @@ import {
   campaignTranslations,
   campaigns,
   itemPrices,
+  media,
   shopCategories,
   shopCategoryTranslations,
+  shopItemPreviews,
   shopItems,
   shopItemTranslations,
 } from "@/db/schema";
 
+import { mediaUrl } from "./media";
 import type { RawItem, ShopCategory, ShopData } from "./shop-catalog";
 
 /** Etiqueta de caché que invalidará el panel de administración al cambiar la tienda. */
@@ -76,8 +79,12 @@ export async function loadShop(locale: Locale): Promise<ShopData> {
       isGiftable: shopItems.isGiftable,
       sortOrder: shopItems.sortOrder,
       createdAt: shopItems.createdAt,
+      imagePath: media.path,
+      imageWidth: media.width,
+      imageHeight: media.height,
     })
     .from(shopItems)
+    .leftJoin(media, eq(media.id, shopItems.imageId))
     .leftJoin(localItem, and(eq(localItem.itemId, shopItems.id), eq(localItem.locale, locale)))
     .leftJoin(englishItem, and(eq(englishItem.itemId, shopItems.id), eq(englishItem.locale, "en")))
     .where(eq(shopItems.isActive, 1));
@@ -115,6 +122,20 @@ export async function loadShop(locale: Locale): Promise<ShopData> {
         )
     : [];
 
+  // Capturas del juego de cada artículo (solo las tienen los cosméticos).
+  const previewRows = itemRows.length
+    ? await db
+        .select({
+          itemId: shopItemPreviews.itemId,
+          path: media.path,
+          width: media.width,
+          height: media.height,
+        })
+        .from(shopItemPreviews)
+        .innerJoin(media, eq(media.id, shopItemPreviews.mediaId))
+        .orderBy(asc(shopItemPreviews.sortOrder), asc(shopItemPreviews.mediaId))
+    : [];
+
   const byId = new Map(categoryRows.map((row) => [row.id, row]));
   const categories: ShopCategory[] = categoryRows
     .filter((row) => row.parentId === null)
@@ -137,6 +158,17 @@ export async function loadShop(locale: Locale): Promise<ShopData> {
         description: row.description,
         category: parent ? parent.slug : own.slug,
         subcategory: parent ? own.slug : null,
+        image:
+          row.imagePath && row.imageWidth && row.imageHeight
+            ? { src: mediaUrl(row.imagePath), width: row.imageWidth, height: row.imageHeight }
+            : null,
+        previews: previewRows
+          .filter((preview) => preview.itemId === row.id)
+          .map((preview) => ({
+            src: mediaUrl(preview.path),
+            width: preview.width,
+            height: preview.height,
+          })),
         validityDays: row.validityDays,
         isBundle: row.isBundle === 1,
         isLimited: row.isLimited === 1,

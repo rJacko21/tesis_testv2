@@ -61,11 +61,11 @@ export default async function CharactersPage() {
                 <li key={character.id}>
                   <article
                     aria-labelledby={`character-${character.id}`}
-                    className="border-parchment-300 h-full rounded-lg border bg-white p-4 sm:p-5"
+                    className="border-parchment-300 bg-surface h-full rounded-lg border p-4 sm:p-5"
                   >
                     <h2
                       id={`character-${character.id}`}
-                      className="text-navy-900 flex items-center gap-2 text-xl font-bold"
+                      className="text-heading flex items-center gap-2 text-xl font-bold"
                     >
                       {icon ? (
                         // eslint-disable-next-line @next/next/no-img-element -- icono pequeño, como en el ranking (M-20)
@@ -98,9 +98,7 @@ export default async function CharactersPage() {
                       </div>
                     </dl>
 
-                    <h3 className="text-navy-900 mt-4 font-bold">
-                      {t("account.characters.ranks")}
-                    </h3>
+                    <h3 className="text-heading mt-4 font-bold">{t("account.characters.ranks")}</h3>
                     <ul className="mt-2 grid grid-cols-3 gap-2 text-center text-sm">
                       {RANKING_AREAS.map((area) => {
                         const rank = character.ranks[area];
@@ -122,10 +120,10 @@ export default async function CharactersPage() {
                                   query: character.name,
                                   page: 1,
                                 })}
-                                className="bg-parchment-50 hover:border-navy-700 block rounded-lg border border-transparent p-2"
+                                className="bg-parchment-50 hover:border-strong block rounded-lg border border-transparent p-2"
                               >
                                 <span className="text-ink-600 block">{label}</span>
-                                <span className="text-navy-700 block text-lg font-bold underline">
+                                <span className="text-link block text-lg font-bold underline">
                                   {t("account.characters.rank", { rank })}
                                 </span>
                               </Link>

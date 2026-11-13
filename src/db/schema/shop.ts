@@ -109,6 +109,25 @@ export const shopItems = mysqlTable(
   (t) => [index("shop_items_category_idx").on(t.categoryId, t.isActive, t.sortOrder)],
 );
 
+/**
+ * Vistas previas de un artículo: capturas del juego con un personaje que
+ * lleva puesto el objeto (M-45). Las tienen los cosméticos (gorros, trajes,
+ * accesorios); un consumible se queda con su icono (`shop_items.image_id`).
+ */
+export const shopItemPreviews = mysqlTable(
+  "shop_item_previews",
+  {
+    itemId: fk("item_id")
+      .notNull()
+      .references(() => shopItems.id, { onDelete: "cascade" }),
+    mediaId: fk("media_id")
+      .notNull()
+      .references(() => media.id, { onDelete: "cascade" }),
+    sortOrder: tinyint("sort_order").notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.itemId, t.mediaId] })],
+);
+
 export const shopItemTranslations = mysqlTable(
   "shop_item_translations",
   {

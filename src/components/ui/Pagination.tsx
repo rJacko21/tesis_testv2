@@ -11,7 +11,7 @@ import Link from "next/link";
 import type { Translate } from "@/i18n/translator";
 
 const LINK =
-  "border-parchment-300 text-navy-900 hover:border-navy-700 inline-flex min-h-11 items-center rounded-lg border bg-white px-4 font-bold";
+  "border-parchment-300 text-heading hover:border-strong inline-flex min-h-11 items-center rounded-lg border bg-surface px-4 font-bold";
 
 export interface PaginationProps {
   page: number;

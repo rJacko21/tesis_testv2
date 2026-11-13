@@ -1,11 +1,21 @@
 /*
  * Estilos globales y tokens de diseño.
  *
- * Los colores se tomaron de la web original (auditoría del 2026-11-06):
- * el azul marino del marco de la cabecera, el azul cielo de los paneles de
- * la cuenta, el turquesa de la tienda, el pergamino del canje de códigos y
- * el dorado de los adornos. Se definen una sola vez como variables y
- * Tailwind genera las clases (`bg-navy-900`, `text-gold-700`…).
+ * Dos temas (M-44):
+ * - **Claro:** los colores de la web original (auditoría del 2026-11-06): el
+ *   azul marino del marco de la cabecera, el azul cielo de los paneles de la
+ *   cuenta, el turquesa de la tienda, el pergamino y el dorado.
+ * - **Oscuro:** el del launcher oficial del juego: marino profundo, azul
+ *   celeste en las acciones y dorado en chapas y moneda.
+ *
+ * Los colores se definen una sola vez como variables y Tailwind genera las
+ * clases (`bg-navy-900`, `text-heading`…). El tema oscuro solo cambia el
+ * valor de las variables «de superficie y texto»: los componentes no saben
+ * en qué tema están y no hay clases `dark:` repartidas por el código.
+ *
+ * El tema se elige con `data-theme` en `<html>`, que pone un script mínimo
+ * antes de pintar (`THEME_SCRIPT`, sin parpadeo). Sin JavaScript se sigue la
+ * preferencia del sistema con la media query del final del bloque.
  *
  * Cada par texto/fondo que se usa en la interfaz tiene un contraste mínimo
  * de 4.5:1 (WCAG 2.2 AA), comprobado por `src/components/ui/contrast.test.ts`.
@@ -49,11 +59,85 @@
   --color-class-noble: #5b6b82;
   --color-class-saint: #7a4fa3;
 
-  --font-display: var(--font-alegreya), Georgia, serif;
-  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  /* Azul celeste del launcher: acciones principales y brillos. */
+  --color-azure-300: #7dd3fc;
+  --color-azure-400: #38bdf8;
+  --color-azure-500: #0ea5e9;
+
+  /*
+   * Colores con significado, que cambian con el tema (los valores de aquí
+   * son los del tema claro; los del oscuro están más abajo).
+   */
+  --color-surface: #ffffff; /* tarjetas y paneles */
+  --color-heading: #0b2a4a; /* títulos */
+  --color-link: #164a7a; /* enlaces y texto de acción */
+  --color-strong: #164a7a; /* bordes de campos y controles */
+  --color-danger: #a4262c; /* texto de error */
+  --color-success: #1e6b3a; /* texto de confirmación */
+  /* Texto claro sobre los fondos marinos (cabecera, portada, pie): no cambia. */
+  --color-on-dark: #e4f1fb;
+
+  --font-display: var(--font-display-face), Georgia, serif;
+  --font-sans: var(--font-body-face), system-ui, sans-serif;
 
   --radius-panel: 0.75rem;
   --shadow-panel: 0 1px 2px rgb(7 29 51 / 0.12), 0 4px 12px rgb(7 29 51 / 0.08);
+}
+
+/*
+ * Tema oscuro. Las mismas variables, con otros valores. El bloque está dos
+ * veces a propósito: una para la elección guardada (`data-theme`) y otra
+ * para quien no tiene JavaScript y usa el sistema en oscuro. CSS no permite
+ * compartir declaraciones entre un selector y una media query.
+ */
+:root[data-theme="dark"] {
+  --color-parchment-50: #0c1a2e;
+  --color-parchment-100: #071120;
+  --color-parchment-300: #26405f;
+  --color-surface: #10213a;
+  --color-ink-900: #dbe7fb;
+  --color-ink-600: #a9b9cf;
+  --color-heading: #e0f2fe;
+  --color-link: #7cc8ff;
+  --color-strong: #4b78a8;
+  --color-sky-100: #12304f;
+  --color-teal-100: #0f3134;
+  --color-teal-900: #a8e6df;
+  --color-gold-700: #f2cd7a;
+  --color-danger: #ff9d94;
+  --color-success: #7fdc9c;
+  --shadow-panel: 0 0 0 1px rgb(56 189 248 / 0.16), 0 12px 32px -8px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-parchment-50: #0c1a2e;
+    --color-parchment-100: #071120;
+    --color-parchment-300: #26405f;
+    --color-surface: #10213a;
+    --color-ink-900: #dbe7fb;
+    --color-ink-600: #a9b9cf;
+    --color-heading: #e0f2fe;
+    --color-link: #7cc8ff;
+    --color-strong: #4b78a8;
+    --color-sky-100: #12304f;
+    --color-teal-100: #0f3134;
+    --color-teal-900: #a8e6df;
+    --color-gold-700: #f2cd7a;
+    --color-danger: #ff9d94;
+    --color-success: #7fdc9c;
+    --shadow-panel: 0 0 0 1px rgb(56 189 248 / 0.16), 0 12px 32px -8px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+/* Iconos del botón de tema: se ve el del tema al que se cambia. */
+.theme-icon-light,
+:root[data-theme="dark"] .theme-icon-dark {
+  display: none;
+}
+:root[data-theme="dark"] .theme-icon-light {
+  display: inline;
 }
 
 body {
@@ -96,7 +180,7 @@ body {
 .prose-news h2,
 .prose-news h3 {
   font-family: var(--font-display);
-  color: var(--color-navy-900);
+  color: var(--color-heading);
   font-weight: 700;
   line-height: 1.25;
   margin-top: 1.6em;
@@ -121,7 +205,7 @@ body {
   margin-top: 0.35em;
 }
 .prose-news a {
-  color: var(--color-navy-700);
+  color: var(--color-link);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -146,4 +230,93 @@ html[data-consent] #consent-banner {
 /* Sin scroll de fondo mientras el menú móvil está abierto (sin JavaScript, ver MobileMenu). */
 html:has(#mobile-menu[open]) {
   overflow: hidden;
+}
+
+/*
+ * Animaciones ligeras (M-44). Todo CSS: no añaden JavaScript ni peticiones.
+ * Solo animan `transform` y `opacity`, que el navegador compone en la GPU
+ * sin recalcular el diseño (no afectan a CLS ni a INP).
+ */
+
+/* Línea de luz en el borde superior de las tarjetas (del launcher). */
+.rim {
+  position: relative;
+}
+.rim::before {
+  content: "";
+  position: absolute;
+  inset: 0 10% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(56 189 248 / 0.55), transparent);
+  pointer-events: none;
+}
+
+/* Elevación y brillo al pasar el ratón o enfocar. */
+.lift {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.lift:hover,
+.lift:focus-within {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgb(56 189 248 / 0.35),
+    0 14px 30px -10px rgb(14 165 233 / 0.45);
+}
+
+/*
+ * Aparición al entrar en pantalla, ligada al scroll (`animation-timeline`).
+ * Donde el navegador no lo admite, el contenido se ve sin animación. Nunca
+ * se pone en lo que está sobre el pliegue: retrasaría el LCP.
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* Entrada suave del panel de clase al cambiar de pestaña. */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+/* Punto que late en la chapa de estado. */
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/*
+ * Pestañas de clases sin JavaScript: cada pestaña es un `radio` y el panel
+ * que le corresponde se muestra con `:has()`.
+ */
+.class-panel {
+  display: none;
+}
+.class-tabs:has(#class-tab-mercenary:checked) #class-panel-mercenary,
+.class-tabs:has(#class-tab-explorer:checked) #class-panel-explorer,
+.class-tabs:has(#class-tab-noble:checked) #class-panel-noble,
+.class-tabs:has(#class-tab-saint:checked) #class-panel-saint {
+  display: grid;
+  animation: panel-in 0.3s ease both;
+}
+
+/* Iconos del juego (32 px) ampliados sin emborronar. */
+.pixel-art {
+  image-rendering: pixelated;
 }

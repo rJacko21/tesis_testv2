@@ -29,7 +29,7 @@ export interface AdminShellProps {
 }
 
 const LINK =
-  "border-parchment-300 text-navy-900 hover:border-navy-700 aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center rounded-full border bg-white px-4 font-semibold aria-[current]:text-white";
+  "border-parchment-300 text-heading hover:border-strong aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center rounded-full border bg-surface px-4 font-semibold aria-[current]:text-white";
 
 export function AdminShell({ locale, t, roles, current, title, intro, children }: AdminShellProps) {
   // «Roles» no es una página: se cambian en la ficha de cada cuenta.
@@ -63,7 +63,7 @@ export function AdminShell({ locale, t, roles, current, title, intro, children }
           </ul>
         </nav>
 
-        <h1 className="font-display text-navy-900 mt-6 text-4xl font-bold break-words">{title}</h1>
+        <h1 className="font-display text-heading mt-6 text-4xl font-bold break-words">{title}</h1>
         {intro ? <div className="text-ink-600 mt-2 max-w-2xl text-lg">{intro}</div> : null}
         <div className="mt-6">{children}</div>
       </Container>
@@ -74,7 +74,10 @@ export function AdminShell({ locale, t, roles, current, title, intro, children }
 /** Resultado de la última acción (`?done=` o `?error=`). */
 export function AdminNotice({ tone, children }: { tone: "done" | "error"; children: ReactNode }) {
   return tone === "error" ? (
-    <p role="alert" className="border-danger-700 mb-6 max-w-2xl rounded-lg border-l-4 bg-white p-4">
+    <p
+      role="alert"
+      className="border-danger-700 bg-surface mb-6 max-w-2xl rounded-lg border-l-4 p-4"
+    >
       {children}
     </p>
   ) : (
@@ -101,7 +104,7 @@ export function AdminTable({
       role="region"
       aria-labelledby={id}
       tabIndex={0}
-      className="border-parchment-300 overflow-x-auto rounded-lg border bg-white"
+      className="border-parchment-300 bg-surface overflow-x-auto rounded-lg border"
     >
       <table className="w-full text-sm" style={{ minWidth }}>
         <caption id={id} className="sr-only">
@@ -114,4 +117,4 @@ export function AdminTable({
 }
 
 export const CELL = "px-3 py-2.5 text-left align-top";
-export const HEAD = "bg-parchment-100 text-navy-900";
+export const HEAD = "bg-parchment-100 text-heading";

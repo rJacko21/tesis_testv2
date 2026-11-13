@@ -60,7 +60,7 @@ test("un admin crea un artículo, le pone precio y una rebaja de campaña", asyn
     await nav.getByRole("link", { name: "Tienda" }).click();
     await page.getByRole("link", { name: "Nuevo artículo" }).click();
     await field(page, "SKU").fill(sku);
-    await field(page, "Categoría").selectOption({ label: "Trajes › Atuendos" });
+    await field(page, "Categoría").selectOption({ label: "Atuendos › Trajes" });
     await page.getByRole("button", { name: "Crear artículo" }).click();
     await expect(main(page).getByRole("status")).toHaveText(
       "Artículo creado. Ahora escribe su nombre en inglés.",

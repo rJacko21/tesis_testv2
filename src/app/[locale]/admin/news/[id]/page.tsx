@@ -49,7 +49,7 @@ const ERRORS: readonly PostProblem[] = [
   "unchanged",
   "published",
 ];
-const SECTION = "border-parchment-300 rounded-lg border bg-white p-5";
+const SECTION = "border-parchment-300 rounded-lg border bg-surface p-5";
 
 const parseId = (value: string) => (/^[1-9]\d{0,9}$/.test(value) ? Number(value) : null);
 
@@ -126,7 +126,7 @@ export default async function EditPostPage({
       ) : null}
 
       <section aria-labelledby="post-data" className={SECTION}>
-        <h2 id="post-data" className="text-navy-900 mb-4 text-xl font-bold">
+        <h2 id="post-data" className="text-heading mb-4 text-xl font-bold">
           {t("admin.news.data")}
         </h2>
         <AdminForm
@@ -190,7 +190,7 @@ export default async function EditPostPage({
       </section>
 
       <section aria-labelledby="post-texts" className={`${SECTION} mt-6`}>
-        <h2 id="post-texts" className="text-navy-900 text-xl font-bold">
+        <h2 id="post-texts" className="text-heading text-xl font-bold">
           {t("admin.news.texts")}
         </h2>
         <p className="text-ink-600 mt-1">{t("admin.news.textsHint")}</p>
@@ -205,7 +205,7 @@ export default async function EditPostPage({
                   href={`${adminPath(locale, `news/${post.id}`)}?lang=${code}`}
                   aria-current={code === lang ? "page" : undefined}
                   lang={code}
-                  className="border-parchment-300 text-navy-900 hover:border-navy-700 aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center gap-2 rounded-full border bg-white px-4 font-semibold aria-[current]:text-white"
+                  className="border-parchment-300 text-heading hover:border-strong aria-[current]:bg-navy-900 aria-[current]:border-navy-900 bg-surface inline-flex min-h-11 items-center gap-2 rounded-full border px-4 font-semibold aria-[current]:text-white"
                 >
                   {LOCALE_NAMES[code]}
                   {post.translations[code] ? null : (
@@ -219,7 +219,7 @@ export default async function EditPostPage({
           </ul>
         </nav>
 
-        <h3 className="text-navy-900 mt-6 text-lg font-bold">
+        <h3 className="text-heading mt-6 text-lg font-bold">
           {t("admin.news.textIn", { language: LOCALE_NAMES[lang] })}
         </h3>
         {text ? null : (
@@ -310,11 +310,11 @@ export default async function EditPostPage({
             aria-labelledby="post-preview"
             className="border-parchment-300 mt-6 border-t pt-6"
           >
-            <h3 id="post-preview" className="text-navy-900 text-lg font-bold">
+            <h3 id="post-preview" className="text-heading text-lg font-bold">
               {t("admin.news.preview")}
             </h3>
             <div lang={lang} className="bg-parchment-50 mt-3 rounded-lg p-4">
-              <p className="font-display text-navy-900 text-2xl font-bold">{text.title}</p>
+              <p className="font-display text-heading text-2xl font-bold">{text.title}</p>
               <p className="text-ink-600 mt-1">{text.excerpt}</p>
               <div className="prose-news mt-4">
                 <Markdown source={text.body} externalLabel={t("nav.externalSite")} />
@@ -326,7 +326,7 @@ export default async function EditPostPage({
 
       {post.status === "draft" ? (
         <section aria-labelledby="post-delete" className={`${SECTION} mt-6`}>
-          <h2 id="post-delete" className="text-navy-900 text-xl font-bold">
+          <h2 id="post-delete" className="text-heading text-xl font-bold">
             {t("admin.news.deleteTitle")}
           </h2>
           <p className="mt-1">{t("admin.news.deleteHint")}</p>

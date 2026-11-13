@@ -18,9 +18,12 @@ import type { ReactNode } from "react";
 
 import { MOBILE_MENU_ID, type ResolvedLink } from "./nav-types";
 import { NavLinkItem } from "./NavLinkItem";
+import { ThemeToggle } from "./ThemeToggle";
 
 export interface MobileMenuProps {
   openLabel: string;
+  /** Nombre accesible del botón de tema. */
+  themeLabel: string;
   closeLabel: string;
   /** Nombre accesible de la navegación. */
   navLabel: string;
@@ -69,6 +72,7 @@ export function MobileMenu(props: MobileMenuProps) {
       >
         <div className="flex items-center justify-between px-4 py-2">
           <span className="font-display text-gold-300 text-2xl font-bold">Florensia</span>
+          <ThemeToggle label={props.themeLabel} className="mr-1 ml-auto grid" />
           <button
             type="button"
             {...command("close")}
