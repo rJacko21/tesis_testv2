@@ -36,7 +36,7 @@ export default async function NewCampaignPage() {
         </Link>
       }
     >
-      <div className="border-parchment-300 max-w-3xl rounded-lg border bg-white p-5">
+      <div className="border-parchment-300 bg-surface max-w-3xl rounded-lg border p-5">
         <AdminForm
           action={saveCampaignAction}
           idPrefix="campaign"

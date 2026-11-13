@@ -11,14 +11,24 @@
  */
 import "dotenv/config";
 
-import { isNull, sql } from "drizzle-orm";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+
+import { eq, isNull, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
+import sharp from "sharp";
 
-import { LOCALES, type Locale } from "../src/config/locales";
+import { LOCALES } from "../src/config/locales";
 import * as schema from "../src/db/schema";
 import { buildDemoPosts } from "../src/db/seed/news";
 import { buildRankings } from "../src/db/seed/rankings";
+import {
+  SHOP_CAMPAIGNS,
+  SHOP_CATEGORIES,
+  SHOP_ITEMS,
+  itemDescription,
+} from "../src/db/seed/shop-items";
 import {
   DEFAULT_OPTIONS,
   createRandom,
@@ -46,6 +56,7 @@ const DEMO_TABLES = [
   "cart_items",
   "carts",
   "item_prices",
+  "shop_item_previews",
   "shop_item_translations",
   "shop_items",
   "campaign_translations",
@@ -74,93 +85,6 @@ async function insertInBatches<T>(
 ) {
   for (let i = 0; i < rows.length; i += size) await insert(rows.slice(i, i + size));
 }
-
-/** Textos por idioma de las categorías de la tienda. */
-const CATEGORY_NAMES: Record<string, Record<Locale, string>> = {
-  costumes: {
-    en: "Costumes",
-    "pt-BR": "Trajes",
-    tr: "Kostümler",
-    it: "Costumi",
-    de: "Kostüme",
-    fr: "Costumes",
-    es: "Trajes",
-  },
-  "costumes-weapons": {
-    en: "Weapon skins",
-    "pt-BR": "Visuais de arma",
-    tr: "Silah görünümleri",
-    it: "Aspetti armi",
-    de: "Waffen-Skins",
-    fr: "Apparences d’armes",
-    es: "Aspectos de armas",
-  },
-  "costumes-outfits": {
-    en: "Outfits",
-    "pt-BR": "Roupas",
-    tr: "Kıyafetler",
-    it: "Abiti",
-    de: "Outfits",
-    fr: "Tenues",
-    es: "Atuendos",
-  },
-  boosts: {
-    en: "Boosts",
-    "pt-BR": "Bônus",
-    tr: "Güçlendirmeler",
-    it: "Potenziamenti",
-    de: "Boosts",
-    fr: "Boosts",
-    es: "Potenciadores",
-  },
-  "boosts-experience": {
-    en: "Experience",
-    "pt-BR": "Experiência",
-    tr: "Deneyim",
-    it: "Esperienza",
-    de: "Erfahrung",
-    fr: "Expérience",
-    es: "Experiencia",
-  },
-  "boosts-ships": {
-    en: "Ships",
-    "pt-BR": "Navios",
-    tr: "Gemiler",
-    it: "Navi",
-    de: "Schiffe",
-    fr: "Navires",
-    es: "Barcos",
-  },
-};
-
-const ITEM_ADJECTIVES = [
-  "Ghost",
-  "Pirate",
-  "Royal",
-  "Coral",
-  "Storm",
-  "Lily",
-  "Golden",
-  "Frost",
-  "Crimson",
-  "Moonlit",
-] as const;
-const ITEM_NOUNS: Record<string, readonly string[]> = {
-  "costumes-weapons": ["Steel Sword", "Musket", "Staff", "Lance", "Twin Daggers"],
-  "costumes-outfits": ["Coat", "Dress", "Uniform", "Armor Set", "Hat"],
-  "boosts-experience": ["EXP Scroll", "Fortune Charm", "Skill Elixir"],
-  "boosts-ships": ["Ship Figurehead", "Cannon Set", "Sail Pattern"],
-};
-
-const ITEM_DESCRIPTION: Record<Locale, (name: string) => string> = {
-  en: (n) => `${n}. Synthetic item for the demo; it does not exist in the game.`,
-  "pt-BR": (n) => `${n}. Item sintético para a demonstração; não existe no jogo.`,
-  tr: (n) => `${n}. Demo için yapay bir eşya; oyunda bulunmaz.`,
-  it: (n) => `${n}. Oggetto sintetico per la demo; non esiste nel gioco.`,
-  de: (n) => `${n}. Synthetischer Gegenstand für die Demo; im Spiel gibt es ihn nicht.`,
-  fr: (n) => `${n}. Objet fictif pour la démo ; il n’existe pas dans le jeu.`,
-  es: (n) => `${n}. Objeto sintético para la demo; no existe en el juego.`,
-};
 
 async function main(): Promise<void> {
   const url = process.env.DATABASE_URL;
@@ -202,11 +126,11 @@ async function main(): Promise<void> {
     serverIds,
   );
 
-  // Tienda: categorías de dos niveles, artículos y precios.
+  // Tienda: categorías de dos niveles y los 28 artículos reales (M-45).
   const now = new Date();
   const days = (n: number) => new Date(now.getTime() + n * 86_400_000);
   const categoryIds = new Map<string, number>();
-  for (const slug of Object.keys(CATEGORY_NAMES)) {
+  for (const [slug, names] of Object.entries(SHOP_CATEGORIES)) {
     const [parentSlug, childSlug] = slug.split("-") as [string, string | undefined];
     const [result] = await db.insert(schema.shopCategories).values({
       parentId: childSlug ? (categoryIds.get(parentSlug) ?? null) : null,
@@ -214,92 +138,117 @@ async function main(): Promise<void> {
       sortOrder: categoryIds.size,
     });
     categoryIds.set(slug, result.insertId);
-    await db.insert(schema.shopCategoryTranslations).values(
-      LOCALES.map((locale) => ({
-        categoryId: result.insertId,
-        locale,
-        name: CATEGORY_NAMES[slug]![locale],
-      })),
-    );
+    await db
+      .insert(schema.shopCategoryTranslations)
+      .values(
+        LOCALES.map((locale) => ({ categoryId: result.insertId, locale, name: names[locale] })),
+      );
   }
 
+  // Una campaña ya terminada (no debe verse como vigente, F-16) y las tres
+  // de la tienda oficial, en curso.
   const [halloween] = await db
     .insert(schema.campaigns)
     .values({ code: "halloween-2026", startsAt: days(-30), endsAt: days(-5) });
-  const [winter] = await db
-    .insert(schema.campaigns)
-    .values({ code: "winter-2026", startsAt: days(-2), endsAt: days(25) });
-  for (const [campaignId, names] of [
-    [
-      halloween.insertId,
-      {
-        en: "Halloween",
-        "pt-BR": "Halloween",
-        tr: "Cadılar Bayramı",
-        it: "Halloween",
-        de: "Halloween",
-        fr: "Halloween",
-        es: "Halloween",
-      },
-    ],
-    [
-      winter.insertId,
-      {
-        en: "Winter Festival",
-        "pt-BR": "Festival de Inverno",
-        tr: "Kış Festivali",
-        it: "Festival d’inverno",
-        de: "Winterfest",
-        fr: "Fête de l’hiver",
-        es: "Festival de invierno",
-      },
-    ],
-  ] as const) {
+  await db
+    .insert(schema.campaignTranslations)
+    .values(
+      LOCALES.map((locale) => ({ campaignId: halloween.insertId, locale, name: "Halloween" })),
+    );
+  const campaignIds = new Map<string, number>();
+  for (const [code, name] of Object.entries(SHOP_CAMPAIGNS)) {
+    const [campaign] = await db
+      .insert(schema.campaigns)
+      .values({ code, startsAt: days(-2), endsAt: days(25) });
+    campaignIds.set(code, campaign.insertId);
+    // Los nombres de las campañas son los oficiales y no se traducen.
     await db
       .insert(schema.campaignTranslations)
-      .values(LOCALES.map((locale) => ({ campaignId, locale, name: names[locale] })));
+      .values(LOCALES.map((locale) => ({ campaignId: campaign.insertId, locale, name })));
   }
 
+  // Los iconos se guardan en `media`, como las imágenes del panel (WebP sin
+  // pérdida: son 32 × 32 px y cualquier compresión con pérdida los estropea).
+  const mediaIds = new Map<string, number>();
+  /** Guarda una imagen en `media` (una sola vez) y devuelve su id. */
+  const storeImage = async (image: ReturnType<typeof sharp>) => {
+    const { data, info } = await image.toBuffer({ resolveWithObject: true });
+    const path = `uploads/${createHash("sha256").update(data).digest("hex").slice(0, 32)}.webp`;
+    let mediaId = mediaIds.get(path);
+    if (mediaId === undefined) {
+      // Varias pociones comparten icono, y `media` no se vacía al recargar
+      // la demo (guarda también las imágenes subidas desde el panel): la
+      // imagen se guarda una sola vez.
+      const [existing] = await db
+        .select({ id: schema.media.id })
+        .from(schema.media)
+        .where(eq(schema.media.path, path));
+      mediaId =
+        existing?.id ??
+        (
+          await db
+            .insert(schema.media)
+            .values({ path, width: info.width, height: info.height, mimeType: "image/webp", data })
+        )[0].insertId;
+      mediaIds.set(path, mediaId);
+    }
+    return mediaId;
+  };
+
+  const seedFile = (name: string) => new URL(`../src/db/seed/${name}`, import.meta.url);
   const prices: number[] = [];
-  let sku = 1;
-  for (const [slug, nouns] of Object.entries(ITEM_NOUNS)) {
-    for (const noun of nouns) {
-      for (const adjective of ITEM_ADJECTIVES.slice(0, 4)) {
-        const name = `${adjective} ${noun}`;
-        const validityDays = random.next() < 0.5 ? null : random.pick([7, 30, 90]);
-        const [item] = await db.insert(schema.shopItems).values({
-          categoryId: categoryIds.get(slug)!,
-          sku: `DEMO-${String(sku++).padStart(4, "0")}`,
-          validityDays,
-          isBundle: Number(random.next() < 0.1),
-          isLimited: Number(random.next() < 0.15),
-          isGiftable: Number(random.next() < 0.5),
-          sortOrder: sku,
-        });
-        await db.insert(schema.shopItemTranslations).values(
-          LOCALES.map((locale) => ({
-            itemId: item.insertId,
-            locale,
-            name,
-            description: ITEM_DESCRIPTION[locale](name),
-          })),
-        );
-        const priceAp = random.pick([500, 900, 1200, 1500, 2500, 3900, 4900]);
-        prices.push(priceAp);
-        await db
-          .insert(schema.itemPrices)
-          .values({ itemId: item.insertId, priceAp, startsAt: days(-90) });
-        if (random.next() < 0.25) {
-          await db.insert(schema.itemPrices).values({
-            itemId: item.insertId,
-            priceAp,
-            salePriceAp: Math.round((priceAp * 0.7) / 100) * 100,
-            campaignId: winter.insertId,
-            startsAt: days(-2),
-            endsAt: days(25),
-          });
-        }
-      }
+  for (const [index, item] of SHOP_ITEMS.entries()) {
+    const imageId = await storeImage(
+      sharp(readFileSync(seedFile(`shop-icons/${item.code}.png`))).webp({ lossless: true }),
+    );
+    const [row] = await db.insert(schema.shopItems).values({
+      categoryId: categoryIds.get(item.category)!,
+      sku: item.code,
+      imageId,
+      validityDays: item.validityDays ?? null,
+      isLimited: Number(item.limited ?? false),
+      isGiftable: Number(item.kind !== "potion"),
+      sortOrder: index,
+    });
+    await db.insert(schema.shopItemTranslations).values(
+      LOCALES.map((locale) => ({
+        itemId: row.insertId,
+        locale,
+        name: item.name,
+        description: itemDescription(item, locale),
+      })),
+    );
+    // Capturas del juego con el objeto puesto (tienda oficial): hasta dos
+    // por cosmético. Ya vienen comprimidas en JPEG; se pasan a WebP de alta
+    // calidad para no degradarlas más.
+    const previewIds = new Set<number>();
+    for (const view of [1, 2]) {
+      const file = seedFile(`shop-previews/${item.code}-${view}.jpg`);
+      if (!existsSync(file)) continue;
+      previewIds.add(await storeImage(sharp(readFileSync(file)).webp({ quality: 92 })));
+    }
+    if (previewIds.size) {
+      await db.insert(schema.shopItemPreviews).values(
+        [...previewIds].map((mediaId, sortOrder) => ({
+          itemId: row.insertId,
+          mediaId,
+          sortOrder,
+        })),
+      );
+    }
+    prices.push(item.sale?.priceAp ?? item.priceAp);
+    await db
+      .insert(schema.itemPrices)
+      .values({ itemId: row.insertId, priceAp: item.priceAp, startsAt: days(-90) });
+    if (item.sale) {
+      await db.insert(schema.itemPrices).values({
+        itemId: row.insertId,
+        priceAp: item.priceAp,
+        salePriceAp: item.sale.priceAp,
+        campaignId: campaignIds.get(item.sale.campaign)!,
+        startsAt: days(-2),
+        endsAt: days(25),
+      });
     }
   }
 
@@ -444,7 +393,7 @@ async function main(): Promise<void> {
   console.log(
     `Demo cargada en ${((Date.now() - started) / 1000).toFixed(1)} s: ${users.length} usuarios, ` +
       `${guilds.length} gremios, ${characters.length} personajes (${total} sin cuenta), ` +
-      `${previous.length + current.length} filas de ranking, ${sku - 1} artículos, ${ledgerRows.length} movimientos de AP.`,
+      `${previous.length + current.length} filas de ranking, ${SHOP_ITEMS.length} artículos, ${ledgerRows.length} movimientos de AP.`,
   );
   await connection.end();
 }

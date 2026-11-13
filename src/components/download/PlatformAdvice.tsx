@@ -40,9 +40,9 @@ export function PlatformAdvice({ platform, t }: { platform: Platform; t: Transla
   return (
     <div
       data-platform={platform}
-      className={`rounded-panel shadow-panel min-h-32 border-l-4 bg-white p-5 ${ok ? "border-success-700" : "border-gold-500"}`}
+      className={`rounded-panel shadow-panel bg-surface min-h-32 border-l-4 p-5 ${ok ? "border-success-700" : "border-gold-500"}`}
     >
-      <p className="font-display text-navy-900 text-xl font-bold">
+      <p className="font-display text-heading text-xl font-bold">
         {t(`download.recommendation.${advice}`)}
       </p>
       <p className="text-ink-600 mt-1">{t(BODY[advice], { size: String(STORAGE_GB) })}</p>

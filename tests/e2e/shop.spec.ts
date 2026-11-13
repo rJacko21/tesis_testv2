@@ -1,7 +1,8 @@
 /**
  * Catálogo de la tienda (RF-05) sobre los datos de demo (`pnpm db:seed:demo`):
- * 64 artículos «Adjetivo Nombre» en 2 categorías con 2 subcategorías cada una,
- * y una cuarta parte rebajados por el Festival de invierno.
+ * los 28 artículos reales de la tienda oficial (M-45), en 2 categorías
+ * (Atuendos con 3 subcategorías y Consumibles con 1), la mayoría rebajados
+ * por las campañas oficiales (Headgear Havoc, Angels & Devils…).
  *
  * Cubren los criterios de aceptación de RF-05 y los fallos F-19 (sin
  * búsqueda, filtros ni orden, nombres recortados) y F-44 (sin URL por
@@ -25,7 +26,7 @@ async function finalPrices(page: Page): Promise<number[]> {
 test("lista 24 artículos con nombre completo, duración y precio, y pagina", async ({ page }) => {
   await page.goto("/es/shop");
   await expect(page.getByRole("heading", { level: 1, name: "Tienda de objetos" })).toBeVisible();
-  await expect(page.getByRole("status")).toHaveText("64 artículos");
+  await expect(page.getByRole("status")).toHaveText("28 artículos");
   await expect(cards(page)).toHaveCount(24);
 
   // El nombre completo está en el texto y en `title` (F-19).
@@ -35,10 +36,10 @@ test("lista 24 artículos con nombre completo, duración y precio, y pagina", as
   await expect(cards(page).first()).toContainText(/Permanente|\d+ días?/);
 
   const nav = page.getByRole("navigation", { name: "Páginas" });
-  await expect(nav).toContainText("Página 1 de 3");
+  await expect(nav).toContainText("Página 1 de 2");
   await nav.getByRole("link", { name: "Siguiente" }).click();
   await expect(page).toHaveURL(/\/es\/shop\?page=2$/);
-  await expect(cards(page)).toHaveCount(24);
+  await expect(cards(page)).toHaveCount(4);
 });
 
 test("las categorías y subcategorías filtran y se marcan como actuales", async ({ page }) => {
@@ -46,28 +47,28 @@ test("las categorías y subcategorías filtran y se marcan como actuales", async
   const menu = page.getByRole("navigation", { name: "Categorías de la tienda" });
   await expect(menu.getByRole("link", { name: "Todo" })).toHaveAttribute("aria-current", "page");
 
-  await menu.getByRole("link", { name: "Trajes" }).click();
-  await expect(page).toHaveURL(/\?cat=costumes$/);
-  await expect(menu.getByRole("link", { name: "Trajes" })).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("status")).toHaveText("40 artículos");
-
   await menu.getByRole("link", { name: "Atuendos" }).click();
-  await expect(page).toHaveURL(/\?cat=costumes&sub=outfits$/);
-  await expect(page.getByRole("status")).toHaveText("20 artículos");
+  await expect(page).toHaveURL(/\?cat=outfits$/);
   await expect(menu.getByRole("link", { name: "Atuendos" })).toHaveAttribute(
     "aria-current",
     "page",
   );
+  await expect(page.getByRole("status")).toHaveText("22 artículos");
+
+  await menu.getByRole("link", { name: "Trajes" }).click();
+  await expect(page).toHaveURL(/\?cat=outfits&sub=dresses$/);
+  await expect(page.getByRole("status")).toHaveText("8 artículos");
+  await expect(menu.getByRole("link", { name: "Trajes" })).toHaveAttribute("aria-current", "page");
 });
 
 test("busca por palabras sin distinguir mayúsculas y avisa si no hay nada", async ({ page }) => {
   await page.goto("/es/shop");
   const search = page.getByRole("searchbox", { name: "Buscar por nombre" });
-  await search.fill("LANCE coral");
+  await search.fill("CROWN ice");
   await page.getByRole("button", { name: "Aplicar" }).click();
-  await expect(page).toHaveURL(/q=LANCE\+coral/);
-  await expect(page.getByRole("status")).toHaveText("1 artículo · con «LANCE coral»");
-  await expect(cardLinks(page)).toHaveText(["Coral Lance"]);
+  await expect(page).toHaveURL(/q=CROWN\+ice/);
+  await expect(page.getByRole("status")).toHaveText("1 artículo · con «CROWN ice»");
+  await expect(cardLinks(page)).toHaveText(["Ice Crown"]);
 
   await page.goto("/es/shop?q=dragón");
   await expect(cards(page)).toHaveCount(0);
@@ -109,7 +110,7 @@ test("cada artículo tiene su ficha con URL propia y migas de pan (F-44)", async
   await expect(page).toHaveTitle(new RegExp(name));
   // Next conserva oculta la página anterior: solo cuenta lo visible.
   const main = page.locator("main").filter({ visible: true });
-  await expect(main.getByText(/^Rebaja del Festival de invierno hasta el .+/)).toBeVisible();
+  await expect(main.getByText(/^Rebaja del .+ hasta el .+/)).toBeVisible();
   await expect(main.getByText(/^-\d+ %$/)).toBeVisible();
 
   const crumbs = page.getByRole("navigation", { name: "Ruta de navegación" });
@@ -120,6 +121,25 @@ test("cada artículo tiene su ficha con URL propia y migas de pan (F-44)", async
   const id = page.url().split("/").pop();
   await page.goto(`/shop/detail/index/${id}`);
   await expect(page).toHaveURL(new RegExp(`/shop/item/${id}$`));
+});
+
+test("un cosmético enseña capturas del juego y un consumible su icono (M-45)", async ({ page }) => {
+  await page.goto("/es/shop?q=Pirate+Hat");
+  await cardLinks(page).first().click();
+  const main = page.locator("main").filter({ visible: true });
+  await expect(
+    main.getByRole("img", { name: /^Pirate Hat puesto en el juego, vista \d$/ }),
+  ).toHaveCount(2);
+
+  await page.goto("/es/shop?q=HP+25%25+Potion");
+  await cardLinks(page).first().click();
+  await expect(page.getByRole("heading", { level: 1, name: "HP 25% Potion" })).toBeVisible();
+  await expect(
+    page
+      .locator("main")
+      .filter({ visible: true })
+      .getByRole("img", { name: /puesto en el juego/ }),
+  ).toHaveCount(0);
 });
 
 test("un filtro, una página o un artículo que no existen dan la página de error", async ({

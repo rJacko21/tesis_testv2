@@ -37,6 +37,13 @@ export function currentPrice<T extends PriceRow>(rows: readonly T[], now: Date):
   return best;
 }
 
+/** Imagen de un artículo, guardada en la tabla `media`. */
+export interface ItemImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
 export interface CatalogItem {
   id: number;
   name: string;
@@ -44,6 +51,16 @@ export interface CatalogItem {
   /** Categoría principal y subcategoría (slugs). */
   category: string;
   subcategory: string | null;
+  /**
+   * Icono del objeto en el juego (32 × 32 px); `null` si el artículo no
+   * tiene imagen y se pinta el arte provisional.
+   */
+  image: ItemImage | null;
+  /**
+   * Capturas del juego con un personaje que lleva el objeto, como en la
+   * tienda oficial. Vacío en los consumibles, que solo tienen icono.
+   */
+  previews: ItemImage[];
   priceAp: number;
   /** Precio rebajado; `null` sin rebaja. */
   salePriceAp: number | null;

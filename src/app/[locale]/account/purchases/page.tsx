@@ -57,10 +57,10 @@ export default async function PurchasesPage({
               <li key={order.id}>
                 <article
                   aria-labelledby={`order-${order.id}`}
-                  className="border-parchment-300 rounded-lg border bg-white p-4 sm:p-5"
+                  className="border-parchment-300 bg-surface rounded-lg border p-4 sm:p-5"
                 >
                   <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <h2 id={`order-${order.id}`} className="text-navy-900 text-lg font-bold">
+                    <h2 id={`order-${order.id}`} className="text-heading text-lg font-bold">
                       {t("account.purchases.order", { id: order.id })}
                     </h2>
                     <Badge tone={STATUS_TONE[order.status]}>

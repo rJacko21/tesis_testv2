@@ -19,6 +19,8 @@
  *   en todos los navegadores).
  * - Cerrar los `<details>` con Escape, devolviendo el foco al `<summary>`
  *   (WCAG 2.1.2), o al pulsar o mover el foco fuera de ellos.
+ * - El botón de tema (`ThemeToggle`): cambia `data-theme` en `<html>` y guarda
+ *   la elección (M-44).
  * - Al navegar: cerrar todo y marcar el enlace de la página actual con
  *   `aria-current`, porque la cabecera vive en el layout y Next no la vuelve
  *   a pintar al cambiar de página.
@@ -29,6 +31,8 @@
  */
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+
+import { THEME_STORAGE_KEY } from "@/lib/theme";
 
 import { MOBILE_MENU_ID } from "./nav-types";
 
@@ -45,10 +49,26 @@ export function HeaderBehavior() {
     const invokers = "command" in HTMLButtonElement.prototype;
 
     const sync = () => opener?.setAttribute("aria-expanded", String(dialog.open));
+    const root = document.documentElement;
+    const themeButtons = header.querySelectorAll("[data-theme-toggle]");
+    const syncTheme = () => {
+      const dark = String(root.dataset.theme === "dark");
+      for (const button of themeButtons) button.setAttribute("aria-pressed", dark);
+    };
     const onClick = (event: MouseEvent) => {
       const target = event.target as Element;
       // Pulsar en el fondo (el propio <dialog>, fuera del panel) cierra.
       if (target === dialog) dialog.close();
+      if (target.closest("[data-theme-toggle]")) {
+        const theme = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = theme;
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch {
+          // Sin `localStorage` (modo privado estricto) el cambio dura hasta recargar.
+        }
+        syncTheme();
+      }
       if (!invokers) {
         const command = target.closest("button[commandfor]")?.getAttribute("command");
         if (command === "show-modal") dialog.showModal();
@@ -82,6 +102,7 @@ export function HeaderBehavior() {
     // Escape cierra el diálogo sin pasar por un clic.
     dialog.addEventListener("close", sync);
     sync();
+    syncTheme();
     return () => {
       header.removeEventListener("click", onClick);
       header.removeEventListener("keydown", onKeyDown);

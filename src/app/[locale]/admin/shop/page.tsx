@@ -20,8 +20,8 @@ import { adminPath, requireStaff } from "@/lib/admin/staff";
 export const instant = false;
 
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 focus:border-navy-700";
-const LABEL = "text-navy-900 mb-1 block text-sm font-bold";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 focus:border-navy-700";
+const LABEL = "text-heading mb-1 block text-sm font-bold";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
@@ -167,7 +167,7 @@ export default async function AdminShopPage({ searchParams }: PageProps<"/[local
                   <td className={CELL}>{item.category}</td>
                   <td className={CELL}>
                     {item.priceAp === null ? (
-                      <span className="text-danger-700 font-bold">{t("admin.shop.noPrice")}</span>
+                      <span className="text-danger font-bold">{t("admin.shop.noPrice")}</span>
                     ) : item.salePriceAp !== null ? (
                       <>
                         <span className="sr-only">{t("shop.price.was")} </span>

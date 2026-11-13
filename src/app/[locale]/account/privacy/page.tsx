@@ -17,8 +17,8 @@ import { PASSWORD_MAX } from "@/lib/auth/password";
 
 export const instant = false;
 
-const SECTION = "border-parchment-300 rounded-lg border bg-white p-4 sm:p-6";
-const H2 = "font-display text-navy-900 text-2xl font-bold";
+const SECTION = "border-parchment-300 rounded-lg border bg-surface p-4 sm:p-6";
+const H2 = "font-display text-heading text-2xl font-bold";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();

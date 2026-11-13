@@ -50,7 +50,7 @@ async function PromotionList({ locale, t }: PromotionsProps) {
       <Container>
         <h2
           id="promotions-title"
-          className="font-display text-navy-900 text-3xl font-bold sm:text-4xl"
+          className="font-display text-heading text-3xl font-bold sm:text-4xl"
         >
           {t("home.promotions.title")}
         </h2>
@@ -59,7 +59,7 @@ async function PromotionList({ locale, t }: PromotionsProps) {
             const external = !promotion.targetUrl.startsWith("/");
             return (
               <li key={promotion.id}>
-                <article className="border-parchment-300 relative h-full overflow-hidden rounded-lg border bg-white shadow-sm">
+                <article className="border-parchment-300 bg-surface relative h-full overflow-hidden rounded-lg border shadow-sm">
                   <Image
                     src={promotion.src}
                     alt={promotion.alt}
@@ -71,7 +71,7 @@ async function PromotionList({ locale, t }: PromotionsProps) {
                   />
                   <div className="p-4">
                     <h3
-                      className="text-navy-900 text-xl font-bold"
+                      className="text-heading text-xl font-bold"
                       lang={promotion.titleLocale !== locale ? promotion.titleLocale : undefined}
                     >
                       {/* El enlace cubre toda la tarjeta (::after), con un solo nombre accesible. */}

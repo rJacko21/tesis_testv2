@@ -48,7 +48,7 @@ export function AccountShell({ locale, t, current, title, intro, children }: Acc
                 <Link
                   href={accountPath(locale, section)}
                   aria-current={section === current ? "page" : undefined}
-                  className="border-parchment-300 text-navy-900 hover:border-navy-700 aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center rounded-full border bg-white px-4 font-semibold aria-[current]:text-white"
+                  className="border-parchment-300 text-heading hover:border-strong aria-[current]:bg-navy-900 aria-[current]:border-navy-900 bg-surface inline-flex min-h-11 items-center rounded-full border px-4 font-semibold aria-[current]:text-white"
                 >
                   {t(key)}
                 </Link>
@@ -57,7 +57,7 @@ export function AccountShell({ locale, t, current, title, intro, children }: Acc
           </ul>
         </nav>
 
-        <h1 className="font-display text-navy-900 mt-6 text-4xl font-bold">{title}</h1>
+        <h1 className="font-display text-heading mt-6 text-4xl font-bold">{title}</h1>
         {intro ? <div className="text-ink-600 mt-2 max-w-2xl text-lg">{intro}</div> : null}
         <div className="mt-6">{children}</div>
       </Container>

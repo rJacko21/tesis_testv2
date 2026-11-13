@@ -35,13 +35,13 @@ export function LatestNews({ locale, t }: LatestNewsProps) {
         <div className="flex flex-wrap items-end justify-between gap-2">
           <h2
             id="latest-news-title"
-            className="font-display text-navy-900 text-3xl font-bold sm:text-4xl"
+            className="font-display text-heading text-3xl font-bold sm:text-4xl"
           >
             {t("news.latest")}
           </h2>
           <Link
             href={`/${locale}/news`}
-            className="text-navy-700 inline-flex min-h-11 items-center font-bold underline underline-offset-4 hover:no-underline"
+            className="text-link inline-flex min-h-11 items-center font-bold underline underline-offset-4 hover:no-underline"
           >
             {t("news.viewAll")}
           </Link>

@@ -24,7 +24,7 @@ test("rechazar guarda la elección, oculta el banner y no vuelve a salir", async
   expect(decodeURIComponent(cookie!.value)).toBe("1.analytics:0");
 
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Florensia", level: 1 })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(banner(page)).toBeHidden();
 });
 

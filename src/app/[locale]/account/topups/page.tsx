@@ -51,13 +51,13 @@ export default async function TopupsPage({ searchParams }: PageProps<"/[locale]/
             role="region"
             aria-labelledby="topups-caption"
             tabIndex={0}
-            className="border-parchment-300 overflow-x-auto rounded-lg border bg-white"
+            className="border-parchment-300 bg-surface overflow-x-auto rounded-lg border"
           >
             <table className="w-full min-w-[32rem] text-sm">
               <caption id="topups-caption" className="sr-only">
                 {t("account.topups.caption", { page: result.page, count: result.pageCount })}
               </caption>
-              <thead className="bg-parchment-100 text-navy-900">
+              <thead className="bg-parchment-100 text-heading">
                 <tr>
                   <th scope="col" className={CELL}>
                     {t("account.topups.date")}

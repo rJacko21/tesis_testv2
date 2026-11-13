@@ -37,7 +37,7 @@ export function PageJump({
         value ? <input key={name} type="hidden" name={name} value={value} /> : null,
       )}
       <div>
-        <label htmlFor="ranking-page" className="text-navy-900 mb-1 block text-sm font-bold">
+        <label htmlFor="ranking-page" className="text-heading mb-1 block text-sm font-bold">
           {t("rankings.jump.label")}
         </label>
         <input
@@ -49,7 +49,7 @@ export function PageJump({
           max={pageCount}
           required
           defaultValue={filter.page}
-          className="border-parchment-300 min-h-11 w-28 rounded-lg border bg-white px-3"
+          className="border-parchment-300 bg-surface min-h-11 w-28 rounded-lg border px-3"
         />
       </div>
       <button type="submit" className={buttonStyles({ variant: "secondary" })}>

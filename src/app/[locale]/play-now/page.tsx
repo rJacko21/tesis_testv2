@@ -25,7 +25,7 @@ import { ButtonLink, Container } from "@/components/ui";
 import { languageAlternates, OG_IMAGE } from "@/config/site";
 import { getLocale, getTranslator } from "@/i18n/server";
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
@@ -62,12 +62,12 @@ export default async function PlayNowPage() {
             >
               {t("playNow.heading")}
             </h1>
-            <p className="max-w-xl text-lg text-sky-100">{t("playNow.intro")}</p>
+            <p className="text-on-dark max-w-xl text-lg">{t("playNow.intro")}</p>
             <ul className="hidden max-w-xl gap-3 lg:grid">
               {reasons.map((key) => (
                 <li key={key} className="border-gold-500 border-l-4 pl-4">
                   <strong className="text-gold-300 block">{t(`home.features.${key}.title`)}</strong>
-                  <span className="text-sky-100">{t(`home.features.${key}.body`)}</span>
+                  <span className="text-on-dark">{t(`home.features.${key}.body`)}</span>
                 </li>
               ))}
             </ul>
@@ -88,8 +88,8 @@ export default async function PlayNowPage() {
             />
           </div>
 
-          <div className="text-ink-900 rounded-lg bg-white p-5 shadow-xl sm:p-6">
-            <h2 className="font-display text-navy-900 text-2xl font-bold">
+          <div className="text-ink-900 bg-surface rounded-lg p-5 shadow-xl sm:p-6">
+            <h2 className="font-display text-heading text-2xl font-bold">
               {t("playNow.formTitle")}
             </h2>
             <p className="text-ink-600 mt-1 mb-4">{t("playNow.formIntro")}</p>
@@ -124,12 +124,12 @@ export default async function PlayNowPage() {
 
       <section aria-labelledby="steps-title" className="py-10 sm:py-14">
         <Container>
-          <h2 id="steps-title" className="font-display text-navy-900 text-3xl font-bold">
+          <h2 id="steps-title" className="font-display text-heading text-3xl font-bold">
             {t("playNow.steps.title")}
           </h2>
           <ol className="mt-6 grid gap-4 md:grid-cols-3">
             {(["account", "download", "play"] as const).map((step, index) => (
-              <li key={step} className="rounded-panel shadow-panel flex gap-4 bg-white p-5">
+              <li key={step} className="rounded-panel shadow-panel bg-surface flex gap-4 p-5">
                 <span
                   aria-hidden="true"
                   className="bg-navy-900 text-gold-300 font-display flex size-10 shrink-0 items-center justify-center rounded-full text-xl font-bold"
@@ -137,7 +137,7 @@ export default async function PlayNowPage() {
                   {index + 1}
                 </span>
                 <div>
-                  <h3 className="text-navy-900 font-bold">{t(`playNow.steps.${step}.title`)}</h3>
+                  <h3 className="text-heading font-bold">{t(`playNow.steps.${step}.title`)}</h3>
                   <p className="text-ink-600 mt-1">{t(`playNow.steps.${step}.body`)}</p>
                 </div>
               </li>

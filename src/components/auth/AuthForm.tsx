@@ -53,7 +53,7 @@ export interface AuthFormProps {
 }
 
 const INPUT =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 aria-[invalid=true]:border-danger-700";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 aria-[invalid=true]:border-danger-700";
 
 function SubmitButton({ label }: { label: string }) {
   const { pending } = useFormStatus();
@@ -62,7 +62,7 @@ function SubmitButton({ label }: { label: string }) {
       type="submit"
       disabled={pending}
       aria-busy={pending}
-      className="bg-gold-500 text-navy-950 hover:bg-gold-300 inline-flex min-h-11 w-full items-center justify-center rounded-lg px-5 font-semibold disabled:cursor-wait disabled:opacity-60"
+      className="from-azure-300 to-azure-500 text-navy-950 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-linear-to-br px-5 font-semibold hover:shadow-[0_0_20px_rgb(14_165_233/0.55)] disabled:cursor-wait disabled:opacity-60"
     >
       {label}
     </button>
@@ -97,7 +97,7 @@ export function AuthForm({
       {state.status === "error" ? (
         <p
           role="alert"
-          className="border-danger-700 text-danger-700 rounded-lg border-2 bg-white p-3 font-bold"
+          className="border-danger-700 text-danger bg-surface rounded-lg border-2 p-3 font-bold"
         >
           {state.message}
         </p>
@@ -141,7 +141,7 @@ export function AuthForm({
                 <label htmlFor={id}>{field.label}</label>
               </div>
               {error ? (
-                <p id={`${id}-error`} className="text-danger-700 mt-1 text-sm font-bold">
+                <p id={`${id}-error`} className="text-danger mt-1 text-sm font-bold">
                   {error}
                 </p>
               ) : null}
@@ -155,7 +155,7 @@ export function AuthForm({
           </p>
         ) : null;
         const fieldError = error ? (
-          <p id={`${id}-error`} className="text-danger-700 mt-1 text-sm font-bold">
+          <p id={`${id}-error`} className="text-danger mt-1 text-sm font-bold">
             {error}
           </p>
         ) : null;
@@ -163,7 +163,7 @@ export function AuthForm({
         if (field.type === "select") {
           return (
             <div key={field.name}>
-              <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+              <label htmlFor={id} className="text-heading mb-1 block font-bold">
                 {field.label}
               </label>
               <select
@@ -190,7 +190,7 @@ export function AuthForm({
         if (field.type === "textarea") {
           return (
             <div key={field.name}>
-              <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+              <label htmlFor={id} className="text-heading mb-1 block font-bold">
                 {field.label}
               </label>
               <textarea
@@ -213,7 +213,7 @@ export function AuthForm({
 
         return (
           <div key={field.name}>
-            <label htmlFor={id} className="text-navy-900 mb-1 block font-bold">
+            <label htmlFor={id} className="text-heading mb-1 block font-bold">
               {field.label}
             </label>
             <input

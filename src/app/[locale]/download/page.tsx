@@ -46,7 +46,7 @@ export default async function DownloadPage() {
           <h1 className="font-display text-gold-300 text-4xl font-extrabold sm:text-5xl">
             {t("download.title")}
           </h1>
-          <p className="max-w-2xl text-lg text-sky-100">{t("download.intro")}</p>
+          <p className="text-on-dark max-w-2xl text-lg">{t("download.intro")}</p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={STEAM_URL} size="lg" rel="noopener noreferrer">
               {t("download.steam")}
@@ -67,15 +67,15 @@ export default async function DownloadPage() {
         </Suspense>
 
         <section aria-labelledby="steps-title">
-          <h2 id="steps-title" className="font-display text-navy-900 text-3xl font-bold">
+          <h2 id="steps-title" className="font-display text-heading text-3xl font-bold">
             {t("download.steps.title")}
           </h2>
           <ol className="mt-4 grid gap-4 sm:grid-cols-3">
             {(["one", "two", "three"] as const).map((step, i) => (
-              <li key={step} className="rounded-panel shadow-panel flex gap-3 bg-white p-4">
+              <li key={step} className="rounded-panel shadow-panel bg-surface flex gap-3 p-4">
                 <span
                   aria-hidden="true"
-                  className="bg-gold-500 text-ink-900 flex size-8 shrink-0 items-center justify-center rounded-full font-bold"
+                  className="bg-gold-500 text-navy-950 flex size-8 shrink-0 items-center justify-center rounded-full font-bold"
                 >
                   {i + 1}
                 </span>
@@ -86,7 +86,7 @@ export default async function DownloadPage() {
         </section>
 
         <section aria-labelledby="requirements-title">
-          <h2 id="requirements-title" className="font-display text-navy-900 text-3xl font-bold">
+          <h2 id="requirements-title" className="font-display text-heading text-3xl font-bold">
             {t("download.requirements.title")}
           </h2>
           <div className="mt-4">

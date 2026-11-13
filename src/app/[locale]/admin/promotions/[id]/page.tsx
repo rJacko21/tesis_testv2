@@ -27,7 +27,7 @@ export const instant = false;
 
 const DONE = ["created", "saved"] as const;
 const ERRORS = ["notFound", "changed", "unchanged", "image"] as const;
-const SECTION = "border-parchment-300 max-w-3xl rounded-lg border bg-white p-5";
+const SECTION = "border-parchment-300 max-w-3xl rounded-lg border bg-surface p-5";
 
 const parseId = (value: string) => (/^[1-9]\d{0,9}$/.test(value) ? Number(value) : null);
 
@@ -104,7 +104,7 @@ export default async function AdminPromotionPage({
       </figure>
 
       <section aria-labelledby="promotion-data" className={SECTION}>
-        <h2 id="promotion-data" className="text-navy-900 mb-4 text-xl font-bold">
+        <h2 id="promotion-data" className="text-heading mb-4 text-xl font-bold">
           {t("admin.news.data")}
         </h2>
         <AdminForm
@@ -122,7 +122,7 @@ export default async function AdminPromotionPage({
       </section>
 
       <section aria-labelledby="promotion-delete" className={`${SECTION} mt-6`}>
-        <h2 id="promotion-delete" className="text-navy-900 text-xl font-bold">
+        <h2 id="promotion-delete" className="text-heading text-xl font-bold">
           {t("admin.promotions.deleteTitle")}
         </h2>
         <p className="text-ink-600 mt-1">{t("admin.promotions.deleteHint")}</p>

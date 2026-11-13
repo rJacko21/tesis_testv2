@@ -33,7 +33,17 @@
     "tagline": "Ücretsiz anime MMORPG. Karada savaş, denizlere açıl ve loncanı kur.",
     "hero": {
       "eyebrow": "Ücretsiz anime MMORPG",
-      "artAlt": "Turuncu ve siyah elbiseli bir Magic Knight kahramanı"
+      "artAlt": "Turuncu ve siyah elbiseli bir Magic Knight kahramanı",
+      "title": "3D anime fantastik bir MMORPG’de yelken aç",
+      "body": "Karada ve denizde çift savaş sistemine hâkim ol. Gizemli adaları keşfet, karanlık zindanlara gir ve kendi gemine kaptanlık et.",
+      "playFree": "Ücretsiz oyna",
+      "downloadClient": "İstemciyi indir ({version})",
+      "facts": {
+        "free": "%100 ücretsiz",
+        "dual": "Kara ve deniz seviyesi",
+        "classes": "{count} oynanabilir sınıf",
+        "windows": "Windows: başlatıcı veya Steam"
+      }
     },
     "features": {
       "title": "Karada ve denizde macera",
@@ -48,17 +58,32 @@
       "guild": {
         "title": "Bir loncaya katıl",
         "body": "Diğer oyuncularla birleş, bölgeler fethet ve sıralamalarda birlikte yüksel."
+      },
+      "dual": {
+        "title": "Çift savaş sistemi: kara ve deniz",
+        "body": "Karakterin iki ayrı yoldan gelişir: canavarlarla yaya savaştığın kara seviyesi ve kendi geminin kaptanı olduğun deniz seviyesi. Her birinin kendi yetenekleri ve sıralaması vardır.",
+        "artAlt": "Kalkanlı bir savaşçı deniz ejderhasının karşısında"
+      },
+      "dungeons": {
+        "title": "Karanlık zindanlar",
+        "body": "Bir grup kur; deniz yılanlarına, mezar yaratıklarına ve efsanevi patronlara karşı savaş."
       }
     },
     "classes": {
       "title": "Sınıfını seç",
       "intro": "Dört sınıf, sekiz yol. Her sınıf {level}. seviyede iki uzmanlıktan birini seçer.",
       "specializations": "{level}. seviyeden itibaren uzmanlıklar",
-      "artAlt": "{name} sınıfı illüstrasyonu"
+      "artAlt": "{name} sınıfı illüstrasyonu",
+      "base": "Temel sınıf",
+      "evolution": "Seviye {level} evrimi"
     },
     "promotions": {
       "title": "Promosyonlar",
       "until": "Bitiş:"
+    },
+    "download": {
+      "title": "Yelken açmaya hazır mısın?",
+      "body": "Resmî başlatıcıyı indir ya da oyunu Steam’den kur, sınıfını seç ve karada ve denizde maceraya başla."
     }
   },
   "classes": {
@@ -373,7 +398,8 @@
       "saleUntil": "{campaign} indirimi {date} tarihine kadar",
       "saleUntilNoName": "İndirim {date} tarihine kadar",
       "back": "{category} bölümüne dön",
-      "addToCart": "Sepete ekle"
+      "addToCart": "Sepete ekle",
+      "previewAlt": "{name} oyunda giyilmiş hâlde, görünüm {n}"
     },
     "cart": {
       "title": "Sepet",
@@ -1169,5 +1195,8 @@
         "deleted": "Promosyon silindi."
       }
     }
+  },
+  "theme": {
+    "dark": "Koyu tema"
   }
 }

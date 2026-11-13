@@ -24,6 +24,7 @@ import { connection } from "next/server";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ItemArt } from "@/components/shop/ItemArt";
+import { ItemPreviews } from "@/components/shop/ItemPreviews";
 import { ItemBadges, validityLabel } from "@/components/shop/ItemBadges";
 import { ItemPrice } from "@/components/shop/ItemPrice";
 import { buttonStyles, Container } from "@/components/ui";
@@ -126,7 +127,7 @@ export default async function ShopItemPage({ params }: Props) {
           <ol className="text-ink-600 flex flex-wrap gap-x-2 gap-y-1">
             {trail.map(([name, href]) => (
               <li key={href} className="after:ml-2 after:content-['/']">
-                <Link href={href} className="text-navy-700 underline-offset-2 hover:underline">
+                <Link href={href} className="text-link underline-offset-2 hover:underline">
                   {name}
                 </Link>
               </li>
@@ -138,14 +139,27 @@ export default async function ShopItemPage({ params }: Props) {
         </nav>
 
         <article className="mt-6 grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
-          <ItemArt
-            category={item.category}
-            subcategory={item.subcategory}
-            className="rounded-panel shadow-panel mx-auto w-full max-w-sm md:max-w-none"
-          />
+          {item.previews.length ? (
+            <ItemPreviews
+              previews={item.previews}
+              icon={item.image}
+              alts={item.previews.map((_, index) =>
+                t("shop.item.previewAlt", { name: item.name, n: index + 1 }),
+              )}
+              className="mx-auto w-full max-w-md self-start"
+            />
+          ) : (
+            <ItemArt
+              category={item.category}
+              subcategory={item.subcategory}
+              image={item.image}
+              scale={3}
+              className="rounded-panel shadow-panel mx-auto w-full max-w-sm md:max-w-none"
+            />
+          )}
           <div className="flex flex-col gap-4">
             <ItemBadges item={item} t={t} />
-            <h1 className="font-display text-navy-900 text-3xl leading-tight font-bold sm:text-4xl">
+            <h1 className="font-display text-heading text-3xl leading-tight font-bold sm:text-4xl">
               {item.name}
             </h1>
             <ItemPrice item={item} t={t} size="lg" />
@@ -163,13 +177,13 @@ export default async function ShopItemPage({ params }: Props) {
                 </time>
               </p>
             ) : null}
-            <p className="text-ink-900 text-lg">{item.description}</p>
+            <p className="text-ink-900 text-lg whitespace-pre-line">{item.description}</p>
 
             <section aria-labelledby="item-details">
-              <h2 id="item-details" className="text-navy-900 text-lg font-bold">
+              <h2 id="item-details" className="text-heading text-lg font-bold">
                 {t("shop.item.details")}
               </h2>
-              <dl className="border-parchment-300 mt-2 divide-y rounded-lg border bg-white">
+              <dl className="border-parchment-300 bg-surface mt-2 divide-y rounded-lg border">
                 {details.map(([term, value]) => (
                   <div
                     key={term}
@@ -191,7 +205,7 @@ export default async function ShopItemPage({ params }: Props) {
               <div>
                 <label
                   htmlFor="item-quantity"
-                  className="text-navy-900 mb-1 block text-sm font-bold"
+                  className="text-heading mb-1 block text-sm font-bold"
                 >
                   {t("shop.cart.quantity")}
                 </label>
@@ -199,7 +213,7 @@ export default async function ShopItemPage({ params }: Props) {
                   id="item-quantity"
                   name="quantity"
                   defaultValue="1"
-                  className="border-parchment-300 text-ink-900 focus:border-navy-700 min-h-11 rounded-lg border bg-white px-3"
+                  className="border-parchment-300 text-ink-900 focus:border-navy-700 bg-surface min-h-11 rounded-lg border px-3"
                 >
                   {Array.from({ length: CART_MAX_QUANTITY }, (_, i) => i + 1).map((n) => (
                     <option key={n} value={n}>
@@ -213,7 +227,7 @@ export default async function ShopItemPage({ params }: Props) {
               </button>
               <Link
                 href={`/${locale}/cart`}
-                className="text-navy-700 min-h-11 content-center font-semibold underline underline-offset-2"
+                className="text-link min-h-11 content-center font-semibold underline underline-offset-2"
               >
                 {t("shop.cart.view")}
               </Link>
@@ -221,7 +235,7 @@ export default async function ShopItemPage({ params }: Props) {
             <p>
               <Link
                 href={shopHref(locale, { category: category.slug })}
-                className="text-navy-700 font-semibold underline underline-offset-2"
+                className="text-link font-semibold underline underline-offset-2"
               >
                 <span aria-hidden="true">←&nbsp;</span>
                 {t("shop.item.back", { category: category.name })}

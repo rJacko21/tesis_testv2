@@ -13,11 +13,11 @@
 export const STEAM_URL = "https://store.steampowered.com/app/384030/Florensia/";
 
 /**
- * Versión del cliente y enlace al instalador directo. Giiku no los ha
- * facilitado todavía: mientras sean `null`, la página ofrece solo Steam y no
- * inventa un número de versión (ver docs/mejoras/descarga.md).
+ * Versión del cliente: la que muestra el launcher oficial (dato de Armando,
+ * 2026-11-12). El enlace al instalador directo aún no lo ha facilitado
+ * Giiku: mientras sea `null`, la página ofrece solo Steam.
  */
-export const CLIENT_VERSION: string | null = null;
+export const CLIENT_VERSION: string | null = "2.7.1";
 export const INSTALLER_URL: string | null = null;
 
 /** Espacio en disco, en GB (igual en mínimos y recomendados). */

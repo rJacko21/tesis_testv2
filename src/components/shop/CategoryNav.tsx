@@ -15,7 +15,7 @@ import type { ShopCategory } from "@/lib/shop-catalog";
 import { shopHref, type ShopFilter } from "@/lib/shop-filters";
 
 const PILL =
-  "border-parchment-300 text-navy-900 hover:border-navy-700 aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center rounded-full border bg-white px-4 font-semibold whitespace-nowrap aria-[current]:text-white";
+  "border-parchment-300 text-heading hover:border-strong aria-[current]:bg-navy-900 aria-[current]:border-navy-900 inline-flex min-h-11 items-center rounded-full border bg-surface px-4 font-semibold whitespace-nowrap aria-[current]:text-white";
 
 export interface CategoryNavProps {
   locale: Locale;

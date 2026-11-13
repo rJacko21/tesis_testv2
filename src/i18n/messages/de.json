@@ -33,7 +33,17 @@
     "tagline": "Kostenloses Anime-MMORPG. Kämpfe an Land, segle über die Meere und baue deine Gilde auf.",
     "hero": {
       "eyebrow": "Kostenloses Anime-MMORPG",
-      "artAlt": "Eine Magic-Knight-Heldin in einem orange-schwarzen Kleid"
+      "artAlt": "Eine Magic-Knight-Heldin in einem orange-schwarzen Kleid",
+      "title": "Stich in See in einem 3D-Anime-Fantasy-MMORPG",
+      "body": "Meistere das doppelte Kampfsystem an Land und auf See. Erkunde geheimnisvolle Inseln, wage dich in finstere Dungeons und befehlige dein eigenes Schiff.",
+      "playFree": "Kostenlos spielen",
+      "downloadClient": "Client herunterladen ({version})",
+      "facts": {
+        "free": "100 % kostenlos",
+        "dual": "Land- und Seestufe",
+        "classes": "{count} spielbare Klassen",
+        "windows": "Windows: Launcher oder Steam"
+      }
     },
     "features": {
       "title": "Abenteuer zu Land und zu Wasser",
@@ -48,17 +58,32 @@
       "guild": {
         "title": "Tritt einer Gilde bei",
         "body": "Schließ dich anderen Spielern an, erobere Gebiete und steig gemeinsam in den Ranglisten auf."
+      },
+      "dual": {
+        "title": "Doppeltes Kampfsystem: Land und See",
+        "body": "Dein Charakter entwickelt sich auf zwei getrennten Wegen: eine Landstufe im Kampf zu Fuß gegen Monster und eine Seestufe als Kapitän deines eigenen Schiffs. Jede hat eigene Fertigkeiten und eine eigene Rangliste.",
+        "artAlt": "Ein Krieger mit Schild vor einem Seedrachen"
+      },
+      "dungeons": {
+        "title": "Finstere Dungeons",
+        "body": "Bilde eine Gruppe und stelle dich Seeschlangen, Gruftwesen und legendären Bossen."
       }
     },
     "classes": {
       "title": "Wähle deine Klasse",
       "intro": "Vier Klassen, acht Wege. Ab Level {level} wählt jede Klasse eine von zwei Spezialisierungen.",
       "specializations": "Spezialisierungen ab Level {level}",
-      "artAlt": "Illustration der Klasse {name}"
+      "artAlt": "Illustration der Klasse {name}",
+      "base": "Basisklasse",
+      "evolution": "Entwicklung ab Stufe {level}"
     },
     "promotions": {
       "title": "Aktionen",
       "until": "Bis"
+    },
+    "download": {
+      "title": "Bereit, in See zu stechen?",
+      "body": "Lade den offiziellen Launcher herunter oder installiere das Spiel über Steam, wähle deine Klasse und beginne dein Abenteuer an Land und auf See."
     }
   },
   "classes": {
@@ -373,7 +398,8 @@
       "saleUntil": "Angebot zum {campaign} bis {date}",
       "saleUntilNoName": "Angebot bis {date}",
       "back": "Zurück zu {category}",
-      "addToCart": "In den Warenkorb"
+      "addToCart": "In den Warenkorb",
+      "previewAlt": "{name} im Spiel getragen, Ansicht {n}"
     },
     "cart": {
       "title": "Warenkorb",
@@ -1169,5 +1195,8 @@
         "deleted": "Banner gelöscht."
       }
     }
+  },
+  "theme": {
+    "dark": "Dunkles Design"
   }
 }

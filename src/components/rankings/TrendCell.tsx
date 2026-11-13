@@ -24,7 +24,7 @@ export function TrendCell({
     case "down":
       return (
         <td
-          className={`font-bold whitespace-nowrap ${trend.kind === "up" ? "text-success-700" : "text-danger-700"}`}
+          className={`font-bold whitespace-nowrap ${trend.kind === "up" ? "text-success" : "text-danger"}`}
         >
           <span aria-hidden="true">
             {trend.kind === "up" ? "▲" : "▼"} {trend.places}
@@ -35,9 +35,7 @@ export function TrendCell({
         </td>
       );
     case "new":
-      return (
-        <td className="text-navy-700 text-xs font-bold uppercase">{t("rankings.trend.new")}</td>
-      );
+      return <td className="text-link text-xs font-bold uppercase">{t("rankings.trend.new")}</td>;
     case "same":
       return (
         <td className="text-ink-600">

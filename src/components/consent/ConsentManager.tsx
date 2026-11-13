@@ -64,7 +64,7 @@ export interface ConsentManagerProps {
 }
 
 const BUTTON =
-  "inline-flex min-h-11 flex-1 items-center justify-center rounded-lg border-2 border-navy-700 bg-white px-2 text-center leading-tight font-semibold text-navy-900 hover:bg-sky-100";
+  "inline-flex min-h-11 flex-1 items-center justify-center rounded-lg border-2 border-strong bg-surface px-2 text-center leading-tight font-semibold text-heading hover:bg-sky-100";
 
 function saveChoice(choice: ConsentChoice): void {
   const secure = window.location.protocol === "https:" ? "; Secure" : "";
@@ -113,14 +113,14 @@ export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
         <section
           id="consent-banner"
           aria-labelledby="consent-title"
-          className="border-navy-700 fixed inset-x-2 bottom-2 z-40 mx-auto max-w-2xl rounded-xl border bg-white p-4 text-sm shadow-2xl sm:inset-x-4 sm:bottom-4"
+          className="border-strong bg-surface fixed inset-x-2 bottom-2 z-40 mx-auto max-w-2xl rounded-xl border p-4 text-sm shadow-2xl sm:inset-x-4 sm:bottom-4"
         >
-          <h2 id="consent-title" className="font-display text-navy-900 text-lg font-bold">
+          <h2 id="consent-title" className="font-display text-heading text-lg font-bold">
             {texts.title}
           </h2>
           <p className="text-ink-600 mt-1">
             {texts.body}{" "}
-            <a href={policyHref} className="text-navy-700 font-semibold underline">
+            <a href={policyHref} className="text-link font-semibold underline">
               {texts.policyLink}
             </a>
           </p>
@@ -152,14 +152,14 @@ export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
             choose({ ...uniformChoice(false), categories: { analytics } });
           }}
         >
-          <h2 id="consent-settings-title" className="font-display text-navy-900 text-xl font-bold">
+          <h2 id="consent-settings-title" className="font-display text-heading text-xl font-bold">
             {texts.settingsTitle}
           </h2>
 
           <label className="flex gap-3">
             <input type="checkbox" checked disabled className="mt-1 size-5 shrink-0" />
             <span>
-              <span className="text-navy-900 block font-bold">{texts.necessaryTitle}</span>
+              <span className="text-heading block font-bold">{texts.necessaryTitle}</span>
               <span className="text-ink-600 text-sm">{texts.necessaryBody}</span>
             </span>
           </label>
@@ -173,7 +173,7 @@ export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
               className="accent-navy-700 mt-1 size-5 shrink-0"
             />
             <span>
-              <span className="text-navy-900 block font-bold">{texts.analyticsTitle}</span>
+              <span className="text-heading block font-bold">{texts.analyticsTitle}</span>
               <span className="text-ink-600 text-sm">{texts.analyticsBody}</span>
             </span>
           </label>
@@ -192,7 +192,7 @@ export function ConsentManager({ texts, policyHref }: ConsentManagerProps) {
           <button
             type="button"
             onClick={() => dialogRef.current?.close()}
-            className="text-navy-700 self-center px-3 py-2 text-sm font-semibold underline"
+            className="text-link self-center px-3 py-2 text-sm font-semibold underline"
           >
             {texts.close}
           </button>

@@ -20,7 +20,7 @@ export interface CommunityMenuProps {
 export function CommunityMenu({ label, links, externalLabel }: CommunityMenuProps) {
   return (
     <details className="group relative">
-      <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-1 rounded px-3 font-semibold [&::-webkit-details-marker]:hidden">
+      <summary className="hover:bg-navy-700 flex min-h-11 cursor-pointer list-none items-center gap-1 rounded px-2 text-[0.9375rem] font-semibold 2xl:px-3 2xl:text-base [&::-webkit-details-marker]:hidden">
         {label}
         <svg
           aria-hidden="true"
@@ -30,13 +30,13 @@ export function CommunityMenu({ label, links, externalLabel }: CommunityMenuProp
           <path fill="currentColor" d="m4 6 4 4 4-4H4Z" />
         </svg>
       </summary>
-      <ul className="text-ink-900 absolute left-0 z-20 mt-1 min-w-56 rounded-md bg-white py-1 shadow-lg">
+      <ul className="text-ink-900 bg-surface absolute left-0 z-20 mt-1 min-w-56 rounded-md py-1 shadow-lg">
         {links.map((link) => (
           <li key={link.href}>
             <NavLinkItem
               link={link}
               externalLabel={externalLabel}
-              className="aria-[current]:text-navy-700 block px-4 py-2.5 hover:bg-sky-100 aria-[current]:font-bold"
+              className="aria-[current]:text-link block px-4 py-2.5 hover:bg-sky-100 aria-[current]:font-bold"
             />
           </li>
         ))}

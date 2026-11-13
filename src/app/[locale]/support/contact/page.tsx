@@ -22,7 +22,7 @@ import { getLocale, getTranslator } from "@/i18n/server";
 import { contactSupportAction } from "@/lib/support/actions";
 import { CONTACT_CATEGORIES, CONTACT_LIMITS as L } from "@/lib/support/contact-rules";
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);

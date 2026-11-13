@@ -6,8 +6,12 @@
  * cabecera. Las últimas noticias se resuelven al pedir la página y llegan
  * en streaming (`LatestNews`), igual que las promociones en curso
  * (`Promotions`, M-38).
+ *
+ * El orden es el del rediseño (M-44): portada, características, noticias y
+ * promociones, clases y descarga.
  */
 import { ClassShowcase } from "@/components/home/ClassShowcase";
+import { DownloadCta } from "@/components/home/DownloadCta";
 import { FeatureList } from "@/components/home/FeatureList";
 import { Hero } from "@/components/home/Hero";
 import { LatestNews } from "@/components/home/LatestNews";
@@ -23,10 +27,11 @@ export default async function HomePage() {
     <main className="flex flex-1 flex-col">
       <JsonLd data={[organization(), videoGame(locale, t("meta.description"))]} />
       <Hero locale={locale} t={t} />
+      <FeatureList locale={locale} t={t} />
       <LatestNews locale={locale} t={t} />
       <Promotions locale={locale} t={t} />
-      <FeatureList locale={locale} t={t} />
       <ClassShowcase t={t} />
+      <DownloadCta locale={locale} t={t} />
     </main>
   );
 }

@@ -36,17 +36,14 @@ export default async function RedeemPage() {
       title={t("account.redeem.title")}
       intro={t("account.redeem.intro")}
     >
-      <div className="border-parchment-300 max-w-xl rounded-lg border bg-white p-4 sm:p-6">
+      <div className="border-parchment-300 bg-surface max-w-xl rounded-lg border p-4 sm:p-6">
         <AuthForm
           action={redeemCodeAction}
           idPrefix="redeem"
           hidden={{ locale }}
           submitLabel={t("account.redeem.submit")}
           successExtra={
-            <Link
-              href={accountPath(locale, "redeem")}
-              className="text-navy-700 font-bold underline"
-            >
+            <Link href={accountPath(locale, "redeem")} className="text-link font-bold underline">
               {t("account.redeem.another")}
             </Link>
           }

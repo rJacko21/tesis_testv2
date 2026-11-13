@@ -50,6 +50,7 @@ const DOMAINS: Record<string, readonly string[]> = {
     "campaign_translations",
     "shop_items",
     "shop_item_translations",
+    "shop_item_previews",
     "item_prices",
     "carts",
     "cart_items",

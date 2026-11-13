@@ -19,7 +19,7 @@ import { signUpAction } from "@/lib/auth/actions";
 import { PASSWORD_MAX, PASSWORD_MIN } from "@/lib/auth/password";
 import { USERNAME_MAX, USERNAME_MIN, USERNAME_PATTERN } from "@/lib/auth/username";
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export interface RegisterFormProps {
   locale: Locale;

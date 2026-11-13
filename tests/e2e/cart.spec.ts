@@ -106,11 +106,12 @@ test("comprar: añadir, cambiar la cantidad, elegir personaje y pagar con AP", a
 
 test("sin saldo suficiente dice cuánto falta y ofrece recargar (CA de RF-05)", async ({ page }) => {
   const account = await signedInAccount(page);
-  await prepare(account.username, 100);
+  // El artículo más barato del catálogo cuesta menos de 100 AP (pociones).
+  await prepare(account.username, 10);
   const { price } = await openCheapestItem(page);
   await page.getByRole("button", { name: "Añadir a la cesta" }).click();
 
-  const missing = new Intl.NumberFormat("es").format(price - 100);
+  const missing = new Intl.NumberFormat("es").format(price - 10);
   await expect(page.getByText(`Te faltan ${missing} AP para pagar esta cesta.`)).toBeVisible();
   await expect(page.getByRole("main").getByRole("link", { name: "Recargar AP" })).toBeVisible();
   await expect(page.getByRole("button", { name: /^Pagar/ })).toHaveCount(0);

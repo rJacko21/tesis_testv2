@@ -27,8 +27,8 @@ import { PASSWORD_MAX, PASSWORD_MIN } from "@/lib/auth/password";
 
 export const instant = false;
 
-const SECTION = "border-parchment-300 rounded-lg border bg-white p-4 sm:p-6";
-const H2 = "font-display text-navy-900 text-2xl font-bold";
+const SECTION = "border-parchment-300 rounded-lg border bg-surface p-4 sm:p-6";
+const H2 = "font-display text-heading text-2xl font-bold";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslator();
@@ -157,7 +157,7 @@ export default async function SecurityPage({
                 className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3"
               >
                 <div>
-                  <p className="text-navy-900 font-bold">
+                  <p className="text-heading font-bold">
                     {name}
                     {isCurrent ? (
                       <span className="bg-success-700 ml-2 rounded-full px-2.5 py-0.5 text-xs text-white">

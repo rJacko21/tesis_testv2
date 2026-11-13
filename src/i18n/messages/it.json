@@ -33,7 +33,17 @@
     "tagline": "MMORPG anime gratuito. Combatti sulla terraferma, naviga per i mari e costruisci la tua gilda.",
     "hero": {
       "eyebrow": "MMORPG anime gratuito",
-      "artAlt": "Un’eroina Magic Knight con un abito arancione e nero"
+      "artAlt": "Un’eroina Magic Knight con un abito arancione e nero",
+      "title": "Salpa in un MMORPG fantasy anime in 3D",
+      "body": "Padroneggia il doppio sistema di combattimento, a terra e in mare. Esplora isole misteriose, addentrati in dungeon sinistri e comanda la tua nave.",
+      "playFree": "Gioca gratis",
+      "downloadClient": "Scarica il client ({version})",
+      "facts": {
+        "free": "100% gratuito",
+        "dual": "Livello di terra e di mare",
+        "classes": "{count} classi giocabili",
+        "windows": "Windows: launcher o Steam"
+      }
     },
     "features": {
       "title": "Avventura per terra e per mare",
@@ -48,17 +58,32 @@
       "guild": {
         "title": "Entra in una gilda",
         "body": "Unisciti ad altri giocatori, conquista territori e scala le classifiche insieme."
+      },
+      "dual": {
+        "title": "Doppio sistema di combattimento: terra e mare",
+        "body": "Il tuo personaggio cresce in due modi distinti: un livello di terra, combattendo a piedi contro i mostri, e un livello di mare, come capitano della tua nave. Ognuno ha le sue abilità e la sua classifica.",
+        "artAlt": "Un guerriero con scudo di fronte a un drago marino"
+      },
+      "dungeons": {
+        "title": "Dungeon sinistri",
+        "body": "Forma un gruppo e affronta serpenti marini, creature delle cripte e boss leggendari."
       }
     },
     "classes": {
       "title": "Scegli la tua classe",
       "intro": "Quattro classi, otto percorsi. Al livello {level} ogni classe sceglie una di due specializzazioni.",
       "specializations": "Specializzazioni dal livello {level}",
-      "artAlt": "Illustrazione della classe {name}"
+      "artAlt": "Illustrazione della classe {name}",
+      "base": "Classe base",
+      "evolution": "Evoluzione di livello {level}"
     },
     "promotions": {
       "title": "Promozioni",
       "until": "Fino al"
+    },
+    "download": {
+      "title": "Pronto a salpare?",
+      "body": "Scarica il launcher ufficiale o installa il gioco da Steam, scegli la tua classe e inizia la tua avventura a terra e in mare."
     }
   },
   "classes": {
@@ -373,7 +398,8 @@
       "saleUntil": "Offerta {campaign} fino al {date}",
       "saleUntilNoName": "Offerta fino al {date}",
       "back": "Torna a {category}",
-      "addToCart": "Aggiungi al carrello"
+      "addToCart": "Aggiungi al carrello",
+      "previewAlt": "{name} indossato in gioco, vista {n}"
     },
     "cart": {
       "title": "Carrello",
@@ -1169,5 +1195,8 @@
         "deleted": "Promozione eliminata."
       }
     }
+  },
+  "theme": {
+    "dark": "Tema scuro"
   }
 }

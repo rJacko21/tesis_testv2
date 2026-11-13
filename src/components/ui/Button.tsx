@@ -28,9 +28,12 @@ const BASE =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60";
 
 const VARIANTS: Record<ButtonVariant, string> = {
-  primary: "bg-gold-500 text-navy-950 hover:bg-gold-300",
+  // Azul celeste del botón «Play» del launcher (M-44). El texto es marino,
+  // no blanco: blanco sobre este azul no llega a 4.5:1.
+  primary:
+    "from-azure-300 to-azure-500 text-navy-950 bg-linear-to-br shadow-[inset_0_1px_0_rgb(255_255_255/0.45)] transition-[box-shadow,transform] hover:-translate-y-px hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.45),0_0_20px_rgb(14_165_233/0.55)]",
   secondary: "bg-navy-700 text-white hover:bg-navy-900",
-  ghost: "text-navy-700 hover:bg-sky-100",
+  ghost: "text-link hover:bg-sky-100",
   danger: "bg-danger-700 text-white hover:bg-navy-950",
   onDark: "border-2 border-white/80 text-white hover:bg-white/10",
 };

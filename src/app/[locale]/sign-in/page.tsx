@@ -17,7 +17,7 @@ import { signInAction } from "@/lib/auth/actions";
 // Lee `searchParams` (el token o el destino): se renderiza al pedirla.
 export const instant = false;
 
-const LINK = "text-navy-700 font-bold underline";
+const LINK = "text-link font-bold underline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);

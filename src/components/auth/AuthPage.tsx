@@ -37,7 +37,7 @@ export function AuthPage({
   return (
     <main className="flex-1 py-8 sm:py-12">
       <Container>
-        <div className="mx-auto max-w-md lg:grid lg:max-w-5xl lg:grid-cols-[minmax(0,1fr)_28rem] lg:overflow-hidden lg:rounded-2xl lg:bg-white lg:shadow-xl">
+        <div className="lg:bg-surface mx-auto max-w-md lg:grid lg:max-w-5xl lg:grid-cols-[minmax(0,1fr)_28rem] lg:overflow-hidden lg:rounded-2xl lg:shadow-xl">
           <div
             aria-hidden={aside ? undefined : true}
             className="from-navy-700 via-navy-900 to-navy-950 relative hidden overflow-hidden bg-gradient-to-br p-10 text-white lg:flex lg:flex-col"
@@ -63,7 +63,7 @@ export function AuthPage({
                 <p className="font-display text-gold-300 text-3xl leading-tight font-bold">
                   {aside.title}
                 </p>
-                <ul className="mt-5 grid gap-3 text-sky-100">
+                <ul className="text-on-dark mt-5 grid gap-3">
                   {aside.points.map((point) => (
                     <li key={point} className="flex gap-3">
                       <span
@@ -89,9 +89,9 @@ export function AuthPage({
           </div>
 
           <div className="lg:p-10">
-            <h1 className="font-display text-navy-900 text-4xl font-bold">{title}</h1>
+            <h1 className="font-display text-heading text-4xl font-bold">{title}</h1>
             {intro ? <p className="text-ink-600 mt-2 text-lg">{intro}</p> : null}
-            <div className="border-parchment-300 mt-6 rounded-lg border bg-white p-5 sm:p-6 lg:border-0 lg:p-0">
+            <div className="border-parchment-300 bg-surface mt-6 rounded-lg border p-5 sm:p-6 lg:border-0 lg:p-0">
               {children}
             </div>
             {footer ? <div className="mt-6 flex flex-col gap-2 text-center">{footer}</div> : null}

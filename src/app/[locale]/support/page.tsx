@@ -50,21 +50,21 @@ export default async function SupportPage() {
       />
       <Container className="flex max-w-3xl flex-col gap-8">
         <header>
-          <h1 className="font-display text-navy-900 text-4xl font-bold">{t("support.title")}</h1>
+          <h1 className="font-display text-heading text-4xl font-bold">{t("support.title")}</h1>
           <p className="text-ink-600 mt-2 text-lg">{t("support.intro")}</p>
         </header>
 
         <section aria-labelledby="faq-title">
-          <h2 id="faq-title" className="font-display text-navy-900 text-2xl font-bold">
+          <h2 id="faq-title" className="font-display text-heading text-2xl font-bold">
             {t("support.faqTitle")}
           </h2>
           <div className="mt-4 flex flex-col gap-3">
             {QUESTIONS.map((key) => (
               <details
                 key={key}
-                className="rounded-panel shadow-panel group bg-white open:ring-2 open:ring-sky-300"
+                className="rounded-panel shadow-panel group bg-surface open:ring-2 open:ring-sky-300"
               >
-                <summary className="text-navy-900 flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 p-4 font-bold">
+                <summary className="text-heading flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 p-4 font-bold">
                   {t(`support.faq.${key}.question`)}
                   <span
                     aria-hidden="true"
@@ -81,9 +81,9 @@ export default async function SupportPage() {
 
         <section
           aria-labelledby="contact-title"
-          className="rounded-panel shadow-panel bg-white p-6"
+          className="rounded-panel shadow-panel bg-surface p-6"
         >
-          <h2 id="contact-title" className="font-display text-navy-900 text-2xl font-bold">
+          <h2 id="contact-title" className="font-display text-heading text-2xl font-bold">
             {t("support.contactTitle")}
           </h2>
           <p className="text-ink-900 mt-2">{t("support.contactBody")}</p>
@@ -102,11 +102,11 @@ export default async function SupportPage() {
           <h2 id="community-title" className="font-display text-gold-300 text-2xl font-bold">
             {t("support.communityTitle")}
           </h2>
-          <p className="mt-2 text-sky-100">{t("support.communityBody")}</p>
+          <p className="text-on-dark mt-2">{t("support.communityBody")}</p>
           <a
             href={DISCORD_URL}
             rel="noopener noreferrer"
-            className="bg-gold-500 text-ink-900 hover:bg-gold-300 mt-4 inline-flex min-h-11 items-center rounded-lg px-5 font-bold"
+            className="from-azure-300 to-azure-500 text-navy-950 mt-4 inline-flex min-h-11 items-center rounded-lg bg-linear-to-br px-5 font-bold hover:shadow-[0_0_20px_rgb(14_165_233/0.55)]"
           >
             {t("support.discord")}
             <span className="sr-only"> {t("nav.externalSite")}</span>

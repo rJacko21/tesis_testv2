@@ -19,8 +19,8 @@ import type { Translate } from "@/i18n/translator";
 import { RANKING_AREAS, RANKING_QUERY_MAX, type RankingFilter } from "@/lib/ranking-filters";
 
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 focus:border-navy-700";
-const LABEL = "text-navy-900 mb-1 block text-sm font-bold";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 focus:border-navy-700";
+const LABEL = "text-heading mb-1 block text-sm font-bold";
 
 export interface RankingFiltersProps {
   locale: Locale;

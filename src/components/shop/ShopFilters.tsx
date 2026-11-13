@@ -20,8 +20,8 @@ import {
 } from "@/lib/shop-filters";
 
 const FIELD =
-  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-white px-3 focus:border-navy-700";
-const LABEL = "text-navy-900 mb-1 block text-sm font-bold";
+  "border-parchment-300 text-ink-900 min-h-11 w-full rounded-lg border bg-surface px-3 focus:border-navy-700";
+const LABEL = "text-heading mb-1 block text-sm font-bold";
 
 export interface ShopFiltersProps {
   locale: Locale;
@@ -89,7 +89,7 @@ export function ShopFilters({ locale, filter, t }: ShopFiltersProps) {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 sm:col-span-2 lg:col-span-1 lg:mt-6 lg:flex-col lg:items-stretch">
-        <label className="text-navy-900 inline-flex min-h-11 items-center gap-2 font-semibold">
+        <label className="text-heading inline-flex min-h-11 items-center gap-2 font-semibold">
           <input
             type="checkbox"
             name="sale"
